@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 import traceback
 
-# 导入MAMA框架组件
+# Import MAMA framework components
 try:
     from main import MAMAFlightAssistant, QueryProcessingConfig
     from core.multi_dimensional_trust_ledger import TrustDimension
@@ -254,10 +254,10 @@ class RewardDrivenExperiment:
                    color=colors[i],
                    alpha=0.8)
         
-        ax.set_title('MAMA框架：奖励驱动的智能体能力演进\n(基于系统奖励r的强化学习)', 
+        ax.set_title('MAMA Framework: Reward-Driven Agent Competence Evolution\n(Based on System Reward r for Reinforcement Learning)', 
                     fontsize=16, fontweight='bold')
-        ax.set_xlabel('交互次数', fontsize=12)
-        ax.set_ylabel('能力分数', fontsize=12)
+        ax.set_xlabel('Interactions', fontsize=12)
+        ax.set_ylabel('Competence Score', fontsize=12)
         ax.set_xlim(0, len(interactions) + 1)
         ax.set_ylim(0, 1.05)
         ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -278,7 +278,7 @@ class RewardDrivenExperiment:
         
         # 绘制原始奖励
         ax.plot(interactions, self.reward_log, 
-               label='系统奖励 r', 
+               label='System Reward r', 
                color='#FF6B6B', 
                alpha=0.6, 
                linewidth=1)
@@ -296,10 +296,10 @@ class RewardDrivenExperiment:
                    color='#4ECDC4', 
                    linewidth=2)
         
-        ax.set_title('MAMA系统奖励演进\n(λ₁×MRR + λ₂×NDCG - λ₃×ART)', 
+        ax.set_title('MAMA System Reward Evolution\n(λ₁×MRR + λ₂×NDCG - λ₃×ART)', 
                     fontsize=16, fontweight='bold')
-        ax.set_xlabel('交互次数', fontsize=12)
-        ax.set_ylabel('系统奖励 r', fontsize=12)
+        ax.set_xlabel('Interactions', fontsize=12)
+        ax.set_ylabel('System Reward r', fontsize=12)
         ax.axhline(y=0, color='black', linestyle='--', alpha=0.5)
         ax.legend()
         ax.grid(True, linestyle='--', alpha=0.6)
@@ -317,7 +317,7 @@ class RewardDrivenExperiment:
             return
         
         logger.info("=" * 60)
-        logger.info("🎉 实验完成！最终统计结果：")
+        logger.info("🎉 Experiment Completed! Final Statistics:")
         logger.info("=" * 60)
         
         # 奖励统计
@@ -326,14 +326,14 @@ class RewardDrivenExperiment:
         max_reward = np.max(self.reward_log)
         min_reward = np.min(self.reward_log)
         
-        logger.info(f"📊 系统奖励统计:")
+        logger.info(f"📊 System Reward Statistics:")
         logger.info(f"   平均奖励: {avg_reward:.4f}")
         logger.info(f"   最终奖励: {final_reward:.4f}")
         logger.info(f"   最高奖励: {max_reward:.4f}")
         logger.info(f"   最低奖励: {min_reward:.4f}")
         
         # 能力演进统计
-        logger.info(f"📈 智能体能力演进:")
+        logger.info(f"📈 Agent Competence Evolution:")
         first_entry = self.competence_log[0]
         last_entry = self.competence_log[-1]
         
@@ -354,9 +354,9 @@ async def main():
     try:
         experiment = RewardDrivenExperiment()
         await experiment.run_experiment(num_interactions=150)
-        logger.info("🎉 奖励驱动实验成功完成！")
+        logger.info("🎉 Reward-Driven Experiment Successfully Completed!")
     except Exception as e:
-        logger.error(f"💥 实验失败: {e}")
+        logger.error(f"💥 Experiment Failed: {e}")
         logger.error(traceback.format_exc())
 
 if __name__ == "__main__":

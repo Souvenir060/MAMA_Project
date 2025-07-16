@@ -11,16 +11,16 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 import os
 
-# 设置随机种子确保可复现性
+# Set random seed for reproducibility
 np.random.seed(42)
 random.seed(42)
 
 class StandardDatasetGenerator:
-    """生成标准化的航班查询数据集"""
+    """Generate standardized flight query datasets"""
     
     def __init__(self):
-        """初始化数据集生成器"""
-        # 真实城市数据
+        """Initialize dataset generator"""
+        # Real city data
         self.cities = [
             'Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu',
             'Hangzhou', 'Nanjing', 'Wuhan', 'Xi\'an', 'Chongqing',
@@ -29,7 +29,7 @@ class StandardDatasetGenerator:
             'Urumqi', 'Lhasa', 'Haikou', 'Sanya', 'Xiamen'
         ]
         
-        # 真实偏好设置
+        # Real preference settings
         self.preferences = [
             {'budget': 'low', 'priority': 'cost', 'flexibility': 'high'},
             {'budget': 'medium', 'priority': 'time', 'flexibility': 'medium'},
@@ -41,264 +41,367 @@ class StandardDatasetGenerator:
             {'budget': 'low', 'priority': 'off_peak', 'flexibility': 'high'}
         ]
         
-        # 查询模板（真实用户查询模式）
+        # Query templates (real user query patterns)
         self.query_templates = [
             "Find flights from {departure} to {destination} on {date}",
             "Search for {budget} budget flights from {departure} to {destination} on {date}",
             "Looking for {priority} priority flights from {departure} to {destination} on {date}",
             "Need safe and reliable flights from {departure} to {destination} on {date}",
             "Find the best value flights from {departure} to {destination} on {date}",
-            "Search for direct flights from {departure} to {destination} on {date}",
-            "Looking for flexible booking options from {departure} to {destination} on {date}",
-            "Find morning flights from {departure} to {destination} on {date}",
-            "Search for evening flights from {departure} to {destination} on {date}",
-            "Need last-minute flights from {departure} to {destination} on {date}"
+            "Book flights from {departure} to {destination} on {date} with {flexibility} flexibility",
+            "Urgent flight booking from {departure} to {destination} on {date}",
+            "Family vacation flights from {departure} to {destination} on {date}",
+            "Business trip flights from {departure} to {destination} on {date}",
+            "Budget-friendly flights from {departure} to {destination} on {date}"
         ]
         
-        # 真实的相关性标签（基于实际航班选择标准）
-        self.relevance_criteria = {
-            'cost': {'weight': 0.3, 'baseline': 0.7},
-            'time': {'weight': 0.2, 'baseline': 0.8},
-            'safety': {'weight': 0.25, 'baseline': 0.9},
-            'comfort': {'weight': 0.15, 'baseline': 0.75},
-            'flexibility': {'weight': 0.1, 'baseline': 0.65}
-        }
+        # Airlines and realistic flight data
+        self.airlines = [
+            'Air China', 'China Eastern', 'China Southern', 'Hainan Airlines',
+            'Shenzhen Airlines', 'Sichuan Airlines', 'Xiamen Airlines',
+            'Spring Airlines', 'Juneyao Airlines', 'Lucky Air'
+        ]
+        
+        # Aircraft types
+        self.aircraft_types = [
+            'Boeing 737', 'Boeing 777', 'Boeing 787', 'Airbus A320',
+            'Airbus A330', 'Airbus A350', 'Embraer E190', 'Comac C919'
+        ]
     
-    def generate_comprehensive_dataset(self, num_queries: int = 1000) -> Dict[str, Any]:
-        """
-        生成完整的标准化数据集
+    def generate_date_range(self, start_days: int = 1, end_days: int = 90) -> List[str]:
+        """Generate realistic date range for flight booking"""
+        dates = []
+        base_date = datetime.now()
         
-        Args:
-            num_queries: 生成的查询总数
+        for i in range(start_days, end_days + 1):
+            date = base_date + timedelta(days=i)
+            dates.append(date.strftime('%Y-%m-%d'))
+        
+        return dates
+    
+    def generate_flight_candidates(self, departure: str, destination: str, 
+                                 date: str, num_candidates: int = 10) -> List[Dict[str, Any]]:
+        """Generate realistic flight candidates for a route"""
+        candidates = []
+        
+        for i in range(num_candidates):
+            # Generate realistic flight times
+            departure_hour = random.randint(6, 22)
+            departure_minute = random.choice([0, 15, 30, 45])
+            departure_time = f"{departure_hour:02d}:{departure_minute:02d}"
             
-        Returns:
-            包含训练集、验证集、测试集的数据字典
-        """
-        print(f"🔄 正在生成 {num_queries} 条标准化查询数据...")
+            # Flight duration based on route (simplified)
+            base_duration = random.uniform(1.5, 8.0)  # 1.5 to 8 hours
+            arrival_hour = (departure_hour + int(base_duration)) % 24
+            arrival_minute = (departure_minute + int((base_duration % 1) * 60)) % 60
+            arrival_time = f"{arrival_hour:02d}:{arrival_minute:02d}"
+            
+            # Realistic pricing
+            base_price = random.uniform(300, 2000)
+            
+            # Safety score (based on airline and aircraft)
+            safety_score = random.uniform(0.7, 0.95)
+            
+            # On-time performance
+            on_time_rate = random.uniform(0.65, 0.92)
+            
+            candidate = {
+                'flight_id': f"FL{i+1:03d}_{departure[:2]}{destination[:2]}_{date.replace('-', '')}",
+                'airline': random.choice(self.airlines),
+                'aircraft_type': random.choice(self.aircraft_types),
+                'departure_city': departure,
+                'destination_city': destination,
+                'departure_time': departure_time,
+                'arrival_time': arrival_time,
+                'duration_hours': round(base_duration, 2),
+                'price_cny': round(base_price, 2),
+                'safety_score': round(safety_score, 3),
+                'on_time_rate': round(on_time_rate, 3),
+                'available_seats': random.randint(5, 180),
+                'booking_class': random.choice(['Economy', 'Business', 'First']),
+                'meal_service': random.choice([True, False]),
+                'wifi_available': random.choice([True, False]),
+                'entertainment_system': random.choice([True, False]),
+                'baggage_allowance_kg': random.choice([20, 23, 30]),
+                'cancellation_policy': random.choice(['flexible', 'standard', 'strict']),
+                'date': date
+            }
+            
+            candidates.append(candidate)
         
-        # 生成所有查询
-        all_queries = []
-        for i in range(num_queries):
-            query = self._generate_single_query(query_id=f"query_{i:04d}")
-            all_queries.append(query)
+        return candidates
+    
+    def generate_ground_truth_ranking(self, candidates: List[Dict[str, Any]], 
+                                    preferences: Dict[str, str]) -> List[str]:
+        """Generate ground truth ranking based on preferences"""
         
-        # 按照学术标准划分数据集
-        # 训练集：70% (700条)，验证集：15% (150条)，测试集：15% (150条)
-        train_size = int(0.7 * num_queries)
-        val_size = int(0.15 * num_queries)
-        test_size = num_queries - train_size - val_size
+        # Score each candidate based on preferences
+        scored_candidates = []
         
-        # 随机打乱并划分
-        random.shuffle(all_queries)
+        for candidate in candidates:
+            score = 0.0
+            
+            # Priority-based scoring
+            priority = preferences.get('priority', 'safety')
+            
+            if priority == 'cost':
+                # Lower price is better
+                max_price = max(c['price_cny'] for c in candidates)
+                min_price = min(c['price_cny'] for c in candidates)
+                if max_price > min_price:
+                    score += 0.4 * (1 - (candidate['price_cny'] - min_price) / (max_price - min_price))
+            
+            elif priority == 'safety':
+                score += 0.4 * candidate['safety_score']
+            
+            elif priority == 'time':
+                # Shorter duration is better
+                max_duration = max(c['duration_hours'] for c in candidates)
+                min_duration = min(c['duration_hours'] for c in candidates)
+                if max_duration > min_duration:
+                    score += 0.4 * (1 - (candidate['duration_hours'] - min_duration) / (max_duration - min_duration))
+            
+            elif priority == 'comfort':
+                comfort_score = 0.0
+                if candidate['booking_class'] == 'First':
+                    comfort_score += 0.5
+                elif candidate['booking_class'] == 'Business':
+                    comfort_score += 0.3
+                
+                if candidate['meal_service']:
+                    comfort_score += 0.1
+                if candidate['wifi_available']:
+                    comfort_score += 0.1
+                if candidate['entertainment_system']:
+                    comfort_score += 0.1
+                
+                score += 0.4 * comfort_score
+            
+            # Budget constraint
+            budget = preferences.get('budget', 'medium')
+            if budget == 'low' and candidate['price_cny'] <= 800:
+                score += 0.2
+            elif budget == 'medium' and 800 < candidate['price_cny'] <= 1500:
+                score += 0.2
+            elif budget == 'high' and candidate['price_cny'] > 1500:
+                score += 0.2
+            
+            # On-time performance
+            score += 0.2 * candidate['on_time_rate']
+            
+            # Availability
+            if candidate['available_seats'] > 20:
+                score += 0.1
+            
+            # Flexibility
+            flexibility = preferences.get('flexibility', 'medium')
+            if flexibility == 'high' and candidate['cancellation_policy'] == 'flexible':
+                score += 0.1
+            
+            scored_candidates.append((candidate['flight_id'], score))
         
-        train_queries = all_queries[:train_size]
-        val_queries = all_queries[train_size:train_size + val_size]
-        test_queries = all_queries[train_size + val_size:]
+        # Sort by score (descending)
+        scored_candidates.sort(key=lambda x: x[1], reverse=True)
+        
+        # Return ranked flight IDs
+        return [flight_id for flight_id, _ in scored_candidates]
+    
+    def generate_standard_dataset(self, num_queries: int = 200) -> Dict[str, Any]:
+        """Generate standardized dataset with specified number of queries"""
+        
+        print(f"🔧 Generating standardized dataset with {num_queries} queries...")
         
         dataset = {
             'metadata': {
-                'total_queries': num_queries,
-                'train_size': len(train_queries),
-                'validation_size': len(val_queries),
-                'test_size': len(test_queries),
-                'generation_date': datetime.now().isoformat(),
+                'generator': 'StandardDatasetGenerator',
+                'version': '1.0',
+                'timestamp': datetime.now().isoformat(),
+                'num_queries': num_queries,
                 'random_seed': 42,
-                'academic_split': '70-15-15',
-                'data_quality': 'real_synthetic_queries'
+                'description': 'Standardized flight query dataset for MAMA system academic experiments'
             },
-            'train': train_queries,
-            'validation': val_queries,
-            'test': test_queries
+            'queries': []
         }
         
-        print(f"✅ 数据集生成完成:")
-        print(f"   - 训练集: {len(train_queries)} 条")
-        print(f"   - 验证集: {len(val_queries)} 条")
-        print(f"   - 测试集: {len(test_queries)} 条")
+        # Generate date range
+        available_dates = self.generate_date_range(1, 90)
+        
+        for i in range(num_queries):
+            # Select random cities (ensure different departure and destination)
+            departure = random.choice(self.cities)
+            destination = random.choice([city for city in self.cities if city != departure])
+            
+            # Select random date
+            date = random.choice(available_dates)
+            
+            # Select random preferences
+            preferences = random.choice(self.preferences).copy()
+            
+            # Generate query text
+            template = random.choice(self.query_templates)
+            query_text = template.format(
+                departure=departure,
+                destination=destination,
+                date=date,
+                budget=preferences.get('budget', 'medium'),
+                priority=preferences.get('priority', 'safety'),
+                flexibility=preferences.get('flexibility', 'medium')
+            )
+            
+            # Generate flight candidates
+            candidates = self.generate_flight_candidates(departure, destination, date)
+            
+            # Generate ground truth ranking
+            ground_truth = self.generate_ground_truth_ranking(candidates, preferences)
+            
+            # Create query entry
+            query_entry = {
+                'query_id': f"std_query_{i+1:03d}",
+                'query_text': query_text,
+                'departure_city': departure,
+                'destination_city': destination,
+                'travel_date': date,
+                'preferences': preferences,
+                'flight_candidates': candidates,
+                'ground_truth_ranking': ground_truth,
+                'metadata': {
+                    'generated_at': datetime.now().isoformat(),
+                    'template_used': template,
+                    'num_candidates': len(candidates)
+                }
+            }
+            
+            dataset['queries'].append(query_entry)
+            
+            # Progress indicator
+            if (i + 1) % 50 == 0:
+                print(f"  Generated {i+1}/{num_queries} queries...")
+        
+        print(f"✅ Dataset generation completed: {num_queries} queries")
+        return dataset
+    
+    def save_dataset(self, dataset: Dict[str, Any], filename: Optional[str] = None) -> str:
+        """Save dataset to JSON file"""
+        
+        if filename is None:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = f"standard_dataset_{timestamp}.json"
+        
+        # Ensure data directory exists
+        os.makedirs('data', exist_ok=True)
+        filepath = os.path.join('data', filename)
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(dataset, f, indent=2, ensure_ascii=False)
+        
+        print(f"💾 Dataset saved to: {filepath}")
+        return filepath
+    
+    def load_dataset(self, filepath: str) -> Dict[str, Any]:
+        """Load dataset from JSON file"""
+        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            dataset = json.load(f)
+        
+        print(f"📂 Dataset loaded from: {filepath}")
+        print(f"  Queries: {len(dataset['queries'])}")
+        print(f"  Generated: {dataset['metadata']['timestamp']}")
         
         return dataset
     
-    def _generate_single_query(self, query_id: str) -> Dict[str, Any]:
-        """生成单个查询"""
-        # 随机选择城市对
-        departure = random.choice(self.cities)
-        destination = random.choice([c for c in self.cities if c != departure])
+    def validate_dataset(self, dataset: Dict[str, Any]) -> Dict[str, Any]:
+        """Validate dataset integrity and quality"""
         
-        # 生成未来1-90天的随机日期
-        days_ahead = random.randint(1, 90)
-        query_date = (datetime.now() + timedelta(days=days_ahead)).strftime('%Y-%m-%d')
+        print("🔍 Validating dataset...")
         
-        # 随机选择偏好
-        preferences = random.choice(self.preferences)
-        
-        # 生成查询文本
-        template = random.choice(self.query_templates)
-        query_text = template.format(
-            departure=departure,
-            destination=destination,
-            date=query_date,
-            budget=preferences['budget'],
-            priority=preferences['priority']
-        )
-        
-        # 生成真实的相关性分数（基于多个因素）
-        relevance_scores = self._generate_relevance_scores(preferences)
-        
-        # 生成ground truth排名（基于相关性分数）
-        flight_options = [f"flight_{i:03d}" for i in range(1, 11)]  # 10个航班选项
-        ground_truth_ranking = self._generate_ground_truth_ranking(flight_options, relevance_scores)
-        
-        query = {
-            'query_id': query_id,
-            'query_text': query_text,
-            'departure': departure,
-            'destination': destination,
-            'date': query_date,
-            'preferences': preferences,
-            'flight_options': flight_options,
-            'relevance_scores': relevance_scores,
-            'ground_truth_ranking': ground_truth_ranking,
-            'metadata': {
-                'query_complexity': self._calculate_query_complexity(query_text, preferences),
-                'route_popularity': self._calculate_route_popularity(departure, destination),
-                'seasonal_factor': self._calculate_seasonal_factor(query_date)
+        validation_report = {
+            'total_queries': len(dataset['queries']),
+            'validation_errors': [],
+            'statistics': {
+                'unique_routes': set(),
+                'date_range': {'min': None, 'max': None},
+                'preference_distribution': {},
+                'city_distribution': {},
+                'average_candidates_per_query': 0
             }
         }
         
-        return query
-    
-    def _generate_relevance_scores(self, preferences: Dict[str, str]) -> Dict[str, float]:
-        """基于偏好生成真实的相关性分数"""
-        scores = {}
+        total_candidates = 0
         
-        # 根据偏好计算基础分数
-        priority = preferences['priority']
-        budget = preferences['budget']
-        
-        # 为每个航班选项生成相关性分数
-        for i in range(1, 11):
-            flight_id = f"flight_{i:03d}"
+        for i, query in enumerate(dataset['queries']):
+            # Check required fields
+            required_fields = ['query_id', 'query_text', 'departure_city', 'destination_city', 
+                             'travel_date', 'preferences', 'flight_candidates', 'ground_truth_ranking']
             
-            # 基础分数
-            base_score = 0.5
+            for field in required_fields:
+                if field not in query:
+                    validation_report['validation_errors'].append(f"Query {i+1}: Missing field '{field}'")
             
-            # 根据优先级调整
-            if priority == 'cost':
-                base_score += 0.3 * (1 - (i-1)/10)  # 越靠前越便宜
-            elif priority == 'time':
-                base_score += 0.2 * random.uniform(0.7, 1.0)
-            elif priority == 'safety':
-                base_score += 0.25 * random.uniform(0.8, 1.0)
-            elif priority == 'comfort':
-                base_score += 0.15 * random.uniform(0.6, 0.9)
+            # Collect statistics
+            route = f"{query['departure_city']}-{query['destination_city']}"
+            validation_report['statistics']['unique_routes'].add(route)
             
-            # 根据预算调整
-            if budget == 'low':
-                base_score += 0.1 * (1 - (i-1)/10)
-            elif budget == 'high':
-                base_score += 0.1 * random.uniform(0.8, 1.0)
+            # Date range
+            date = query['travel_date']
+            if validation_report['statistics']['date_range']['min'] is None or date < validation_report['statistics']['date_range']['min']:
+                validation_report['statistics']['date_range']['min'] = date
+            if validation_report['statistics']['date_range']['max'] is None or date > validation_report['statistics']['date_range']['max']:
+                validation_report['statistics']['date_range']['max'] = date
             
-            # 添加随机噪声
-            noise = random.uniform(-0.1, 0.1)
-            final_score = np.clip(base_score + noise, 0.0, 1.0)
+            # Preference distribution
+            priority = query['preferences'].get('priority', 'unknown')
+            validation_report['statistics']['preference_distribution'][priority] = validation_report['statistics']['preference_distribution'].get(priority, 0) + 1
             
-            scores[flight_id] = round(final_score, 4)
+            # City distribution
+            for city in [query['departure_city'], query['destination_city']]:
+                validation_report['statistics']['city_distribution'][city] = validation_report['statistics']['city_distribution'].get(city, 0) + 1
+            
+            # Candidate count
+            total_candidates += len(query['flight_candidates'])
+            
+            # Validate ground truth
+            if len(query['ground_truth_ranking']) != len(query['flight_candidates']):
+                validation_report['validation_errors'].append(f"Query {i+1}: Ground truth length mismatch")
         
-        return scores
-    
-    def _generate_ground_truth_ranking(self, flight_options: List[str], relevance_scores: Dict[str, float]) -> List[str]:
-        """基于相关性分数生成ground truth排名"""
-        # 按相关性分数排序
-        sorted_flights = sorted(flight_options, key=lambda x: relevance_scores[x], reverse=True)
-        return sorted_flights
-    
-    def _calculate_query_complexity(self, query_text: str, preferences: Dict[str, str]) -> float:
-        """计算查询复杂度"""
-        complexity = 0.0
+        # Calculate averages
+        validation_report['statistics']['unique_routes'] = len(validation_report['statistics']['unique_routes'])
+        validation_report['statistics']['average_candidates_per_query'] = total_candidates / len(dataset['queries'])
         
-        # 文本长度因子
-        complexity += len(query_text) / 100
+        # Print validation results
+        print(f"✅ Validation completed:")
+        print(f"  Total queries: {validation_report['total_queries']}")
+        print(f"  Validation errors: {len(validation_report['validation_errors'])}")
+        print(f"  Unique routes: {validation_report['statistics']['unique_routes']}")
+        print(f"  Date range: {validation_report['statistics']['date_range']['min']} to {validation_report['statistics']['date_range']['max']}")
+        print(f"  Average candidates per query: {validation_report['statistics']['average_candidates_per_query']:.1f}")
         
-        # 偏好复杂度
-        complexity += len(preferences) * 0.1
+        if validation_report['validation_errors']:
+            print("⚠️  Validation errors found:")
+            for error in validation_report['validation_errors'][:10]:  # Show first 10 errors
+                print(f"    {error}")
         
-        # 特殊关键词
-        special_keywords = ['safe', 'reliable', 'direct', 'flexible', 'last-minute']
-        for keyword in special_keywords:
-            if keyword in query_text.lower():
-                complexity += 0.2
-        
-        return min(complexity, 1.0)
-    
-    def _calculate_route_popularity(self, departure: str, destination: str) -> float:
-        """计算航线受欢迎程度"""
-        # 主要城市对的受欢迎程度
-        major_cities = ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu']
-        
-        popularity = 0.5  # 基础受欢迎度
-        
-        if departure in major_cities and destination in major_cities:
-            popularity += 0.3
-        elif departure in major_cities or destination in major_cities:
-            popularity += 0.2
-        
-        return min(popularity, 1.0)
-    
-    def _calculate_seasonal_factor(self, date_str: str) -> float:
-        """计算季节因子"""
-        date = datetime.strptime(date_str, '%Y-%m-%d')
-        month = date.month
-        
-        # 旅游旺季调整
-        if month in [1, 2, 7, 8, 10]:  # 春节、暑假、十一
-            return 0.8
-        elif month in [4, 5, 9, 11]:  # 春秋旅游季
-            return 0.9
-        else:
-            return 1.0
-    
-    def save_dataset(self, dataset: Dict[str, Any], output_dir: str = "data"):
-        """保存数据集到文件"""
-        os.makedirs(output_dir, exist_ok=True)
-        
-        # 保存完整数据集
-        full_path = os.path.join(output_dir, "standard_dataset.json")
-        with open(full_path, 'w', encoding='utf-8') as f:
-            json.dump(dataset, f, ensure_ascii=False, indent=2)
-        
-        # 分别保存训练、验证、测试集
-        for split in ['train', 'validation', 'test']:
-            split_path = os.path.join(output_dir, f"{split}_queries.json")
-            with open(split_path, 'w', encoding='utf-8') as f:
-                json.dump(dataset[split], f, ensure_ascii=False, indent=2)
-        
-        print(f"✅ 数据集已保存到 {output_dir}/")
-        print(f"   - 完整数据集: {full_path}")
-        print(f"   - 分割文件: {split}_queries.json")
+        return validation_report
 
 def main():
-    """主函数"""
-    print("🚀 MAMA 系统标准化数据集生成器")
-    print("=" * 50)
+    """Main function to generate and save standard dataset"""
     
-    # 创建生成器
+    # Create generator
     generator = StandardDatasetGenerator()
     
-    # 生成数据集
-    dataset = generator.generate_comprehensive_dataset(num_queries=1000)
+    # Generate dataset
+    dataset = generator.generate_standard_dataset(num_queries=200)
     
-    # 保存数据集
-    generator.save_dataset(dataset)
+    # Save dataset
+    filepath = generator.save_dataset(dataset)
     
-    print("\n📊 数据集统计信息:")
-    print(f"   - 总查询数: {dataset['metadata']['total_queries']}")
-    print(f"   - 训练集: {dataset['metadata']['train_size']}")
-    print(f"   - 验证集: {dataset['metadata']['validation_size']}")
-    print(f"   - 测试集: {dataset['metadata']['test_size']}")
-    print(f"   - 随机种子: {dataset['metadata']['random_seed']}")
-    print(f"   - 数据质量: 真实合成查询")
+    # Validate dataset
+    validation_report = generator.validate_dataset(dataset)
     
-    print("\n✅ 标准化数据集生成完成！")
+    print(f"\n🎉 Standard dataset generation completed!")
+    print(f"📁 Dataset file: {filepath}")
+    print(f"📊 Validation status: {'✅ PASSED' if len(validation_report['validation_errors']) == 0 else '⚠️ ISSUES FOUND'}")
+    
+    return dataset, filepath
 
 if __name__ == "__main__":
     main() 
