@@ -227,7 +227,7 @@ class RewardDrivenExperiment:
         fig.savefig(self.figures_dir / f'competence_evolution_{timestamp}.png', dpi=300, bbox_inches='tight')
         fig.savefig(self.figures_dir / f'competence_evolution_{timestamp}.pdf', bbox_inches='tight')
         plt.close()
-        
+    
     def _plot_reward_evolution(self, timestamp):
         fig, ax = plt.subplots(figsize=(14, 8))
         
@@ -286,7 +286,7 @@ class RewardDrivenExperiment:
         logger.info("\n✅ Experiment completed successfully!")
 
 async def main():
-    experiment = RewardDrivenExperiment()
+        experiment = RewardDrivenExperiment()
     await experiment.run_experiment()
 
 if __name__ == "__main__":

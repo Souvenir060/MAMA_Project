@@ -294,10 +294,10 @@ class GroundTruthRobustnessExperiment:
                     # Generate Ground Truth for this mode
                     ground_truth = self.generate_modified_ground_truth(
                         candidate_flights, 
-                        query['preferences'], 
-                        mode_name
-                    )
-                    
+                    query['preferences'],
+                    mode_name
+                )
+            
                     # Simulate model performance
                     performance = self.simulate_model_performance(
                         model_name, 

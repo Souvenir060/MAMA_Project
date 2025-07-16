@@ -228,43 +228,43 @@ class StandardDatasetGenerator:
         
         for i in range(num_queries):
             # Select random cities (ensure different departure and destination)
-            departure = random.choice(self.cities)
+        departure = random.choice(self.cities)
             destination = random.choice([city for city in self.cities if city != departure])
-            
+        
             # Select random date
             date = random.choice(available_dates)
-            
+        
             # Select random preferences
             preferences = random.choice(self.preferences).copy()
-            
+        
             # Generate query text
-            template = random.choice(self.query_templates)
-            query_text = template.format(
-                departure=departure,
-                destination=destination,
+        template = random.choice(self.query_templates)
+        query_text = template.format(
+            departure=departure,
+            destination=destination,
                 date=date,
                 budget=preferences.get('budget', 'medium'),
                 priority=preferences.get('priority', 'safety'),
                 flexibility=preferences.get('flexibility', 'medium')
-            )
-            
+        )
+        
             # Generate flight candidates
             candidates = self.generate_flight_candidates(departure, destination, date)
-            
+        
             # Generate ground truth ranking
             ground_truth = self.generate_ground_truth_ranking(candidates, preferences)
-            
+        
             # Create query entry
             query_entry = {
                 'query_id': f"std_query_{i+1:03d}",
-                'query_text': query_text,
+            'query_text': query_text,
                 'departure_city': departure,
                 'destination_city': destination,
                 'travel_date': date,
-                'preferences': preferences,
+            'preferences': preferences,
                 'flight_candidates': candidates,
                 'ground_truth_ranking': ground_truth,
-                'metadata': {
+            'metadata': {
                     'generated_at': datetime.now().isoformat(),
                     'template_used': template,
                     'num_candidates': len(candidates)
@@ -286,7 +286,7 @@ class StandardDatasetGenerator:
         if filename is None:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f"standard_dataset_{timestamp}.json"
-        
+            
         # Ensure data directory exists
         os.makedirs('data', exist_ok=True)
         filepath = os.path.join('data', filename)

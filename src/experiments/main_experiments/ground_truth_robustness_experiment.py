@@ -129,7 +129,7 @@ class GroundTruthRobustnessExperiment:
                             safety_score, price, duration, query
                         )
                     })
-            
+        
             # Sort by relevance and create ground truth ranking
             candidates.sort(key=lambda x: x['relevance_score'], reverse=True)
             
@@ -354,7 +354,7 @@ class GroundTruthRobustnessExperiment:
                             predicted[0] == ground_truth[0]) else 0.0
         
         return {
-            'MRR': float(mrr),
+                'MRR': float(mrr),
             'NDCG@5': float(ndcg_5),
             'Precision@1': float(precision_1)
         }
@@ -421,7 +421,7 @@ class GroundTruthRobustnessExperiment:
         
         # Load test queries
         test_queries = self.load_test_queries()
-        
+            
         # Run experiment for each filter mode
         all_results = {}
         

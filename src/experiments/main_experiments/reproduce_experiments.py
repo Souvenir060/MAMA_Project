@@ -49,7 +49,7 @@ def check_dependencies():
         ('matplotlib', 'matplotlib'), 
         ('seaborn', 'seaborn'),
         ('scikit-learn', 'sklearn'),
-        ('pandas', 'pandas'),
+        ('pandas', 'pandas'), 
         ('torch', 'torch'),
         ('transformers', 'transformers'),
         ('sentence-transformers', 'sentence_transformers')
@@ -134,8 +134,8 @@ def run_basic_experiments():
         start_time = time.time()
         success = run_command(exp['command'], exp['description'])
         elapsed_time = time.time() - start_time
-        
-        if success:
+    
+    if success:
             successful_experiments += 1
             print(f"⏱️ Completed in {elapsed_time:.2f} seconds")
         else:
@@ -169,8 +169,8 @@ def run_advanced_experiments():
         start_time = time.time()
         success = run_command(exp['command'], exp['description'])
         elapsed_time = time.time() - start_time
-        
-        if success:
+    
+    if success:
             successful_experiments += 1
             print(f"⏱️ Completed in {elapsed_time:.2f} seconds")
         else:

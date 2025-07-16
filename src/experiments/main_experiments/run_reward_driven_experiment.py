@@ -265,7 +265,7 @@ class RewardDrivenExperiment:
         plt.close()
         
         logger.info(f"📊 Competence evolution figure saved to: {fig_path}")
-
+    
     def _plot_reward_evolution(self, timestamp):
         """Plot system reward evolution"""
         fig, ax = plt.subplots(figsize=(12, 6))
@@ -287,7 +287,7 @@ class RewardDrivenExperiment:
                 smoothed_rewards,
                 label=f'Moving Average (window={window_size})',
                 color='#2ecc71',
-                linewidth=2)
+                   linewidth=2)
         
         ax.set_xlabel('Interaction Number')
         ax.set_ylabel('System Reward')
@@ -301,7 +301,7 @@ class RewardDrivenExperiment:
         plt.close()
         
         logger.info(f"📊 Reward evolution figure saved to: {fig_path}")
-
+    
     def _print_final_statistics(self):
         """Print final experiment statistics"""
         final_stats = {
@@ -325,7 +325,7 @@ class RewardDrivenExperiment:
 
 async def main():
     """Main entry point for running the reward-driven experiment"""
-    experiment = RewardDrivenExperiment()
+        experiment = RewardDrivenExperiment()
     await experiment.run_experiment()
 
 if __name__ == "__main__":

@@ -257,7 +257,7 @@ class RealMAMARobustnessExperiment:
             rank = predicted_ranking.index(optimal_item) + 1
             return 1.0 / rank
         except ValueError:
-            return 0.0
+        return 0.0
     
     def calculate_ndcg_5(self, predicted_ranking: List[str], ground_truth: List[str]) -> float:
         if not predicted_ranking or not ground_truth:
@@ -321,9 +321,9 @@ class RealMAMARobustnessExperiment:
                     ground_truth = self.generate_modified_ground_truth(
                         query.get('flight_options', []),
                         query.get('preferences', {}),
-                        mode_name
-                    )
-                    
+                    mode_name
+                )
+            
                     for model_name, model in self.models.items():
                         evaluation_result = self.evaluate_model_on_query(model, query)
                         
@@ -395,7 +395,7 @@ class RealMAMARobustnessExperiment:
                 if first_row:
                     mode_cell = f"**{mode_name}**<br>({mode_data['config']['description']})"
                     first_row = False
-                else:
+            else:
                     mode_cell = ""
                 
                 table += f"| {mode_cell} | {model_name} | {metrics['mrr']:.4f} | {metrics['ndcg']:.4f} | {metrics['avg_time']:.4f} |\n"
@@ -403,8 +403,8 @@ class RealMAMARobustnessExperiment:
         return table
 
 def main():
-    experiment = RealMAMARobustnessExperiment()
-    results = experiment.run_robustness_analysis()
+        experiment = RealMAMARobustnessExperiment()
+        results = experiment.run_robustness_analysis()
     logger.info("✅ Robustness analysis completed successfully!")
 
 if __name__ == "__main__":

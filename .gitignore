@@ -38,17 +38,13 @@ ENV/
 *.sqlite
 *.db
 
-# Results and experimental data
+# Results and figures
 results/
 figures/
-data/raw/
-data/processed/
 *.png
 *.pdf
 *.jpg
 *.jpeg
-*.json
-!src/config/*.json
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -57,7 +53,6 @@ data/processed/
 # Cache
 .cache/
 .pytest_cache/
-__pycache__/
 
 # OS
 .DS_Store
@@ -72,29 +67,4 @@ Thumbs.db
 *.md
 !README.md
 reports/
-docs/
-
-# Model checkpoints and weights
-*.pt
-*.pth
-*.safetensors
-models/checkpoints/
-
-# Temporary files
-*.tmp
-*.temp
-*~
-
-# Experiment outputs
-outputs/
-logs/
-*.out
-*.err
-
-# API keys and sensitive data
-*.key
-*.pem
-*.jwt
-config.ini
-settings.ini
-.env* 
+docs/ 

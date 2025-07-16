@@ -149,7 +149,7 @@ def generate_academic_report(statistics):
                           traditional['MRR_mean'] * 100)
     
     report = {
-        'key_findings': [
+            'key_findings': [
             f"MAMA Full achieved best performance: MRR={mama_full['MRR_mean']:.4f}±{mama_full['MRR_std']:.3f}",
             f"Trust mechanism contributes {trust_improvement:.1f}% improvement",
             f"Multi-agent approach shows {multi_agent_improvement:.1f}% advantage",
@@ -175,7 +175,7 @@ def run_final_experiment():
     
     # Load dataset
     print("📊 Loading dataset...")
-    queries = load_standard_dataset()
+        queries = load_standard_dataset()
     
     # Run all models
     print(f"🔬 Running experiments on {len(queries)} queries...")

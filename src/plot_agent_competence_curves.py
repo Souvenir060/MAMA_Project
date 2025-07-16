@@ -70,7 +70,7 @@ def plot_competence_evolution(df, output_dir="figures", show_plot=True):
                     linewidth=2.5, 
                     label=agent_names[col],
                     marker='o', markersize=4, alpha=0.8)
-    
+            
     ax1.set_title('Agent Competence Evolution Over Time', fontsize=14, fontweight='bold')
     ax1.set_xlabel('Interaction Number', fontsize=12)
     ax1.set_ylabel('Competence Score', fontsize=12)
@@ -386,7 +386,7 @@ def generate_competence_statistics(df):
     # Calculate system-wide metrics
     system_initial = df[agent_columns].iloc[0].mean()
     system_final = df[agent_columns].iloc[-1].mean()
-    system_improvement = system_final - system_initial
+        system_improvement = system_final - system_initial
     system_improvement_pct = (system_improvement / system_initial) * 100
     
     print(f"  System Initial Average: {system_initial:.4f}")
