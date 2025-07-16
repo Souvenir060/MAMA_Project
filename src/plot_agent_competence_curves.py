@@ -386,7 +386,7 @@ def generate_competence_statistics(df):
     # Calculate system-wide metrics
     system_initial = df[agent_columns].iloc[0].mean()
     system_final = df[agent_columns].iloc[-1].mean()
-        system_improvement = system_final - system_initial
+    system_improvement = system_final - system_initial
     system_improvement_pct = (system_improvement / system_initial) * 100
     
     print(f"  System Initial Average: {system_initial:.4f}")

@@ -287,7 +287,7 @@ class RewardDrivenExperiment:
 
 async def main():
         experiment = RewardDrivenExperiment()
-        await experiment.run_experiment()
+    await experiment.run_experiment()
 
 if __name__ == "__main__":
     asyncio.run(main()) 

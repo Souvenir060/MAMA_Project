@@ -16,43 +16,26 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual Environment
-.env
-.venv
-env/
+.venv/
 venv/
 ENV/
+env/
+.env
 
 # IDE
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
-
-# Logs and databases
-*.log
-*.sqlite
-*.db
-
-# Results and figures
-results/
-figures/
-*.png
-*.pdf
-*.jpg
-*.jpeg
-
-# Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
-
-# Cache
-.cache/
-.pytest_cache/
+*~
 
 # OS
 .DS_Store
@@ -63,8 +46,26 @@ figures/
 ehthumbs.db
 Thumbs.db
 
-# Documentation and reports
-*.md
-!README.md
-reports/
-docs/ 
+# Generated figures (not for GitHub)
+figures/extended/*.png
+figures/extended/*.pdf
+figures/basic/*.png
+figures/basic/*.pdf
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Model files (too large for GitHub)
+*.pt
+*.pth
+*.safetensors
+src/models/models--sentence-transformers--all-MiniLM-L6-v2/
+
+# Temporary files
+*.tmp
+*.temp 
