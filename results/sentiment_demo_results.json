@@ -1,0 +1,242 @@
+[
+  {
+    "sentence": "This movie is absolutely fantastic!",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Positive_Agent",
+        0.14446234703063965
+      ],
+      [
+        "Sarcasm_Agent",
+        0.12584775686264038
+      ],
+      [
+        "Negation_Agent",
+        0.10044783353805542
+      ]
+    ],
+    "agent_results": {
+      "Positive_Agent": "Yes",
+      "Sarcasm_Agent": "Yes",
+      "Negation_Agent": "No"
+    }
+  },
+  {
+    "sentence": "This movie is not good at all.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Negative",
+    "selected_agents": [
+      [
+        "Negation_Agent",
+        0.1815009444952011
+      ],
+      [
+        "Negative_Agent",
+        0.12219509482383728
+      ],
+      [
+        "Sarcasm_Agent",
+        0.11937887221574783
+      ]
+    ],
+    "agent_results": {
+      "Negation_Agent": "Yes",
+      "Negative_Agent": "No",
+      "Sarcasm_Agent": "No"
+    }
+  },
+  {
+    "sentence": "Yeah right, like this movie is great.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Sarcasm_Agent",
+        0.2305343508720398
+      ],
+      [
+        "Positive_Agent",
+        0.1305343508720398
+      ],
+      [
+        "Negative_Agent",
+        0.10265503823757172
+      ]
+    ],
+    "agent_results": {
+      "Sarcasm_Agent": "Yes",
+      "Positive_Agent": "Yes",
+      "Negative_Agent": "No"
+    }
+  },
+  {
+    "sentence": "I don't hate this movie.",
+    "mama_prediction": "Positive",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Negation_Agent",
+        0.22219692468643187
+      ],
+      [
+        "Negative_Agent",
+        0.14205709099769592
+      ],
+      [
+        "Positive_Agent",
+        0.06438446044921875
+      ]
+    ],
+    "agent_results": {
+      "Negation_Agent": "Yes",
+      "Negative_Agent": "Yes",
+      "Positive_Agent": "No"
+    }
+  },
+  {
+    "sentence": "The acting was terrible and boring.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Negative",
+    "selected_agents": [
+      [
+        "Negation_Agent",
+        0.08737959712743759
+      ],
+      [
+        "Negative_Agent",
+        0.04853947088122368
+      ],
+      [
+        "Sarcasm_Agent",
+        0.017709951847791672
+      ]
+    ],
+    "agent_results": {
+      "Negation_Agent": "No",
+      "Negative_Agent": "Yes",
+      "Sarcasm_Agent": "Yes"
+    }
+  },
+  {
+    "sentence": "It's a wonderful and charming film.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Positive_Agent",
+        0.16681000590324402
+      ],
+      [
+        "Negative_Agent",
+        0.07633569091558456
+      ],
+      [
+        "Sarcasm_Agent",
+        0.06602218747138977
+      ]
+    ],
+    "agent_results": {
+      "Positive_Agent": "Yes",
+      "Negative_Agent": "No",
+      "Sarcasm_Agent": "Yes"
+    }
+  },
+  {
+    "sentence": "Oh great, another boring sequel.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Negative",
+    "selected_agents": [
+      [
+        "Negation_Agent",
+        0.24067593514919283
+      ],
+      [
+        "Sarcasm_Agent",
+        0.19067593514919282
+      ],
+      [
+        "Negative_Agent",
+        0.03014238364994526
+      ]
+    ],
+    "agent_results": {
+      "Negation_Agent": "Yes",
+      "Sarcasm_Agent": "Yes",
+      "Negative_Agent": "Yes"
+    }
+  },
+  {
+    "sentence": "The story is not terrible.",
+    "mama_prediction": "Positive",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Negative_Agent",
+        0.23846335887908934
+      ],
+      [
+        "Negation_Agent",
+        0.20846335887908934
+      ],
+      [
+        "Positive_Agent",
+        0.15846335887908936
+      ]
+    ],
+    "agent_results": {
+      "Negative_Agent": "Yes",
+      "Negation_Agent": "Yes",
+      "Positive_Agent": "No"
+    }
+  },
+  {
+    "sentence": "I love the amazing cinematography!",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Positive",
+    "selected_agents": [
+      [
+        "Positive_Agent",
+        0.021867800503969193
+      ],
+      [
+        "Sarcasm_Agent",
+        0.0017235549166798592
+      ],
+      [
+        "Negative_Agent",
+        -0.04262595623731613
+      ]
+    ],
+    "agent_results": {
+      "Positive_Agent": "Yes",
+      "Sarcasm_Agent": "Yes",
+      "Negative_Agent": "No"
+    }
+  },
+  {
+    "sentence": "This is the worst movie I've ever seen.",
+    "mama_prediction": "Negative",
+    "baseline_prediction": "Negative",
+    "selected_agents": [
+      [
+        "Negation_Agent",
+        0.1458902806043625
+      ],
+      [
+        "Negative_Agent",
+        0.12333628535270691
+      ],
+      [
+        "Sarcasm_Agent",
+        0.08285777270793915
+      ]
+    ],
+    "agent_results": {
+      "Negation_Agent": "No",
+      "Negative_Agent": "Yes",
+      "Sarcasm_Agent": "Yes"
+    }
+  }
+]

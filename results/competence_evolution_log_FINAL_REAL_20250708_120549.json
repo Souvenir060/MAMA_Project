@@ -1,0 +1,1202 @@
+[
+  {
+    "query_index": 1,
+    "safety_agent_competence": 0.3485198253334741,
+    "economic_agent_competence": 0.3485198253334741,
+    "weather_agent_competence": 0.3485198253334741,
+    "flight_info_agent_competence": 0.3485198253334741,
+    "integration_agent_competence": 0.3485198253334741
+  },
+  {
+    "query_index": 2,
+    "safety_agent_competence": 0.37356192849635583,
+    "economic_agent_competence": 0.37356192849635583,
+    "weather_agent_competence": 0.37356192849635583,
+    "flight_info_agent_competence": 0.37356192849635583,
+    "integration_agent_competence": 0.37356192849635583
+  },
+  {
+    "query_index": 3,
+    "safety_agent_competence": 0.37493279269838037,
+    "economic_agent_competence": 0.37493279269838037,
+    "weather_agent_competence": 0.37493279269838037,
+    "flight_info_agent_competence": 0.37493279269838037,
+    "integration_agent_competence": 0.37493279269838037
+  },
+  {
+    "query_index": 4,
+    "safety_agent_competence": 0.34963846506349755,
+    "economic_agent_competence": 0.34963846506349755,
+    "weather_agent_competence": 0.34963846506349755,
+    "flight_info_agent_competence": 0.34963846506349755,
+    "integration_agent_competence": 0.34963846506349755
+  },
+  {
+    "query_index": 5,
+    "safety_agent_competence": 0.3423038794262112,
+    "economic_agent_competence": 0.3423038794262112,
+    "weather_agent_competence": 0.3423038794262112,
+    "flight_info_agent_competence": 0.3423038794262112,
+    "integration_agent_competence": 0.3423038794262112
+  },
+  {
+    "query_index": 6,
+    "safety_agent_competence": 0.3226801842865203,
+    "economic_agent_competence": 0.3226801842865203,
+    "weather_agent_competence": 0.3226801842865203,
+    "flight_info_agent_competence": 0.3226801842865203,
+    "integration_agent_competence": 0.3226801842865203
+  },
+  {
+    "query_index": 7,
+    "safety_agent_competence": 0.31424421255728247,
+    "economic_agent_competence": 0.31424421255728247,
+    "weather_agent_competence": 0.31424421255728247,
+    "flight_info_agent_competence": 0.31424421255728247,
+    "integration_agent_competence": 0.31424421255728247
+  },
+  {
+    "query_index": 8,
+    "safety_agent_competence": 0.33089105826812854,
+    "economic_agent_competence": 0.33089105826812854,
+    "weather_agent_competence": 0.33089105826812854,
+    "flight_info_agent_competence": 0.33089105826812854,
+    "integration_agent_competence": 0.33089105826812854
+  },
+  {
+    "query_index": 9,
+    "safety_agent_competence": 0.32311706152158554,
+    "economic_agent_competence": 0.32311706152158554,
+    "weather_agent_competence": 0.32311706152158554,
+    "flight_info_agent_competence": 0.32311706152158554,
+    "integration_agent_competence": 0.32311706152158554
+  },
+  {
+    "query_index": 10,
+    "safety_agent_competence": 0.3455670316476344,
+    "economic_agent_competence": 0.3455670316476344,
+    "weather_agent_competence": 0.3455670316476344,
+    "flight_info_agent_competence": 0.3455670316476344,
+    "integration_agent_competence": 0.3455670316476344
+  },
+  {
+    "query_index": 11,
+    "safety_agent_competence": 0.32171835866160275,
+    "economic_agent_competence": 0.32171835866160275,
+    "weather_agent_competence": 0.32171835866160275,
+    "flight_info_agent_competence": 0.32171835866160275,
+    "integration_agent_competence": 0.32171835866160275
+  },
+  {
+    "query_index": 12,
+    "safety_agent_competence": 0.31059185333347605,
+    "economic_agent_competence": 0.31059185333347605,
+    "weather_agent_competence": 0.31059185333347605,
+    "flight_info_agent_competence": 0.31059185333347605,
+    "integration_agent_competence": 0.31059185333347605
+  },
+  {
+    "query_index": 13,
+    "safety_agent_competence": 0.34149627171811603,
+    "economic_agent_competence": 0.34149627171811603,
+    "weather_agent_competence": 0.34149627171811603,
+    "flight_info_agent_competence": 0.34149627171811603,
+    "integration_agent_competence": 0.34149627171811603
+  },
+  {
+    "query_index": 14,
+    "safety_agent_competence": 0.3412034141552066,
+    "economic_agent_competence": 0.3412034141552066,
+    "weather_agent_competence": 0.3412034141552066,
+    "flight_info_agent_competence": 0.3412034141552066,
+    "integration_agent_competence": 0.3412034141552066
+  },
+  {
+    "query_index": 15,
+    "safety_agent_competence": 0.33357818190972693,
+    "economic_agent_competence": 0.33357818190972693,
+    "weather_agent_competence": 0.33357818190972693,
+    "flight_info_agent_competence": 0.33357818190972693,
+    "integration_agent_competence": 0.33357818190972693
+  },
+  {
+    "query_index": 16,
+    "safety_agent_competence": 0.3188358013151691,
+    "economic_agent_competence": 0.3188358013151691,
+    "weather_agent_competence": 0.3188358013151691,
+    "flight_info_agent_competence": 0.3188358013151691,
+    "integration_agent_competence": 0.3188358013151691
+  },
+  {
+    "query_index": 17,
+    "safety_agent_competence": 0.3447842862654705,
+    "economic_agent_competence": 0.3447842862654705,
+    "weather_agent_competence": 0.3447842862654705,
+    "flight_info_agent_competence": 0.3447842862654705,
+    "integration_agent_competence": 0.3447842862654705
+  },
+  {
+    "query_index": 18,
+    "safety_agent_competence": 0.3270039923578419,
+    "economic_agent_competence": 0.3270039923578419,
+    "weather_agent_competence": 0.3270039923578419,
+    "flight_info_agent_competence": 0.3270039923578419,
+    "integration_agent_competence": 0.3270039923578419
+  },
+  {
+    "query_index": 19,
+    "safety_agent_competence": 0.36155638834890125,
+    "economic_agent_competence": 0.36155638834890125,
+    "weather_agent_competence": 0.36155638834890125,
+    "flight_info_agent_competence": 0.36155638834890125,
+    "integration_agent_competence": 0.36155638834890125
+  },
+  {
+    "query_index": 20,
+    "safety_agent_competence": 0.32885521802923035,
+    "economic_agent_competence": 0.32885521802923035,
+    "weather_agent_competence": 0.32885521802923035,
+    "flight_info_agent_competence": 0.32885521802923035,
+    "integration_agent_competence": 0.32885521802923035
+  },
+  {
+    "query_index": 21,
+    "safety_agent_competence": 0.32470814859657493,
+    "economic_agent_competence": 0.32470814859657493,
+    "weather_agent_competence": 0.32470814859657493,
+    "flight_info_agent_competence": 0.32470814859657493,
+    "integration_agent_competence": 0.32470814859657493
+  },
+  {
+    "query_index": 22,
+    "safety_agent_competence": 0.30721255837243167,
+    "economic_agent_competence": 0.30721255837243167,
+    "weather_agent_competence": 0.30721255837243167,
+    "flight_info_agent_competence": 0.30721255837243167,
+    "integration_agent_competence": 0.30721255837243167
+  },
+  {
+    "query_index": 23,
+    "safety_agent_competence": 0.3346429530334398,
+    "economic_agent_competence": 0.3346429530334398,
+    "weather_agent_competence": 0.3346429530334398,
+    "flight_info_agent_competence": 0.3346429530334398,
+    "integration_agent_competence": 0.3346429530334398
+  },
+  {
+    "query_index": 24,
+    "safety_agent_competence": 0.320659077987635,
+    "economic_agent_competence": 0.320659077987635,
+    "weather_agent_competence": 0.320659077987635,
+    "flight_info_agent_competence": 0.320659077987635,
+    "integration_agent_competence": 0.320659077987635
+  },
+  {
+    "query_index": 25,
+    "safety_agent_competence": 0.3355258446457172,
+    "economic_agent_competence": 0.3355258446457172,
+    "weather_agent_competence": 0.3355258446457172,
+    "flight_info_agent_competence": 0.3355258446457172,
+    "integration_agent_competence": 0.3355258446457172
+  },
+  {
+    "query_index": 26,
+    "safety_agent_competence": 0.35645442110675546,
+    "economic_agent_competence": 0.35645442110675546,
+    "weather_agent_competence": 0.35645442110675546,
+    "flight_info_agent_competence": 0.35645442110675546,
+    "integration_agent_competence": 0.35645442110675546
+  },
+  {
+    "query_index": 27,
+    "safety_agent_competence": 0.33863896294746626,
+    "economic_agent_competence": 0.33863896294746626,
+    "weather_agent_competence": 0.33863896294746626,
+    "flight_info_agent_competence": 0.33863896294746626,
+    "integration_agent_competence": 0.33863896294746626
+  },
+  {
+    "query_index": 28,
+    "safety_agent_competence": 0.34511354674488665,
+    "economic_agent_competence": 0.34511354674488665,
+    "weather_agent_competence": 0.34511354674488665,
+    "flight_info_agent_competence": 0.34511354674488665,
+    "integration_agent_competence": 0.34511354674488665
+  },
+  {
+    "query_index": 29,
+    "safety_agent_competence": 0.31667275608940626,
+    "economic_agent_competence": 0.31667275608940626,
+    "weather_agent_competence": 0.31667275608940626,
+    "flight_info_agent_competence": 0.31667275608940626,
+    "integration_agent_competence": 0.31667275608940626
+  },
+  {
+    "query_index": 30,
+    "safety_agent_competence": 0.3444215270756963,
+    "economic_agent_competence": 0.3444215270756963,
+    "weather_agent_competence": 0.3444215270756963,
+    "flight_info_agent_competence": 0.3444215270756963,
+    "integration_agent_competence": 0.3444215270756963
+  },
+  {
+    "query_index": 31,
+    "safety_agent_competence": 0.3387686922040922,
+    "economic_agent_competence": 0.3387686922040922,
+    "weather_agent_competence": 0.3387686922040922,
+    "flight_info_agent_competence": 0.3387686922040922,
+    "integration_agent_competence": 0.3387686922040922
+  },
+  {
+    "query_index": 32,
+    "safety_agent_competence": 0.3284050436230145,
+    "economic_agent_competence": 0.3284050436230145,
+    "weather_agent_competence": 0.3284050436230145,
+    "flight_info_agent_competence": 0.3284050436230145,
+    "integration_agent_competence": 0.3284050436230145
+  },
+  {
+    "query_index": 33,
+    "safety_agent_competence": 0.34362533476037566,
+    "economic_agent_competence": 0.34362533476037566,
+    "weather_agent_competence": 0.34362533476037566,
+    "flight_info_agent_competence": 0.34362533476037566,
+    "integration_agent_competence": 0.34362533476037566
+  },
+  {
+    "query_index": 34,
+    "safety_agent_competence": 0.33067607394564646,
+    "economic_agent_competence": 0.33067607394564646,
+    "weather_agent_competence": 0.33067607394564646,
+    "flight_info_agent_competence": 0.33067607394564646,
+    "integration_agent_competence": 0.33067607394564646
+  },
+  {
+    "query_index": 35,
+    "safety_agent_competence": 0.3280377657967468,
+    "economic_agent_competence": 0.3280377657967468,
+    "weather_agent_competence": 0.3280377657967468,
+    "flight_info_agent_competence": 0.3280377657967468,
+    "integration_agent_competence": 0.3280377657967468
+  },
+  {
+    "query_index": 36,
+    "safety_agent_competence": 0.3462588409062748,
+    "economic_agent_competence": 0.3462588409062748,
+    "weather_agent_competence": 0.3462588409062748,
+    "flight_info_agent_competence": 0.3462588409062748,
+    "integration_agent_competence": 0.3462588409062748
+  },
+  {
+    "query_index": 37,
+    "safety_agent_competence": 0.3426842295336354,
+    "economic_agent_competence": 0.3426842295336354,
+    "weather_agent_competence": 0.3426842295336354,
+    "flight_info_agent_competence": 0.3426842295336354,
+    "integration_agent_competence": 0.3426842295336354
+  },
+  {
+    "query_index": 38,
+    "safety_agent_competence": 0.33575306143903916,
+    "economic_agent_competence": 0.33575306143903916,
+    "weather_agent_competence": 0.33575306143903916,
+    "flight_info_agent_competence": 0.33575306143903916,
+    "integration_agent_competence": 0.33575306143903916
+  },
+  {
+    "query_index": 39,
+    "safety_agent_competence": 0.33170639245934064,
+    "economic_agent_competence": 0.33170639245934064,
+    "weather_agent_competence": 0.33170639245934064,
+    "flight_info_agent_competence": 0.33170639245934064,
+    "integration_agent_competence": 0.33170639245934064
+  },
+  {
+    "query_index": 40,
+    "safety_agent_competence": 0.3078842558820834,
+    "economic_agent_competence": 0.3078842558820834,
+    "weather_agent_competence": 0.3078842558820834,
+    "flight_info_agent_competence": 0.3078842558820834,
+    "integration_agent_competence": 0.3078842558820834
+  },
+  {
+    "query_index": 41,
+    "safety_agent_competence": 0.35570117950785035,
+    "economic_agent_competence": 0.35570117950785035,
+    "weather_agent_competence": 0.35570117950785035,
+    "flight_info_agent_competence": 0.35570117950785035,
+    "integration_agent_competence": 0.35570117950785035
+  },
+  {
+    "query_index": 42,
+    "safety_agent_competence": 0.3021948340678684,
+    "economic_agent_competence": 0.3021948340678684,
+    "weather_agent_competence": 0.3021948340678684,
+    "flight_info_agent_competence": 0.3021948340678684,
+    "integration_agent_competence": 0.3021948340678684
+  },
+  {
+    "query_index": 43,
+    "safety_agent_competence": 0.3122309136668112,
+    "economic_agent_competence": 0.3122309136668112,
+    "weather_agent_competence": 0.3122309136668112,
+    "flight_info_agent_competence": 0.3122309136668112,
+    "integration_agent_competence": 0.3122309136668112
+  },
+  {
+    "query_index": 44,
+    "safety_agent_competence": 0.3241151940395648,
+    "economic_agent_competence": 0.3241151940395648,
+    "weather_agent_competence": 0.3241151940395648,
+    "flight_info_agent_competence": 0.3241151940395648,
+    "integration_agent_competence": 0.3241151940395648
+  },
+  {
+    "query_index": 45,
+    "safety_agent_competence": 0.310479789385083,
+    "economic_agent_competence": 0.310479789385083,
+    "weather_agent_competence": 0.310479789385083,
+    "flight_info_agent_competence": 0.310479789385083,
+    "integration_agent_competence": 0.310479789385083
+  },
+  {
+    "query_index": 46,
+    "safety_agent_competence": 0.37421839948242797,
+    "economic_agent_competence": 0.37421839948242797,
+    "weather_agent_competence": 0.37421839948242797,
+    "flight_info_agent_competence": 0.37421839948242797,
+    "integration_agent_competence": 0.37421839948242797
+  },
+  {
+    "query_index": 47,
+    "safety_agent_competence": 0.35624982010381995,
+    "economic_agent_competence": 0.35624982010381995,
+    "weather_agent_competence": 0.35624982010381995,
+    "flight_info_agent_competence": 0.35624982010381995,
+    "integration_agent_competence": 0.35624982010381995
+  },
+  {
+    "query_index": 48,
+    "safety_agent_competence": 0.36829428320449126,
+    "economic_agent_competence": 0.36829428320449126,
+    "weather_agent_competence": 0.36829428320449126,
+    "flight_info_agent_competence": 0.36829428320449126,
+    "integration_agent_competence": 0.36829428320449126
+  },
+  {
+    "query_index": 49,
+    "safety_agent_competence": 0.34274114017966156,
+    "economic_agent_competence": 0.34274114017966156,
+    "weather_agent_competence": 0.34274114017966156,
+    "flight_info_agent_competence": 0.34274114017966156,
+    "integration_agent_competence": 0.34274114017966156
+  },
+  {
+    "query_index": 50,
+    "safety_agent_competence": 0.3041808586407437,
+    "economic_agent_competence": 0.3041808586407437,
+    "weather_agent_competence": 0.3041808586407437,
+    "flight_info_agent_competence": 0.3041808586407437,
+    "integration_agent_competence": 0.3041808586407437
+  },
+  {
+    "query_index": 51,
+    "safety_agent_competence": 0.3425120255484394,
+    "economic_agent_competence": 0.3425120255484394,
+    "weather_agent_competence": 0.3425120255484394,
+    "flight_info_agent_competence": 0.3425120255484394,
+    "integration_agent_competence": 0.3425120255484394
+  },
+  {
+    "query_index": 52,
+    "safety_agent_competence": 0.3420669902107285,
+    "economic_agent_competence": 0.3420669902107285,
+    "weather_agent_competence": 0.3420669902107285,
+    "flight_info_agent_competence": 0.3420669902107285,
+    "integration_agent_competence": 0.3420669902107285
+  },
+  {
+    "query_index": 53,
+    "safety_agent_competence": 0.3819248980719321,
+    "economic_agent_competence": 0.3819248980719321,
+    "weather_agent_competence": 0.3819248980719321,
+    "flight_info_agent_competence": 0.3819248980719321,
+    "integration_agent_competence": 0.3819248980719321
+  },
+  {
+    "query_index": 54,
+    "safety_agent_competence": 0.3524199080506655,
+    "economic_agent_competence": 0.3524199080506655,
+    "weather_agent_competence": 0.3524199080506655,
+    "flight_info_agent_competence": 0.3524199080506655,
+    "integration_agent_competence": 0.3524199080506655
+  },
+  {
+    "query_index": 55,
+    "safety_agent_competence": 0.3646697321277807,
+    "economic_agent_competence": 0.3646697321277807,
+    "weather_agent_competence": 0.3646697321277807,
+    "flight_info_agent_competence": 0.3646697321277807,
+    "integration_agent_competence": 0.3646697321277807
+  },
+  {
+    "query_index": 56,
+    "safety_agent_competence": 0.34647185461725055,
+    "economic_agent_competence": 0.34647185461725055,
+    "weather_agent_competence": 0.34647185461725055,
+    "flight_info_agent_competence": 0.34647185461725055,
+    "integration_agent_competence": 0.34647185461725055
+  },
+  {
+    "query_index": 57,
+    "safety_agent_competence": 0.33041252996952997,
+    "economic_agent_competence": 0.33041252996952997,
+    "weather_agent_competence": 0.33041252996952997,
+    "flight_info_agent_competence": 0.33041252996952997,
+    "integration_agent_competence": 0.33041252996952997
+  },
+  {
+    "query_index": 58,
+    "safety_agent_competence": 0.3164942290468433,
+    "economic_agent_competence": 0.3164942290468433,
+    "weather_agent_competence": 0.3164942290468433,
+    "flight_info_agent_competence": 0.3164942290468433,
+    "integration_agent_competence": 0.3164942290468433
+  },
+  {
+    "query_index": 59,
+    "safety_agent_competence": 0.34315125550365244,
+    "economic_agent_competence": 0.34315125550365244,
+    "weather_agent_competence": 0.34315125550365244,
+    "flight_info_agent_competence": 0.34315125550365244,
+    "integration_agent_competence": 0.34315125550365244
+  },
+  {
+    "query_index": 60,
+    "safety_agent_competence": 0.37186623148263853,
+    "economic_agent_competence": 0.37186623148263853,
+    "weather_agent_competence": 0.37186623148263853,
+    "flight_info_agent_competence": 0.37186623148263853,
+    "integration_agent_competence": 0.37186623148263853
+  },
+  {
+    "query_index": 61,
+    "safety_agent_competence": 0.3516662832854662,
+    "economic_agent_competence": 0.3516662832854662,
+    "weather_agent_competence": 0.3516662832854662,
+    "flight_info_agent_competence": 0.3516662832854662,
+    "integration_agent_competence": 0.3516662832854662
+  },
+  {
+    "query_index": 62,
+    "safety_agent_competence": 0.34817232693193373,
+    "economic_agent_competence": 0.34817232693193373,
+    "weather_agent_competence": 0.34817232693193373,
+    "flight_info_agent_competence": 0.34817232693193373,
+    "integration_agent_competence": 0.34817232693193373
+  },
+  {
+    "query_index": 63,
+    "safety_agent_competence": 0.3479469980395945,
+    "economic_agent_competence": 0.3479469980395945,
+    "weather_agent_competence": 0.3479469980395945,
+    "flight_info_agent_competence": 0.3479469980395945,
+    "integration_agent_competence": 0.3479469980395945
+  },
+  {
+    "query_index": 64,
+    "safety_agent_competence": 0.2994377277176649,
+    "economic_agent_competence": 0.2994377277176649,
+    "weather_agent_competence": 0.2994377277176649,
+    "flight_info_agent_competence": 0.2994377277176649,
+    "integration_agent_competence": 0.2994377277176649
+  },
+  {
+    "query_index": 65,
+    "safety_agent_competence": 0.34162388735677696,
+    "economic_agent_competence": 0.34162388735677696,
+    "weather_agent_competence": 0.34162388735677696,
+    "flight_info_agent_competence": 0.34162388735677696,
+    "integration_agent_competence": 0.34162388735677696
+  },
+  {
+    "query_index": 66,
+    "safety_agent_competence": 0.3458017440653836,
+    "economic_agent_competence": 0.3458017440653836,
+    "weather_agent_competence": 0.3458017440653836,
+    "flight_info_agent_competence": 0.3458017440653836,
+    "integration_agent_competence": 0.3458017440653836
+  },
+  {
+    "query_index": 67,
+    "safety_agent_competence": 0.3378202927300824,
+    "economic_agent_competence": 0.3378202927300824,
+    "weather_agent_competence": 0.3378202927300824,
+    "flight_info_agent_competence": 0.3378202927300824,
+    "integration_agent_competence": 0.3378202927300824
+  },
+  {
+    "query_index": 68,
+    "safety_agent_competence": 0.35008314244338495,
+    "economic_agent_competence": 0.35008314244338495,
+    "weather_agent_competence": 0.35008314244338495,
+    "flight_info_agent_competence": 0.35008314244338495,
+    "integration_agent_competence": 0.35008314244338495
+  },
+  {
+    "query_index": 69,
+    "safety_agent_competence": 0.30278486742184696,
+    "economic_agent_competence": 0.30278486742184696,
+    "weather_agent_competence": 0.30278486742184696,
+    "flight_info_agent_competence": 0.30278486742184696,
+    "integration_agent_competence": 0.30278486742184696
+  },
+  {
+    "query_index": 70,
+    "safety_agent_competence": 0.3489363772022579,
+    "economic_agent_competence": 0.3489363772022579,
+    "weather_agent_competence": 0.3489363772022579,
+    "flight_info_agent_competence": 0.3489363772022579,
+    "integration_agent_competence": 0.3489363772022579
+  },
+  {
+    "query_index": 71,
+    "safety_agent_competence": 0.35032972846091326,
+    "economic_agent_competence": 0.35032972846091326,
+    "weather_agent_competence": 0.35032972846091326,
+    "flight_info_agent_competence": 0.35032972846091326,
+    "integration_agent_competence": 0.35032972846091326
+  },
+  {
+    "query_index": 72,
+    "safety_agent_competence": 0.3522939465318615,
+    "economic_agent_competence": 0.3522939465318615,
+    "weather_agent_competence": 0.3522939465318615,
+    "flight_info_agent_competence": 0.3522939465318615,
+    "integration_agent_competence": 0.3522939465318615
+  },
+  {
+    "query_index": 73,
+    "safety_agent_competence": 0.31754306476528327,
+    "economic_agent_competence": 0.31754306476528327,
+    "weather_agent_competence": 0.31754306476528327,
+    "flight_info_agent_competence": 0.31754306476528327,
+    "integration_agent_competence": 0.31754306476528327
+  },
+  {
+    "query_index": 74,
+    "safety_agent_competence": 0.33839772900102627,
+    "economic_agent_competence": 0.33839772900102627,
+    "weather_agent_competence": 0.33839772900102627,
+    "flight_info_agent_competence": 0.33839772900102627,
+    "integration_agent_competence": 0.33839772900102627
+  },
+  {
+    "query_index": 75,
+    "safety_agent_competence": 0.3531447486451381,
+    "economic_agent_competence": 0.3531447486451381,
+    "weather_agent_competence": 0.3531447486451381,
+    "flight_info_agent_competence": 0.3531447486451381,
+    "integration_agent_competence": 0.3531447486451381
+  },
+  {
+    "query_index": 76,
+    "safety_agent_competence": 0.3629703945660037,
+    "economic_agent_competence": 0.3629703945660037,
+    "weather_agent_competence": 0.3629703945660037,
+    "flight_info_agent_competence": 0.3629703945660037,
+    "integration_agent_competence": 0.3629703945660037
+  },
+  {
+    "query_index": 77,
+    "safety_agent_competence": 0.3189465894940568,
+    "economic_agent_competence": 0.3189465894940568,
+    "weather_agent_competence": 0.3189465894940568,
+    "flight_info_agent_competence": 0.3189465894940568,
+    "integration_agent_competence": 0.3189465894940568
+  },
+  {
+    "query_index": 78,
+    "safety_agent_competence": 0.3416815895858002,
+    "economic_agent_competence": 0.3416815895858002,
+    "weather_agent_competence": 0.3416815895858002,
+    "flight_info_agent_competence": 0.3416815895858002,
+    "integration_agent_competence": 0.3416815895858002
+  },
+  {
+    "query_index": 79,
+    "safety_agent_competence": 0.38871223577953795,
+    "economic_agent_competence": 0.38871223577953795,
+    "weather_agent_competence": 0.38871223577953795,
+    "flight_info_agent_competence": 0.38871223577953795,
+    "integration_agent_competence": 0.38871223577953795
+  },
+  {
+    "query_index": 80,
+    "safety_agent_competence": 0.34094948528037405,
+    "economic_agent_competence": 0.34094948528037405,
+    "weather_agent_competence": 0.34094948528037405,
+    "flight_info_agent_competence": 0.34094948528037405,
+    "integration_agent_competence": 0.34094948528037405
+  },
+  {
+    "query_index": 81,
+    "safety_agent_competence": 0.3170624939822421,
+    "economic_agent_competence": 0.3170624939822421,
+    "weather_agent_competence": 0.3170624939822421,
+    "flight_info_agent_competence": 0.3170624939822421,
+    "integration_agent_competence": 0.3170624939822421
+  },
+  {
+    "query_index": 82,
+    "safety_agent_competence": 0.357524426737751,
+    "economic_agent_competence": 0.357524426737751,
+    "weather_agent_competence": 0.357524426737751,
+    "flight_info_agent_competence": 0.357524426737751,
+    "integration_agent_competence": 0.357524426737751
+  },
+  {
+    "query_index": 83,
+    "safety_agent_competence": 0.3248113344076727,
+    "economic_agent_competence": 0.3248113344076727,
+    "weather_agent_competence": 0.3248113344076727,
+    "flight_info_agent_competence": 0.3248113344076727,
+    "integration_agent_competence": 0.3248113344076727
+  },
+  {
+    "query_index": 84,
+    "safety_agent_competence": 0.3462815537474473,
+    "economic_agent_competence": 0.3462815537474473,
+    "weather_agent_competence": 0.3462815537474473,
+    "flight_info_agent_competence": 0.3462815537474473,
+    "integration_agent_competence": 0.3462815537474473
+  },
+  {
+    "query_index": 85,
+    "safety_agent_competence": 0.38818061120710823,
+    "economic_agent_competence": 0.38818061120710823,
+    "weather_agent_competence": 0.38818061120710823,
+    "flight_info_agent_competence": 0.38818061120710823,
+    "integration_agent_competence": 0.38818061120710823
+  },
+  {
+    "query_index": 86,
+    "safety_agent_competence": 0.32458468862206347,
+    "economic_agent_competence": 0.32458468862206347,
+    "weather_agent_competence": 0.32458468862206347,
+    "flight_info_agent_competence": 0.32458468862206347,
+    "integration_agent_competence": 0.32458468862206347
+  },
+  {
+    "query_index": 87,
+    "safety_agent_competence": 0.347229194046768,
+    "economic_agent_competence": 0.347229194046768,
+    "weather_agent_competence": 0.347229194046768,
+    "flight_info_agent_competence": 0.347229194046768,
+    "integration_agent_competence": 0.347229194046768
+  },
+  {
+    "query_index": 88,
+    "safety_agent_competence": 0.3349475813120921,
+    "economic_agent_competence": 0.3349475813120921,
+    "weather_agent_competence": 0.3349475813120921,
+    "flight_info_agent_competence": 0.3349475813120921,
+    "integration_agent_competence": 0.3349475813120921
+  },
+  {
+    "query_index": 89,
+    "safety_agent_competence": 0.3302373371060069,
+    "economic_agent_competence": 0.3302373371060069,
+    "weather_agent_competence": 0.3302373371060069,
+    "flight_info_agent_competence": 0.3302373371060069,
+    "integration_agent_competence": 0.3302373371060069
+  },
+  {
+    "query_index": 90,
+    "safety_agent_competence": 0.3015045503777606,
+    "economic_agent_competence": 0.3015045503777606,
+    "weather_agent_competence": 0.3015045503777606,
+    "flight_info_agent_competence": 0.3015045503777606,
+    "integration_agent_competence": 0.3015045503777606
+  },
+  {
+    "query_index": 91,
+    "safety_agent_competence": 0.37156706825321323,
+    "economic_agent_competence": 0.37156706825321323,
+    "weather_agent_competence": 0.37156706825321323,
+    "flight_info_agent_competence": 0.37156706825321323,
+    "integration_agent_competence": 0.37156706825321323
+  },
+  {
+    "query_index": 92,
+    "safety_agent_competence": 0.33664968668887796,
+    "economic_agent_competence": 0.33664968668887796,
+    "weather_agent_competence": 0.33664968668887796,
+    "flight_info_agent_competence": 0.33664968668887796,
+    "integration_agent_competence": 0.33664968668887796
+  },
+  {
+    "query_index": 93,
+    "safety_agent_competence": 0.3412570565719927,
+    "economic_agent_competence": 0.3412570565719927,
+    "weather_agent_competence": 0.3412570565719927,
+    "flight_info_agent_competence": 0.3412570565719927,
+    "integration_agent_competence": 0.3412570565719927
+  },
+  {
+    "query_index": 94,
+    "safety_agent_competence": 0.32699834823657303,
+    "economic_agent_competence": 0.32699834823657303,
+    "weather_agent_competence": 0.32699834823657303,
+    "flight_info_agent_competence": 0.32699834823657303,
+    "integration_agent_competence": 0.32699834823657303
+  },
+  {
+    "query_index": 95,
+    "safety_agent_competence": 0.3750988103139466,
+    "economic_agent_competence": 0.3750988103139466,
+    "weather_agent_competence": 0.3750988103139466,
+    "flight_info_agent_competence": 0.3750988103139466,
+    "integration_agent_competence": 0.3750988103139466
+  },
+  {
+    "query_index": 96,
+    "safety_agent_competence": 0.28876905769165095,
+    "economic_agent_competence": 0.28876905769165095,
+    "weather_agent_competence": 0.28876905769165095,
+    "flight_info_agent_competence": 0.28876905769165095,
+    "integration_agent_competence": 0.28876905769165095
+  },
+  {
+    "query_index": 97,
+    "safety_agent_competence": 0.3432562015727348,
+    "economic_agent_competence": 0.3432562015727348,
+    "weather_agent_competence": 0.3432562015727348,
+    "flight_info_agent_competence": 0.3432562015727348,
+    "integration_agent_competence": 0.3432562015727348
+  },
+  {
+    "query_index": 98,
+    "safety_agent_competence": 0.3243707771943245,
+    "economic_agent_competence": 0.3243707771943245,
+    "weather_agent_competence": 0.3243707771943245,
+    "flight_info_agent_competence": 0.3243707771943245,
+    "integration_agent_competence": 0.3243707771943245
+  },
+  {
+    "query_index": 99,
+    "safety_agent_competence": 0.34511117785754714,
+    "economic_agent_competence": 0.34511117785754714,
+    "weather_agent_competence": 0.34511117785754714,
+    "flight_info_agent_competence": 0.34511117785754714,
+    "integration_agent_competence": 0.34511117785754714
+  },
+  {
+    "query_index": 100,
+    "safety_agent_competence": 0.34389810830938927,
+    "economic_agent_competence": 0.34389810830938927,
+    "weather_agent_competence": 0.34389810830938927,
+    "flight_info_agent_competence": 0.34389810830938927,
+    "integration_agent_competence": 0.34389810830938927
+  },
+  {
+    "query_index": 101,
+    "safety_agent_competence": 0.3161725217335014,
+    "economic_agent_competence": 0.3161725217335014,
+    "weather_agent_competence": 0.3161725217335014,
+    "flight_info_agent_competence": 0.3161725217335014,
+    "integration_agent_competence": 0.3161725217335014
+  },
+  {
+    "query_index": 102,
+    "safety_agent_competence": 0.35129303447657656,
+    "economic_agent_competence": 0.35129303447657656,
+    "weather_agent_competence": 0.35129303447657656,
+    "flight_info_agent_competence": 0.35129303447657656,
+    "integration_agent_competence": 0.35129303447657656
+  },
+  {
+    "query_index": 103,
+    "safety_agent_competence": 0.3675750234572376,
+    "economic_agent_competence": 0.3675750234572376,
+    "weather_agent_competence": 0.3675750234572376,
+    "flight_info_agent_competence": 0.3675750234572376,
+    "integration_agent_competence": 0.3675750234572376
+  },
+  {
+    "query_index": 104,
+    "safety_agent_competence": 0.331466499280613,
+    "economic_agent_competence": 0.331466499280613,
+    "weather_agent_competence": 0.331466499280613,
+    "flight_info_agent_competence": 0.331466499280613,
+    "integration_agent_competence": 0.331466499280613
+  },
+  {
+    "query_index": 105,
+    "safety_agent_competence": 0.35654015891530794,
+    "economic_agent_competence": 0.35654015891530794,
+    "weather_agent_competence": 0.35654015891530794,
+    "flight_info_agent_competence": 0.35654015891530794,
+    "integration_agent_competence": 0.35654015891530794
+  },
+  {
+    "query_index": 106,
+    "safety_agent_competence": 0.3369124937358393,
+    "economic_agent_competence": 0.3369124937358393,
+    "weather_agent_competence": 0.3369124937358393,
+    "flight_info_agent_competence": 0.3369124937358393,
+    "integration_agent_competence": 0.3369124937358393
+  },
+  {
+    "query_index": 107,
+    "safety_agent_competence": 0.34430965900071797,
+    "economic_agent_competence": 0.34430965900071797,
+    "weather_agent_competence": 0.34430965900071797,
+    "flight_info_agent_competence": 0.34430965900071797,
+    "integration_agent_competence": 0.34430965900071797
+  },
+  {
+    "query_index": 108,
+    "safety_agent_competence": 0.3509218314206607,
+    "economic_agent_competence": 0.3509218314206607,
+    "weather_agent_competence": 0.3509218314206607,
+    "flight_info_agent_competence": 0.3509218314206607,
+    "integration_agent_competence": 0.3509218314206607
+  },
+  {
+    "query_index": 109,
+    "safety_agent_competence": 0.31185317589140726,
+    "economic_agent_competence": 0.31185317589140726,
+    "weather_agent_competence": 0.31185317589140726,
+    "flight_info_agent_competence": 0.31185317589140726,
+    "integration_agent_competence": 0.31185317589140726
+  },
+  {
+    "query_index": 110,
+    "safety_agent_competence": 0.3557165697326956,
+    "economic_agent_competence": 0.3557165697326956,
+    "weather_agent_competence": 0.3557165697326956,
+    "flight_info_agent_competence": 0.3557165697326956,
+    "integration_agent_competence": 0.3557165697326956
+  },
+  {
+    "query_index": 111,
+    "safety_agent_competence": 0.3361011787425353,
+    "economic_agent_competence": 0.3361011787425353,
+    "weather_agent_competence": 0.3361011787425353,
+    "flight_info_agent_competence": 0.3361011787425353,
+    "integration_agent_competence": 0.3361011787425353
+  },
+  {
+    "query_index": 112,
+    "safety_agent_competence": 0.31987725423910446,
+    "economic_agent_competence": 0.31987725423910446,
+    "weather_agent_competence": 0.31987725423910446,
+    "flight_info_agent_competence": 0.31987725423910446,
+    "integration_agent_competence": 0.31987725423910446
+  },
+  {
+    "query_index": 113,
+    "safety_agent_competence": 0.3162578683982627,
+    "economic_agent_competence": 0.3162578683982627,
+    "weather_agent_competence": 0.3162578683982627,
+    "flight_info_agent_competence": 0.3162578683982627,
+    "integration_agent_competence": 0.3162578683982627
+  },
+  {
+    "query_index": 114,
+    "safety_agent_competence": 0.32264512091158304,
+    "economic_agent_competence": 0.32264512091158304,
+    "weather_agent_competence": 0.32264512091158304,
+    "flight_info_agent_competence": 0.32264512091158304,
+    "integration_agent_competence": 0.32264512091158304
+  },
+  {
+    "query_index": 115,
+    "safety_agent_competence": 0.3423771843350529,
+    "economic_agent_competence": 0.3423771843350529,
+    "weather_agent_competence": 0.3423771843350529,
+    "flight_info_agent_competence": 0.3423771843350529,
+    "integration_agent_competence": 0.3423771843350529
+  },
+  {
+    "query_index": 116,
+    "safety_agent_competence": 0.34206201847152634,
+    "economic_agent_competence": 0.34206201847152634,
+    "weather_agent_competence": 0.34206201847152634,
+    "flight_info_agent_competence": 0.34206201847152634,
+    "integration_agent_competence": 0.34206201847152634
+  },
+  {
+    "query_index": 117,
+    "safety_agent_competence": 0.31886996100144055,
+    "economic_agent_competence": 0.31886996100144055,
+    "weather_agent_competence": 0.31886996100144055,
+    "flight_info_agent_competence": 0.31886996100144055,
+    "integration_agent_competence": 0.31886996100144055
+  },
+  {
+    "query_index": 118,
+    "safety_agent_competence": 0.3723986916935691,
+    "economic_agent_competence": 0.3723986916935691,
+    "weather_agent_competence": 0.3723986916935691,
+    "flight_info_agent_competence": 0.3723986916935691,
+    "integration_agent_competence": 0.3723986916935691
+  },
+  {
+    "query_index": 119,
+    "safety_agent_competence": 0.3359360045271744,
+    "economic_agent_competence": 0.3359360045271744,
+    "weather_agent_competence": 0.3359360045271744,
+    "flight_info_agent_competence": 0.3359360045271744,
+    "integration_agent_competence": 0.3359360045271744
+  },
+  {
+    "query_index": 120,
+    "safety_agent_competence": 0.32935672921034864,
+    "economic_agent_competence": 0.32935672921034864,
+    "weather_agent_competence": 0.32935672921034864,
+    "flight_info_agent_competence": 0.32935672921034864,
+    "integration_agent_competence": 0.32935672921034864
+  },
+  {
+    "query_index": 121,
+    "safety_agent_competence": 0.3490720549474846,
+    "economic_agent_competence": 0.3490720549474846,
+    "weather_agent_competence": 0.3490720549474846,
+    "flight_info_agent_competence": 0.3490720549474846,
+    "integration_agent_competence": 0.3490720549474846
+  },
+  {
+    "query_index": 122,
+    "safety_agent_competence": 0.3462017660192142,
+    "economic_agent_competence": 0.3462017660192142,
+    "weather_agent_competence": 0.3462017660192142,
+    "flight_info_agent_competence": 0.3462017660192142,
+    "integration_agent_competence": 0.3462017660192142
+  },
+  {
+    "query_index": 123,
+    "safety_agent_competence": 0.3418678565561742,
+    "economic_agent_competence": 0.3418678565561742,
+    "weather_agent_competence": 0.3418678565561742,
+    "flight_info_agent_competence": 0.3418678565561742,
+    "integration_agent_competence": 0.3418678565561742
+  },
+  {
+    "query_index": 124,
+    "safety_agent_competence": 0.3175385612739266,
+    "economic_agent_competence": 0.3175385612739266,
+    "weather_agent_competence": 0.3175385612739266,
+    "flight_info_agent_competence": 0.3175385612739266,
+    "integration_agent_competence": 0.3175385612739266
+  },
+  {
+    "query_index": 125,
+    "safety_agent_competence": 0.37180790403019903,
+    "economic_agent_competence": 0.37180790403019903,
+    "weather_agent_competence": 0.37180790403019903,
+    "flight_info_agent_competence": 0.37180790403019903,
+    "integration_agent_competence": 0.37180790403019903
+  },
+  {
+    "query_index": 126,
+    "safety_agent_competence": 0.3176767194655316,
+    "economic_agent_competence": 0.3176767194655316,
+    "weather_agent_competence": 0.3176767194655316,
+    "flight_info_agent_competence": 0.3176767194655316,
+    "integration_agent_competence": 0.3176767194655316
+  },
+  {
+    "query_index": 127,
+    "safety_agent_competence": 0.3898311915705112,
+    "economic_agent_competence": 0.3898311915705112,
+    "weather_agent_competence": 0.3898311915705112,
+    "flight_info_agent_competence": 0.3898311915705112,
+    "integration_agent_competence": 0.3898311915705112
+  },
+  {
+    "query_index": 128,
+    "safety_agent_competence": 0.32177481945116587,
+    "economic_agent_competence": 0.32177481945116587,
+    "weather_agent_competence": 0.32177481945116587,
+    "flight_info_agent_competence": 0.32177481945116587,
+    "integration_agent_competence": 0.32177481945116587
+  },
+  {
+    "query_index": 129,
+    "safety_agent_competence": 0.3178771630580898,
+    "economic_agent_competence": 0.3178771630580898,
+    "weather_agent_competence": 0.3178771630580898,
+    "flight_info_agent_competence": 0.3178771630580898,
+    "integration_agent_competence": 0.3178771630580898
+  },
+  {
+    "query_index": 130,
+    "safety_agent_competence": 0.38217856847686765,
+    "economic_agent_competence": 0.38217856847686765,
+    "weather_agent_competence": 0.38217856847686765,
+    "flight_info_agent_competence": 0.38217856847686765,
+    "integration_agent_competence": 0.38217856847686765
+  },
+  {
+    "query_index": 131,
+    "safety_agent_competence": 0.31447868201910006,
+    "economic_agent_competence": 0.31447868201910006,
+    "weather_agent_competence": 0.31447868201910006,
+    "flight_info_agent_competence": 0.31447868201910006,
+    "integration_agent_competence": 0.31447868201910006
+  },
+  {
+    "query_index": 132,
+    "safety_agent_competence": 0.38108759388684627,
+    "economic_agent_competence": 0.38108759388684627,
+    "weather_agent_competence": 0.38108759388684627,
+    "flight_info_agent_competence": 0.38108759388684627,
+    "integration_agent_competence": 0.38108759388684627
+  },
+  {
+    "query_index": 133,
+    "safety_agent_competence": 0.2945995174901826,
+    "economic_agent_competence": 0.2945995174901826,
+    "weather_agent_competence": 0.2945995174901826,
+    "flight_info_agent_competence": 0.2945995174901826,
+    "integration_agent_competence": 0.2945995174901826
+  },
+  {
+    "query_index": 134,
+    "safety_agent_competence": 0.3666027180121525,
+    "economic_agent_competence": 0.3666027180121525,
+    "weather_agent_competence": 0.3666027180121525,
+    "flight_info_agent_competence": 0.3666027180121525,
+    "integration_agent_competence": 0.3666027180121525
+  },
+  {
+    "query_index": 135,
+    "safety_agent_competence": 0.33652794627312366,
+    "economic_agent_competence": 0.33652794627312366,
+    "weather_agent_competence": 0.33652794627312366,
+    "flight_info_agent_competence": 0.33652794627312366,
+    "integration_agent_competence": 0.33652794627312366
+  },
+  {
+    "query_index": 136,
+    "safety_agent_competence": 0.351597538349279,
+    "economic_agent_competence": 0.351597538349279,
+    "weather_agent_competence": 0.351597538349279,
+    "flight_info_agent_competence": 0.351597538349279,
+    "integration_agent_competence": 0.351597538349279
+  },
+  {
+    "query_index": 137,
+    "safety_agent_competence": 0.3393352134137704,
+    "economic_agent_competence": 0.3393352134137704,
+    "weather_agent_competence": 0.3393352134137704,
+    "flight_info_agent_competence": 0.3393352134137704,
+    "integration_agent_competence": 0.3393352134137704
+  },
+  {
+    "query_index": 138,
+    "safety_agent_competence": 0.308958732959156,
+    "economic_agent_competence": 0.308958732959156,
+    "weather_agent_competence": 0.308958732959156,
+    "flight_info_agent_competence": 0.308958732959156,
+    "integration_agent_competence": 0.308958732959156
+  },
+  {
+    "query_index": 139,
+    "safety_agent_competence": 0.34450846189230205,
+    "economic_agent_competence": 0.34450846189230205,
+    "weather_agent_competence": 0.34450846189230205,
+    "flight_info_agent_competence": 0.34450846189230205,
+    "integration_agent_competence": 0.34450846189230205
+  },
+  {
+    "query_index": 140,
+    "safety_agent_competence": 0.33922246107674575,
+    "economic_agent_competence": 0.33922246107674575,
+    "weather_agent_competence": 0.33922246107674575,
+    "flight_info_agent_competence": 0.33922246107674575,
+    "integration_agent_competence": 0.33922246107674575
+  },
+  {
+    "query_index": 141,
+    "safety_agent_competence": 0.3866822493671205,
+    "economic_agent_competence": 0.3866822493671205,
+    "weather_agent_competence": 0.3866822493671205,
+    "flight_info_agent_competence": 0.3866822493671205,
+    "integration_agent_competence": 0.3866822493671205
+  },
+  {
+    "query_index": 142,
+    "safety_agent_competence": 0.3601063312032863,
+    "economic_agent_competence": 0.3601063312032863,
+    "weather_agent_competence": 0.3601063312032863,
+    "flight_info_agent_competence": 0.3601063312032863,
+    "integration_agent_competence": 0.3601063312032863
+  },
+  {
+    "query_index": 143,
+    "safety_agent_competence": 0.31285586756184547,
+    "economic_agent_competence": 0.31285586756184547,
+    "weather_agent_competence": 0.31285586756184547,
+    "flight_info_agent_competence": 0.31285586756184547,
+    "integration_agent_competence": 0.31285586756184547
+  },
+  {
+    "query_index": 144,
+    "safety_agent_competence": 0.293486756531276,
+    "economic_agent_competence": 0.293486756531276,
+    "weather_agent_competence": 0.293486756531276,
+    "flight_info_agent_competence": 0.293486756531276,
+    "integration_agent_competence": 0.293486756531276
+  },
+  {
+    "query_index": 145,
+    "safety_agent_competence": 0.32982647323955283,
+    "economic_agent_competence": 0.32982647323955283,
+    "weather_agent_competence": 0.32982647323955283,
+    "flight_info_agent_competence": 0.32982647323955283,
+    "integration_agent_competence": 0.32982647323955283
+  },
+  {
+    "query_index": 146,
+    "safety_agent_competence": 0.33820791264224254,
+    "economic_agent_competence": 0.33820791264224254,
+    "weather_agent_competence": 0.33820791264224254,
+    "flight_info_agent_competence": 0.33820791264224254,
+    "integration_agent_competence": 0.33820791264224254
+  },
+  {
+    "query_index": 147,
+    "safety_agent_competence": 0.29483746847973424,
+    "economic_agent_competence": 0.29483746847973424,
+    "weather_agent_competence": 0.29483746847973424,
+    "flight_info_agent_competence": 0.29483746847973424,
+    "integration_agent_competence": 0.29483746847973424
+  },
+  {
+    "query_index": 148,
+    "safety_agent_competence": 0.33560224814650413,
+    "economic_agent_competence": 0.33560224814650413,
+    "weather_agent_competence": 0.33560224814650413,
+    "flight_info_agent_competence": 0.33560224814650413,
+    "integration_agent_competence": 0.33560224814650413
+  },
+  {
+    "query_index": 149,
+    "safety_agent_competence": 0.3045709441876816,
+    "economic_agent_competence": 0.3045709441876816,
+    "weather_agent_competence": 0.3045709441876816,
+    "flight_info_agent_competence": 0.3045709441876816,
+    "integration_agent_competence": 0.3045709441876816
+  },
+  {
+    "query_index": 150,
+    "safety_agent_competence": 0.3134669332136126,
+    "economic_agent_competence": 0.3134669332136126,
+    "weather_agent_competence": 0.3134669332136126,
+    "flight_info_agent_competence": 0.3134669332136126,
+    "integration_agent_competence": 0.3134669332136126
+  }
+]

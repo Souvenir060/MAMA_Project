@@ -1,0 +1,17 @@
+{
+  "Normal": {
+    "mama_full_mrr": 0.33774338624338623,
+    "single_agent_mrr": 0.313515873015873,
+    "relative_advantage_percent": 7.727683129551336
+  },
+  "Loose": {
+    "mama_full_mrr": 0.31926455026455025,
+    "single_agent_mrr": 0.3030925925925926,
+    "relative_advantage_percent": 5.3356492593982665
+  },
+  "Strict": {
+    "mama_full_mrr": 0.41083862433862434,
+    "single_agent_mrr": 0.35579365079365083,
+    "relative_advantage_percent": 15.471038738939685
+  }
+}

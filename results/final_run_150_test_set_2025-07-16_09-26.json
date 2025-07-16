@@ -1,0 +1,4931 @@
+{
+  "metadata": {
+    "experiment_name": "MAMA Final Experiment - 150 Test Queries",
+    "timestamp": "2025-07-16_09-26",
+    "test_set_size": 150,
+    "models_tested": [
+      "MAMA_Full",
+      "MAMA_NoTrust",
+      "SingleAgent",
+      "Traditional"
+    ],
+    "random_seed": 42,
+    "data_source": "Original 1000-query dataset (700/150/150 split)"
+  },
+  "raw_results": [
+    {
+      "query_id": "query_0328",
+      "MRR": 0.8712995633336852,
+      "NDCG@5": 0.7923510847250442,
+      "Success": 1.0,
+      "Response_Time": 1.637153280715104,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0038",
+      "MRR": 0.9339048212408895,
+      "NDCG@5": 0.7862141840177065,
+      "Success": 1.0,
+      "Response_Time": 1.5048794564576229,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0989",
+      "MRR": 0.9373319817459509,
+      "NDCG@5": 0.8503158226657862,
+      "Success": 1.0,
+      "Response_Time": 1.4695788421097573,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0497",
+      "MRR": 0.8740961626587438,
+      "NDCG@5": 0.7715412676600024,
+      "Success": 1.0,
+      "Response_Time": 1.4701405369644616,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0472",
+      "MRR": 0.855759698565528,
+      "NDCG@5": 0.678750064341901,
+      "Success": 1.0,
+      "Response_Time": 1.281262325123045,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0147",
+      "MRR": 0.8067004607163006,
+      "NDCG@5": 0.7363788082985969,
+      "Success": 1.0,
+      "Response_Time": 1.587137099889291,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0541",
+      "MRR": 0.7856105313932061,
+      "NDCG@5": 0.7108125631145413,
+      "Success": 1.0,
+      "Response_Time": 1.759847315338233,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0021",
+      "MRR": 0.8272276456703213,
+      "NDCG@5": 0.8055218051000271,
+      "Success": 1.0,
+      "Response_Time": 1.3262877720679815,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0429",
+      "MRR": 0.8077926538039638,
+      "NDCG@5": 0.8082990457414314,
+      "Success": 1.0,
+      "Response_Time": 1.3673509633866545,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0047",
+      "MRR": 0.863917579119086,
+      "NDCG@5": 0.7627591238451965,
+      "Success": 1.0,
+      "Response_Time": 1.4962459375310084,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0711",
+      "MRR": 0.8042958966540068,
+      "NDCG@5": 0.9197458038085721,
+      "Success": 1.0,
+      "Response_Time": 1.53797541628931,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0005",
+      "MRR": 0.7764796333336901,
+      "NDCG@5": 0.8538428743746042,
+      "Success": 1.0,
+      "Response_Time": 1.3568734525043467,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0391",
+      "MRR": 0.8537406792952901,
+      "NDCG@5": 0.6757811120716943,
+      "Success": 1.0,
+      "Response_Time": 1.3407720926652356,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0227",
+      "MRR": 0.8530085353880165,
+      "NDCG@5": 0.8484618611197063,
+      "Success": 1.0,
+      "Response_Time": 1.5657052421784956,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0606",
+      "MRR": 0.8339454547743173,
+      "NDCG@5": 0.7819293634822856,
+      "Success": 1.0,
+      "Response_Time": 1.318221701444886,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0088",
+      "MRR": 0.7970895032879227,
+      "NDCG@5": 0.7717191186585737,
+      "Success": 1.0,
+      "Response_Time": 1.6985683339328375,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0095",
+      "MRR": 0.8619607156636762,
+      "NDCG@5": 0.6883654300567851,
+      "Success": 1.0,
+      "Response_Time": 1.5886125954092192,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0474",
+      "MRR": 0.8175099808946047,
+      "NDCG@5": 0.7578769919804187,
+      "Success": 1.0,
+      "Response_Time": 1.6317514433261302,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0893",
+      "MRR": 0.903890970872253,
+      "NDCG@5": 0.8608019276234368,
+      "Success": 1.0,
+      "Response_Time": 1.4141173715166042,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0305",
+      "MRR": 0.8221380450730759,
+      "NDCG@5": 0.8224008596098281,
+      "Success": 1.0,
+      "Response_Time": 1.686331769068354,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0164",
+      "MRR": 0.8117703714914373,
+      "NDCG@5": 0.7893178254935157,
+      "Success": 1.0,
+      "Response_Time": 1.374049753899096,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0910",
+      "MRR": 0.768031395931079,
+      "NDCG@5": 0.8532016526332287,
+      "Success": 1.0,
+      "Response_Time": 1.7434360042856234,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0181",
+      "MRR": 0.8366073825835996,
+      "NDCG@5": 0.8654261054650896,
+      "Success": 1.0,
+      "Response_Time": 1.5942454037571452,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0634",
+      "MRR": 0.8016476949690874,
+      "NDCG@5": 0.8243293187525386,
+      "Success": 1.0,
+      "Response_Time": 1.7707054849698953,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0551",
+      "MRR": 0.8388146116142929,
+      "NDCG@5": 0.9013371939720964,
+      "Success": 1.0,
+      "Response_Time": 1.1470382343865384,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0205",
+      "MRR": 0.8911360527668886,
+      "NDCG@5": 0.806771012367243,
+      "Success": 1.0,
+      "Response_Time": 1.49514889743012,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0781",
+      "MRR": 0.8465974073686656,
+      "NDCG@5": 0.6739955894655429,
+      "Success": 1.0,
+      "Response_Time": 1.5070492168243732,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0379",
+      "MRR": 0.8627838668622165,
+      "NDCG@5": 0.8957852188634571,
+      "Success": 1.0,
+      "Response_Time": 1.4622594672589528,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0931",
+      "MRR": 0.7916818902235155,
+      "NDCG@5": 0.7690875492105896,
+      "Success": 1.0,
+      "Response_Time": 1.6773103176553112,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0224",
+      "MRR": 0.8610538176892407,
+      "NDCG@5": 0.7672953469589096,
+      "Success": 1.0,
+      "Response_Time": 1.6169901149670034,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0588",
+      "MRR": 0.8469217305102305,
+      "NDCG@5": 0.863193279394105,
+      "Success": 1.0,
+      "Response_Time": 1.4346920359183972,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0086",
+      "MRR": 0.8210126090575361,
+      "NDCG@5": 0.7761050781995419,
+      "Success": 1.0,
+      "Response_Time": 1.3204727577801822,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0942",
+      "MRR": 0.8590633369009391,
+      "NDCG@5": 0.8179075374195129,
+      "Success": 1.0,
+      "Response_Time": 1.540767018496369,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0755",
+      "MRR": 0.826690184864116,
+      "NDCG@5": 0.7106162725087735,
+      "Success": 1.0,
+      "Response_Time": 1.4769032015851962,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0051",
+      "MRR": 0.820094414491867,
+      "NDCG@5": 0.7498542547698164,
+      "Success": 1.0,
+      "Response_Time": 1.5158071432500986,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0076",
+      "MRR": 0.8656471022656869,
+      "NDCG@5": 0.921915897677474,
+      "Success": 1.0,
+      "Response_Time": 1.566186671924776,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0629",
+      "MRR": 0.8567105738340886,
+      "NDCG@5": 0.7964354613909653,
+      "Success": 1.0,
+      "Response_Time": 1.2521843177051437,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0237",
+      "MRR": 0.8393826535975978,
+      "NDCG@5": 0.8050547334362257,
+      "Success": 1.0,
+      "Response_Time": 1.909486316872793,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0734",
+      "MRR": 0.8292659811483515,
+      "NDCG@5": 0.8204990299093512,
+      "Success": 1.0,
+      "Response_Time": 1.5347932345442135,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0019",
+      "MRR": 0.7697106397052085,
+      "NDCG@5": 0.8743406601289614,
+      "Success": 1.0,
+      "Response_Time": 1.652789954903016,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0911",
+      "MRR": 0.8892529487696258,
+      "NDCG@5": 0.7429992028931367,
+      "Success": 1.0,
+      "Response_Time": 1.7504191466404149,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0662",
+      "MRR": 0.7554870851696709,
+      "NDCG@5": 0.8387588540032174,
+      "Success": 1.0,
+      "Response_Time": 1.8685683438714968,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0291",
+      "MRR": 0.780577284167028,
+      "NDCG@5": 0.7649569453054226,
+      "Success": 1.0,
+      "Response_Time": 1.5549477047631461,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0856",
+      "MRR": 0.8102879850989119,
+      "NDCG@5": 0.7019575404117675,
+      "Success": 1.0,
+      "Response_Time": 1.5502844462209042,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0488",
+      "MRR": 0.7761994734627076,
+      "NDCG@5": 0.8315099155606517,
+      "Success": 1.0,
+      "Response_Time": 1.4020863648649295,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0068",
+      "MRR": 0.9355459987060699,
+      "NDCG@5": 0.7510717892904808,
+      "Success": 1.0,
+      "Response_Time": 1.4916907725691486,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0189",
+      "MRR": 0.8906245502595498,
+      "NDCG@5": 0.7224246837482269,
+      "Success": 1.0,
+      "Response_Time": 1.5741189901906194,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0198",
+      "MRR": 0.9207357080112281,
+      "NDCG@5": 0.6983210729880814,
+      "Success": 1.0,
+      "Response_Time": 1.5676950787798456,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0440",
+      "MRR": 0.8568528504491538,
+      "NDCG@5": 0.8512366637937478,
+      "Success": 1.0,
+      "Response_Time": 1.3544573933682877,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0369",
+      "MRR": 0.7604521466018591,
+      "NDCG@5": 0.8346042601994814,
+      "Success": 1.0,
+      "Response_Time": 1.584547700984978,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0594",
+      "MRR": 0.8562800638710985,
+      "NDCG@5": 0.8233726854078065,
+      "Success": 1.0,
+      "Response_Time": 1.4379962917632265,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0053",
+      "MRR": 0.8551674755268212,
+      "NDCG@5": 0.8199566382911156,
+      "Success": 1.0,
+      "Response_Time": 1.432847287296045,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0859",
+      "MRR": 0.9548122451798301,
+      "NDCG@5": 0.8315253069383545,
+      "Success": 1.0,
+      "Response_Time": 1.3613044754196029,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0847",
+      "MRR": 0.8810497701266636,
+      "NDCG@5": 0.7388203731054515,
+      "Success": 1.0,
+      "Response_Time": 1.6580626905613678,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0350",
+      "MRR": 0.9116743303194517,
+      "NDCG@5": 0.7486763316254905,
+      "Success": 1.0,
+      "Response_Time": 1.6845064193866484,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0850",
+      "MRR": 0.8661796365431264,
+      "NDCG@5": 0.8538118502396473,
+      "Success": 1.0,
+      "Response_Time": 1.824518947398092,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0268",
+      "MRR": 0.8260313249238249,
+      "NDCG@5": 0.7529608854811207,
+      "Success": 1.0,
+      "Response_Time": 1.4065728355561715,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0000",
+      "MRR": 0.7912355726171082,
+      "NDCG@5": 0.7962654905974974,
+      "Success": 1.0,
+      "Response_Time": 1.5911727962224966,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0408",
+      "MRR": 0.8578781387591311,
+      "NDCG@5": 0.8541397279383055,
+      "Success": 1.0,
+      "Response_Time": 1.541950283781686,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0419",
+      "MRR": 0.9296655787065963,
+      "NDCG@5": 0.7842619626727708,
+      "Success": 1.0,
+      "Response_Time": 1.9480253749884429,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0137",
+      "MRR": 0.8791657082136654,
+      "NDCG@5": 0.746341916389358,
+      "Success": 1.0,
+      "Response_Time": 1.3793661252908331,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0040",
+      "MRR": 0.8704308173298343,
+      "NDCG@5": 0.7868983817391456,
+      "Success": 1.0,
+      "Response_Time": 1.6471000741138138,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0454",
+      "MRR": 0.8698674950989862,
+      "NDCG@5": 0.7965389495899602,
+      "Success": 1.0,
+      "Response_Time": 1.4129809422897393,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0710",
+      "MRR": 0.7485943192941622,
+      "NDCG@5": 0.7726230430677107,
+      "Success": 1.0,
+      "Response_Time": 1.668459819148521,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0851",
+      "MRR": 0.8540597183919424,
+      "NDCG@5": 0.7214727181624327,
+      "Success": 1.0,
+      "Response_Time": 1.5659771388776773,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0174",
+      "MRR": 0.864504360163459,
+      "NDCG@5": 0.7446331240831275,
+      "Success": 1.0,
+      "Response_Time": 1.5630587658918291,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0403",
+      "MRR": 0.844550731825206,
+      "NDCG@5": 0.7280499009388401,
+      "Success": 1.0,
+      "Response_Time": 1.5936681040522425,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0427",
+      "MRR": 0.8752078561084623,
+      "NDCG@5": 0.8705152795632177,
+      "Success": 1.0,
+      "Response_Time": 1.6980703078052355,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0670",
+      "MRR": 0.7569621685546174,
+      "NDCG@5": 0.7411791974454321,
+      "Success": 1.0,
+      "Response_Time": 1.617255290081299,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0719",
+      "MRR": 0.8723409430056447,
+      "NDCG@5": 0.8341630519235871,
+      "Success": 1.0,
+      "Response_Time": 2.117909723598208,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0620",
+      "MRR": 0.8758243211522831,
+      "NDCG@5": 0.8738762009715584,
+      "Success": 1.0,
+      "Response_Time": 1.6831002645239803,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0937",
+      "MRR": 0.8807348663296537,
+      "NDCG@5": 0.7810227683430179,
+      "Success": 1.0,
+      "Response_Time": 1.65384538307399,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0806",
+      "MRR": 0.7938576619132081,
+      "NDCG@5": 0.7860436091686395,
+      "Success": 1.0,
+      "Response_Time": 1.4671954678256345,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0011",
+      "MRR": 0.8459943225025657,
+      "NDCG@5": 0.9493381482671046,
+      "Success": 1.0,
+      "Response_Time": 1.2599102211112378,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0608",
+      "MRR": 0.8828618716128452,
+      "NDCG@5": 0.6979861842438623,
+      "Success": 1.0,
+      "Response_Time": 1.469210220131585,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0179",
+      "MRR": 0.9074259864150093,
+      "NDCG@5": 0.8053139212221097,
+      "Success": 1.0,
+      "Response_Time": 1.3783382833106042,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0587",
+      "MRR": 0.7973664737351419,
+      "NDCG@5": 0.8446942559318192,
+      "Success": 1.0,
+      "Response_Time": 1.4304450052424296,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0583",
+      "MRR": 0.8542039739645004,
+      "NDCG@5": 0.8041165977538441,
+      "Success": 1.0,
+      "Response_Time": 1.4422599478591276,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0294",
+      "MRR": 0.9717805894488448,
+      "NDCG@5": 0.8417708174283527,
+      "Success": 1.0,
+      "Response_Time": 1.236228612001359,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0089",
+      "MRR": 0.852373713200935,
+      "NDCG@5": 0.7588456662548232,
+      "Success": 1.0,
+      "Response_Time": 1.6678650002194337,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0280",
+      "MRR": 0.7926562349556052,
+      "NDCG@5": 0.7938568677461185,
+      "Success": 1.0,
+      "Response_Time": 1.6157480918470686,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0251",
+      "MRR": 0.8938110668443774,
+      "NDCG@5": 0.7243810299484303,
+      "Success": 1.0,
+      "Response_Time": 1.4898248146238577,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0166",
+      "MRR": 0.8120283360191817,
+      "NDCG@5": 0.7593869291152825,
+      "Success": 1.0,
+      "Response_Time": 1.8048181360421647,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0811",
+      "MRR": 0.8657038843686182,
+      "NDCG@5": 0.7205034269225571,
+      "Success": 1.0,
+      "Response_Time": 1.6776792920582164,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0173",
+      "MRR": 0.9704515280177706,
+      "NDCG@5": 0.8672777766752734,
+      "Success": 1.0,
+      "Response_Time": 1.312094505106898,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0871",
+      "MRR": 0.8114617215551586,
+      "NDCG@5": 0.8822823135479438,
+      "Success": 1.0,
+      "Response_Time": 1.433849580157183,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0092",
+      "MRR": 0.8680729851169199,
+      "NDCG@5": 0.8507765794194776,
+      "Success": 1.0,
+      "Response_Time": 1.4009604292632876,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0013",
+      "MRR": 0.8373689532802302,
+      "NDCG@5": 0.5937588902355794,
+      "Success": 1.0,
+      "Response_Time": 1.3863418537998566,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0661",
+      "MRR": 0.8255933427650172,
+      "NDCG@5": 0.7213418763542496,
+      "Success": 1.0,
+      "Response_Time": 1.7848616955897454,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0184",
+      "MRR": 0.7537613759444014,
+      "NDCG@5": 0.7730371528513931,
+      "Success": 1.0,
+      "Response_Time": 1.5596110865929138,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0901",
+      "MRR": 0.928917670633033,
+      "NDCG@5": 0.7093048223245159,
+      "Success": 1.0,
+      "Response_Time": 1.714474562823244,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0257",
+      "MRR": 0.8416242167221948,
+      "NDCG@5": 0.7383834463329312,
+      "Success": 1.0,
+      "Response_Time": 1.6093155211394907,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0778",
+      "MRR": 0.8531426414299816,
+      "NDCG@5": 0.7627861198618372,
+      "Success": 1.0,
+      "Response_Time": 1.5504703127485029,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0603",
+      "MRR": 0.8174958705914326,
+      "NDCG@5": 0.8084651100960799,
+      "Success": 1.0,
+      "Response_Time": 1.639319601178157,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0193",
+      "MRR": 0.9377470257848665,
+      "NDCG@5": 0.7219798080750817,
+      "Success": 1.0,
+      "Response_Time": 1.85995500619844,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0421",
+      "MRR": 0.7219226442291273,
+      "NDCG@5": 0.7914857539177227,
+      "Success": 1.0,
+      "Response_Time": 1.6282475809726864,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0565",
+      "MRR": 0.8581405039318369,
+      "NDCG@5": 0.761347230731482,
+      "Success": 1.0,
+      "Response_Time": 1.5087816624464088,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0967",
+      "MRR": 0.8109269429858111,
+      "NDCG@5": 0.7634806555555704,
+      "Success": 1.0,
+      "Response_Time": 1.6674403145531538,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0457",
+      "MRR": 0.8627779446438678,
+      "NDCG@5": 0.7568537859033182,
+      "Success": 1.0,
+      "Response_Time": 1.6749399813149877,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0307",
+      "MRR": 0.8597452707734732,
+      "NDCG@5": 0.8532231756056935,
+      "Success": 1.0,
+      "Response_Time": 1.634444326288542,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0904",
+      "MRR": 0.7904313043337535,
+      "NDCG@5": 0.765348413427394,
+      "Success": 1.0,
+      "Response_Time": 1.6520940407684892,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0775",
+      "MRR": 0.8782325861914413,
+      "NDCG@5": 0.7998622979862945,
+      "Success": 1.0,
+      "Response_Time": 1.5575991074963174,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0970",
+      "MRR": 0.9189375586430939,
+      "NDCG@5": 0.7633394311145069,
+      "Success": 1.0,
+      "Response_Time": 1.6220646071755058,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0415",
+      "MRR": 0.8286662482015325,
+      "NDCG@5": 0.7872684029934579,
+      "Success": 1.0,
+      "Response_Time": 1.7048165277980785,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0650",
+      "MRR": 0.8913503972882698,
+      "NDCG@5": 0.8532646167040409,
+      "Success": 1.0,
+      "Response_Time": 1.7358218210731493,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0679",
+      "MRR": 0.8422812343395982,
+      "NDCG@5": 0.8448449901628777,
+      "Success": 1.0,
+      "Response_Time": 1.4934599865109817,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0814",
+      "MRR": 0.8607741475017949,
+      "NDCG@5": 0.7928708445204682,
+      "Success": 1.0,
+      "Response_Time": 1.5545493947489077,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0746",
+      "MRR": 0.8773045785516517,
+      "NDCG@5": 0.7488338762730578,
+      "Success": 1.0,
+      "Response_Time": 1.853858091352819,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0361",
+      "MRR": 0.7796329397285181,
+      "NDCG@5": 0.7234919287815852,
+      "Success": 1.0,
+      "Response_Time": 1.7137166310250103,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0966",
+      "MRR": 0.889291424331739,
+      "NDCG@5": 0.8411436682913379,
+      "Success": 1.0,
+      "Response_Time": 1.634251826389642,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0546",
+      "MRR": 0.8402529468563382,
+      "NDCG@5": 0.7437757202249068,
+      "Success": 1.0,
+      "Response_Time": 1.551370683729059,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0108",
+      "MRR": 0.7996931355977611,
+      "NDCG@5": 0.8636076629387361,
+      "Success": 1.0,
+      "Response_Time": 1.5179413927746792,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0773",
+      "MRR": 0.7906446709956567,
+      "NDCG@5": 0.7806313061342084,
+      "Success": 1.0,
+      "Response_Time": 1.6019397181413437,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0008",
+      "MRR": 0.8066128022789575,
+      "NDCG@5": 0.7485778946837485,
+      "Success": 1.0,
+      "Response_Time": 1.576553081723787,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0358",
+      "MRR": 0.8559429608376321,
+      "NDCG@5": 0.7687556367762477,
+      "Success": 1.0,
+      "Response_Time": 1.4693442541572517,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0890",
+      "MRR": 0.8551550461788158,
+      "NDCG@5": 0.7085226021441713,
+      "Success": 1.0,
+      "Response_Time": 1.3288804338435167,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0187",
+      "MRR": 0.7971749025036013,
+      "NDCG@5": 0.7875393822904418,
+      "Success": 1.0,
+      "Response_Time": 1.5866361348397007,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0997",
+      "MRR": 0.9309967292339226,
+      "NDCG@5": 0.8560902158849293,
+      "Success": 1.0,
+      "Response_Time": 1.516009220505486,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0162",
+      "MRR": 0.839840011317936,
+      "NDCG@5": 0.7370381206631802,
+      "Success": 1.0,
+      "Response_Time": 1.5372230296011415,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0568",
+      "MRR": 0.8233918230258715,
+      "NDCG@5": 0.8218539878616378,
+      "Success": 1.0,
+      "Response_Time": 1.4159153584671516,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0986",
+      "MRR": 0.8726801373687115,
+      "NDCG@5": 0.8992952904321649,
+      "Success": 1.0,
+      "Response_Time": 1.5236859777314713,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0401",
+      "MRR": 0.8655044150480354,
+      "NDCG@5": 0.8453692154695113,
+      "Success": 1.0,
+      "Response_Time": 1.4798169292171246,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0599",
+      "MRR": 0.8546696413904354,
+      "NDCG@5": 0.8020059136500349,
+      "Success": 1.0,
+      "Response_Time": 1.5546514147823247,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0804",
+      "MRR": 0.7938464031848165,
+      "NDCG@5": 0.8027686511525723,
+      "Success": 1.0,
+      "Response_Time": 1.6146997436868176,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0082",
+      "MRR": 0.9295197600754975,
+      "NDCG@5": 0.8625933328694533,
+      "Success": 1.0,
+      "Response_Time": 1.8629773686267335,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0382",
+      "MRR": 0.7941917986638289,
+      "NDCG@5": 0.8570285207501234,
+      "Success": 1.0,
+      "Response_Time": 1.5675013008607528,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0754",
+      "MRR": 0.974577978926278,
+      "NDCG@5": 0.7494689097372703,
+      "Success": 1.0,
+      "Response_Time": 1.4140417236728837,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0326",
+      "MRR": 0.8044370486279147,
+      "NDCG@5": 0.6652706736441724,
+      "Success": 1.0,
+      "Response_Time": 1.461136746747886,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0895",
+      "MRR": 0.7946929076452244,
+      "NDCG@5": 0.8108252023344773,
+      "Success": 1.0,
+      "Response_Time": 1.5912633963665739,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0652",
+      "MRR": 0.955446421192169,
+      "NDCG@5": 0.8620271256439073,
+      "Success": 1.0,
+      "Response_Time": 1.4534644516506396,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0798",
+      "MRR": 0.7861967050477501,
+      "NDCG@5": 0.8326828269764164,
+      "Success": 1.0,
+      "Response_Time": 1.3419650189469037,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0882",
+      "MRR": 0.9527189847171156,
+      "NDCG@5": 0.8766841677261624,
+      "Success": 1.0,
+      "Response_Time": 1.4696236521842942,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0221",
+      "MRR": 0.7364987937254565,
+      "NDCG@5": 0.8878478319465865,
+      "Success": 1.0,
+      "Response_Time": 1.5228190232121073,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0946",
+      "MRR": 0.9165067950303811,
+      "NDCG@5": 0.6991566298371605,
+      "Success": 1.0,
+      "Response_Time": 1.4500937465569341,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0312",
+      "MRR": 0.8413198656828091,
+      "NDCG@5": 0.8042067580009435,
+      "Success": 1.0,
+      "Response_Time": 1.4724901792781135,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0371",
+      "MRR": 0.8789938458731974,
+      "NDCG@5": 0.732872292519514,
+      "Success": 1.0,
+      "Response_Time": 1.518643077246806,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0172",
+      "MRR": 0.8483380335344258,
+      "NDCG@5": 0.83412408537976,
+      "Success": 1.0,
+      "Response_Time": 1.6467422317133336,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0797",
+      "MRR": 0.7723968323978899,
+      "NDCG@5": 0.7030166930729203,
+      "Success": 1.0,
+      "Response_Time": 1.7316515232847765,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0598",
+      "MRR": 0.8612711547307551,
+      "NDCG@5": 0.7532968616603806,
+      "Success": 1.0,
+      "Response_Time": 1.7726727963283784,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0674",
+      "MRR": 0.8480561526918643,
+      "NDCG@5": 0.8766750197800849,
+      "Success": 1.0,
+      "Response_Time": 1.5501277722115163,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0128",
+      "MRR": 0.9667056234178012,
+      "NDCG@5": 0.9135418139163651,
+      "Success": 1.0,
+      "Response_Time": 1.502655377728139,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0493",
+      "MRR": 0.9002658280082156,
+      "NDCG@5": 0.8425040607734495,
+      "Success": 1.0,
+      "Response_Time": 1.7452947336298523,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0407",
+      "MRR": 0.7821396689046136,
+      "NDCG@5": 0.8451072934399001,
+      "Success": 1.0,
+      "Response_Time": 1.6987636730274382,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0272",
+      "MRR": 0.73371689132819,
+      "NDCG@5": 0.7254714551893904,
+      "Success": 1.0,
+      "Response_Time": 1.234115173335985,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0520",
+      "MRR": 0.824566183098882,
+      "NDCG@5": 0.8471227043709416,
+      "Success": 1.0,
+      "Response_Time": 1.7653535578144042,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0757",
+      "MRR": 0.8455197816056063,
+      "NDCG@5": 0.9054313949165627,
+      "Success": 1.0,
+      "Response_Time": 1.3329847812677664,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0018",
+      "MRR": 0.7370936711993356,
+      "NDCG@5": 0.7976449472706164,
+      "Success": 1.0,
+      "Response_Time": 1.5976098173408961,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0176",
+      "MRR": 0.8390056203662603,
+      "NDCG@5": 0.6688837055974479,
+      "Success": 1.0,
+      "Response_Time": 1.5266319940730817,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0807",
+      "MRR": 0.7614273604692039,
+      "NDCG@5": 0.8440590431251225,
+      "Success": 1.0,
+      "Response_Time": 1.5949897369145272,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0414",
+      "MRR": 0.7836673330340314,
+      "NDCG@5": 0.7683125172904517,
+      "Success": 1.0,
+      "Response_Time": 1.3811179717166573,
+      "model": "MAMA_Full"
+    },
+    {
+      "query_id": "query_0328",
+      "MRR": 0.7390378213854243,
+      "NDCG@5": 0.7551805317170917,
+      "Success": 1.0,
+      "Response_Time": 1.7425693116596022,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0038",
+      "MRR": 0.7775751630552133,
+      "NDCG@5": 0.6452609362404393,
+      "Success": 1.0,
+      "Response_Time": 1.777282890192778,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0989",
+      "MRR": 0.73602193552309,
+      "NDCG@5": 0.6078920681409663,
+      "Success": 1.0,
+      "Response_Time": 1.8203431250375073,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0497",
+      "MRR": 0.6618443033039583,
+      "NDCG@5": 0.8298896598358128,
+      "Success": 1.0,
+      "Response_Time": 1.9263474393549112,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0472",
+      "MRR": 0.6957186654565042,
+      "NDCG@5": 0.7003345133943324,
+      "Success": 1.0,
+      "Response_Time": 1.8997809510556505,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0147",
+      "MRR": 0.7282740672317408,
+      "NDCG@5": 0.7299483358032135,
+      "Success": 1.0,
+      "Response_Time": 2.056351387808515,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0541",
+      "MRR": 0.7072259219624841,
+      "NDCG@5": 0.6418894501922937,
+      "Success": 1.0,
+      "Response_Time": 1.870490694512704,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0021",
+      "MRR": 0.5867693607979801,
+      "NDCG@5": 0.5723758613973071,
+      "Success": 1.0,
+      "Response_Time": 2.1660373681400142,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0429",
+      "MRR": 0.8551578045180872,
+      "NDCG@5": 0.666071333072828,
+      "Success": 1.0,
+      "Response_Time": 2.0237802533500377,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0047",
+      "MRR": 0.7644650105089604,
+      "NDCG@5": 0.9123371798256876,
+      "Success": 1.0,
+      "Response_Time": 2.1215234840582236,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0711",
+      "MRR": 0.7346016037793078,
+      "NDCG@5": 0.6137900073955684,
+      "Success": 1.0,
+      "Response_Time": 1.6308396623536368,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0005",
+      "MRR": 0.7571355272389712,
+      "NDCG@5": 0.6285300448489616,
+      "Success": 1.0,
+      "Response_Time": 1.6639943322724187,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0391",
+      "MRR": 0.6993330438715082,
+      "NDCG@5": 0.6044654477325347,
+      "Success": 1.0,
+      "Response_Time": 2.2236854943130617,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0227",
+      "MRR": 0.8032515034725626,
+      "NDCG@5": 0.6839100245425703,
+      "Success": 1.0,
+      "Response_Time": 2.1863899450002044,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0606",
+      "MRR": 0.748561044920038,
+      "NDCG@5": 0.6207649691017085,
+      "Success": 1.0,
+      "Response_Time": 2.194162333908538,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0088",
+      "MRR": 0.7799458829705568,
+      "NDCG@5": 0.6077437845798422,
+      "Success": 1.0,
+      "Response_Time": 1.8857390379449503,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0095",
+      "MRR": 0.6837579587698365,
+      "NDCG@5": 0.5821728199086391,
+      "Success": 1.0,
+      "Response_Time": 2.0867119585556955,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0474",
+      "MRR": 0.8731403315519688,
+      "NDCG@5": 0.5810059995373835,
+      "Success": 1.0,
+      "Response_Time": 2.021334462604303,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0893",
+      "MRR": 0.6990563052997157,
+      "NDCG@5": 0.6484527216014125,
+      "Success": 1.0,
+      "Response_Time": 1.8133690936370035,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0305",
+      "MRR": 0.6845486276617725,
+      "NDCG@5": 0.6880906004679171,
+      "Success": 1.0,
+      "Response_Time": 1.770428979046013,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0164",
+      "MRR": 0.761691064153029,
+      "NDCG@5": 0.6807823799007638,
+      "Success": 1.0,
+      "Response_Time": 1.8769893515640461,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0910",
+      "MRR": 0.6815856709811713,
+      "NDCG@5": 0.6418189215379434,
+      "Success": 1.0,
+      "Response_Time": 2.055970420648636,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0181",
+      "MRR": 0.7773623687584579,
+      "NDCG@5": 0.6121609118849072,
+      "Success": 1.0,
+      "Response_Time": 1.9378798149772605,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0634",
+      "MRR": 0.7943943243892816,
+      "NDCG@5": 0.5609640091970185,
+      "Success": 1.0,
+      "Response_Time": 2.017804834628388,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0551",
+      "MRR": 0.6982415843916824,
+      "NDCG@5": 0.7267243014758937,
+      "Success": 1.0,
+      "Response_Time": 1.7826133518223468,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0205",
+      "MRR": 0.6205680171548127,
+      "NDCG@5": 0.564061859596646,
+      "Success": 1.0,
+      "Response_Time": 1.9286552903990486,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0781",
+      "MRR": 0.7609611301170607,
+      "NDCG@5": 0.6175805697422738,
+      "Success": 1.0,
+      "Response_Time": 2.034946642579927,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0379",
+      "MRR": 0.6303166357657106,
+      "NDCG@5": 0.6796100949000986,
+      "Success": 1.0,
+      "Response_Time": 1.7020170840427578,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0931",
+      "MRR": 0.6989751446694531,
+      "NDCG@5": 0.6880075016774146,
+      "Success": 1.0,
+      "Response_Time": 1.7651255942488886,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0224",
+      "MRR": 0.7171502229923719,
+      "NDCG@5": 0.7589656678818686,
+      "Success": 1.0,
+      "Response_Time": 1.8161594634858331,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0588",
+      "MRR": 0.8001270636204296,
+      "NDCG@5": 0.6009016927553362,
+      "Success": 1.0,
+      "Response_Time": 2.015364752024751,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0086",
+      "MRR": 0.8413266662047372,
+      "NDCG@5": 0.5015983069905806,
+      "Success": 1.0,
+      "Response_Time": 1.776558854015314,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0942",
+      "MRR": 0.7825409046482766,
+      "NDCG@5": 0.6694746414328185,
+      "Success": 1.0,
+      "Response_Time": 1.9868062572068355,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0755",
+      "MRR": 0.7022290073033242,
+      "NDCG@5": 0.6909076442729946,
+      "Success": 1.0,
+      "Response_Time": 1.8919780976294256,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0051",
+      "MRR": 0.8227091801928669,
+      "NDCG@5": 0.7033271424042897,
+      "Success": 1.0,
+      "Response_Time": 1.9807684791735363,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0076",
+      "MRR": 0.7152923663036722,
+      "NDCG@5": 0.6484171394186354,
+      "Success": 1.0,
+      "Response_Time": 1.8421395261924682,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0629",
+      "MRR": 0.7701227456817241,
+      "NDCG@5": 0.6533471484193005,
+      "Success": 1.0,
+      "Response_Time": 1.9721594742413542,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0237",
+      "MRR": 0.8844272543078898,
+      "NDCG@5": 0.7489632280539452,
+      "Success": 1.0,
+      "Response_Time": 1.8613157642097886,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0734",
+      "MRR": 0.8249825467071482,
+      "NDCG@5": 0.6543024223964052,
+      "Success": 1.0,
+      "Response_Time": 1.5531375836679864,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0019",
+      "MRR": 0.6747501308576165,
+      "NDCG@5": 0.5460613978440867,
+      "Success": 1.0,
+      "Response_Time": 1.8567275728725643,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0911",
+      "MRR": 0.7445524497848894,
+      "NDCG@5": 0.8085563611083709,
+      "Success": 1.0,
+      "Response_Time": 1.9788469272775493,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0662",
+      "MRR": 0.7284011640409972,
+      "NDCG@5": 0.7458760130075782,
+      "Success": 1.0,
+      "Response_Time": 1.5219956443785807,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0291",
+      "MRR": 0.7593217899513824,
+      "NDCG@5": 0.7415440243476356,
+      "Success": 1.0,
+      "Response_Time": 1.6538544757596285,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0856",
+      "MRR": 0.8210752749380712,
+      "NDCG@5": 0.7095487341545866,
+      "Success": 1.0,
+      "Response_Time": 1.8452481754978558,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0488",
+      "MRR": 0.7863291668952274,
+      "NDCG@5": 0.8525312714775253,
+      "Success": 1.0,
+      "Response_Time": 1.952735925910529,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0068",
+      "MRR": 0.7601789998684229,
+      "NDCG@5": 0.6505072934340219,
+      "Success": 1.0,
+      "Response_Time": 1.7670280134963374,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0189",
+      "MRR": 0.7997628355250087,
+      "NDCG@5": 0.6211497968827439,
+      "Success": 1.0,
+      "Response_Time": 1.9328819226994907,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0198",
+      "MRR": 0.710819293619972,
+      "NDCG@5": 0.719944507105233,
+      "Success": 1.0,
+      "Response_Time": 1.9800591789516506,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0440",
+      "MRR": 0.8138527162095371,
+      "NDCG@5": 0.6467587864847487,
+      "Success": 1.0,
+      "Response_Time": 1.8714225116471932,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0369",
+      "MRR": 0.676744067326803,
+      "NDCG@5": 0.6516222987543677,
+      "Success": 1.0,
+      "Response_Time": 1.9879140887480733,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0594",
+      "MRR": 0.7947752259318839,
+      "NDCG@5": 0.6162597660108557,
+      "Success": 1.0,
+      "Response_Time": 2.076529065619019,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0053",
+      "MRR": 0.8354833743987367,
+      "NDCG@5": 0.7150941828385539,
+      "Success": 1.0,
+      "Response_Time": 2.2578232462604517,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0859",
+      "MRR": 0.690682334460957,
+      "NDCG@5": 0.5923955519549551,
+      "Success": 1.0,
+      "Response_Time": 1.5998303551972297,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0847",
+      "MRR": 0.8450310131812644,
+      "NDCG@5": 0.7329230585702002,
+      "Success": 1.0,
+      "Response_Time": 1.909994759236118,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0350",
+      "MRR": 0.7623378665897478,
+      "NDCG@5": 0.6012138104999202,
+      "Success": 1.0,
+      "Response_Time": 2.3602353563310285,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0850",
+      "MRR": 0.7520870403743154,
+      "NDCG@5": 0.692595214800762,
+      "Success": 1.0,
+      "Response_Time": 2.0506379923017644,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0268",
+      "MRR": 0.7760086277580964,
+      "NDCG@5": 0.7010674177966557,
+      "Success": 1.0,
+      "Response_Time": 1.7777145980198439,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0000",
+      "MRR": 0.7753598482852476,
+      "NDCG@5": 0.8237698127391525,
+      "Success": 1.0,
+      "Response_Time": 2.162175608307896,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0408",
+      "MRR": 0.851636690611479,
+      "NDCG@5": 0.6466700399440923,
+      "Success": 1.0,
+      "Response_Time": 1.7418711323534555,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0419",
+      "MRR": 0.7347464894332238,
+      "NDCG@5": 0.6886236435093634,
+      "Success": 1.0,
+      "Response_Time": 2.1169544733247707,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0137",
+      "MRR": 0.6282124051793923,
+      "NDCG@5": 0.7976867236400854,
+      "Success": 1.0,
+      "Response_Time": 1.8915585782557818,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0040",
+      "MRR": 0.7142720872435754,
+      "NDCG@5": 0.6096042762307476,
+      "Success": 1.0,
+      "Response_Time": 1.6221257990641615,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0454",
+      "MRR": 0.7992755997094102,
+      "NDCG@5": 0.6899255295719419,
+      "Success": 1.0,
+      "Response_Time": 1.6878070380466101,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0710",
+      "MRR": 0.6552346434996741,
+      "NDCG@5": 0.6596519322525305,
+      "Success": 1.0,
+      "Response_Time": 2.2204238745520906,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0851",
+      "MRR": 0.7256477881072748,
+      "NDCG@5": 0.5732674214692601,
+      "Success": 1.0,
+      "Response_Time": 1.8757662484645299,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0174",
+      "MRR": 0.7247547972571584,
+      "NDCG@5": 0.4849303884223237,
+      "Success": 1.0,
+      "Response_Time": 1.9102269240267937,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0403",
+      "MRR": 0.7275964519458099,
+      "NDCG@5": 0.7360192709961929,
+      "Success": 1.0,
+      "Response_Time": 2.252812097090162,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0427",
+      "MRR": 0.8199064220092475,
+      "NDCG@5": 0.6646022368989425,
+      "Success": 1.0,
+      "Response_Time": 1.7208253364264992,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0670",
+      "MRR": 0.9182884666209905,
+      "NDCG@5": 0.6888821641170721,
+      "Success": 1.0,
+      "Response_Time": 1.9225072725443302,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0719",
+      "MRR": 0.7416594940765198,
+      "NDCG@5": 0.6991582722968213,
+      "Success": 1.0,
+      "Response_Time": 1.8940151258536904,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0620",
+      "MRR": 0.7042909835321439,
+      "NDCG@5": 0.644032438348211,
+      "Success": 1.0,
+      "Response_Time": 1.9141044113611203,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0937",
+      "MRR": 0.706347115562904,
+      "NDCG@5": 0.6317494120818898,
+      "Success": 1.0,
+      "Response_Time": 1.9391574409845413,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0806",
+      "MRR": 0.7259615492153818,
+      "NDCG@5": 0.7957954811551189,
+      "Success": 1.0,
+      "Response_Time": 1.4428254344892577,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0011",
+      "MRR": 0.8175224659307274,
+      "NDCG@5": 0.7767103042448246,
+      "Success": 1.0,
+      "Response_Time": 1.546789758166533,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0608",
+      "MRR": 0.7199972436025363,
+      "NDCG@5": 0.6570133759163115,
+      "Success": 1.0,
+      "Response_Time": 1.6666478949507921,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0179",
+      "MRR": 0.6904084652438205,
+      "NDCG@5": 0.6023173874355287,
+      "Success": 1.0,
+      "Response_Time": 2.235408679816252,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0587",
+      "MRR": 0.8069261307340273,
+      "NDCG@5": 0.7785950770295678,
+      "Success": 1.0,
+      "Response_Time": 2.0499009715277823,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0583",
+      "MRR": 0.6665244795572284,
+      "NDCG@5": 0.6456855002952967,
+      "Success": 1.0,
+      "Response_Time": 2.0080874210210253,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0294",
+      "MRR": 0.6601953089953476,
+      "NDCG@5": 0.7372618838327567,
+      "Success": 1.0,
+      "Response_Time": 1.8767414283315356,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0089",
+      "MRR": 0.7178121850866274,
+      "NDCG@5": 0.7371110376470583,
+      "Success": 1.0,
+      "Response_Time": 1.999967396067487,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0280",
+      "MRR": 0.7187543007243026,
+      "NDCG@5": 0.7702904054489543,
+      "Success": 1.0,
+      "Response_Time": 1.7254086010320184,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0251",
+      "MRR": 0.7851836212722099,
+      "NDCG@5": 0.7283894930896604,
+      "Success": 1.0,
+      "Response_Time": 1.8642816409234817,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0166",
+      "MRR": 0.765477045512464,
+      "NDCG@5": 0.5919175953474876,
+      "Success": 1.0,
+      "Response_Time": 2.086324863457242,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0811",
+      "MRR": 0.7307266547218767,
+      "NDCG@5": 0.6458184964815911,
+      "Success": 1.0,
+      "Response_Time": 2.10882166065064,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0173",
+      "MRR": 0.6954046290430923,
+      "NDCG@5": 0.5802738640690965,
+      "Success": 1.0,
+      "Response_Time": 1.6398067487656973,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0871",
+      "MRR": 0.7845086766915035,
+      "NDCG@5": 0.589748227915275,
+      "Success": 1.0,
+      "Response_Time": 2.2358629527571856,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0092",
+      "MRR": 0.6017288002639068,
+      "NDCG@5": 0.8100377712534628,
+      "Success": 1.0,
+      "Response_Time": 1.9579831440964712,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0013",
+      "MRR": 0.7367235083928133,
+      "NDCG@5": 0.6441759875761377,
+      "Success": 1.0,
+      "Response_Time": 1.9918445005833727,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0661",
+      "MRR": 0.7407408402351102,
+      "NDCG@5": 0.7661443392692225,
+      "Success": 1.0,
+      "Response_Time": 1.9405609767591672,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0184",
+      "MRR": 0.7535205197794076,
+      "NDCG@5": 0.6575926962961747,
+      "Success": 1.0,
+      "Response_Time": 1.9097497877302079,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0901",
+      "MRR": 0.76423052028466,
+      "NDCG@5": 0.5579475389434096,
+      "Success": 1.0,
+      "Response_Time": 1.6773266240209717,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0257",
+      "MRR": 0.7938419583935445,
+      "NDCG@5": 0.6971440424214677,
+      "Success": 1.0,
+      "Response_Time": 1.8868829994565177,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0778",
+      "MRR": 0.7445535074484467,
+      "NDCG@5": 0.7102210461967636,
+      "Success": 1.0,
+      "Response_Time": 1.822843257544315,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0603",
+      "MRR": 0.6903752786726427,
+      "NDCG@5": 0.6989925488772284,
+      "Success": 1.0,
+      "Response_Time": 1.7438929000292942,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0193",
+      "MRR": 0.7710611873885841,
+      "NDCG@5": 0.5585088132863998,
+      "Success": 1.0,
+      "Response_Time": 2.1052480147186157,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0421",
+      "MRR": 0.7754366288040869,
+      "NDCG@5": 0.7034462003392268,
+      "Success": 1.0,
+      "Response_Time": 2.0968843771101926,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0565",
+      "MRR": 0.8565522622234552,
+      "NDCG@5": 0.7595633848113417,
+      "Success": 1.0,
+      "Response_Time": 1.5886426383603038,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0967",
+      "MRR": 0.6562887662619723,
+      "NDCG@5": 0.6382634252505197,
+      "Success": 1.0,
+      "Response_Time": 1.92469638903795,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0457",
+      "MRR": 0.7785008133919004,
+      "NDCG@5": 0.6307949578266435,
+      "Success": 1.0,
+      "Response_Time": 1.953618017605874,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0307",
+      "MRR": 0.691933960599974,
+      "NDCG@5": 0.6392476825785959,
+      "Success": 1.0,
+      "Response_Time": 1.66680100256732,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0904",
+      "MRR": 0.6805201392644584,
+      "NDCG@5": 0.5844753391843913,
+      "Success": 1.0,
+      "Response_Time": 1.74434281446408,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0775",
+      "MRR": 0.814947642169333,
+      "NDCG@5": 0.6142444822264362,
+      "Success": 1.0,
+      "Response_Time": 2.39382877167073,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0970",
+      "MRR": 0.7768456172599004,
+      "NDCG@5": 0.6981778731534206,
+      "Success": 1.0,
+      "Response_Time": 1.7654955995673816,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0415",
+      "MRR": 0.7909210717998114,
+      "NDCG@5": 0.6419028008584047,
+      "Success": 1.0,
+      "Response_Time": 1.941961766636165,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0650",
+      "MRR": 0.9173857486022781,
+      "NDCG@5": 0.6773915674203759,
+      "Success": 1.0,
+      "Response_Time": 2.1268691987314217,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0679",
+      "MRR": 0.6954840030914397,
+      "NDCG@5": 0.6819108517032249,
+      "Success": 1.0,
+      "Response_Time": 2.238744114414392,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0814",
+      "MRR": 0.7006662400704318,
+      "NDCG@5": 0.8186211932917727,
+      "Success": 1.0,
+      "Response_Time": 2.0473953483819853,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0746",
+      "MRR": 0.7050522592391898,
+      "NDCG@5": 0.7312981726901085,
+      "Success": 1.0,
+      "Response_Time": 2.095059800932811,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0361",
+      "MRR": 0.7855830774307693,
+      "NDCG@5": 0.5683033707281062,
+      "Success": 1.0,
+      "Response_Time": 1.7891153083515237,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0966",
+      "MRR": 0.7264687327824977,
+      "NDCG@5": 0.6789919262465965,
+      "Success": 1.0,
+      "Response_Time": 2.031720977559122,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0546",
+      "MRR": 0.7553836680634612,
+      "NDCG@5": 0.5856845174554525,
+      "Success": 1.0,
+      "Response_Time": 1.9884356131810732,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0108",
+      "MRR": 0.7848198306793,
+      "NDCG@5": 0.7259244931468969,
+      "Success": 1.0,
+      "Response_Time": 2.114540530599832,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0773",
+      "MRR": 0.8000067065093255,
+      "NDCG@5": 0.7184793258629043,
+      "Success": 1.0,
+      "Response_Time": 1.9073701719374434,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0008",
+      "MRR": 0.6303546565209125,
+      "NDCG@5": 0.7162917482158113,
+      "Success": 1.0,
+      "Response_Time": 1.95738378368936,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0358",
+      "MRR": 0.7617673609292853,
+      "NDCG@5": 0.5900206053892971,
+      "Success": 1.0,
+      "Response_Time": 1.7254098227265127,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0890",
+      "MRR": 0.8149143940266375,
+      "NDCG@5": 0.6815729186146076,
+      "Success": 1.0,
+      "Response_Time": 2.0426701255270725,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0187",
+      "MRR": 0.7452256495768713,
+      "NDCG@5": 0.6867019543226851,
+      "Success": 1.0,
+      "Response_Time": 2.0888910850756797,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0997",
+      "MRR": 0.7082089584812186,
+      "NDCG@5": 0.6916129374936327,
+      "Success": 1.0,
+      "Response_Time": 1.8367904480330923,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0162",
+      "MRR": 0.7137542565346024,
+      "NDCG@5": 0.6616212628633207,
+      "Success": 1.0,
+      "Response_Time": 1.9599840788940683,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0568",
+      "MRR": 0.7107450937268835,
+      "NDCG@5": 0.7774259532924406,
+      "Success": 1.0,
+      "Response_Time": 1.7589706856004892,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0986",
+      "MRR": 0.7305927281970276,
+      "NDCG@5": 0.651959901687711,
+      "Success": 1.0,
+      "Response_Time": 2.180456019183672,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0401",
+      "MRR": 0.756665724802787,
+      "NDCG@5": 0.7608564959206789,
+      "Success": 1.0,
+      "Response_Time": 1.652599132853345,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0599",
+      "MRR": 0.7614594180791096,
+      "NDCG@5": 0.7503326788761343,
+      "Success": 1.0,
+      "Response_Time": 1.9348111180695762,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0804",
+      "MRR": 0.8157526655044438,
+      "NDCG@5": 0.6462206546925725,
+      "Success": 1.0,
+      "Response_Time": 2.1736825392334045,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0082",
+      "MRR": 0.899625072406109,
+      "NDCG@5": 0.6576499465274652,
+      "Success": 1.0,
+      "Response_Time": 1.839809546147861,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0382",
+      "MRR": 0.8421301444440037,
+      "NDCG@5": 0.8013883387840727,
+      "Success": 1.0,
+      "Response_Time": 1.8258851951124115,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0754",
+      "MRR": 0.7147272964374817,
+      "NDCG@5": 0.6636479389443225,
+      "Success": 1.0,
+      "Response_Time": 1.67799890801383,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0326",
+      "MRR": 0.6808316676390744,
+      "NDCG@5": 0.610193583260347,
+      "Success": 1.0,
+      "Response_Time": 1.7817964382812568,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0895",
+      "MRR": 0.7409414276576989,
+      "NDCG@5": 0.7018318902077025,
+      "Success": 1.0,
+      "Response_Time": 2.1990900887065337,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0652",
+      "MRR": 0.6754119252297621,
+      "NDCG@5": 0.7573398574872672,
+      "Success": 1.0,
+      "Response_Time": 1.8814820080394083,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0798",
+      "MRR": 0.7399364677436345,
+      "NDCG@5": 0.7344366424203287,
+      "Success": 1.0,
+      "Response_Time": 1.7179100361187862,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0882",
+      "MRR": 0.7693038627405154,
+      "NDCG@5": 0.6968174634077662,
+      "Success": 1.0,
+      "Response_Time": 2.008641227521467,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0221",
+      "MRR": 0.7629634677857315,
+      "NDCG@5": 0.8661922103534061,
+      "Success": 1.0,
+      "Response_Time": 1.805206802834763,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0946",
+      "MRR": 0.7071922070598764,
+      "NDCG@5": 0.6383876010445675,
+      "Success": 1.0,
+      "Response_Time": 1.820014118551154,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0312",
+      "MRR": 0.6999576753431568,
+      "NDCG@5": 0.7724872233019588,
+      "Success": 1.0,
+      "Response_Time": 2.1756907646381736,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0371",
+      "MRR": 0.7044892520250355,
+      "NDCG@5": 0.6229056875902871,
+      "Success": 1.0,
+      "Response_Time": 2.0048548001495528,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0172",
+      "MRR": 0.7057488329888939,
+      "NDCG@5": 0.7313369545139078,
+      "Success": 1.0,
+      "Response_Time": 1.956526143753234,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0797",
+      "MRR": 0.6402294001801881,
+      "NDCG@5": 0.7990153848984245,
+      "Success": 1.0,
+      "Response_Time": 2.243257981157194,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0598",
+      "MRR": 0.7016303690470617,
+      "NDCG@5": 0.6558100845647372,
+      "Success": 1.0,
+      "Response_Time": 1.971455770330483,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0674",
+      "MRR": 0.7660430617191176,
+      "NDCG@5": 0.7332322761777894,
+      "Success": 1.0,
+      "Response_Time": 2.281836816977943,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0128",
+      "MRR": 0.7312675885304046,
+      "NDCG@5": 0.6254260039041544,
+      "Success": 1.0,
+      "Response_Time": 1.671722538957385,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0493",
+      "MRR": 0.6935967572839494,
+      "NDCG@5": 0.682048604007339,
+      "Success": 1.0,
+      "Response_Time": 2.2430204154332016,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0407",
+      "MRR": 0.7081024316655403,
+      "NDCG@5": 0.7010603084212785,
+      "Success": 1.0,
+      "Response_Time": 1.9170438787069046,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0272",
+      "MRR": 0.8241107425944697,
+      "NDCG@5": 0.871492999514648,
+      "Success": 1.0,
+      "Response_Time": 1.8244436208743422,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0520",
+      "MRR": 0.7100181179087609,
+      "NDCG@5": 0.7617679049031113,
+      "Success": 1.0,
+      "Response_Time": 2.042740468132736,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0757",
+      "MRR": 0.8688760981500503,
+      "NDCG@5": 0.7277106857141213,
+      "Success": 1.0,
+      "Response_Time": 1.8553274236583293,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0018",
+      "MRR": 0.783464528487077,
+      "NDCG@5": 0.7665440649631352,
+      "Success": 1.0,
+      "Response_Time": 2.0676867926155253,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0176",
+      "MRR": 0.7777946341152963,
+      "NDCG@5": 0.7634339270295973,
+      "Success": 1.0,
+      "Response_Time": 2.130473206280221,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0807",
+      "MRR": 0.8372868113905518,
+      "NDCG@5": 0.7325045316816335,
+      "Success": 1.0,
+      "Response_Time": 1.8899187455429662,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0414",
+      "MRR": 0.7532765306774659,
+      "NDCG@5": 0.7737816635216184,
+      "Success": 1.0,
+      "Response_Time": 1.7729515792222974,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "query_id": "query_0328",
+      "MRR": 0.672680597798561,
+      "NDCG@5": 0.5278527963919186,
+      "Success": 1.0,
+      "Response_Time": 3.3406355844858826,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0038",
+      "MRR": 0.7545606676346568,
+      "NDCG@5": 0.5851277086659505,
+      "Success": 1.0,
+      "Response_Time": 3.3471815228177753,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0989",
+      "MRR": 0.5171129473118072,
+      "NDCG@5": 0.6395328494706677,
+      "Success": 1.0,
+      "Response_Time": 3.568829147022198,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0497",
+      "MRR": 0.8341929250974913,
+      "NDCG@5": 0.536237732974606,
+      "Success": 1.0,
+      "Response_Time": 3.4110856212356575,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0472",
+      "MRR": 0.6619445315339679,
+      "NDCG@5": 0.7209904214168206,
+      "Success": 1.0,
+      "Response_Time": 3.2947406530168277,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0147",
+      "MRR": 0.6646119373193304,
+      "NDCG@5": 0.6259738579522208,
+      "Success": 1.0,
+      "Response_Time": 3.3990453755678525,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0541",
+      "MRR": 0.5993209746904524,
+      "NDCG@5": 0.5854208193040341,
+      "Success": 1.0,
+      "Response_Time": 3.7272437474481155,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0021",
+      "MRR": 0.5471136230530045,
+      "NDCG@5": 0.5794310280663939,
+      "Success": 1.0,
+      "Response_Time": 3.070955298472506,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0429",
+      "MRR": 0.7470541966032358,
+      "NDCG@5": 0.4171276833311901,
+      "Success": 1.0,
+      "Response_Time": 3.123198916509512,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0047",
+      "MRR": 0.6734490687558068,
+      "NDCG@5": 0.7198213548649653,
+      "Success": 1.0,
+      "Response_Time": 3.3056724034029945,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0711",
+      "MRR": 0.589532042597612,
+      "NDCG@5": 0.7507533928051778,
+      "Success": 1.0,
+      "Response_Time": 2.79423485684599,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0005",
+      "MRR": 0.4416074639041926,
+      "NDCG@5": 0.6095214161052266,
+      "Success": 1.0,
+      "Response_Time": 3.1442399369895337,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0391",
+      "MRR": 0.5475890464582358,
+      "NDCG@5": 0.6358189318353367,
+      "Success": 1.0,
+      "Response_Time": 3.4202062640953437,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0227",
+      "MRR": 0.5887329232336944,
+      "NDCG@5": 0.4409301689302524,
+      "Success": 1.0,
+      "Response_Time": 3.6528092114636537,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0606",
+      "MRR": 0.6980181060162794,
+      "NDCG@5": 0.5566807653496205,
+      "Success": 1.0,
+      "Response_Time": 4.013255688537637,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0088",
+      "MRR": 0.5431923710306462,
+      "NDCG@5": 0.4168985332493756,
+      "Success": 1.0,
+      "Response_Time": 3.0739940141439397,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0095",
+      "MRR": 0.6353972585280051,
+      "NDCG@5": 0.5902472660336238,
+      "Success": 1.0,
+      "Response_Time": 3.240742658593158,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0474",
+      "MRR": 0.6711849856862867,
+      "NDCG@5": 0.4437491364293365,
+      "Success": 1.0,
+      "Response_Time": 3.864192903507106,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0893",
+      "MRR": 0.6321063939446687,
+      "NDCG@5": 0.6758949914956365,
+      "Success": 1.0,
+      "Response_Time": 3.4568083781597507,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0305",
+      "MRR": 0.6806077897238405,
+      "NDCG@5": 0.622237193462756,
+      "Success": 1.0,
+      "Response_Time": 3.4956521672064067,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0164",
+      "MRR": 0.6973450483880789,
+      "NDCG@5": 0.6966569479529783,
+      "Success": 1.0,
+      "Response_Time": 3.402712832789544,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0910",
+      "MRR": 0.7033103381829661,
+      "NDCG@5": 0.5576059019598518,
+      "Success": 1.0,
+      "Response_Time": 3.862843369716305,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0181",
+      "MRR": 0.5786246928146657,
+      "NDCG@5": 0.74289216242526,
+      "Success": 1.0,
+      "Response_Time": 3.315141558261593,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0634",
+      "MRR": 0.5107302408093757,
+      "NDCG@5": 0.5789542326612573,
+      "Success": 1.0,
+      "Response_Time": 3.0780108867342943,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0551",
+      "MRR": 0.7151579194089851,
+      "NDCG@5": 0.5024428500283658,
+      "Success": 1.0,
+      "Response_Time": 3.1649121297105314,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0205",
+      "MRR": 0.4694413342149022,
+      "NDCG@5": 0.5220739807135905,
+      "Success": 1.0,
+      "Response_Time": 2.4331646491472863,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0781",
+      "MRR": 0.4969487458862849,
+      "NDCG@5": 0.6409206363021411,
+      "Success": 1.0,
+      "Response_Time": 3.620746058700808,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0379",
+      "MRR": 0.6777911805606468,
+      "NDCG@5": 0.47163633797333715,
+      "Success": 1.0,
+      "Response_Time": 3.3123467982274675,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0931",
+      "MRR": 0.6391757714818488,
+      "NDCG@5": 0.4528802604591308,
+      "Success": 1.0,
+      "Response_Time": 3.886257371653846,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0224",
+      "MRR": 0.7184626061518103,
+      "NDCG@5": 0.5447455109646929,
+      "Success": 1.0,
+      "Response_Time": 3.3399477604279766,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0588",
+      "MRR": 0.6582544527152797,
+      "NDCG@5": 0.3663099828944195,
+      "Success": 1.0,
+      "Response_Time": 3.2385443684673794,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0086",
+      "MRR": 0.5781214176801981,
+      "NDCG@5": 0.4682412390302983,
+      "Success": 1.0,
+      "Response_Time": 3.2259928916321967,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0942",
+      "MRR": 0.801291787416457,
+      "NDCG@5": 0.629202600404167,
+      "Success": 1.0,
+      "Response_Time": 3.1186637737803653,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0755",
+      "MRR": 0.6910324503220542,
+      "NDCG@5": 0.7035368327854282,
+      "Success": 1.0,
+      "Response_Time": 3.6721144626777247,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0051",
+      "MRR": 0.6448667332928156,
+      "NDCG@5": 0.5030001957848538,
+      "Success": 1.0,
+      "Response_Time": 3.5883426260370284,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0076",
+      "MRR": 0.6749136846879574,
+      "NDCG@5": 0.6541289355627178,
+      "Success": 1.0,
+      "Response_Time": 3.5650135666223286,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0629",
+      "MRR": 0.7339597443787401,
+      "NDCG@5": 0.5139469492670643,
+      "Success": 1.0,
+      "Response_Time": 3.8174358042847008,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0237",
+      "MRR": 0.657283964422316,
+      "NDCG@5": 0.769775565517276,
+      "Success": 1.0,
+      "Response_Time": 3.07500050730686,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0734",
+      "MRR": 0.7957367422848725,
+      "NDCG@5": 0.5857952567793395,
+      "Success": 1.0,
+      "Response_Time": 3.0889753386626544,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0019",
+      "MRR": 0.595950274935111,
+      "NDCG@5": 0.5350059637969566,
+      "Success": 1.0,
+      "Response_Time": 3.486941400168709,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0911",
+      "MRR": 0.686555193923195,
+      "NDCG@5": 0.5101773996140193,
+      "Success": 1.0,
+      "Response_Time": 3.3209888008634363,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0662",
+      "MRR": 0.8323043322750676,
+      "NDCG@5": 0.7356992306698698,
+      "Success": 1.0,
+      "Response_Time": 3.491439757779392,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0291",
+      "MRR": 0.642920313035138,
+      "NDCG@5": 0.5781630700183896,
+      "Success": 1.0,
+      "Response_Time": 3.557001649910254,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0856",
+      "MRR": 0.5474486691321434,
+      "NDCG@5": 0.5411770993325122,
+      "Success": 1.0,
+      "Response_Time": 2.712623892665292,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0488",
+      "MRR": 0.6754300810344751,
+      "NDCG@5": 0.6298252020908687,
+      "Success": 1.0,
+      "Response_Time": 3.1512210089492316,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0068",
+      "MRR": 0.7811588086961029,
+      "NDCG@5": 0.4462749650257706,
+      "Success": 1.0,
+      "Response_Time": 2.7881812943223667,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0189",
+      "MRR": 0.6597006636703975,
+      "NDCG@5": 0.6690156336559911,
+      "Success": 1.0,
+      "Response_Time": 3.9530532458394116,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0198",
+      "MRR": 0.5982004163417953,
+      "NDCG@5": 0.672110721676267,
+      "Success": 1.0,
+      "Response_Time": 3.3157518662847383,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0440",
+      "MRR": 0.6239635430053262,
+      "NDCG@5": 0.6529986738736939,
+      "Success": 1.0,
+      "Response_Time": 3.571359465012965,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0369",
+      "MRR": 0.4976247058714175,
+      "NDCG@5": 0.7111009542731378,
+      "Success": 1.0,
+      "Response_Time": 3.8406338010345573,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0594",
+      "MRR": 0.5831993568641423,
+      "NDCG@5": 0.6051887462768661,
+      "Success": 1.0,
+      "Response_Time": 3.5127911689246134,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0053",
+      "MRR": 0.6629606389241516,
+      "NDCG@5": 0.5124700949231489,
+      "Success": 1.0,
+      "Response_Time": 3.081499353862921,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0859",
+      "MRR": 0.6372001336107699,
+      "NDCG@5": 0.6813274438874177,
+      "Success": 1.0,
+      "Response_Time": 3.53113205719994,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0847",
+      "MRR": 0.6061447101122505,
+      "NDCG@5": 0.6420264736435378,
+      "Success": 1.0,
+      "Response_Time": 2.276039230366872,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0350",
+      "MRR": 0.7428889130334893,
+      "NDCG@5": 0.39590804967974624,
+      "Success": 1.0,
+      "Response_Time": 3.1958968516808413,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0850",
+      "MRR": 0.538729709483647,
+      "NDCG@5": 0.43952121537935124,
+      "Success": 1.0,
+      "Response_Time": 3.759505911330052,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0268",
+      "MRR": 0.5974068918819297,
+      "NDCG@5": 0.6003573804096102,
+      "Success": 1.0,
+      "Response_Time": 3.312639385814702,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0000",
+      "MRR": 0.6824336744500809,
+      "NDCG@5": 0.573928545323905,
+      "Success": 1.0,
+      "Response_Time": 2.8552928770502293,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0408",
+      "MRR": 0.7291640137502425,
+      "NDCG@5": 0.5180118548501914,
+      "Success": 1.0,
+      "Response_Time": 2.7540646974958922,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0419",
+      "MRR": 0.6009696355130678,
+      "NDCG@5": 0.7134744594821625,
+      "Success": 1.0,
+      "Response_Time": 3.6445820445819925,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0137",
+      "MRR": 0.6081213079032927,
+      "NDCG@5": 0.532172744976794,
+      "Success": 1.0,
+      "Response_Time": 3.2109950310495683,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0040",
+      "MRR": 0.8264073185204757,
+      "NDCG@5": 0.6038296743186923,
+      "Success": 1.0,
+      "Response_Time": 3.489115409460696,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0454",
+      "MRR": 0.7322255108628657,
+      "NDCG@5": 0.5898013375845983,
+      "Success": 1.0,
+      "Response_Time": 3.23415440604634,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0710",
+      "MRR": 0.6218285135823519,
+      "NDCG@5": 0.5593830765774217,
+      "Success": 1.0,
+      "Response_Time": 3.3162277724913585,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0851",
+      "MRR": 0.7049866589273281,
+      "NDCG@5": 0.5714906968091154,
+      "Success": 1.0,
+      "Response_Time": 3.6010768285697643,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0174",
+      "MRR": 0.6322355077902275,
+      "NDCG@5": 0.5741062486509769,
+      "Success": 1.0,
+      "Response_Time": 2.59066574672312,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0403",
+      "MRR": 0.7219694907232233,
+      "NDCG@5": 0.6003558706380033,
+      "Success": 1.0,
+      "Response_Time": 3.6992637406480715,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0427",
+      "MRR": 0.3788370159625679,
+      "NDCG@5": 0.7710607210685113,
+      "Success": 1.0,
+      "Response_Time": 3.2783518375825857,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0670",
+      "MRR": 0.7392364535063765,
+      "NDCG@5": 0.464489219141698,
+      "Success": 1.0,
+      "Response_Time": 3.5567263448731508,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0719",
+      "MRR": 0.5446925993143709,
+      "NDCG@5": 0.5052706418518111,
+      "Success": 1.0,
+      "Response_Time": 4.038191600930711,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0620",
+      "MRR": 0.6223385839312988,
+      "NDCG@5": 0.5877084215716128,
+      "Success": 1.0,
+      "Response_Time": 3.651925060354839,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0937",
+      "MRR": 0.6841113699175344,
+      "NDCG@5": 0.5811410527040705,
+      "Success": 1.0,
+      "Response_Time": 3.4650355709125034,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0806",
+      "MRR": 0.8558074026714447,
+      "NDCG@5": 0.5607533578907087,
+      "Success": 1.0,
+      "Response_Time": 3.4044066472845382,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0011",
+      "MRR": 0.734058895640685,
+      "NDCG@5": 0.6747415414298824,
+      "Success": 1.0,
+      "Response_Time": 3.769201213057341,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0608",
+      "MRR": 0.6969857199826266,
+      "NDCG@5": 0.4543855185524126,
+      "Success": 1.0,
+      "Response_Time": 3.9343696669514054,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0179",
+      "MRR": 0.536328914628318,
+      "NDCG@5": 0.5960582755934253,
+      "Success": 1.0,
+      "Response_Time": 3.0509179354928375,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0587",
+      "MRR": 0.6337275488066306,
+      "NDCG@5": 0.598618716209741,
+      "Success": 1.0,
+      "Response_Time": 3.448902169716601,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0583",
+      "MRR": 0.6774728678811756,
+      "NDCG@5": 0.7245437043677474,
+      "Success": 1.0,
+      "Response_Time": 3.4978076915601726,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0294",
+      "MRR": 0.6175259028238416,
+      "NDCG@5": 0.660880542492259,
+      "Success": 1.0,
+      "Response_Time": 3.770104080902117,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0089",
+      "MRR": 0.5290152966376707,
+      "NDCG@5": 0.6249452068452861,
+      "Success": 1.0,
+      "Response_Time": 3.5894339146550323,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0280",
+      "MRR": 0.6127192846976007,
+      "NDCG@5": 0.7012192677045388,
+      "Success": 1.0,
+      "Response_Time": 3.2744794327979654,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0251",
+      "MRR": 0.6508018808124387,
+      "NDCG@5": 0.5494389612201808,
+      "Success": 1.0,
+      "Response_Time": 3.3357642476051432,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0166",
+      "MRR": 0.5408352421794318,
+      "NDCG@5": 0.42527501350575914,
+      "Success": 1.0,
+      "Response_Time": 3.91996687339324,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0811",
+      "MRR": 0.5632734786513505,
+      "NDCG@5": 0.4692435497532819,
+      "Success": 1.0,
+      "Response_Time": 2.5332456579666256,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0173",
+      "MRR": 0.5819934427079447,
+      "NDCG@5": 0.43673720024606516,
+      "Success": 1.0,
+      "Response_Time": 3.9375456092504564,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0871",
+      "MRR": 0.730383538040837,
+      "NDCG@5": 0.4989612661725831,
+      "Success": 1.0,
+      "Response_Time": 4.1634012479773945,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0092",
+      "MRR": 0.7278588938292434,
+      "NDCG@5": 0.534566524416155,
+      "Success": 1.0,
+      "Response_Time": 2.405219885496778,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0013",
+      "MRR": 0.8456848315331666,
+      "NDCG@5": 0.4302218982571676,
+      "Success": 1.0,
+      "Response_Time": 2.72120246362595,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0661",
+      "MRR": 0.7315313388808675,
+      "NDCG@5": 0.8054957358212488,
+      "Success": 1.0,
+      "Response_Time": 3.842180942848892,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0184",
+      "MRR": 0.6902518208047124,
+      "NDCG@5": 0.624685925483198,
+      "Success": 1.0,
+      "Response_Time": 3.645763756748714,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0901",
+      "MRR": 0.7078035730808088,
+      "NDCG@5": 0.5939567595489988,
+      "Success": 1.0,
+      "Response_Time": 3.3685544084621943,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0257",
+      "MRR": 0.6338666184890429,
+      "NDCG@5": 0.49251147029106573,
+      "Success": 1.0,
+      "Response_Time": 3.2261502215592937,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0778",
+      "MRR": 0.4871338867224153,
+      "NDCG@5": 0.5567627165741145,
+      "Success": 1.0,
+      "Response_Time": 2.9642212903541605,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0603",
+      "MRR": 0.5401769614505806,
+      "NDCG@5": 0.5840296268130409,
+      "Success": 1.0,
+      "Response_Time": 3.845040845947502,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0193",
+      "MRR": 0.7221484945402081,
+      "NDCG@5": 0.41249094084492866,
+      "Success": 1.0,
+      "Response_Time": 2.9638375894689752,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0421",
+      "MRR": 0.7241694069189394,
+      "NDCG@5": 0.47011623543324565,
+      "Success": 1.0,
+      "Response_Time": 3.246885734501101,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0565",
+      "MRR": 0.6890046889122097,
+      "NDCG@5": 0.4715022434233638,
+      "Success": 1.0,
+      "Response_Time": 3.3689889372740054,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0967",
+      "MRR": 0.5194377054573616,
+      "NDCG@5": 0.5074659708927811,
+      "Success": 1.0,
+      "Response_Time": 3.4483193156327387,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0457",
+      "MRR": 0.4961305639821497,
+      "NDCG@5": 0.6095665243201192,
+      "Success": 1.0,
+      "Response_Time": 3.322734014397128,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0307",
+      "MRR": 0.6892240958975433,
+      "NDCG@5": 0.5883435851383368,
+      "Success": 1.0,
+      "Response_Time": 3.8347319590903224,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0904",
+      "MRR": 0.6507702052383116,
+      "NDCG@5": 0.5243182569697252,
+      "Success": 1.0,
+      "Response_Time": 3.375250076121945,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0775",
+      "MRR": 0.6883968226132748,
+      "NDCG@5": 0.571188286891919,
+      "Success": 1.0,
+      "Response_Time": 3.3450189257454364,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0970",
+      "MRR": 0.576320748097392,
+      "NDCG@5": 0.5014357100800071,
+      "Success": 1.0,
+      "Response_Time": 2.8110360494341133,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0415",
+      "MRR": 0.7969619068868246,
+      "NDCG@5": 0.4445014029316541,
+      "Success": 1.0,
+      "Response_Time": 3.0736250768155142,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0650",
+      "MRR": 0.5748433460987722,
+      "NDCG@5": 0.6541025889405553,
+      "Success": 1.0,
+      "Response_Time": 3.22086861903195,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0679",
+      "MRR": 0.751796786540636,
+      "NDCG@5": 0.5003979188241009,
+      "Success": 1.0,
+      "Response_Time": 3.433227840022807,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0814",
+      "MRR": 0.5643187652066218,
+      "NDCG@5": 0.7766246145217921,
+      "Success": 1.0,
+      "Response_Time": 2.8905885849590804,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0746",
+      "MRR": 0.6673838639204325,
+      "NDCG@5": 0.6285101343313457,
+      "Success": 1.0,
+      "Response_Time": 3.4831056660570545,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0361",
+      "MRR": 0.6228241107010062,
+      "NDCG@5": 0.5536775714261243,
+      "Success": 1.0,
+      "Response_Time": 3.3462102446322706,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0966",
+      "MRR": 0.626269819853436,
+      "NDCG@5": 0.6608601534459012,
+      "Success": 1.0,
+      "Response_Time": 4.1478935105888,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0546",
+      "MRR": 0.5893257393492949,
+      "NDCG@5": 0.43215930800125035,
+      "Success": 1.0,
+      "Response_Time": 3.2973356421100357,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0108",
+      "MRR": 0.8716738403888886,
+      "NDCG@5": 0.4876398923389664,
+      "Success": 1.0,
+      "Response_Time": 3.936473218014305,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0773",
+      "MRR": 0.7904930732668796,
+      "NDCG@5": 0.5121483523126166,
+      "Success": 1.0,
+      "Response_Time": 3.540523739298552,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0008",
+      "MRR": 0.7860556960815683,
+      "NDCG@5": 0.5292454813832262,
+      "Success": 1.0,
+      "Response_Time": 3.2546752667621264,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0358",
+      "MRR": 0.5871487177446221,
+      "NDCG@5": 0.4669538403920991,
+      "Success": 1.0,
+      "Response_Time": 3.0897673083255777,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0890",
+      "MRR": 0.5293453759913969,
+      "NDCG@5": 0.5697401798894042,
+      "Success": 1.0,
+      "Response_Time": 3.0451099045083025,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0187",
+      "MRR": 0.6605407320611673,
+      "NDCG@5": 0.41392222667204454,
+      "Success": 1.0,
+      "Response_Time": 3.452425685919349,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0997",
+      "MRR": 0.7145176065448031,
+      "NDCG@5": 0.3710139070279974,
+      "Success": 1.0,
+      "Response_Time": 3.4684009308436017,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0162",
+      "MRR": 0.7499902093225963,
+      "NDCG@5": 0.44785518016826187,
+      "Success": 1.0,
+      "Response_Time": 3.9488517831299506,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0568",
+      "MRR": 0.6772117108429441,
+      "NDCG@5": 0.49730883813567595,
+      "Success": 1.0,
+      "Response_Time": 3.3093654412666487,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0986",
+      "MRR": 0.689749422126955,
+      "NDCG@5": 0.5738485283584164,
+      "Success": 1.0,
+      "Response_Time": 3.529339717205157,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0401",
+      "MRR": 0.556639376622857,
+      "NDCG@5": 0.5829973607555357,
+      "Success": 1.0,
+      "Response_Time": 2.8069256361451576,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0599",
+      "MRR": 0.6294896544786169,
+      "NDCG@5": 0.4778170511364506,
+      "Success": 1.0,
+      "Response_Time": 3.0578539212417866,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0804",
+      "MRR": 0.7507483857689393,
+      "NDCG@5": 0.6733483918182384,
+      "Success": 1.0,
+      "Response_Time": 3.5553811047356554,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0082",
+      "MRR": 0.5411918511794679,
+      "NDCG@5": 0.5353919719299094,
+      "Success": 1.0,
+      "Response_Time": 3.7788461489922978,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0382",
+      "MRR": 0.6522545222275914,
+      "NDCG@5": 0.7936942949182061,
+      "Success": 1.0,
+      "Response_Time": 3.4755276005759175,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0754",
+      "MRR": 0.6567844204841028,
+      "NDCG@5": 0.5361065865081549,
+      "Success": 1.0,
+      "Response_Time": 3.3794101347694445,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0326",
+      "MRR": 0.625777714725751,
+      "NDCG@5": 0.6357946503154819,
+      "Success": 1.0,
+      "Response_Time": 3.683979857213996,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0895",
+      "MRR": 0.5687609485542845,
+      "NDCG@5": 0.4359391705513378,
+      "Success": 1.0,
+      "Response_Time": 2.6506040119517804,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0652",
+      "MRR": 0.6852192194221289,
+      "NDCG@5": 0.4582700725949604,
+      "Success": 1.0,
+      "Response_Time": 2.5334304806075814,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0798",
+      "MRR": 0.6744720744077868,
+      "NDCG@5": 0.8107139527084135,
+      "Success": 1.0,
+      "Response_Time": 3.3277537627302394,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0882",
+      "MRR": 0.7149641697006477,
+      "NDCG@5": 0.5744192771376614,
+      "Success": 1.0,
+      "Response_Time": 3.2934108283192773,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0221",
+      "MRR": 0.7222168834688991,
+      "NDCG@5": 0.5379530946695121,
+      "Success": 1.0,
+      "Response_Time": 3.428935156206604,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0946",
+      "MRR": 0.6684528025576412,
+      "NDCG@5": 0.5009271355429812,
+      "Success": 1.0,
+      "Response_Time": 3.6970556693285133,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0312",
+      "MRR": 0.6237536218974131,
+      "NDCG@5": 0.49233697436970125,
+      "Success": 1.0,
+      "Response_Time": 3.528508642121049,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0371",
+      "MRR": 0.5586378816388066,
+      "NDCG@5": 0.5691617534221746,
+      "Success": 1.0,
+      "Response_Time": 3.326625971241645,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0172",
+      "MRR": 0.7372306009248419,
+      "NDCG@5": 0.6129204268222354,
+      "Success": 1.0,
+      "Response_Time": 3.3207400252642967,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0797",
+      "MRR": 0.7130989669280258,
+      "NDCG@5": 0.7026403398036967,
+      "Success": 1.0,
+      "Response_Time": 3.536389813350189,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0598",
+      "MRR": 0.6404317357859042,
+      "NDCG@5": 0.43784004922968434,
+      "Success": 1.0,
+      "Response_Time": 2.9359079446621124,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0674",
+      "MRR": 0.6120297766080799,
+      "NDCG@5": 0.5066678041883903,
+      "Success": 1.0,
+      "Response_Time": 3.260820617895385,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0128",
+      "MRR": 0.6445984932407396,
+      "NDCG@5": 0.6183098899269597,
+      "Success": 1.0,
+      "Response_Time": 3.303915452118136,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0493",
+      "MRR": 0.6832851479443581,
+      "NDCG@5": 0.5727184926513919,
+      "Success": 1.0,
+      "Response_Time": 2.5990773704490677,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0407",
+      "MRR": 0.554959814556312,
+      "NDCG@5": 0.5522794195392817,
+      "Success": 1.0,
+      "Response_Time": 2.8824129451487903,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0272",
+      "MRR": 0.6934935856996584,
+      "NDCG@5": 0.7164135815696824,
+      "Success": 1.0,
+      "Response_Time": 3.780941885128007,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0520",
+      "MRR": 0.6202901416162813,
+      "NDCG@5": 0.7124911614112953,
+      "Success": 1.0,
+      "Response_Time": 3.3850069591647816,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0757",
+      "MRR": 0.6091622625993764,
+      "NDCG@5": 0.5062865389729879,
+      "Success": 1.0,
+      "Response_Time": 3.2180862159993926,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0018",
+      "MRR": 0.6045640863312893,
+      "NDCG@5": 0.5831007897927978,
+      "Success": 1.0,
+      "Response_Time": 3.38941237298845,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0176",
+      "MRR": 0.6397741418138072,
+      "NDCG@5": 0.6092199406351423,
+      "Success": 1.0,
+      "Response_Time": 3.7705391216709465,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0807",
+      "MRR": 0.7249598721897191,
+      "NDCG@5": 0.42087999909190943,
+      "Success": 1.0,
+      "Response_Time": 2.385049180086277,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0414",
+      "MRR": 0.7235887920115346,
+      "NDCG@5": 0.43244588755528873,
+      "Success": 1.0,
+      "Response_Time": 3.246836801299707,
+      "model": "SingleAgent"
+    },
+    {
+      "query_id": "query_0328",
+      "MRR": 0.37793813226376727,
+      "NDCG@5": 0.23539007361651793,
+      "Success": 1.0,
+      "Response_Time": 3.1907803093332445,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0038",
+      "MRR": 0.580511291831778,
+      "NDCG@5": 0.36528989752296775,
+      "Success": 1.0,
+      "Response_Time": 2.376329004042323,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0989",
+      "MRR": 0.44344433293348934,
+      "NDCG@5": 0.46793122457266995,
+      "Success": 1.0,
+      "Response_Time": 2.665482992118726,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0497",
+      "MRR": 0.5200527915768114,
+      "NDCG@5": 0.42477715598766247,
+      "Success": 1.0,
+      "Response_Time": 3.2006157898962826,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0472",
+      "MRR": 0.5133559386834862,
+      "NDCG@5": 0.3232546922665551,
+      "Success": 1.0,
+      "Response_Time": 3.3611085904327678,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0147",
+      "MRR": 0.48415439483216816,
+      "NDCG@5": 0.4235057188119472,
+      "Success": 1.0,
+      "Response_Time": 2.807350330640969,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0541",
+      "MRR": 0.45425536362489144,
+      "NDCG@5": 0.3326109123131485,
+      "Success": 1.0,
+      "Response_Time": 3.00503402441991,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0021",
+      "MRR": 0.6805293904149461,
+      "NDCG@5": 0.28097847884927624,
+      "Success": 1.0,
+      "Response_Time": 2.630474036552047,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0429",
+      "MRR": 0.655272884386829,
+      "NDCG@5": 0.4042116902219022,
+      "Success": 1.0,
+      "Response_Time": 2.8760410879484217,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0047",
+      "MRR": 0.609989992176588,
+      "NDCG@5": 0.36220475278789244,
+      "Success": 1.0,
+      "Response_Time": 3.5247625255222035,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0711",
+      "MRR": 0.5719822164906233,
+      "NDCG@5": 0.37468139073655554,
+      "Success": 1.0,
+      "Response_Time": 3.6109001354490307,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0005",
+      "MRR": 0.4371999330846495,
+      "NDCG@5": 0.5050621094329866,
+      "Success": 1.0,
+      "Response_Time": 3.1278160709056877,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0391",
+      "MRR": 0.6374828353868738,
+      "NDCG@5": 0.5919201868530464,
+      "Success": 1.0,
+      "Response_Time": 3.0583210787570994,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0227",
+      "MRR": 0.42169112361365074,
+      "NDCG@5": 0.47515704715154633,
+      "Success": 1.0,
+      "Response_Time": 2.873794003864452,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0606",
+      "MRR": 0.7122056609902954,
+      "NDCG@5": 0.44087274509477015,
+      "Success": 1.0,
+      "Response_Time": 2.9550163966588516,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0088",
+      "MRR": 0.5201914321158154,
+      "NDCG@5": 0.2836046133098522,
+      "Success": 1.0,
+      "Response_Time": 2.7973803499872303,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0095",
+      "MRR": 0.6268434603341647,
+      "NDCG@5": 0.35676920642903204,
+      "Success": 1.0,
+      "Response_Time": 2.7778031445026956,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0474",
+      "MRR": 0.5571485390153651,
+      "NDCG@5": 0.5520846403942776,
+      "Success": 1.0,
+      "Response_Time": 3.236927860772917,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0893",
+      "MRR": 0.6053850070096107,
+      "NDCG@5": 0.34617972061163715,
+      "Success": 1.0,
+      "Response_Time": 2.6803292266471206,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0305",
+      "MRR": 0.6584400334553261,
+      "NDCG@5": 0.3921959370827336,
+      "Success": 1.0,
+      "Response_Time": 2.9847834157216875,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0164",
+      "MRR": 0.640260384894151,
+      "NDCG@5": 0.48536038099646994,
+      "Success": 1.0,
+      "Response_Time": 3.1685308207412177,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0910",
+      "MRR": 0.7281252462146138,
+      "NDCG@5": 0.35818706757970487,
+      "Success": 1.0,
+      "Response_Time": 3.2912384333011215,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0181",
+      "MRR": 0.5067863781141939,
+      "NDCG@5": 0.4548707815595052,
+      "Success": 1.0,
+      "Response_Time": 3.447401790867258,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0634",
+      "MRR": 0.5541227544104105,
+      "NDCG@5": 0.4834593843792611,
+      "Success": 1.0,
+      "Response_Time": 3.3288519077005483,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0551",
+      "MRR": 0.4624799633979971,
+      "NDCG@5": 0.3374437752620653,
+      "Success": 1.0,
+      "Response_Time": 2.7783496095545313,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0205",
+      "MRR": 0.29433255811551984,
+      "NDCG@5": 0.6443579557736742,
+      "Success": 1.0,
+      "Response_Time": 2.7631658249123623,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0781",
+      "MRR": 0.47756836952349396,
+      "NDCG@5": 0.3970577902117744,
+      "Success": 1.0,
+      "Response_Time": 3.129925741430366,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0379",
+      "MRR": 0.5864524073166262,
+      "NDCG@5": 0.517610189766133,
+      "Success": 1.0,
+      "Response_Time": 2.8983998659720758,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0931",
+      "MRR": 0.4832522200524268,
+      "NDCG@5": 0.45635347475175975,
+      "Success": 1.0,
+      "Response_Time": 2.9853403071922777,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0224",
+      "MRR": 0.6695712854820992,
+      "NDCG@5": 0.47844334487365464,
+      "Success": 1.0,
+      "Response_Time": 3.2410682243729525,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0588",
+      "MRR": 0.5704025332100784,
+      "NDCG@5": 0.5507882288934445,
+      "Success": 1.0,
+      "Response_Time": 3.0970656052629635,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0086",
+      "MRR": 0.36463264546463614,
+      "NDCG@5": 0.46876692288578004,
+      "Success": 1.0,
+      "Response_Time": 2.8806472076141243,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0942",
+      "MRR": 0.44529524841627555,
+      "NDCG@5": 0.4885545859880399,
+      "Success": 1.0,
+      "Response_Time": 3.371953598572745,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0755",
+      "MRR": 0.5030335155572865,
+      "NDCG@5": 0.45913629933549016,
+      "Success": 1.0,
+      "Response_Time": 3.4925758856051616,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0051",
+      "MRR": 0.5260790838462996,
+      "NDCG@5": 0.7021784101031219,
+      "Success": 1.0,
+      "Response_Time": 3.1970325078642015,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0076",
+      "MRR": 0.3159199102886392,
+      "NDCG@5": 0.5062542118370804,
+      "Success": 1.0,
+      "Response_Time": 3.149101180069522,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0629",
+      "MRR": 0.6362240391786883,
+      "NDCG@5": 0.4977572232346156,
+      "Success": 1.0,
+      "Response_Time": 3.0140014441642187,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0237",
+      "MRR": 0.3722486851896166,
+      "NDCG@5": 0.4042435347276813,
+      "Success": 1.0,
+      "Response_Time": 2.8288646819055816,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0734",
+      "MRR": 0.43984503777050415,
+      "NDCG@5": 0.4887893108685846,
+      "Success": 1.0,
+      "Response_Time": 3.4841751711313655,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0019",
+      "MRR": 0.542240510631413,
+      "NDCG@5": 0.29963639542427045,
+      "Success": 1.0,
+      "Response_Time": 3.1655966937372364,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0911",
+      "MRR": 0.6264463060977934,
+      "NDCG@5": 0.36176301214214546,
+      "Success": 1.0,
+      "Response_Time": 3.0151555366650413,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0662",
+      "MRR": 0.5023422604465657,
+      "NDCG@5": 0.3432007788132826,
+      "Success": 1.0,
+      "Response_Time": 3.218552912799403,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0291",
+      "MRR": 0.48810044439618294,
+      "NDCG@5": 0.47087043905414494,
+      "Success": 1.0,
+      "Response_Time": 2.8192520337714537,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0856",
+      "MRR": 0.4548668784660419,
+      "NDCG@5": 0.5029724239297437,
+      "Success": 1.0,
+      "Response_Time": 2.9530633804561406,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0488",
+      "MRR": 0.6821312043795076,
+      "NDCG@5": 0.38403856432485217,
+      "Success": 1.0,
+      "Response_Time": 3.1084180286954903,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0068",
+      "MRR": 0.5987220373466744,
+      "NDCG@5": 0.2760532323090986,
+      "Success": 1.0,
+      "Response_Time": 2.592189708884998,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0189",
+      "MRR": 0.34060608697014005,
+      "NDCG@5": 0.5602339149632813,
+      "Success": 1.0,
+      "Response_Time": 2.9065168820679634,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0198",
+      "MRR": 0.7694109249951665,
+      "NDCG@5": 0.3665897545423168,
+      "Success": 1.0,
+      "Response_Time": 3.0979833388312294,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0440",
+      "MRR": 0.662721545019627,
+      "NDCG@5": 0.639045846144867,
+      "Success": 1.0,
+      "Response_Time": 3.5859909299254635,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0369",
+      "MRR": 0.62767845421228,
+      "NDCG@5": 0.534950627736015,
+      "Success": 1.0,
+      "Response_Time": 3.2040570067923073,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0594",
+      "MRR": 0.582527912997497,
+      "NDCG@5": 0.36797431406917547,
+      "Success": 1.0,
+      "Response_Time": 2.8372682903102,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0053",
+      "MRR": 0.50044568197185,
+      "NDCG@5": 0.4083604300123576,
+      "Success": 1.0,
+      "Response_Time": 2.932160707174908,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0859",
+      "MRR": 0.5739206819829551,
+      "NDCG@5": 0.5276623521084741,
+      "Success": 1.0,
+      "Response_Time": 3.07298579043588,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0847",
+      "MRR": 0.6559406585108025,
+      "NDCG@5": 0.3053809539018485,
+      "Success": 1.0,
+      "Response_Time": 2.9996485405872733,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0350",
+      "MRR": 0.4255336563367055,
+      "NDCG@5": 0.22854711859025564,
+      "Success": 1.0,
+      "Response_Time": 3.028503021680898,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0850",
+      "MRR": 0.48801651161975523,
+      "NDCG@5": 0.5868256727836658,
+      "Success": 1.0,
+      "Response_Time": 3.214011037984242,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0268",
+      "MRR": 0.3932603834454335,
+      "NDCG@5": 0.622933812031424,
+      "Success": 1.0,
+      "Response_Time": 3.3674687608365916,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0000",
+      "MRR": 0.5619202588642047,
+      "NDCG@5": 0.4023926855219178,
+      "Success": 1.0,
+      "Response_Time": 2.800545798451895,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0408",
+      "MRR": 0.4617182885125395,
+      "NDCG@5": 0.5418073536886437,
+      "Success": 1.0,
+      "Response_Time": 3.5399924395429982,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0419",
+      "MRR": 0.6628405704685798,
+      "NDCG@5": 0.37458196129065496,
+      "Success": 1.0,
+      "Response_Time": 2.758899467344857,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0137",
+      "MRR": 0.5155930559256764,
+      "NDCG@5": 0.23894542725033774,
+      "Success": 1.0,
+      "Response_Time": 3.134023605688043,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0040",
+      "MRR": 0.48530172843863983,
+      "NDCG@5": 0.3770001308019663,
+      "Success": 1.0,
+      "Response_Time": 2.6353772025106332,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0454",
+      "MRR": 0.5547280111898203,
+      "NDCG@5": 0.3699337109958374,
+      "Success": 1.0,
+      "Response_Time": 2.745821622715325,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0710",
+      "MRR": 0.19921246760542688,
+      "NDCG@5": 0.4234834200646326,
+      "Success": 1.0,
+      "Response_Time": 3.510785415134133,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0851",
+      "MRR": 0.6752322175275264,
+      "NDCG@5": 0.3779477968018552,
+      "Success": 1.0,
+      "Response_Time": 2.893424864305937,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0174",
+      "MRR": 0.5500212968878775,
+      "NDCG@5": 0.3205711434460411,
+      "Success": 1.0,
+      "Response_Time": 3.128465893953061,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0403",
+      "MRR": 0.5812384292303925,
+      "NDCG@5": 0.5564549217317366,
+      "Success": 1.0,
+      "Response_Time": 3.023959940115212,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0427",
+      "MRR": 0.4794142562314186,
+      "NDCG@5": 0.33333384580380454,
+      "Success": 1.0,
+      "Response_Time": 2.835011107949636,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0670",
+      "MRR": 0.47701971635033974,
+      "NDCG@5": 0.4653407437225149,
+      "Success": 1.0,
+      "Response_Time": 3.2875320028206447,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0719",
+      "MRR": 0.41646621017856383,
+      "NDCG@5": 0.5846249883097093,
+      "Success": 1.0,
+      "Response_Time": 2.979507863728932,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0620",
+      "MRR": 0.4985564340934142,
+      "NDCG@5": 0.34719556201033075,
+      "Success": 1.0,
+      "Response_Time": 2.419697532329035,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0937",
+      "MRR": 0.5936247666179102,
+      "NDCG@5": 0.504505453091798,
+      "Success": 1.0,
+      "Response_Time": 2.9768548351492643,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0806",
+      "MRR": 0.5078340253086115,
+      "NDCG@5": 0.48108955707663453,
+      "Success": 1.0,
+      "Response_Time": 2.6437380772094987,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0011",
+      "MRR": 0.4452494688786391,
+      "NDCG@5": 0.5105920560399136,
+      "Success": 1.0,
+      "Response_Time": 2.723884749975995,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0608",
+      "MRR": 0.5316235828774961,
+      "NDCG@5": 0.2826023287099191,
+      "Success": 1.0,
+      "Response_Time": 3.1712717954327165,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0179",
+      "MRR": 0.49705764435876426,
+      "NDCG@5": 0.255196027514016,
+      "Success": 1.0,
+      "Response_Time": 3.3528322321588644,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0587",
+      "MRR": 0.42366788443620484,
+      "NDCG@5": 0.3405132416764756,
+      "Success": 1.0,
+      "Response_Time": 3.102147991280045,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0583",
+      "MRR": 0.6214069216900151,
+      "NDCG@5": 0.3187228871882899,
+      "Success": 1.0,
+      "Response_Time": 3.0660367609604724,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0294",
+      "MRR": 0.5458257325347102,
+      "NDCG@5": 0.4998691943698933,
+      "Success": 1.0,
+      "Response_Time": 3.0958748043720785,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0089",
+      "MRR": 0.4622620768962512,
+      "NDCG@5": 0.3386754366112357,
+      "Success": 1.0,
+      "Response_Time": 3.072397409592057,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0280",
+      "MRR": 0.3882254037415113,
+      "NDCG@5": 0.11673684874957163,
+      "Success": 1.0,
+      "Response_Time": 3.1635055490809934,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0251",
+      "MRR": 0.5957131583140505,
+      "NDCG@5": 0.17592916183256513,
+      "Success": 1.0,
+      "Response_Time": 2.787470016775416,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0166",
+      "MRR": 0.5658111974055458,
+      "NDCG@5": 0.6444945197894401,
+      "Success": 1.0,
+      "Response_Time": 3.0554063639956057,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0811",
+      "MRR": 0.4243596911709409,
+      "NDCG@5": 0.40701297724288693,
+      "Success": 1.0,
+      "Response_Time": 3.407467868978528,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0173",
+      "MRR": 0.4329737611919238,
+      "NDCG@5": 0.3416856472950731,
+      "Success": 1.0,
+      "Response_Time": 2.9244866842326713,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0871",
+      "MRR": 0.4007004961328352,
+      "NDCG@5": 0.43940305349544834,
+      "Success": 1.0,
+      "Response_Time": 3.4724163992020856,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0092",
+      "MRR": 0.5347233236771831,
+      "NDCG@5": 0.3996505287746135,
+      "Success": 1.0,
+      "Response_Time": 2.9741290700819585,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0013",
+      "MRR": 0.33666496508685106,
+      "NDCG@5": 0.5200096363775989,
+      "Success": 1.0,
+      "Response_Time": 3.0297623287766715,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0661",
+      "MRR": 0.48184960907298435,
+      "NDCG@5": 0.7648694021915552,
+      "Success": 1.0,
+      "Response_Time": 3.127675756175078,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0184",
+      "MRR": 0.4218619397400057,
+      "NDCG@5": 0.3812060948022124,
+      "Success": 1.0,
+      "Response_Time": 3.3485958843911563,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0901",
+      "MRR": 0.5126933931064653,
+      "NDCG@5": 0.27394253429835913,
+      "Success": 1.0,
+      "Response_Time": 3.2889995229895526,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0257",
+      "MRR": 0.43064487101840565,
+      "NDCG@5": 0.6249695642790598,
+      "Success": 1.0,
+      "Response_Time": 3.3308124970858084,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0778",
+      "MRR": 0.4538312009558311,
+      "NDCG@5": 0.562187734343922,
+      "Success": 1.0,
+      "Response_Time": 3.0676424327371246,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0603",
+      "MRR": 0.590341235887833,
+      "NDCG@5": 0.4777816786332143,
+      "Success": 1.0,
+      "Response_Time": 2.8299472697023726,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0193",
+      "MRR": 0.4332272676066665,
+      "NDCG@5": 0.5355758466636031,
+      "Success": 1.0,
+      "Response_Time": 2.962958413652299,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0421",
+      "MRR": 0.4584169113595904,
+      "NDCG@5": 0.3251570065889686,
+      "Success": 1.0,
+      "Response_Time": 3.1601357570542996,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0565",
+      "MRR": 0.7173651165205303,
+      "NDCG@5": 0.3132415110890471,
+      "Success": 1.0,
+      "Response_Time": 3.0562970587349167,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0967",
+      "MRR": 0.6490831583186201,
+      "NDCG@5": 0.41795801252795417,
+      "Success": 1.0,
+      "Response_Time": 3.1676166670249306,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0457",
+      "MRR": 0.38924867954457765,
+      "NDCG@5": 0.47180055230401075,
+      "Success": 1.0,
+      "Response_Time": 3.0013424910988173,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0307",
+      "MRR": 0.6043016495463857,
+      "NDCG@5": 0.5522629214658636,
+      "Success": 1.0,
+      "Response_Time": 3.7232865469248395,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0904",
+      "MRR": 0.5616614831874255,
+      "NDCG@5": 0.46093440955770965,
+      "Success": 1.0,
+      "Response_Time": 3.100539918410107,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0775",
+      "MRR": 0.46371753925487774,
+      "NDCG@5": 0.46227928740693924,
+      "Success": 1.0,
+      "Response_Time": 2.973195633363852,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0970",
+      "MRR": 0.5184884025083095,
+      "NDCG@5": 0.5660653387744438,
+      "Success": 1.0,
+      "Response_Time": 2.788298933027293,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0415",
+      "MRR": 0.6204872489185498,
+      "NDCG@5": 0.5660141971380257,
+      "Success": 1.0,
+      "Response_Time": 3.0193021829823192,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0650",
+      "MRR": 0.2780052356040976,
+      "NDCG@5": 0.36197086936799017,
+      "Success": 1.0,
+      "Response_Time": 3.387218582105888,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0679",
+      "MRR": 0.4983988534586174,
+      "NDCG@5": 0.32047396337673945,
+      "Success": 1.0,
+      "Response_Time": 2.9187585204806634,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0814",
+      "MRR": 0.5890651027829781,
+      "NDCG@5": 0.48435375822934623,
+      "Success": 1.0,
+      "Response_Time": 2.9878776542158794,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0746",
+      "MRR": 0.4622834367594578,
+      "NDCG@5": 0.3848736362013549,
+      "Success": 1.0,
+      "Response_Time": 2.810173352030389,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0361",
+      "MRR": 0.6704144473942915,
+      "NDCG@5": 0.392234030263598,
+      "Success": 1.0,
+      "Response_Time": 3.366461215414629,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0966",
+      "MRR": 0.6605381854518574,
+      "NDCG@5": 0.5322209552036838,
+      "Success": 1.0,
+      "Response_Time": 2.9377787186933073,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0546",
+      "MRR": 0.543191659485344,
+      "NDCG@5": 0.4238352657225629,
+      "Success": 1.0,
+      "Response_Time": 2.8150375162101664,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0108",
+      "MRR": 0.5348577245807683,
+      "NDCG@5": 0.30142178213706095,
+      "Success": 1.0,
+      "Response_Time": 3.3587966410000063,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0773",
+      "MRR": 0.45201518378366873,
+      "NDCG@5": 0.44772292352252097,
+      "Success": 1.0,
+      "Response_Time": 3.1236548466019967,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0008",
+      "MRR": 0.4736149777610719,
+      "NDCG@5": 0.48858954295637913,
+      "Success": 1.0,
+      "Response_Time": 2.9265250492781436,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0358",
+      "MRR": 0.5922862162330107,
+      "NDCG@5": 0.2837261538938447,
+      "Success": 1.0,
+      "Response_Time": 3.082858690682067,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0890",
+      "MRR": 0.7043875449011199,
+      "NDCG@5": 0.3203648795918091,
+      "Success": 1.0,
+      "Response_Time": 2.8737863076635386,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0187",
+      "MRR": 0.5547603242141861,
+      "NDCG@5": 0.4454356688855974,
+      "Success": 1.0,
+      "Response_Time": 3.1411638258111254,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0997",
+      "MRR": 0.5521646486655047,
+      "NDCG@5": 0.4936804756675476,
+      "Success": 1.0,
+      "Response_Time": 3.338521958908618,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0162",
+      "MRR": 0.5438309589774939,
+      "NDCG@5": 0.4008266886104345,
+      "Success": 1.0,
+      "Response_Time": 3.22486916231271,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0568",
+      "MRR": 0.7002876031639976,
+      "NDCG@5": 0.4123408228834472,
+      "Success": 1.0,
+      "Response_Time": 2.796622380785633,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0986",
+      "MRR": 0.6170434702751322,
+      "NDCG@5": 0.4136395966209186,
+      "Success": 1.0,
+      "Response_Time": 2.4851059180363504,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0401",
+      "MRR": 0.5897792761007943,
+      "NDCG@5": 0.3696552122888842,
+      "Success": 1.0,
+      "Response_Time": 3.026461346600918,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0599",
+      "MRR": 0.5356579347097465,
+      "NDCG@5": 0.44659296605658105,
+      "Success": 1.0,
+      "Response_Time": 3.23445747245615,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0804",
+      "MRR": 0.4550739310901665,
+      "NDCG@5": 0.4807892146066648,
+      "Success": 1.0,
+      "Response_Time": 2.9825178638281815,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0082",
+      "MRR": 0.5783751004931879,
+      "NDCG@5": 0.49162895330538364,
+      "Success": 1.0,
+      "Response_Time": 2.806785937468405,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0382",
+      "MRR": 0.6148281221983785,
+      "NDCG@5": 0.3695878748179109,
+      "Success": 1.0,
+      "Response_Time": 3.2600950275530973,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0754",
+      "MRR": 0.5393651679071407,
+      "NDCG@5": 0.621247469740283,
+      "Success": 1.0,
+      "Response_Time": 2.9918988445833183,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0326",
+      "MRR": 0.4641217364075893,
+      "NDCG@5": 0.42434152177590034,
+      "Success": 1.0,
+      "Response_Time": 2.9711732564630884,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0895",
+      "MRR": 0.5847938997039153,
+      "NDCG@5": 0.2550710755057217,
+      "Success": 1.0,
+      "Response_Time": 2.776042571021948,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0652",
+      "MRR": 0.38868069323418475,
+      "NDCG@5": 0.527132604749199,
+      "Success": 1.0,
+      "Response_Time": 3.4947594768713004,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0798",
+      "MRR": 0.48983283205356554,
+      "NDCG@5": 0.40850489734185885,
+      "Success": 1.0,
+      "Response_Time": 3.068213562409427,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0882",
+      "MRR": 0.62279722177386,
+      "NDCG@5": 0.32810056777579916,
+      "Success": 1.0,
+      "Response_Time": 3.111975935511044,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0221",
+      "MRR": 0.6031957511271552,
+      "NDCG@5": 0.4795159820136236,
+      "Success": 1.0,
+      "Response_Time": 3.0992912203156733,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0946",
+      "MRR": 0.6059098397195498,
+      "NDCG@5": 0.1398573769420809,
+      "Success": 1.0,
+      "Response_Time": 3.226247583078036,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0312",
+      "MRR": 0.4321220532716205,
+      "NDCG@5": 0.23235291293321558,
+      "Success": 1.0,
+      "Response_Time": 3.1829126758764947,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0371",
+      "MRR": 0.6450341472421106,
+      "NDCG@5": 0.41183045744946467,
+      "Success": 1.0,
+      "Response_Time": 3.297747382272764,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0172",
+      "MRR": 0.6700892170888078,
+      "NDCG@5": 0.565780932079909,
+      "Success": 1.0,
+      "Response_Time": 3.476390777636562,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0797",
+      "MRR": 0.5787233865625487,
+      "NDCG@5": 0.4343959657235688,
+      "Success": 1.0,
+      "Response_Time": 2.633488888906736,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0598",
+      "MRR": 0.47496343874635544,
+      "NDCG@5": 0.33701586089648367,
+      "Success": 1.0,
+      "Response_Time": 3.6144451065494314,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0674",
+      "MRR": 0.48233198969460467,
+      "NDCG@5": 0.4394597095191555,
+      "Success": 1.0,
+      "Response_Time": 3.1933861977705216,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0128",
+      "MRR": 0.5053782568691076,
+      "NDCG@5": 0.6060754102856598,
+      "Success": 1.0,
+      "Response_Time": 2.8881111659490424,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0493",
+      "MRR": 0.5212337827999105,
+      "NDCG@5": 0.3476981179160069,
+      "Success": 1.0,
+      "Response_Time": 2.7067941470826162,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0407",
+      "MRR": 0.43656424545494504,
+      "NDCG@5": 0.42247409951286835,
+      "Success": 1.0,
+      "Response_Time": 2.9383814216255124,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0272",
+      "MRR": 0.42809579711324514,
+      "NDCG@5": 0.2773303488507856,
+      "Success": 1.0,
+      "Response_Time": 3.0283925511165393,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0520",
+      "MRR": 0.3428043607267448,
+      "NDCG@5": 0.5069659321510979,
+      "Success": 1.0,
+      "Response_Time": 3.0714343357629708,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0757",
+      "MRR": 0.3477570925561823,
+      "NDCG@5": 0.3936238378327145,
+      "Success": 1.0,
+      "Response_Time": 2.854439334546448,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0018",
+      "MRR": 0.534313323594014,
+      "NDCG@5": 0.5684877472784533,
+      "Success": 1.0,
+      "Response_Time": 2.5624551578921064,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0176",
+      "MRR": 0.5128777383104788,
+      "NDCG@5": 0.40942592366993613,
+      "Success": 1.0,
+      "Response_Time": 3.224548419877121,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0807",
+      "MRR": 0.5231856459649574,
+      "NDCG@5": 0.3466912508356852,
+      "Success": 1.0,
+      "Response_Time": 2.9670459767266792,
+      "model": "Traditional"
+    },
+    {
+      "query_id": "query_0414",
+      "MRR": 0.4172172850356337,
+      "NDCG@5": 0.5404567566914514,
+      "Success": 1.0,
+      "Response_Time": 3.0555410286547047,
+      "model": "Traditional"
+    }
+  ],
+  "performance_statistics": [
+    {
+      "model": "MAMA_Full",
+      "MRR_mean": 0.8454156769493871,
+      "MRR_std": 0.05370444855739588,
+      "NDCG@5_mean": 0.7933284182189627,
+      "NDCG@5_std": 0.06269911887465132,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 1.5541730341695408,
+      "Response_Time_std": 0.15618236055709195,
+      "sample_size": 150
+    },
+    {
+      "model": "MAMA_NoTrust",
+      "MRR_mean": 0.7474881450631621,
+      "MRR_std": 0.06199595532336491,
+      "NDCG@5_mean": 0.6826914686012278,
+      "NDCG@5_std": 0.0760605399340148,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 1.9252701884338361,
+      "Response_Time_std": 0.18584029660587884,
+      "sample_size": 150
+    },
+    {
+      "model": "SingleAgent",
+      "MRR_mean": 0.6509595030495454,
+      "MRR_std": 0.08731128661221786,
+      "NDCG@5_mean": 0.5684241601548812,
+      "NDCG@5_std": 0.09845335354530815,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 3.3544474455424105,
+      "Response_Time_std": 0.37406660445625867,
+      "sample_size": 150
+    },
+    {
+      "model": "Traditional",
+      "MRR_mean": 0.5243071649993674,
+      "MRR_std": 0.10130605500545124,
+      "NDCG@5_mean": 0.42694456695318306,
+      "NDCG@5_std": 0.11098147386498652,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 3.055917216332553,
+      "Response_Time_std": 0.25454092715434995,
+      "sample_size": 150
+    }
+  ],
+  "significance_tests": [
+    {
+      "comparison": "MAMA_Full vs MAMA_NoTrust",
+      "t_statistic": 13.867498254736065,
+      "p_value": 1.318268544369948e-28,
+      "cohens_d": 1.1322764911013206,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    },
+    {
+      "comparison": "MAMA_Full vs SingleAgent",
+      "t_statistic": 22.433378793206263,
+      "p_value": 1.2539814485203099e-49,
+      "cohens_d": 1.831677708330947,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    },
+    {
+      "comparison": "MAMA_Full vs Traditional",
+      "t_statistic": 35.308442403426334,
+      "p_value": 2.8476050462543515e-74,
+      "cohens_d": 2.882922250028114,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    },
+    {
+      "comparison": "MAMA_NoTrust vs SingleAgent",
+      "t_statistic": 11.219851230242268,
+      "p_value": 1.4671784471742945e-21,
+      "cohens_d": 0.9160970168010554,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    },
+    {
+      "comparison": "MAMA_NoTrust vs Traditional",
+      "t_statistic": 21.897661724378413,
+      "p_value": 1.998615953004117e-48,
+      "cohens_d": 1.787936592826691,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    },
+    {
+      "comparison": "SingleAgent vs Traditional",
+      "t_statistic": 11.894449768918724,
+      "p_value": 2.3350659702368648e-23,
+      "cohens_d": 0.9711777568338721,
+      "significant": true,
+      "effect_size": "large",
+      "sample_size": 150
+    }
+  ],
+  "academic_conclusions": {
+    "key_findings": [
+      "MAMA Full 取得最佳性能: MRR=0.8454±0.054",
+      "信任机制贡献显著: 相比MAMA NoTrust提升13.1%",
+      "多智能体协作优势明显: 相比Single Agent提升29.9%",
+      "相比传统方法大幅提升: 提升61.2%"
+    ]
+  }
+}

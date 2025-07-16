@@ -1,0 +1,200 @@
+{
+  "experiment_metadata": {
+    "timestamp": "2025-07-16T09:18:32.574115",
+    "test_queries": 200,
+    "random_seed": 42,
+    "significance_threshold": 0.001
+  },
+  "performance_statistics": [
+    {
+      "model": "MAMA_Full",
+      "MRR_mean": 0.8409809482270599,
+      "MRR_std": 0.06115291594849753,
+      "NDCG@5_mean": 0.8012368847368851,
+      "NDCG@5_std": 0.0635093439682996,
+      "ART_mean": 1.5597025654710803,
+      "ART_std": 0.14668730742069502,
+      "sample_size": 200
+    },
+    {
+      "model": "MAMA_NoTrust",
+      "MRR_mean": 0.7432969717731218,
+      "MRR_std": 0.06800706456856287,
+      "NDCG@5_mean": 0.6845321180279663,
+      "NDCG@5_std": 0.07431072180921267,
+      "ART_mean": 1.9087989747066214,
+      "ART_std": 0.17264182064988667,
+      "sample_size": 200
+    },
+    {
+      "model": "SingleAgent",
+      "MRR_mean": 0.6394846894029914,
+      "MRR_std": 0.0902696894496011,
+      "NDCG@5_mean": 0.5663518804377383,
+      "NDCG@5_std": 0.09789714444433595,
+      "ART_mean": 3.334644628738742,
+      "ART_std": 0.3751734303929195,
+      "sample_size": 200
+    },
+    {
+      "model": "Traditional_Ranking",
+      "MRR_mean": 0.5008053426746277,
+      "MRR_std": 0.10481689688269566,
+      "NDCG@5_mean": 0.42642673522472513,
+      "NDCG@5_std": 0.10572471900171586,
+      "ART_mean": 3.034633223873048,
+      "ART_std": 0.24603699894404216,
+      "sample_size": 200
+    }
+  ],
+  "significance_tests": [
+    {
+      "comparison": "MAMA_Full vs MAMA_NoTrust",
+      "t_statistic": 18.448571847473836,
+      "p_value": 5.82706644659466e-45,
+      "cohens_d": 1.3045110256555983,
+      "significant": true,
+      "mean_diff": 0.09768397645393806,
+      "effect_size": "large",
+      "sample_size": 200,
+      "test_type": "paired_t_test",
+      "methodology_note": "Paired t-test accounts for query difficulty variation"
+    },
+    {
+      "comparison": "MAMA_Full vs SingleAgent",
+      "t_statistic": 28.70351611181877,
+      "p_value": 1.138287628415376e-72,
+      "cohens_d": 2.0296450886564377,
+      "significant": true,
+      "mean_diff": 0.2014962588240686,
+      "effect_size": "large",
+      "sample_size": 200,
+      "test_type": "paired_t_test",
+      "methodology_note": "Paired t-test accounts for query difficulty variation"
+    },
+    {
+      "comparison": "MAMA_Full vs Traditional_Ranking",
+      "t_statistic": 41.855532881048084,
+      "p_value": 1.3580064586425396e-100,
+      "cohens_d": 2.9596331130365616,
+      "significant": true,
+      "mean_diff": 0.3401756055524322,
+      "effect_size": "large",
+      "sample_size": 200,
+      "test_type": "paired_t_test",
+      "methodology_note": "Paired t-test accounts for query difficulty variation"
+    },
+    {
+      "comparison": "SingleAgent vs Traditional_Ranking",
+      "t_statistic": 15.973761432569752,
+      "p_value": 1.6557453359790052e-37,
+      "cohens_d": 1.1295155030026212,
+      "significant": true,
+      "mean_diff": 0.1386793467283636,
+      "effect_size": "large",
+      "sample_size": 200,
+      "test_type": "paired_t_test",
+      "methodology_note": "Paired t-test accounts for query difficulty variation"
+    }
+  ],
+  "hyperparameter_sensitivity": {
+    "alpha_sensitivity": {
+      "correlation_with_mrr": 0.6281340607385306,
+      "sensitivity_level": "high"
+    },
+    "parameter_combinations_tested": 11,
+    "best_configuration": {
+      "alpha": 0.7,
+      "beta": 0.3,
+      "gamma": 5.551115123125783e-17,
+      "MRR": 0.7973040674625687
+    },
+    "detailed_results": [
+      {
+        "alpha": 0.5,
+        "beta": 0.1,
+        "gamma": 0.4,
+        "MRR": 0.6743710341119274
+      },
+      {
+        "alpha": 0.5,
+        "beta": 0.2,
+        "gamma": 0.3,
+        "MRR": 0.671872737284372
+      },
+      {
+        "alpha": 0.5,
+        "beta": 0.3,
+        "gamma": 0.2,
+        "MRR": 0.7143968425741413
+      },
+      {
+        "alpha": 0.5,
+        "beta": 0.4,
+        "gamma": 0.09999999999999998,
+        "MRR": 0.7054717245459764
+      },
+      {
+        "alpha": 0.6,
+        "beta": 0.1,
+        "gamma": 0.30000000000000004,
+        "MRR": 0.7718506679237658
+      },
+      {
+        "alpha": 0.6,
+        "beta": 0.2,
+        "gamma": 0.2,
+        "MRR": 0.7145146036146661
+      },
+      {
+        "alpha": 0.6,
+        "beta": 0.3,
+        "gamma": 0.10000000000000003,
+        "MRR": 0.7656819059029008
+      },
+      {
+        "alpha": 0.7,
+        "beta": 0.1,
+        "gamma": 0.20000000000000004,
+        "MRR": 0.755040194248219
+      },
+      {
+        "alpha": 0.7,
+        "beta": 0.2,
+        "gamma": 0.10000000000000003,
+        "MRR": 0.7237313753432796
+      },
+      {
+        "alpha": 0.7,
+        "beta": 0.3,
+        "gamma": 5.551115123125783e-17,
+        "MRR": 0.7973040674625687
+      },
+      {
+        "alpha": 0.8,
+        "beta": 0.1,
+        "gamma": 0.09999999999999995,
+        "MRR": 0.7410560195939443
+      }
+    ]
+  },
+  "academic_conclusions": {
+    "methodology_improvements": [
+      "Real baseline implementations instead of simulated data",
+      "Ablation studies for component importance validation",
+      "Statistical significance testing with strict threshold (p < 0.001)",
+      "Hyperparameter grid search with sensitivity analysis"
+    ],
+    "key_findings": [
+      "MAMA Full achieved 67.9% improvement over traditional ranking",
+      "Trust mechanism contributes 13.1% performance improvement",
+      "Multi-agent collaboration provides 31.5% improvement over single-agent approach"
+    ],
+    "experimental_rigor": [
+      "All models tested on identical datasets",
+      "Standardized evaluation metrics",
+      "Reproducible random seed",
+      "Statistical significance validation"
+    ]
+  }
+}

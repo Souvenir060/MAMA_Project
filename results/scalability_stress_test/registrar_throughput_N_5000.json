@@ -1,0 +1,10 @@
+{
+  "N": 5000,
+  "total_messages": 10000,
+  "processed_messages": 10000,
+  "failed_messages": 0,
+  "total_time_s": 0.21889124999999865,
+  "throughput_msg_per_s": 45684.78639507089,
+  "max_workers": 50,
+  "success_rate": 1.0
+}

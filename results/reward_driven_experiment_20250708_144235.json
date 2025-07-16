@@ -1,0 +1,2252 @@
+[
+  {
+    "interaction": 1,
+    "query_id": "test_query_001",
+    "system_reward": -1.332420673317472,
+    "mrr": 0.8016397553481437,
+    "ndcg": 0.5391625613581763,
+    "art": 9.343708,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4983350899022999,
+      "economic_agent": 0.5,
+      "weather_agent": 0.4983350899022999,
+      "flight_info_agent": 0.5,
+      "integration_agent": 0.5
+    }
+  },
+  {
+    "interaction": 2,
+    "query_id": "test_query_002",
+    "system_reward": -1.9308959831987516,
+    "mrr": 0.771671760962744,
+    "ndcg": 0.46519178104037695,
+    "art": 12.128207,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4983350899022999,
+      "economic_agent": 0.4975882530340567,
+      "weather_agent": 0.4983350899022999,
+      "flight_info_agent": 0.5,
+      "integration_agent": 0.5
+    }
+  },
+  {
+    "interaction": 3,
+    "query_id": "test_query_003",
+    "system_reward": -2.134768153599715,
+    "mrr": 0.5440482095131096,
+    "ndcg": 0.5422299064876035,
+    "art": 12.846397,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4983350899022999,
+      "economic_agent": 0.49758825303405674,
+      "weather_agent": 0.4983350899022999,
+      "flight_info_agent": 0.49733407042496225,
+      "integration_agent": 0.5
+    }
+  },
+  {
+    "interaction": 4,
+    "query_id": "test_query_004",
+    "system_reward": -2.149977796929348,
+    "mrr": 0.6697331974583459,
+    "ndcg": 0.41923531021828414,
+    "art": 12.927826,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4983350899022999,
+      "economic_agent": 0.4975882530340568,
+      "weather_agent": 0.4983350899022999,
+      "flight_info_agent": 0.49733407042496225,
+      "integration_agent": 0.4973151128048993
+    }
+  },
+  {
+    "interaction": 5,
+    "query_id": "test_query_005",
+    "system_reward": -2.0831339302708,
+    "mrr": 0.7795144042175044,
+    "ndcg": 0.503550270105496,
+    "art": 12.981799,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4959000150235046,
+      "economic_agent": 0.4975882530340568,
+      "weather_agent": 0.4959000150235046,
+      "flight_info_agent": 0.49733407042496225,
+      "integration_agent": 0.4973151128048993
+    }
+  },
+  {
+    "interaction": 6,
+    "query_id": "test_query_006",
+    "system_reward": -1.9953175821642715,
+    "mrr": 0.7675420211814656,
+    "ndcg": 0.5351380234078562,
+    "art": 12.581948,
+    "competence_scores": {
+      "safety_assessment_agent": 0.49590001502350467,
+      "economic_agent": 0.4953373474309666,
+      "weather_agent": 0.49590001502350467,
+      "flight_info_agent": 0.49733407042496225,
+      "integration_agent": 0.4973151128048993
+    }
+  },
+  {
+    "interaction": 7,
+    "query_id": "test_query_007",
+    "system_reward": -2.1468685808017214,
+    "mrr": 0.6470432238481544,
+    "ndcg": 0.44181432414754274,
+    "art": 12.912058,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4959000150235047,
+      "economic_agent": 0.4953373474309666,
+      "weather_agent": 0.4959000150235047,
+      "flight_info_agent": 0.49491965151711487,
+      "integration_agent": 0.4973151128048993
+    }
+  },
+  {
+    "interaction": 8,
+    "query_id": "test_query_008",
+    "system_reward": -2.0630514463086094,
+    "mrr": 0.7391568798690165,
+    "ndcg": 0.44571000435945995,
+    "art": 12.684991,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4959000150235047,
+      "economic_agent": 0.4953373474309666,
+      "weather_agent": 0.4959000150235047,
+      "flight_info_agent": 0.49491965151711487,
+      "integration_agent": 0.49500707143211975
+    }
+  },
+  {
+    "interaction": 9,
+    "query_id": "test_query_009",
+    "system_reward": -2.0486978612319637,
+    "mrr": 0.8964336686658871,
+    "ndcg": 0.5033271782542028,
+    "art": 13.043011,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4937513780971468,
+      "economic_agent": 0.4953373474309666,
+      "weather_agent": 0.4937513780971468,
+      "flight_info_agent": 0.49491965151711487,
+      "integration_agent": 0.49500707143211975
+    }
+  },
+  {
+    "interaction": 10,
+    "query_id": "test_query_010",
+    "system_reward": -2.0303147700329336,
+    "mrr": 0.6521658349660818,
+    "ndcg": 0.5992507399515848,
+    "art": 12.654407,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4937513780971468,
+      "economic_agent": 0.4932678964917454,
+      "weather_agent": 0.4937513780971468,
+      "flight_info_agent": 0.49491965151711487,
+      "integration_agent": 0.49500707143211975
+    }
+  },
+  {
+    "interaction": 11,
+    "query_id": "test_query_011",
+    "system_reward": -2.079366575608329,
+    "mrr": 0.6930838702577586,
+    "ndcg": 0.5116586907214196,
+    "art": 12.806318,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4937513780971468,
+      "economic_agent": 0.4932678964917454,
+      "weather_agent": 0.4937513780971468,
+      "flight_info_agent": 0.4928308169441659,
+      "integration_agent": 0.49500707143211975
+    }
+  },
+  {
+    "interaction": 12,
+    "query_id": "test_query_012",
+    "system_reward": -2.0777695231253155,
+    "mrr": 0.6377414216682759,
+    "ndcg": 0.4557742705184364,
+    "art": 12.575879,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4937513780971468,
+      "economic_agent": 0.4932678964917454,
+      "weather_agent": 0.4937513780971468,
+      "flight_info_agent": 0.4928308169441659,
+      "integration_agent": 0.49291148580235555
+    }
+  },
+  {
+    "interaction": 13,
+    "query_id": "test_query_013",
+    "system_reward": -2.0183057652706884,
+    "mrr": 0.8693322284476612,
+    "ndcg": 0.5712648583756185,
+    "art": 12.972723,
+    "competence_scores": {
+      "safety_assessment_agent": 0.49185549696669384,
+      "economic_agent": 0.4932678964917454,
+      "weather_agent": 0.49185549696669384,
+      "flight_info_agent": 0.4928308169441659,
+      "integration_agent": 0.49291148580235555
+    }
+  },
+  {
+    "interaction": 14,
+    "query_id": "test_query_014",
+    "system_reward": -2.059011916197722,
+    "mrr": 0.777554019752192,
+    "ndcg": 0.5701856897535026,
+    "art": 12.990539,
+    "competence_scores": {
+      "safety_assessment_agent": 0.49185549696669384,
+      "economic_agent": 0.49136961278088503,
+      "weather_agent": 0.49185549696669384,
+      "flight_info_agent": 0.4928308169441659,
+      "integration_agent": 0.49291148580235555
+    }
+  },
+  {
+    "interaction": 15,
+    "query_id": "test_query_015",
+    "system_reward": -2.116851148373209,
+    "mrr": 0.6871269988441895,
+    "ndcg": 0.5570681302227887,
+    "art": 13.072646,
+    "competence_scores": {
+      "safety_assessment_agent": 0.49185549696669384,
+      "economic_agent": 0.4913696127808851,
+      "weather_agent": 0.49185549696669384,
+      "flight_info_agent": 0.490904138793432,
+      "integration_agent": 0.49291148580235555
+    }
+  },
+  {
+    "interaction": 16,
+    "query_id": "test_query_016",
+    "system_reward": -2.0550896099079456,
+    "mrr": 0.7337976509428458,
+    "ndcg": 0.516137324287291,
+    "art": 12.775318,
+    "competence_scores": {
+      "safety_assessment_agent": 0.49185549696669384,
+      "economic_agent": 0.49136961278088515,
+      "weather_agent": 0.49185549696669384,
+      "flight_info_agent": 0.490904138793432,
+      "integration_agent": 0.4910537330996557
+    }
+  },
+  {
+    "interaction": 17,
+    "query_id": "test_query_017",
+    "system_reward": -1.9809778176629522,
+    "mrr": 0.8880266884915557,
+    "ndcg": 0.5947327673510635,
+    "art": 12.870408,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4901957474663907,
+      "economic_agent": 0.49136961278088515,
+      "weather_agent": 0.4901957474663907,
+      "flight_info_agent": 0.490904138793432,
+      "integration_agent": 0.4910537330996557
+    }
+  },
+  {
+    "interaction": 18,
+    "query_id": "test_query_018",
+    "system_reward": -2.0752756131934516,
+    "mrr": 0.6567841949474932,
+    "ndcg": 0.4610727720688787,
+    "art": 12.612092,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4901957474663908,
+      "economic_agent": 0.48964088201747547,
+      "weather_agent": 0.4901957474663908,
+      "flight_info_agent": 0.490904138793432,
+      "integration_agent": 0.4910537330996557
+    }
+  },
+  {
+    "interaction": 19,
+    "query_id": "test_query_019",
+    "system_reward": -2.050357568274202,
+    "mrr": 0.5971227507172453,
+    "ndcg": 0.4896848285972495,
+    "art": 12.425403,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4901957474663908,
+      "economic_agent": 0.48964088201747547,
+      "weather_agent": 0.4901957474663908,
+      "flight_info_agent": 0.48925302029340495,
+      "integration_agent": 0.4910537330996557
+    }
+  },
+  {
+    "interaction": 20,
+    "query_id": "test_query_020",
+    "system_reward": -2.035920382776947,
+    "mrr": 0.7988914925221642,
+    "ndcg": 0.4351850505354691,
+    "art": 12.647755,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4901957474663908,
+      "economic_agent": 0.48964088201747547,
+      "weather_agent": 0.4901957474663908,
+      "flight_info_agent": 0.48925302029340495,
+      "integration_agent": 0.48940565464899577
+    }
+  },
+  {
+    "interaction": 21,
+    "query_id": "test_query_021",
+    "system_reward": -2.0440727117378166,
+    "mrr": 0.7650799396318535,
+    "ndcg": 0.5492982810236049,
+    "art": 12.84912,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48862330362716877,
+      "economic_agent": 0.48964088201747547,
+      "weather_agent": 0.48862330362716877,
+      "flight_info_agent": 0.48925302029340495,
+      "integration_agent": 0.48940565464899577
+    }
+  },
+  {
+    "interaction": 22,
+    "query_id": "test_query_022",
+    "system_reward": -2.016124295236689,
+    "mrr": 0.729926579809443,
+    "ndcg": 0.5698446820988357,
+    "art": 12.680164,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48862330362716877,
+      "economic_agent": 0.48815877040931727,
+      "weather_agent": 0.48862330362716877,
+      "flight_info_agent": 0.48925302029340495,
+      "integration_agent": 0.48940565464899577
+    }
+  },
+  {
+    "interaction": 23,
+    "query_id": "test_query_023",
+    "system_reward": -2.075638480349135,
+    "mrr": 0.6315225784600687,
+    "ndcg": 0.5136617206670944,
+    "art": 12.668561,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48862330362716877,
+      "economic_agent": 0.48815877040931727,
+      "weather_agent": 0.48862330362716877,
+      "flight_info_agent": 0.4877354964137496,
+      "integration_agent": 0.48940565464899577
+    }
+  },
+  {
+    "interaction": 24,
+    "query_id": "test_query_024",
+    "system_reward": -2.066422445056682,
+    "mrr": 0.7272665236371791,
+    "ndcg": 0.45009236372111683,
+    "art": 12.68683,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48862330362716877,
+      "economic_agent": 0.48815877040931727,
+      "weather_agent": 0.48862330362716877,
+      "flight_info_agent": 0.48773549641374964,
+      "integration_agent": 0.4878843565508319
+    }
+  },
+  {
+    "interaction": 25,
+    "query_id": "test_query_025",
+    "system_reward": -2.011177199101243,
+    "mrr": 0.8957785716550019,
+    "ndcg": 0.49734843059189104,
+    "art": 12.84214,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4872491180832098,
+      "economic_agent": 0.48815877040931727,
+      "weather_agent": 0.4872491180832098,
+      "flight_info_agent": 0.48773549641374964,
+      "integration_agent": 0.4878843565508319
+    }
+  },
+  {
+    "interaction": 26,
+    "query_id": "test_query_026",
+    "system_reward": -2.0240363477416814,
+    "mrr": 0.7812197575437109,
+    "ndcg": 0.4868788731020857,
+    "art": 12.656379,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48724911808320986,
+      "economic_agent": 0.48681500507769454,
+      "weather_agent": 0.48724911808320986,
+      "flight_info_agent": 0.48773549641374964,
+      "integration_agent": 0.4878843565508319
+    }
+  },
+  {
+    "interaction": 27,
+    "query_id": "test_query_027",
+    "system_reward": -2.096834258421981,
+    "mrr": 0.5700156815389351,
+    "ndcg": 0.529020672406113,
+    "art": 12.682244,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48724911808320986,
+      "economic_agent": 0.4868150050776946,
+      "weather_agent": 0.48724911808320986,
+      "flight_info_agent": 0.4863433021415553,
+      "integration_agent": 0.4878843565508319
+    }
+  },
+  {
+    "interaction": 28,
+    "query_id": "test_query_028",
+    "system_reward": -2.0268180700212,
+    "mrr": 0.73378481193262,
+    "ndcg": 0.5728335130143807,
+    "art": 12.747327,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48724911808320986,
+      "economic_agent": 0.48681500507769465,
+      "weather_agent": 0.48724911808320986,
+      "flight_info_agent": 0.4863433021415553,
+      "integration_agent": 0.48656456435231565
+    }
+  },
+  {
+    "interaction": 29,
+    "query_id": "test_query_029",
+    "system_reward": -1.9540547936724852,
+    "mrr": 0.7998386759769505,
+    "ndcg": 0.5144008398418366,
+    "art": 12.398753,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48608357895749205,
+      "economic_agent": 0.48681500507769465,
+      "weather_agent": 0.48608357895749205,
+      "flight_info_agent": 0.4863433021415553,
+      "integration_agent": 0.4865645643523157
+    }
+  },
+  {
+    "interaction": 30,
+    "query_id": "test_query_030",
+    "system_reward": -2.0623092573958584,
+    "mrr": 0.6087207543508867,
+    "ndcg": 0.5989101021594683,
+    "art": 12.726808,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48608357895749205,
+      "economic_agent": 0.48555789975114777,
+      "weather_agent": 0.48608357895749205,
+      "flight_info_agent": 0.4863433021415553,
+      "integration_agent": 0.4865645643523157
+    }
+  },
+  {
+    "interaction": 31,
+    "query_id": "test_query_031",
+    "system_reward": -2.138769611536984,
+    "mrr": 0.5939889027981886,
+    "ndcg": 0.4559120683593517,
+    "art": 12.79365,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48608357895749205,
+      "economic_agent": 0.48555789975114777,
+      "weather_agent": 0.48608357895749205,
+      "flight_info_agent": 0.4850380547761017,
+      "integration_agent": 0.4865645643523157
+    }
+  },
+  {
+    "interaction": 32,
+    "query_id": "test_query_032",
+    "system_reward": -1.9805391503262906,
+    "mrr": 0.7495437547794828,
+    "ndcg": 0.5906143694047906,
+    "art": 12.583012,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48608357895749205,
+      "economic_agent": 0.48555789975114777,
+      "weather_agent": 0.48608357895749205,
+      "flight_info_agent": 0.4850380547761017,
+      "integration_agent": 0.48543445510523087
+    }
+  },
+  {
+    "interaction": 33,
+    "query_id": "test_query_033",
+    "system_reward": -2.020472205119494,
+    "mrr": 0.810552993367098,
+    "ndcg": 0.5144584938341676,
+    "art": 12.752384,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4849517765815103,
+      "economic_agent": 0.48555789975114777,
+      "weather_agent": 0.4849517765815103,
+      "flight_info_agent": 0.4850380547761017,
+      "integration_agent": 0.48543445510523087
+    }
+  },
+  {
+    "interaction": 34,
+    "query_id": "test_query_034",
+    "system_reward": -2.0801215379765354,
+    "mrr": 0.6150692512012256,
+    "ndcg": 0.46113940385743635,
+    "art": 12.553025,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4849517765815103,
+      "economic_agent": 0.48440429919838945,
+      "weather_agent": 0.4849517765815103,
+      "flight_info_agent": 0.4850380547761017,
+      "integration_agent": 0.48543445510523087
+    }
+  },
+  {
+    "interaction": 35,
+    "query_id": "test_query_035",
+    "system_reward": -2.19471292895676,
+    "mrr": 0.5381822062300692,
+    "ndcg": 0.4536949713780314,
+    "art": 12.957319,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4849517765815103,
+      "economic_agent": 0.48440429919838945,
+      "weather_agent": 0.4849517765815103,
+      "flight_info_agent": 0.4837936077991596,
+      "integration_agent": 0.48543445510523087
+    }
+  },
+  {
+    "interaction": 36,
+    "query_id": "test_query_036",
+    "system_reward": -2.114674660690371,
+    "mrr": 0.6970559748552632,
+    "ndcg": 0.47453737341880986,
+    "art": 12.91656,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4849517765815103,
+      "economic_agent": 0.48440429919838945,
+      "weather_agent": 0.4849517765815103,
+      "flight_info_agent": 0.4837936077991596,
+      "integration_agent": 0.484250126150493
+    }
+  },
+  {
+    "interaction": 37,
+    "query_id": "test_query_037",
+    "system_reward": -2.008121001957029,
+    "mrr": 0.8688426281452623,
+    "ndcg": 0.5860033669621664,
+    "art": 12.950297,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48394855436175627,
+      "economic_agent": 0.48440429919838945,
+      "weather_agent": 0.48394855436175627,
+      "flight_info_agent": 0.4837936077991596,
+      "integration_agent": 0.484250126150493
+    }
+  },
+  {
+    "interaction": 38,
+    "query_id": "test_query_038",
+    "system_reward": -2.147516412122808,
+    "mrr": 0.6140832261699087,
+    "ndcg": 0.44178374352307204,
+    "art": 12.849316,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48394855436175627,
+      "economic_agent": 0.4832820499529983,
+      "weather_agent": 0.48394855436175627,
+      "flight_info_agent": 0.4837936077991596,
+      "integration_agent": 0.484250126150493
+    }
+  },
+  {
+    "interaction": 39,
+    "query_id": "test_query_039",
+    "system_reward": -2.0828653761503833,
+    "mrr": 0.6342287033648101,
+    "ndcg": 0.4717293562592328,
+    "art": 12.626243,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48394855436175627,
+      "economic_agent": 0.4832820499529983,
+      "weather_agent": 0.48394855436175627,
+      "flight_info_agent": 0.48281301591463915,
+      "integration_agent": 0.484250126150493
+    }
+  },
+  {
+    "interaction": 40,
+    "query_id": "test_query_040",
+    "system_reward": -2.111954461000906,
+    "mrr": 0.6508327298139478,
+    "ndcg": 0.45905811768378774,
+    "art": 12.779554,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48394855436175627,
+      "economic_agent": 0.4832820499529983,
+      "weather_agent": 0.48394855436175627,
+      "flight_info_agent": 0.48281301591463915,
+      "integration_agent": 0.4831876208673175
+    }
+  },
+  {
+    "interaction": 41,
+    "query_id": "test_query_041",
+    "system_reward": -2.036564709890664,
+    "mrr": 0.8697339589849349,
+    "ndcg": 0.42732426628840575,
+    "art": 12.77694,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48301019045955224,
+      "economic_agent": 0.4832820499529983,
+      "weather_agent": 0.48301019045955224,
+      "flight_info_agent": 0.48281301591463915,
+      "integration_agent": 0.4831876208673175
+    }
+  },
+  {
+    "interaction": 42,
+    "query_id": "test_query_042",
+    "system_reward": -2.050203922094558,
+    "mrr": 0.7417821993820237,
+    "ndcg": 0.5105639953815816,
+    "art": 12.755712,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48301019045955224,
+      "economic_agent": 0.4823933318910319,
+      "weather_agent": 0.48301019045955224,
+      "flight_info_agent": 0.48281301591463915,
+      "integration_agent": 0.4831876208673175
+    }
+  },
+  {
+    "interaction": 43,
+    "query_id": "test_query_043",
+    "system_reward": -2.1481255199924743,
+    "mrr": 0.5593020287295597,
+    "ndcg": 0.4839561712892553,
+    "art": 12.827144,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48301019045955224,
+      "economic_agent": 0.4823933318910319,
+      "weather_agent": 0.48301019045955224,
+      "flight_info_agent": 0.48184913580380506,
+      "integration_agent": 0.4831876208673175
+    }
+  },
+  {
+    "interaction": 44,
+    "query_id": "test_query_044",
+    "system_reward": -2.0856483686987266,
+    "mrr": 0.7223027421731362,
+    "ndcg": 0.41631883608004805,
+    "art": 12.705485,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48301019045955224,
+      "economic_agent": 0.4823933318910319,
+      "weather_agent": 0.48301019045955224,
+      "flight_info_agent": 0.48184913580380506,
+      "integration_agent": 0.4822641583632839
+    }
+  },
+  {
+    "interaction": 45,
+    "query_id": "test_query_045",
+    "system_reward": -1.9769512712204365,
+    "mrr": 0.859659035793355,
+    "ndcg": 0.529992786155553,
+    "art": 12.66406,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48223999249342614,
+      "economic_agent": 0.4823933318910319,
+      "weather_agent": 0.48223999249342614,
+      "flight_info_agent": 0.48184913580380506,
+      "integration_agent": 0.48226415836328396
+    }
+  },
+  {
+    "interaction": 46,
+    "query_id": "test_query_046",
+    "system_reward": -2.029681959099707,
+    "mrr": 0.7591585338872202,
+    "ndcg": 0.5780010683635133,
+    "art": 12.822729,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48223999249342614,
+      "economic_agent": 0.4816190714856619,
+      "weather_agent": 0.48223999249342614,
+      "flight_info_agent": 0.48184913580380506,
+      "integration_agent": 0.482264158363284
+    }
+  },
+  {
+    "interaction": 47,
+    "query_id": "test_query_047",
+    "system_reward": -2.113185151240682,
+    "mrr": 0.5675990313703072,
+    "ndcg": 0.4751165905279888,
+    "art": 12.651357,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48223999249342614,
+      "economic_agent": 0.48161907148566196,
+      "weather_agent": 0.48223999249342614,
+      "flight_info_agent": 0.48102519547555567,
+      "integration_agent": 0.482264158363284
+    }
+  },
+  {
+    "interaction": 48,
+    "query_id": "test_query_048",
+    "system_reward": -2.125433033533037,
+    "mrr": 0.6187963879681738,
+    "ndcg": 0.5156560281992348,
+    "art": 12.89607,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48223999249342614,
+      "economic_agent": 0.481619071485662,
+      "weather_agent": 0.48223999249342614,
+      "flight_info_agent": 0.48102519547555567,
+      "integration_agent": 0.4813834488233879
+    }
+  },
+  {
+    "interaction": 49,
+    "query_id": "test_query_049",
+    "system_reward": -1.9297472487696086,
+    "mrr": 0.8963681776621062,
+    "ndcg": 0.5677867004138727,
+    "art": 12.577046,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48160567885734035,
+      "economic_agent": 0.481619071485662,
+      "weather_agent": 0.48160567885734035,
+      "flight_info_agent": 0.48102519547555567,
+      "integration_agent": 0.48138344882338796
+    }
+  },
+  {
+    "interaction": 50,
+    "query_id": "test_query_050",
+    "system_reward": -2.1993699124043773,
+    "mrr": 0.6500502721031728,
+    "ndcg": 0.40776694688588466,
+    "art": 13.112484,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48160567885734035,
+      "economic_agent": 0.48071071913508834,
+      "weather_agent": 0.48160567885734035,
+      "flight_info_agent": 0.48102519547555567,
+      "integration_agent": 0.48138344882338796
+    }
+  },
+  {
+    "interaction": 51,
+    "query_id": "test_query_051",
+    "system_reward": -2.12619076465041,
+    "mrr": 0.5606531029346445,
+    "ndcg": 0.507416485439331,
+    "art": 12.767093,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48160567885734035,
+      "economic_agent": 0.48071071913508834,
+      "weather_agent": 0.48160567885734035,
+      "flight_info_agent": 0.4802674377306977,
+      "integration_agent": 0.48138344882338796
+    }
+  },
+  {
+    "interaction": 52,
+    "query_id": "test_query_052",
+    "system_reward": -2.0487895803533096,
+    "mrr": 0.6653302483592082,
+    "ndcg": 0.5655738007575177,
+    "art": 12.705756,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48160567885734035,
+      "economic_agent": 0.48071071913508834,
+      "weather_agent": 0.48160567885734035,
+      "flight_info_agent": 0.4802674377306977,
+      "integration_agent": 0.48068635416837835
+    }
+  },
+  {
+    "interaction": 53,
+    "query_id": "test_query_053",
+    "system_reward": -2.02565524063964,
+    "mrr": 0.8930503660781539,
+    "ndcg": 0.49145303232274573,
+    "art": 12.897283,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4809152042414643,
+      "economic_agent": 0.48071071913508834,
+      "weather_agent": 0.4809152042414643,
+      "flight_info_agent": 0.4802674377306977,
+      "integration_agent": 0.48068635416837835
+    }
+  },
+  {
+    "interaction": 54,
+    "query_id": "test_query_054",
+    "system_reward": -2.0793794848758758,
+    "mrr": 0.6388760067989746,
+    "ndcg": 0.4822707810113357,
+    "art": 12.639191,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4809152042414643,
+      "economic_agent": 0.48004276170728616,
+      "weather_agent": 0.4809152042414643,
+      "flight_info_agent": 0.4802674377306977,
+      "integration_agent": 0.48068635416837835
+    }
+  },
+  {
+    "interaction": 55,
+    "query_id": "test_query_055",
+    "system_reward": -2.1537933757452006,
+    "mrr": 0.6399024421534387,
+    "ndcg": 0.42767061848356025,
+    "art": 12.904113,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4809152042414643,
+      "economic_agent": 0.48004276170728616,
+      "weather_agent": 0.4809152042414643,
+      "flight_info_agent": 0.47955105106590895,
+      "integration_agent": 0.48068635416837835
+    }
+  },
+  {
+    "interaction": 56,
+    "query_id": "test_query_056",
+    "system_reward": -2.0678022168514296,
+    "mrr": 0.6265490844485939,
+    "ndcg": 0.5939073734228318,
+    "art": 12.779924,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4809152042414643,
+      "economic_agent": 0.48004276170728616,
+      "weather_agent": 0.4809152042414643,
+      "flight_info_agent": 0.47955105106590895,
+      "integration_agent": 0.48003526600136087
+    }
+  },
+  {
+    "interaction": 57,
+    "query_id": "test_query_057",
+    "system_reward": -2.0456641265429867,
+    "mrr": 0.7082135033535751,
+    "ndcg": 0.4797641802889589,
+    "art": 12.604276,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4802688306459969,
+      "economic_agent": 0.48004276170728616,
+      "weather_agent": 0.4802688306459969,
+      "flight_info_agent": 0.47955105106590895,
+      "integration_agent": 0.48003526600136087
+    }
+  },
+  {
+    "interaction": 58,
+    "query_id": "test_query_058",
+    "system_reward": -2.1210575295536116,
+    "mrr": 0.6867041475161484,
+    "ndcg": 0.5488085285998231,
+    "art": 13.076313,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4802688306459969,
+      "economic_agent": 0.47938964583129884,
+      "weather_agent": 0.4802688306459969,
+      "flight_info_agent": 0.47955105106590895,
+      "integration_agent": 0.48003526600136087
+    }
+  },
+  {
+    "interaction": 59,
+    "query_id": "test_query_059",
+    "system_reward": -2.1869716638657577,
+    "mrr": 0.5501721054693323,
+    "ndcg": 0.43686673486627403,
+    "art": 12.908936,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4802688306459969,
+      "economic_agent": 0.4793896458312989,
+      "weather_agent": 0.4802688306459969,
+      "flight_info_agent": 0.4788649520708021,
+      "integration_agent": 0.48003526600136087
+    }
+  },
+  {
+    "interaction": 60,
+    "query_id": "test_query_060",
+    "system_reward": -2.0805902046754157,
+    "mrr": 0.6161745933234395,
+    "ndcg": 0.48566289498802157,
+    "art": 12.606626,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4802688306459969,
+      "economic_agent": 0.4793896458312989,
+      "weather_agent": 0.4802688306459969,
+      "flight_info_agent": 0.4788649520708021,
+      "integration_agent": 0.47943334457199005
+    }
+  },
+  {
+    "interaction": 61,
+    "query_id": "test_query_061",
+    "system_reward": 0.48403918585079386,
+    "mrr": 0.7116387191016886,
+    "ndcg": 0.5830427455252961,
+    "art": 0.169167,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4828469670322517,
+      "economic_agent": 0.4793896458312989,
+      "weather_agent": 0.4828469670322517,
+      "flight_info_agent": 0.4788649520708021,
+      "integration_agent": 0.47943334457199005
+    }
+  },
+  {
+    "interaction": 62,
+    "query_id": "test_query_062",
+    "system_reward": -2.1194416328889196,
+    "mrr": 0.6884704459462209,
+    "ndcg": 0.44795747183148066,
+    "art": 12.870064,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4828469670322517,
+      "economic_agent": 0.47880385574920103,
+      "weather_agent": 0.4828469670322517,
+      "flight_info_agent": 0.4788649520708021,
+      "integration_agent": 0.47943334457199005
+    }
+  },
+  {
+    "interaction": 63,
+    "query_id": "test_query_063",
+    "system_reward": 0.36825654297508786,
+    "mrr": 0.5187746580162583,
+    "ndcg": 0.43657319942146144,
+    "art": 0.069413,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4828469670322517,
+      "economic_agent": 0.47880385574920103,
+      "weather_agent": 0.4828469670322517,
+      "flight_info_agent": 0.48143876453758716,
+      "integration_agent": 0.47943334457199005
+    }
+  },
+  {
+    "interaction": 64,
+    "query_id": "test_query_064",
+    "system_reward": -2.0498896327053555,
+    "mrr": 0.786922799467942,
+    "ndcg": 0.5276541187686701,
+    "art": 12.878602,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4828469670322517,
+      "economic_agent": 0.47880385574920103,
+      "weather_agent": 0.4828469670322517,
+      "flight_info_agent": 0.48143876453758716,
+      "integration_agent": 0.4789298888797423
+    }
+  },
+  {
+    "interaction": 65,
+    "query_id": "test_query_065",
+    "system_reward": -1.9763518618257552,
+    "mrr": 0.8314222657000334,
+    "ndcg": 0.4871345797355782,
+    "art": 12.518873,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48209383884389917,
+      "economic_agent": 0.47880385574920103,
+      "weather_agent": 0.48209383884389917,
+      "flight_info_agent": 0.48143876453758716,
+      "integration_agent": 0.4789298888797423
+    }
+  },
+  {
+    "interaction": 66,
+    "query_id": "test_query_066",
+    "system_reward": -2.086027532945142,
+    "mrr": 0.6095432255383297,
+    "ndcg": 0.5132074420988153,
+    "art": 12.675639,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4820938388438992,
+      "economic_agent": 0.4783182970881177,
+      "weather_agent": 0.4820938388438992,
+      "flight_info_agent": 0.48143876453758716,
+      "integration_agent": 0.4789298888797423
+    }
+  },
+  {
+    "interaction": 67,
+    "query_id": "test_query_067",
+    "system_reward": -2.1512219123641496,
+    "mrr": 0.5317292895284982,
+    "ndcg": 0.4240329295611284,
+    "art": 12.667634,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4820938388438993,
+      "economic_agent": 0.4783182970881177,
+      "weather_agent": 0.4820938388438993,
+      "flight_info_agent": 0.4806084502312018,
+      "integration_agent": 0.4789298888797423
+    }
+  },
+  {
+    "interaction": 68,
+    "query_id": "test_query_068",
+    "system_reward": -2.1539873013976125,
+    "mrr": 0.6683759333432803,
+    "ndcg": 0.4183598131626884,
+    "art": 12.943408,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4820938388438993,
+      "economic_agent": 0.4783182970881177,
+      "weather_agent": 0.4820938388438993,
+      "flight_info_agent": 0.4806084502312018,
+      "integration_agent": 0.47834701539449304
+    }
+  },
+  {
+    "interaction": 69,
+    "query_id": "test_query_069",
+    "system_reward": -2.0033111245287176,
+    "mrr": 0.8710921168022014,
+    "ndcg": 0.5407315718760047,
+    "art": 12.840203,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4813824076530805,
+      "economic_agent": 0.4783182970881177,
+      "weather_agent": 0.4813824076530805,
+      "flight_info_agent": 0.4806084502312018,
+      "integration_agent": 0.47834701539449304
+    }
+  },
+  {
+    "interaction": 70,
+    "query_id": "test_query_070",
+    "system_reward": -2.0998799608209344,
+    "mrr": 0.6948347658174651,
+    "ndcg": 0.4195668321302003,
+    "art": 12.728203,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4813824076530805,
+      "economic_agent": 0.4778640260782827,
+      "weather_agent": 0.4813824076530805,
+      "flight_info_agent": 0.4806084502312018,
+      "integration_agent": 0.47834701539449304
+    }
+  },
+  {
+    "interaction": 71,
+    "query_id": "test_query_071",
+    "system_reward": -2.137609988328208,
+    "mrr": 0.5983231750233664,
+    "ndcg": 0.4946943541561131,
+    "art": 12.874085,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4813824076530805,
+      "economic_agent": 0.47786402607828277,
+      "weather_agent": 0.4813824076530805,
+      "flight_info_agent": 0.4798781334517734,
+      "integration_agent": 0.47834701539449304
+    }
+  },
+  {
+    "interaction": 72,
+    "query_id": "test_query_072",
+    "system_reward": -2.0792436893091724,
+    "mrr": 0.6867703298475947,
+    "ndcg": 0.4797009468794747,
+    "art": 12.729161,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4813824076530805,
+      "economic_agent": 0.47786402607828277,
+      "weather_agent": 0.4813824076530805,
+      "flight_info_agent": 0.4798781334517734,
+      "integration_agent": 0.4779155976273486
+    }
+  },
+  {
+    "interaction": 73,
+    "query_id": "test_query_073",
+    "system_reward": -2.0904895871488254,
+    "mrr": 0.8270187301735288,
+    "ndcg": 0.4090608019544089,
+    "art": 12.924607,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48063343140802506,
+      "economic_agent": 0.47786402607828277,
+      "weather_agent": 0.48063343140802506,
+      "flight_info_agent": 0.4798781334517734,
+      "integration_agent": 0.4779155976273486
+    }
+  },
+  {
+    "interaction": 74,
+    "query_id": "test_query_074",
+    "system_reward": 0.451214493943546,
+    "mrr": 0.7251719831428474,
+    "ndcg": 0.5006272517160175,
+    "art": 0.195526,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48063343140802506,
+      "economic_agent": 0.480641617665977,
+      "weather_agent": 0.48063343140802506,
+      "flight_info_agent": 0.4798781334517734,
+      "integration_agent": 0.4779155976273486
+    }
+  },
+  {
+    "interaction": 75,
+    "query_id": "test_query_075",
+    "system_reward": -2.051583122175419,
+    "mrr": 0.6712979682376644,
+    "ndcg": 0.5317387263237889,
+    "art": 12.663989,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48063343140802506,
+      "economic_agent": 0.4806416176659771,
+      "weather_agent": 0.48063343140802506,
+      "flight_info_agent": 0.4793280875640398,
+      "integration_agent": 0.4779155976273486
+    }
+  },
+  {
+    "interaction": 76,
+    "query_id": "test_query_076",
+    "system_reward": -2.0489921579514605,
+    "mrr": 0.6141137494800859,
+    "ndcg": 0.5284838556412631,
+    "art": 12.530156,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48063343140802506,
+      "economic_agent": 0.4806416176659771,
+      "weather_agent": 0.48063343140802506,
+      "flight_info_agent": 0.4793280875640398,
+      "integration_agent": 0.4775650355331688
+    }
+  },
+  {
+    "interaction": 77,
+    "query_id": "test_query_077",
+    "system_reward": -1.9855621686297273,
+    "mrr": 0.8272807194892022,
+    "ndcg": 0.56018985893648,
+    "art": 12.702752,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4800901720892543,
+      "economic_agent": 0.4806416176659771,
+      "weather_agent": 0.4800901720892543,
+      "flight_info_agent": 0.4793280875640398,
+      "integration_agent": 0.4775650355331688
+    }
+  },
+  {
+    "interaction": 78,
+    "query_id": "test_query_078",
+    "system_reward": -2.1210582084075327,
+    "mrr": 0.7146734083343866,
+    "ndcg": 0.42570007064678206,
+    "art": 12.886038,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4800901720892543,
+      "economic_agent": 0.4799286153479348,
+      "weather_agent": 0.4800901720892543,
+      "flight_info_agent": 0.4793280875640398,
+      "integration_agent": 0.4775650355331688
+    }
+  },
+  {
+    "interaction": 79,
+    "query_id": "test_query_079",
+    "system_reward": -2.0786079078016035,
+    "mrr": 0.6622408353472006,
+    "ndcg": 0.5641278951487911,
+    "art": 12.845777,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4800901720892543,
+      "economic_agent": 0.4799286153479348,
+      "weather_agent": 0.4800901720892543,
+      "flight_info_agent": 0.47879935516396255,
+      "integration_agent": 0.4775650355331688
+    }
+  },
+  {
+    "interaction": 80,
+    "query_id": "test_query_080",
+    "system_reward": -2.054202078890173,
+    "mrr": 0.7251879340203146,
+    "ndcg": 0.5640853687542536,
+    "art": 12.849557,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4800901720892543,
+      "economic_agent": 0.4799286153479348,
+      "weather_agent": 0.4800901720892543,
+      "flight_info_agent": 0.47879935516396255,
+      "integration_agent": 0.47724303434913384
+    }
+  },
+  {
+    "interaction": 81,
+    "query_id": "test_query_081",
+    "system_reward": -2.08471756102417,
+    "mrr": 0.741336871975349,
+    "ndcg": 0.45479222546422676,
+    "art": 12.815846,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47947761481651097,
+      "economic_agent": 0.4799286153479348,
+      "weather_agent": 0.47947761481651097,
+      "flight_info_agent": 0.47879935516396255,
+      "integration_agent": 0.4772430343491339
+    }
+  },
+  {
+    "interaction": 82,
+    "query_id": "test_query_082",
+    "system_reward": -2.1221121437650923,
+    "mrr": 0.6429178239416748,
+    "ndcg": 0.47545181664559516,
+    "art": 12.8473,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47947761481651097,
+      "economic_agent": 0.4792855995417269,
+      "weather_agent": 0.47947761481651097,
+      "flight_info_agent": 0.47879935516396255,
+      "integration_agent": 0.4772430343491339
+    }
+  },
+  {
+    "interaction": 83,
+    "query_id": "test_query_083",
+    "system_reward": -2.1041360386681505,
+    "mrr": 0.5077926264620467,
+    "ndcg": 0.5236507768675785,
+    "art": 12.583567,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47947761481651097,
+      "economic_agent": 0.4792855995417269,
+      "weather_agent": 0.47947761481651097,
+      "flight_info_agent": 0.4782916729138077,
+      "integration_agent": 0.4772430343491339
+    }
+  },
+  {
+    "interaction": 84,
+    "query_id": "test_query_084",
+    "system_reward": -2.1098710594922956,
+    "mrr": 0.7311445270761485,
+    "ndcg": 0.477079324193113,
+    "art": 12.965803,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47947761481651097,
+      "economic_agent": 0.4792855995417269,
+      "weather_agent": 0.47947761481651097,
+      "flight_info_agent": 0.4782916729138077,
+      "integration_agent": 0.47688383525865957
+    }
+  },
+  {
+    "interaction": 85,
+    "query_id": "test_query_085",
+    "system_reward": 0.47424852781601146,
+    "mrr": 0.768124913892848,
+    "ndcg": 0.4521389056471806,
+    "art": 0.069285,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4821226362191014,
+      "economic_agent": 0.4792855995417269,
+      "weather_agent": 0.4821226362191014,
+      "flight_info_agent": 0.4782916729138077,
+      "integration_agent": 0.47688383525865957
+    }
+  },
+  {
+    "interaction": 86,
+    "query_id": "test_query_086",
+    "system_reward": -2.0586184429483896,
+    "mrr": 0.7385780717383879,
+    "ndcg": 0.46966732089063945,
+    "art": 12.709583,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48212263621910145,
+      "economic_agent": 0.4787860360667412,
+      "weather_agent": 0.48212263621910145,
+      "flight_info_agent": 0.4782916729138077,
+      "integration_agent": 0.47688383525865957
+    }
+  },
+  {
+    "interaction": 87,
+    "query_id": "test_query_087",
+    "system_reward": 0.4106575582825083,
+    "mrr": 0.6873296303711414,
+    "ndcg": 0.40783726533512926,
+    "art": 0.137046,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4821226362191015,
+      "economic_agent": 0.4787860360667412,
+      "weather_agent": 0.4821226362191015,
+      "flight_info_agent": 0.4809758095363688,
+      "integration_agent": 0.47688383525865957
+    }
+  },
+  {
+    "interaction": 88,
+    "query_id": "test_query_088",
+    "system_reward": -2.0115966052185335,
+    "mrr": 0.7935161103040496,
+    "ndcg": 0.5095943766496175,
+    "art": 12.664204,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4821226362191015,
+      "economic_agent": 0.4787860360667412,
+      "weather_agent": 0.4821226362191015,
+      "flight_info_agent": 0.4809758095363688,
+      "integration_agent": 0.47668307361728435
+    }
+  },
+  {
+    "interaction": 89,
+    "query_id": "test_query_089",
+    "system_reward": -1.994454411279357,
+    "mrr": 0.8137040567499917,
+    "ndcg": 0.5151849150516169,
+    "art": 12.63005,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4814193685819244,
+      "economic_agent": 0.4787860360667412,
+      "weather_agent": 0.4814193685819244,
+      "flight_info_agent": 0.4809758095363688,
+      "integration_agent": 0.47668307361728435
+    }
+  },
+  {
+    "interaction": 90,
+    "query_id": "test_query_090",
+    "system_reward": -2.137218105708915,
+    "mrr": 0.6255379458844931,
+    "ndcg": 0.4500032898432209,
+    "art": 12.837173,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4814193685819244,
+      "economic_agent": 0.4782384491609951,
+      "weather_agent": 0.4814193685819244,
+      "flight_info_agent": 0.4809758095363688,
+      "integration_agent": 0.47668307361728435
+    }
+  },
+  {
+    "interaction": 91,
+    "query_id": "test_query_091",
+    "system_reward": -2.0736363504357094,
+    "mrr": 0.616108802468782,
+    "ndcg": 0.5734233214419444,
+    "art": 12.747246,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4814193685819244,
+      "economic_agent": 0.47823844916099517,
+      "weather_agent": 0.4814193685819244,
+      "flight_info_agent": 0.4802885026745135,
+      "integration_agent": 0.47668307361728435
+    }
+  },
+  {
+    "interaction": 92,
+    "query_id": "test_query_092",
+    "system_reward": -2.076690515845271,
+    "mrr": 0.7123733384287547,
+    "ndcg": 0.44771937195806805,
+    "art": 12.703638,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4814193685819244,
+      "economic_agent": 0.47823844916099517,
+      "weather_agent": 0.4814193685819244,
+      "flight_info_agent": 0.4802885026745135,
+      "integration_agent": 0.47642123289729577
+    }
+  },
+  {
+    "interaction": 93,
+    "query_id": "test_query_093",
+    "system_reward": -1.9578218069718918,
+    "mrr": 0.8479817520894749,
+    "ndcg": 0.4476472304807959,
+    "art": 12.380367,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48083210688073097,
+      "economic_agent": 0.47823844916099517,
+      "weather_agent": 0.48083210688073097,
+      "flight_info_agent": 0.4802885026745135,
+      "integration_agent": 0.47642123289729577
+    }
+  },
+  {
+    "interaction": 94,
+    "query_id": "test_query_094",
+    "system_reward": -2.083152491223452,
+    "mrr": 0.675545777235259,
+    "ndcg": 0.5068654947061126,
+    "art": 12.780585,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48083210688073097,
+      "economic_agent": 0.47781301521795166,
+      "weather_agent": 0.48083210688073097,
+      "flight_info_agent": 0.4802885026745135,
+      "integration_agent": 0.47642123289729577
+    }
+  },
+  {
+    "interaction": 95,
+    "query_id": "test_query_095",
+    "system_reward": -2.0720282578478177,
+    "mrr": 0.5993122381366155,
+    "ndcg": 0.4779236172438407,
+    "art": 12.514613,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48083210688073097,
+      "economic_agent": 0.47781301521795166,
+      "weather_agent": 0.48083210688073097,
+      "flight_info_agent": 0.4796719312262704,
+      "integration_agent": 0.47642123289729577
+    }
+  },
+  {
+    "interaction": 96,
+    "query_id": "test_query_096",
+    "system_reward": -2.1350389852872618,
+    "mrr": 0.6199969774323727,
+    "ndcg": 0.41069705934947376,
+    "art": 12.736583,
+    "competence_scores": {
+      "safety_assessment_agent": 0.48083210688073097,
+      "economic_agent": 0.47781301521795166,
+      "weather_agent": 0.48083210688073097,
+      "flight_info_agent": 0.4796719312262704,
+      "integration_agent": 0.4761128424554657
+    }
+  },
+  {
+    "interaction": 97,
+    "query_id": "test_query_097",
+    "system_reward": -1.9507769332353353,
+    "mrr": 0.869428628819118,
+    "ndcg": 0.4709810380925441,
+    "art": 12.434704,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4803123564545959,
+      "economic_agent": 0.47781301521795166,
+      "weather_agent": 0.4803123564545959,
+      "flight_info_agent": 0.4796719312262704,
+      "integration_agent": 0.4761128424554657
+    }
+  },
+  {
+    "interaction": 98,
+    "query_id": "test_query_098",
+    "system_reward": -2.0920639316746446,
+    "mrr": 0.7353539808848607,
+    "ndcg": 0.4965041899285285,
+    "art": 12.924036,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4803123564545959,
+      "economic_agent": 0.47741901565510486,
+      "weather_agent": 0.4803123564545959,
+      "flight_info_agent": 0.4796719312262704,
+      "integration_agent": 0.4761128424554657
+    }
+  },
+  {
+    "interaction": 99,
+    "query_id": "test_query_099",
+    "system_reward": -2.0219767944826352,
+    "mrr": 0.598605131554361,
+    "ndcg": 0.41665688223905195,
+    "art": 12.140408,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4803123564545959,
+      "economic_agent": 0.47741901565510486,
+      "weather_agent": 0.4803123564545959,
+      "flight_info_agent": 0.47917941768071004,
+      "integration_agent": 0.4761128424554657
+    }
+  },
+  {
+    "interaction": 100,
+    "query_id": "test_query_100",
+    "system_reward": -2.026819759884244,
+    "mrr": 0.6657329090739832,
+    "ndcg": 0.5345036912154078,
+    "art": 12.534572,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4803123564545959,
+      "economic_agent": 0.47741901565510486,
+      "weather_agent": 0.4803123564545959,
+      "flight_info_agent": 0.47917941768071004,
+      "integration_agent": 0.47597019955957137
+    }
+  },
+  {
+    "interaction": 101,
+    "query_id": "test_query_101",
+    "system_reward": -1.992502625078368,
+    "mrr": 0.8583158087451697,
+    "ndcg": 0.5579236285589108,
+    "art": 12.794992,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47979255047701963,
+      "economic_agent": 0.47741901565510486,
+      "weather_agent": 0.47979255047701963,
+      "flight_info_agent": 0.47917941768071004,
+      "integration_agent": 0.4759701995595714
+    }
+  },
+  {
+    "interaction": 102,
+    "query_id": "test_query_102",
+    "system_reward": 0.5369467560451792,
+    "mrr": 0.7948496417068821,
+    "ndcg": 0.5991862484060658,
+    "art": 0.103338,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47979255047701963,
+      "economic_agent": 0.48034825722294816,
+      "weather_agent": 0.47979255047701963,
+      "flight_info_agent": 0.47917941768071004,
+      "integration_agent": 0.4759701995595715
+    }
+  },
+  {
+    "interaction": 103,
+    "query_id": "test_query_103",
+    "system_reward": -2.1765810630825317,
+    "mrr": 0.51117423093547,
+    "ndcg": 0.5474071113582017,
+    "art": 13.000068,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47979255047701963,
+      "economic_agent": 0.4803482572229482,
+      "weather_agent": 0.47979255047701963,
+      "flight_info_agent": 0.4785434317102929,
+      "integration_agent": 0.4759701995595715
+    }
+  },
+  {
+    "interaction": 104,
+    "query_id": "test_query_104",
+    "system_reward": -1.995025325771774,
+    "mrr": 0.7411662967757389,
+    "ndcg": 0.593730388794827,
+    "art": 12.64492,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47979255047701963,
+      "economic_agent": 0.4803482572229482,
+      "weather_agent": 0.47979255047701963,
+      "flight_info_agent": 0.4785434317102929,
+      "integration_agent": 0.47588146371702916
+    }
+  },
+  {
+    "interaction": 105,
+    "query_id": "test_query_105",
+    "system_reward": -1.939509193636143,
+    "mrr": 0.8673927748474748,
+    "ndcg": 0.5733737410621683,
+    "art": 12.579079,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4793908071115282,
+      "economic_agent": 0.4803482572229482,
+      "weather_agent": 0.4793908071115282,
+      "flight_info_agent": 0.4785434317102929,
+      "integration_agent": 0.4758814637170292
+    }
+  },
+  {
+    "interaction": 106,
+    "query_id": "test_query_106",
+    "system_reward": -2.0701367685905625,
+    "mrr": 0.6852182950093882,
+    "ndcg": 0.4445152835142061,
+    "art": 12.610151,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4793908071115282,
+      "economic_agent": 0.47972806835421167,
+      "weather_agent": 0.4793908071115282,
+      "flight_info_agent": 0.4785434317102929,
+      "integration_agent": 0.4758814637170293
+    }
+  },
+  {
+    "interaction": 107,
+    "query_id": "test_query_107",
+    "system_reward": -2.090995919141518,
+    "mrr": 0.5793303203908504,
+    "ndcg": 0.5783793817553553,
+    "art": 12.770399,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4793908071115282,
+      "economic_agent": 0.47972806835421167,
+      "weather_agent": 0.4793908071115282,
+      "flight_info_agent": 0.4780777218705068,
+      "integration_agent": 0.4758814637170293
+    }
+  },
+  {
+    "interaction": 108,
+    "query_id": "test_query_108",
+    "system_reward": -2.1208461207692464,
+    "mrr": 0.6293209643384051,
+    "ndcg": 0.5026652337384786,
+    "art": 12.868203,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4793908071115282,
+      "economic_agent": 0.47972806835421167,
+      "weather_agent": 0.4793908071115282,
+      "flight_info_agent": 0.4780777218705068,
+      "integration_agent": 0.47564474115946265
+    }
+  },
+  {
+    "interaction": 109,
+    "query_id": "test_query_109",
+    "system_reward": -1.9677340848627372,
+    "mrr": 0.8162610834453564,
+    "ndcg": 0.5726277043978008,
+    "art": 12.616448,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47899404099586185,
+      "economic_agent": 0.47972806835421167,
+      "weather_agent": 0.47899404099586185,
+      "flight_info_agent": 0.4780777218705068,
+      "integration_agent": 0.47564474115946265
+    }
+  },
+  {
+    "interaction": 110,
+    "query_id": "test_query_110",
+    "system_reward": -2.0368239870143605,
+    "mrr": 0.7760719937276834,
+    "ndcg": 0.4473370387364157,
+    "art": 12.630938,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4789940409958619,
+      "economic_agent": 0.47921142979515235,
+      "weather_agent": 0.4789940409958619,
+      "flight_info_agent": 0.4780777218705068,
+      "integration_agent": 0.47564474115946265
+    }
+  },
+  {
+    "interaction": 111,
+    "query_id": "test_query_111",
+    "system_reward": -2.0118352043864136,
+    "mrr": 0.6815387412697093,
+    "ndcg": 0.5183777477642568,
+    "art": 12.459009,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4789940409958619,
+      "economic_agent": 0.47921142979515235,
+      "weather_agent": 0.4789940409958619,
+      "flight_info_agent": 0.47775727407210034,
+      "integration_agent": 0.47564474115946265
+    }
+  },
+  {
+    "interaction": 112,
+    "query_id": "test_query_112",
+    "system_reward": 0.48003785468378524,
+    "mrr": 0.74163623911664,
+    "ndcg": 0.4963333975928231,
+    "art": 0.07575,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4789940409958619,
+      "economic_agent": 0.47921142979515235,
+      "weather_agent": 0.4789940409958619,
+      "flight_info_agent": 0.47775727407210034,
+      "integration_agent": 0.47868028555671616
+    }
+  },
+  {
+    "interaction": 113,
+    "query_id": "test_query_113",
+    "system_reward": -1.9727985185018442,
+    "mrr": 0.8410168728593319,
+    "ndcg": 0.4497448308860576,
+    "art": 12.445516,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4786306362841895,
+      "economic_agent": 0.47921142979515235,
+      "weather_agent": 0.4786306362841895,
+      "flight_info_agent": 0.47775727407210034,
+      "integration_agent": 0.47868028555671616
+    }
+  },
+  {
+    "interaction": 114,
+    "query_id": "test_query_114",
+    "system_reward": -2.224025678531087,
+    "mrr": 0.6868903688976543,
+    "ndcg": 0.45073643477462777,
+    "art": 13.395382,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4786306362841895,
+      "economic_agent": 0.47851311593891227,
+      "weather_agent": 0.4786306362841895,
+      "flight_info_agent": 0.47775727407210034,
+      "integration_agent": 0.47868028555671616
+    }
+  },
+  {
+    "interaction": 115,
+    "query_id": "test_query_115",
+    "system_reward": -2.105026191041086,
+    "mrr": 0.5810404173562834,
+    "ndcg": 0.5142946050410021,
+    "art": 12.715801,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4786306362841895,
+      "economic_agent": 0.47851311593891227,
+      "weather_agent": 0.4786306362841895,
+      "flight_info_agent": 0.4773526903152381,
+      "integration_agent": 0.47868028555671616
+    }
+  },
+  {
+    "interaction": 116,
+    "query_id": "test_query_116",
+    "system_reward": -1.9980385028784609,
+    "mrr": 0.7481947721821337,
+    "ndcg": 0.5534389706217143,
+    "art": 12.59346,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4786306362841895,
+      "economic_agent": 0.47851311593891227,
+      "weather_agent": 0.4786306362841895,
+      "flight_info_agent": 0.4773526903152381,
+      "integration_agent": 0.47831678401106537
+    }
+  },
+  {
+    "interaction": 117,
+    "query_id": "test_query_117",
+    "system_reward": -1.9801465132767837,
+    "mrr": 0.8488423313886596,
+    "ndcg": 0.5362078854193818,
+    "art": 12.670833,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47829440943920204,
+      "economic_agent": 0.47851311593891227,
+      "weather_agent": 0.47829440943920204,
+      "flight_info_agent": 0.4773526903152381,
+      "integration_agent": 0.47831678401106537
+    }
+  },
+  {
+    "interaction": 118,
+    "query_id": "test_query_118",
+    "system_reward": -2.04055837729982,
+    "mrr": 0.6800445785744049,
+    "ndcg": 0.49554297817604553,
+    "art": 12.553967,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47829440943920204,
+      "economic_agent": 0.47811331673842306,
+      "weather_agent": 0.47829440943920204,
+      "flight_info_agent": 0.4773526903152381,
+      "integration_agent": 0.47831678401106537
+    }
+  },
+  {
+    "interaction": 119,
+    "query_id": "test_query_119",
+    "system_reward": -2.1636614845607554,
+    "mrr": 0.5165782643386708,
+    "ndcg": 0.5056740242594419,
+    "art": 12.862812,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47829440943920204,
+      "economic_agent": 0.4781133167384231,
+      "weather_agent": 0.47829440943920204,
+      "flight_info_agent": 0.47691547911327936,
+      "integration_agent": 0.47831678401106537
+    }
+  },
+  {
+    "interaction": 120,
+    "query_id": "test_query_120",
+    "system_reward": -2.05210860657752,
+    "mrr": 0.7604218498053469,
+    "ndcg": 0.5955801337508542,
+    "art": 12.972547,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47829440943920204,
+      "economic_agent": 0.4781133167384231,
+      "weather_agent": 0.47829440943920204,
+      "flight_info_agent": 0.4769154791132794,
+      "integration_agent": 0.47792221793725287
+    }
+  },
+  {
+    "interaction": 121,
+    "query_id": "test_query_121",
+    "system_reward": -2.0567396262739397,
+    "mrr": 0.7645372776555167,
+    "ndcg": 0.40868015665963453,
+    "art": 12.630133,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47789630729142274,
+      "economic_agent": 0.4781133167384231,
+      "weather_agent": 0.47789630729142274,
+      "flight_info_agent": 0.4769154791132794,
+      "integration_agent": 0.47792221793725287
+    }
+  },
+  {
+    "interaction": 122,
+    "query_id": "test_query_122",
+    "system_reward": -2.0320414763598196,
+    "mrr": 0.7849286660447192,
+    "ndcg": 0.5838231430557319,
+    "art": 12.897711,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47789630729142274,
+      "economic_agent": 0.47776411604149904,
+      "weather_agent": 0.47789630729142274,
+      "flight_info_agent": 0.4769154791132794,
+      "integration_agent": 0.47792221793725287
+    }
+  },
+  {
+    "interaction": 123,
+    "query_id": "test_query_123",
+    "system_reward": -2.038942696712329,
+    "mrr": 0.5505980335978482,
+    "ndcg": 0.5390822246213295,
+    "art": 12.374074,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47789630729142274,
+      "economic_agent": 0.47776411604149904,
+      "weather_agent": 0.47789630729142274,
+      "flight_info_agent": 0.47667745795348154,
+      "integration_agent": 0.47792221793725287
+    }
+  },
+  {
+    "interaction": 124,
+    "query_id": "test_query_124",
+    "system_reward": -2.1657844016800785,
+    "mrr": 0.6150869094179539,
+    "ndcg": 0.4332430863818506,
+    "art": 12.925582,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47789630729142274,
+      "economic_agent": 0.47776411604149904,
+      "weather_agent": 0.47789630729142274,
+      "flight_info_agent": 0.47667745795348154,
+      "integration_agent": 0.47742540808345363
+    }
+  },
+  {
+    "interaction": 125,
+    "query_id": "test_query_125",
+    "system_reward": -2.052470774250496,
+    "mrr": 0.7588987893678859,
+    "ndcg": 0.5991662750058742,
+    "art": 12.978484,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4775433373696227,
+      "economic_agent": 0.47776411604149904,
+      "weather_agent": 0.4775433373696227,
+      "flight_info_agent": 0.47667745795348154,
+      "integration_agent": 0.4774254080834537
+    }
+  },
+  {
+    "interaction": 126,
+    "query_id": "test_query_126",
+    "system_reward": -2.0826724490205573,
+    "mrr": 0.739385011172763,
+    "ndcg": 0.476840366275844,
+    "art": 12.845813,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4775433373696227,
+      "economic_agent": 0.4773867138390059,
+      "weather_agent": 0.4775433373696227,
+      "flight_info_agent": 0.47667745795348154,
+      "integration_agent": 0.47742540808345374
+    }
+  },
+  {
+    "interaction": 127,
+    "query_id": "test_query_127",
+    "system_reward": -2.06983659619903,
+    "mrr": 0.6474201411686038,
+    "ndcg": 0.5830508683338212,
+    "art": 12.810125,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4775433373696227,
+      "economic_agent": 0.4773867138390059,
+      "weather_agent": 0.4775433373696227,
+      "flight_info_agent": 0.47642472322413476,
+      "integration_agent": 0.47742540808345374
+    }
+  },
+  {
+    "interaction": 128,
+    "query_id": "test_query_128",
+    "system_reward": -2.0558254955867556,
+    "mrr": 0.7917404814815693,
+    "ndcg": 0.4115727795515415,
+    "art": 12.685754,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4775433373696227,
+      "economic_agent": 0.4773867138390059,
+      "weather_agent": 0.4775433373696227,
+      "flight_info_agent": 0.47642472322413476,
+      "integration_agent": 0.4771153457202196
+    }
+  },
+  {
+    "interaction": 129,
+    "query_id": "test_query_129",
+    "system_reward": -2.0607071095413727,
+    "mrr": 0.7213512131871769,
+    "ndcg": 0.46713201295939266,
+    "art": 12.680502,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47721539618870484,
+      "economic_agent": 0.4773867138390059,
+      "weather_agent": 0.47721539618870484,
+      "flight_info_agent": 0.47642472322413476,
+      "integration_agent": 0.47711534572021963
+    }
+  },
+  {
+    "interaction": 130,
+    "query_id": "test_query_130",
+    "system_reward": -2.027246138754857,
+    "mrr": 0.6339359807791131,
+    "ndcg": 0.5293696723337448,
+    "art": 12.462842,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47721539618870484,
+      "economic_agent": 0.47711615219752646,
+      "weather_agent": 0.47721539618870484,
+      "flight_info_agent": 0.47642472322413476,
+      "integration_agent": 0.4771153457202197
+    }
+  },
+  {
+    "interaction": 131,
+    "query_id": "test_query_131",
+    "system_reward": -2.1790385496244147,
+    "mrr": 0.5776536767979744,
+    "ndcg": 0.4458789491409899,
+    "art": 12.942258,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47721539618870484,
+      "economic_agent": 0.47711615219752646,
+      "weather_agent": 0.47721539618870484,
+      "flight_info_agent": 0.47606114392909626,
+      "integration_agent": 0.4771153457202197
+    }
+  },
+  {
+    "interaction": 132,
+    "query_id": "test_query_132",
+    "system_reward": -2.0716447583864395,
+    "mrr": 0.6531875849928478,
+    "ndcg": 0.47206901904105364,
+    "art": 12.608737,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47721539618870484,
+      "economic_agent": 0.47711615219752646,
+      "weather_agent": 0.47721539618870484,
+      "flight_info_agent": 0.47606114392909626,
+      "integration_agent": 0.47681656805795597
+    }
+  },
+  {
+    "interaction": 133,
+    "query_id": "test_query_133",
+    "system_reward": -2.055502856164922,
+    "mrr": 0.7906481693657662,
+    "ndcg": 0.4064631902219301,
+    "art": 12.671737,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47692673725094303,
+      "economic_agent": 0.47711615219752646,
+      "weather_agent": 0.47692673725094303,
+      "flight_info_agent": 0.47606114392909626,
+      "integration_agent": 0.47681656805795597
+    }
+  },
+  {
+    "interaction": 134,
+    "query_id": "test_query_134",
+    "system_reward": -2.1053003117683615,
+    "mrr": 0.6822413441744373,
+    "ndcg": 0.5205563764046597,
+    "art": 12.932097,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47692673725094303,
+      "economic_agent": 0.47677533892454416,
+      "weather_agent": 0.47692673725094303,
+      "flight_info_agent": 0.47606114392909626,
+      "integration_agent": 0.47681656805795597
+    }
+  },
+  {
+    "interaction": 135,
+    "query_id": "test_query_135",
+    "system_reward": -2.09759637858089,
+    "mrr": 0.554191528503026,
+    "ndcg": 0.42663702504474993,
+    "art": 12.449639,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47692673725094303,
+      "economic_agent": 0.4767753389245442,
+      "weather_agent": 0.47692673725094303,
+      "flight_info_agent": 0.47583543486915997,
+      "integration_agent": 0.47681656805795597
+    }
+  },
+  {
+    "interaction": 136,
+    "query_id": "test_query_136",
+    "system_reward": -2.0931950234612366,
+    "mrr": 0.6152400759198327,
+    "ndcg": 0.5881063654270767,
+    "art": 12.872668,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47692673725094303,
+      "economic_agent": 0.4767753389245442,
+      "weather_agent": 0.47692673725094303,
+      "flight_info_agent": 0.47583543486915997,
+      "integration_agent": 0.47652080320898355
+    }
+  },
+  {
+    "interaction": 137,
+    "query_id": "test_query_137",
+    "system_reward": -2.0042302661586895,
+    "mrr": 0.8162325242361652,
+    "ndcg": 0.5838353103671119,
+    "art": 12.821287,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47673087017072435,
+      "economic_agent": 0.4767753389245442,
+      "weather_agent": 0.47673087017072435,
+      "flight_info_agent": 0.47583543486915997,
+      "integration_agent": 0.47652080320898355
+    }
+  },
+  {
+    "interaction": 138,
+    "query_id": "test_query_138",
+    "system_reward": 0.45862460476852784,
+    "mrr": 0.7732127779000817,
+    "ndcg": 0.4090437340212379,
+    "art": 0.07139,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4767308701707244,
+      "economic_agent": 0.4796710606681456,
+      "weather_agent": 0.4767308701707244,
+      "flight_info_agent": 0.47583543486915997,
+      "integration_agent": 0.47652080320898355
+    }
+  },
+  {
+    "interaction": 139,
+    "query_id": "test_query_139",
+    "system_reward": -2.192294172689976,
+    "mrr": 0.5052733948994504,
+    "ndcg": 0.47529267337560993,
+    "art": 12.922603,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4767308701707244,
+      "economic_agent": 0.4796710606681456,
+      "weather_agent": 0.4767308701707244,
+      "flight_info_agent": 0.47551426425445364,
+      "integration_agent": 0.47652080320898355
+    }
+  },
+  {
+    "interaction": 140,
+    "query_id": "test_query_140",
+    "system_reward": -2.1125081583665226,
+    "mrr": 0.797455225862989,
+    "ndcg": 0.43008337822070564,
+    "art": 13.017618,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4767308701707244,
+      "economic_agent": 0.4796710606681456,
+      "weather_agent": 0.4767308701707244,
+      "flight_info_agent": 0.47551426425445364,
+      "integration_agent": 0.4762305400246172
+    }
+  },
+  {
+    "interaction": 141,
+    "query_id": "test_query_141",
+    "system_reward": -2.03461837964435,
+    "mrr": 0.7761781713262043,
+    "ndcg": 0.5939828795629206,
+    "art": 12.913414,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4765167013106072,
+      "economic_agent": 0.4796710606681456,
+      "weather_agent": 0.4765167013106072,
+      "flight_info_agent": 0.47551426425445364,
+      "integration_agent": 0.4762305400246172
+    }
+  },
+  {
+    "interaction": 142,
+    "query_id": "test_query_142",
+    "system_reward": -2.049446050839512,
+    "mrr": 0.7676657409422276,
+    "ndcg": 0.49373863195899403,
+    "art": 12.770039,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4765167013106072,
+      "economic_agent": 0.4791443863902619,
+      "weather_agent": 0.4765167013106072,
+      "flight_info_agent": 0.47551426425445364,
+      "integration_agent": 0.4762305400246172
+    }
+  },
+  {
+    "interaction": 143,
+    "query_id": "test_query_143",
+    "system_reward": -2.1215978740585304,
+    "mrr": 0.582963900467533,
+    "ndcg": 0.45468141438614124,
+    "art": 12.68328,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4765167013106072,
+      "economic_agent": 0.4791443863902619,
+      "weather_agent": 0.4765167013106072,
+      "flight_info_agent": 0.4753133245892241,
+      "integration_agent": 0.4762305400246172
+    }
+  },
+  {
+    "interaction": 144,
+    "query_id": "test_query_144",
+    "system_reward": -2.0167965701675215,
+    "mrr": 0.6112750993301854,
+    "ndcg": 0.5729444752510107,
+    "art": 12.452422,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4765167013106072,
+      "economic_agent": 0.4791443863902619,
+      "weather_agent": 0.4765167013106072,
+      "flight_info_agent": 0.47531332458922415,
+      "integration_agent": 0.47608862440405086
+    }
+  },
+  {
+    "interaction": 145,
+    "query_id": "test_query_145",
+    "system_reward": -2.0054126391711975,
+    "mrr": 0.8999435346572262,
+    "ndcg": 0.5993273674147811,
+    "art": 13.025605,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47636036356469963,
+      "economic_agent": 0.4791443863902619,
+      "weather_agent": 0.47636036356469963,
+      "flight_info_agent": 0.4753133245892242,
+      "integration_agent": 0.47608862440405086
+    }
+  },
+  {
+    "interaction": 146,
+    "query_id": "test_query_146",
+    "system_reward": -2.040784748394965,
+    "mrr": 0.7537974830361022,
+    "ndcg": 0.5889531459764856,
+    "art": 12.889425,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47636036356469963,
+      "economic_agent": 0.47868117791596654,
+      "weather_agent": 0.47636036356469963,
+      "flight_info_agent": 0.4753133245892242,
+      "integration_agent": 0.47608862440405086
+    }
+  },
+  {
+    "interaction": 147,
+    "query_id": "test_query_147",
+    "system_reward": -2.1501823606063515,
+    "mrr": 0.6699294781354823,
+    "ndcg": 0.4494696203486395,
+    "art": 12.98971,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47636036356469963,
+      "economic_agent": 0.47868117791596654,
+      "weather_agent": 0.47636036356469963,
+      "flight_info_agent": 0.4750968499679857,
+      "integration_agent": 0.47608862440405086
+    }
+  },
+  {
+    "interaction": 148,
+    "query_id": "test_query_148",
+    "system_reward": -2.0783397646071826,
+    "mrr": 0.625831883030299,
+    "ndcg": 0.5908102054517445,
+    "art": 12.824983,
+    "competence_scores": {
+      "safety_assessment_agent": 0.47636036356469963,
+      "economic_agent": 0.47868117791596654,
+      "weather_agent": 0.47636036356469963,
+      "flight_info_agent": 0.4750968499679857,
+      "integration_agent": 0.4758841725955976
+    }
+  },
+  {
+    "interaction": 149,
+    "query_id": "test_query_149",
+    "system_reward": -2.018756520807255,
+    "mrr": 0.7457285611006925,
+    "ndcg": 0.5343401368811713,
+    "art": 12.65392,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4762030218754734,
+      "economic_agent": 0.47868117791596654,
+      "weather_agent": 0.4762030218754734,
+      "flight_info_agent": 0.4750968499679857,
+      "integration_agent": 0.4758841725955976
+    }
+  },
+  {
+    "interaction": 150,
+    "query_id": "test_query_150",
+    "system_reward": -2.081417523320741,
+    "mrr": 0.7236256480915791,
+    "ndcg": 0.4716325436065681,
+    "art": 12.797604,
+    "competence_scores": {
+      "safety_assessment_agent": 0.4762030218754735,
+      "economic_agent": 0.47821363394082245,
+      "weather_agent": 0.4762030218754735,
+      "flight_info_agent": 0.4750968499679857,
+      "integration_agent": 0.4758841725955976
+    }
+  }
+]

@@ -1,0 +1,180 @@
+[
+  {
+    "agent_id": "agent_00001",
+    "pml_specialty": "Expert in machine learning algorithms and deep neural networks for predictive modeling with focus on real-time systems and performance optimization",
+    "trust_score": 0.6762621820799131,
+    "response_time_avg": 0.9331008337343651,
+    "success_rate": 0.8881673178826558,
+    "specialization_score": 0.7148534336161562,
+    "current_load": 0.12403329338219536,
+    "availability": true,
+    "capabilities": [
+      "capability_2",
+      "capability_13",
+      "capability_1",
+      "capability_19",
+      "capability_8",
+      "capability_15",
+      "capability_3"
+    ]
+  },
+  {
+    "agent_id": "agent_00002",
+    "pml_specialty": "Specializes in natural language processing and computational linguistics research including experience with cloud-native architectures",
+    "trust_score": 0.3862845244579304,
+    "response_time_avg": 1.942120047516902,
+    "success_rate": 0.9000866291703866,
+    "specialization_score": 0.6143736308687565,
+    "current_load": 0.31905672115583567,
+    "availability": true,
+    "capabilities": [
+      "capability_14",
+      "capability_12",
+      "capability_3",
+      "capability_2",
+      "capability_17"
+    ]
+  },
+  {
+    "agent_id": "agent_00003",
+    "pml_specialty": "Advanced knowledge in computer vision and image recognition systems including experience with cloud-native architectures",
+    "trust_score": 0.3781070210736674,
+    "response_time_avg": 0.749571366761163,
+    "success_rate": 0.7257037384277637,
+    "specialization_score": 0.632954945893996,
+    "current_load": 0.24913064751303537,
+    "availability": true,
+    "capabilities": [
+      "capability_12",
+      "capability_7",
+      "capability_8",
+      "capability_2",
+      "capability_10",
+      "capability_1"
+    ]
+  },
+  {
+    "agent_id": "agent_00004",
+    "pml_specialty": "Professional experience in distributed systems and cloud computing architectures",
+    "trust_score": 0.6505953414600405,
+    "response_time_avg": 1.399531161856468,
+    "success_rate": 0.8724383260291758,
+    "specialization_score": 0.9303620615962649,
+    "current_load": 0.755401277700134,
+    "availability": true,
+    "capabilities": [
+      "capability_5",
+      "capability_9",
+      "capability_6",
+      "capability_3",
+      "capability_8",
+      "capability_1"
+    ]
+  },
+  {
+    "agent_id": "agent_00005",
+    "pml_specialty": "Expertise in cybersecurity protocols and network security analysis with focus on real-time systems and performance optimization",
+    "trust_score": 0.5452184040981842,
+    "response_time_avg": 0.17402995138944388,
+    "success_rate": 0.87311108761461,
+    "specialization_score": 0.7177939752110543,
+    "current_load": 0.5245781083045937,
+    "availability": true,
+    "capabilities": [
+      "capability_16",
+      "capability_2",
+      "capability_5",
+      "capability_12",
+      "capability_14",
+      "capability_0",
+      "capability_11"
+    ]
+  },
+  {
+    "agent_id": "agent_00006",
+    "pml_specialty": "Specialist in data mining techniques and big data analytics platforms",
+    "trust_score": 0.775571040944766,
+    "response_time_avg": 0.3426104859026846,
+    "success_rate": 0.7700046057805092,
+    "specialization_score": 0.8031904043203684,
+    "current_load": 0.6936932857677777,
+    "availability": true,
+    "capabilities": [
+      "capability_9",
+      "capability_1",
+      "capability_10",
+      "capability_7",
+      "capability_4",
+      "capability_6",
+      "capability_19"
+    ]
+  },
+  {
+    "agent_id": "agent_00007",
+    "pml_specialty": "Advanced understanding of robotics control systems and autonomous navigation",
+    "trust_score": 0.7399004378757971,
+    "response_time_avg": 1.0167898043210206,
+    "success_rate": 0.8380471841761054,
+    "specialization_score": 0.6291495439183409,
+    "current_load": 0.07336331780678487,
+    "availability": true,
+    "capabilities": [
+      "capability_0",
+      "capability_18",
+      "capability_7",
+      "capability_1",
+      "capability_5",
+      "capability_8"
+    ]
+  },
+  {
+    "agent_id": "agent_00008",
+    "pml_specialty": "Professional background in financial modeling and quantitative analysis",
+    "trust_score": 0.8634646584520469,
+    "response_time_avg": 1.6931134511515715,
+    "success_rate": 0.8193056130131435,
+    "specialization_score": 0.6779017461498607,
+    "current_load": 0.3173212815634015,
+    "availability": true,
+    "capabilities": [
+      "capability_8",
+      "capability_14",
+      "capability_15",
+      "capability_19",
+      "capability_11"
+    ]
+  },
+  {
+    "agent_id": "agent_00009",
+    "pml_specialty": "Expert in bioinformatics and computational biology research methods",
+    "trust_score": 0.5757443060105345,
+    "response_time_avg": 1.8220733316799984,
+    "success_rate": 0.7311352950457224,
+    "specialization_score": 0.7724187865018006,
+    "current_load": 0.009082915813935255,
+    "availability": true,
+    "capabilities": [
+      "capability_14",
+      "capability_16",
+      "capability_9",
+      "capability_3",
+      "capability_1",
+      "capability_4"
+    ]
+  },
+  {
+    "agent_id": "agent_00010",
+    "pml_specialty": "Specializes in software engineering best practices and system design patterns",
+    "trust_score": 0.3282105091438123,
+    "response_time_avg": 1.8568223274248323,
+    "success_rate": 0.9573524002780246,
+    "specialization_score": 0.6885465587962344,
+    "current_load": 0.5563288984853181,
+    "availability": true,
+    "capabilities": [
+      "capability_7",
+      "capability_19",
+      "capability_12"
+    ]
+  }
+]

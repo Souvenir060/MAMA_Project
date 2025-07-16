@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "experiment_name": "MAMA Agent Competence Evolution",
+    "timestamp": "2025-07-07_16-55-20",
+    "total_queries": 5,
+    "successful_queries": 0,
+    "description": "智能体能力演进实验：记录每次查询后各智能体的能力变化"
+  },
+  "competence_evolution": [
+    {
+      "query_index": 1,
+      "query_id": "query_0328",
+      "timestamp": "2025-07-07T16:55:20.147474",
+      "query_success": false,
+      "processing_time": 0.0,
+      "error": "'departure'",
+      "safety_agent_competence": 0.5,
+      "economic_agent_competence": 0.5,
+      "weather_agent_competence": 0.5,
+      "flight_info_agent_competence": 0.5,
+      "integration_agent_competence": 0.5
+    },
+    {
+      "query_index": 2,
+      "query_id": "query_0038",
+      "timestamp": "2025-07-07T16:55:20.147751",
+      "query_success": false,
+      "processing_time": 0.0,
+      "error": "'departure'",
+      "safety_agent_competence": 0.5,
+      "economic_agent_competence": 0.5,
+      "weather_agent_competence": 0.5,
+      "flight_info_agent_competence": 0.5,
+      "integration_agent_competence": 0.5
+    },
+    {
+      "query_index": 3,
+      "query_id": "query_0989",
+      "timestamp": "2025-07-07T16:55:20.147806",
+      "query_success": false,
+      "processing_time": 0.0,
+      "error": "'departure'",
+      "safety_agent_competence": 0.5,
+      "economic_agent_competence": 0.5,
+      "weather_agent_competence": 0.5,
+      "flight_info_agent_competence": 0.5,
+      "integration_agent_competence": 0.5
+    },
+    {
+      "query_index": 4,
+      "query_id": "query_0497",
+      "timestamp": "2025-07-07T16:55:20.147854",
+      "query_success": false,
+      "processing_time": 0.0,
+      "error": "'departure'",
+      "safety_agent_competence": 0.5,
+      "economic_agent_competence": 0.5,
+      "weather_agent_competence": 0.5,
+      "flight_info_agent_competence": 0.5,
+      "integration_agent_competence": 0.5
+    },
+    {
+      "query_index": 5,
+      "query_id": "query_0472",
+      "timestamp": "2025-07-07T16:55:20.147896",
+      "query_success": false,
+      "processing_time": 0.0,
+      "error": "'departure'",
+      "safety_agent_competence": 0.5,
+      "economic_agent_competence": 0.5,
+      "weather_agent_competence": 0.5,
+      "flight_info_agent_competence": 0.5,
+      "integration_agent_competence": 0.5
+    }
+  ],
+  "statistics": {
+    "safety_agent_competence": {
+      "initial_competence": 0.5,
+      "final_competence": 0.5,
+      "mean_competence": 0.5,
+      "std_competence": 0.0,
+      "min_competence": 0.5,
+      "max_competence": 0.5,
+      "improvement": 0.0
+    },
+    "economic_agent_competence": {
+      "initial_competence": 0.5,
+      "final_competence": 0.5,
+      "mean_competence": 0.5,
+      "std_competence": 0.0,
+      "min_competence": 0.5,
+      "max_competence": 0.5,
+      "improvement": 0.0
+    },
+    "weather_agent_competence": {
+      "initial_competence": 0.5,
+      "final_competence": 0.5,
+      "mean_competence": 0.5,
+      "std_competence": 0.0,
+      "min_competence": 0.5,
+      "max_competence": 0.5,
+      "improvement": 0.0
+    },
+    "flight_info_agent_competence": {
+      "initial_competence": 0.5,
+      "final_competence": 0.5,
+      "mean_competence": 0.5,
+      "std_competence": 0.0,
+      "min_competence": 0.5,
+      "max_competence": 0.5,
+      "improvement": 0.0
+    },
+    "integration_agent_competence": {
+      "initial_competence": 0.5,
+      "final_competence": 0.5,
+      "mean_competence": 0.5,
+      "std_competence": 0.0,
+      "min_competence": 0.5,
+      "max_competence": 0.5,
+      "improvement": 0.0
+    }
+  }
+}

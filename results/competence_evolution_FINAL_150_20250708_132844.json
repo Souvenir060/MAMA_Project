@@ -1,0 +1,1652 @@
+[
+  {
+    "interaction": 1,
+    "scores": {
+      "safety_assessment_agent": 0.5,
+      "economic_agent": 0.4759560552257297,
+      "weather_agent": 0.5,
+      "flight_info_agent": 0.5,
+      "integration_agent": 0.5
+    },
+    "timestamp": "2025-07-08T13:28:41.032314"
+  },
+  {
+    "interaction": 2,
+    "scores": {
+      "safety_assessment_agent": 0.5,
+      "economic_agent": 0.4759560552257297,
+      "weather_agent": 0.5,
+      "flight_info_agent": 0.4763269031505862,
+      "integration_agent": 0.5
+    },
+    "timestamp": "2025-07-08T13:28:41.061821"
+  },
+  {
+    "interaction": 3,
+    "scores": {
+      "safety_assessment_agent": 0.5,
+      "economic_agent": 0.4759560552257297,
+      "weather_agent": 0.5,
+      "flight_info_agent": 0.4763269031505862,
+      "integration_agent": 0.4757644938203799
+    },
+    "timestamp": "2025-07-08T13:28:41.089971"
+  },
+  {
+    "interaction": 4,
+    "scores": {
+      "safety_assessment_agent": 0.4763554047384346,
+      "economic_agent": 0.4759560552257297,
+      "weather_agent": 0.47603331166683205,
+      "flight_info_agent": 0.4763269031505862,
+      "integration_agent": 0.4757644938203799
+    },
+    "timestamp": "2025-07-08T13:28:41.117250"
+  },
+  {
+    "interaction": 5,
+    "scores": {
+      "safety_assessment_agent": 0.455711233527607,
+      "economic_agent": 0.4759560552257297,
+      "weather_agent": 0.45370076499436346,
+      "flight_info_agent": 0.4763269031505862,
+      "integration_agent": 0.4757644938203799
+    },
+    "timestamp": "2025-07-08T13:28:41.142407"
+  },
+  {
+    "interaction": 6,
+    "scores": {
+      "safety_assessment_agent": 0.455711233527607,
+      "economic_agent": 0.4546679310772461,
+      "weather_agent": 0.45370076499436346,
+      "flight_info_agent": 0.4763269031505862,
+      "integration_agent": 0.4757644938203799
+    },
+    "timestamp": "2025-07-08T13:28:41.170935"
+  },
+  {
+    "interaction": 7,
+    "scores": {
+      "safety_assessment_agent": 0.455711233527607,
+      "economic_agent": 0.4546679310772461,
+      "weather_agent": 0.45370076499436346,
+      "flight_info_agent": 0.4556502205332669,
+      "integration_agent": 0.4757644938203799
+    },
+    "timestamp": "2025-07-08T13:28:41.193656"
+  },
+  {
+    "interaction": 8,
+    "scores": {
+      "safety_assessment_agent": 0.455711233527607,
+      "economic_agent": 0.4546679310772461,
+      "weather_agent": 0.45370076499436346,
+      "flight_info_agent": 0.4556502205332669,
+      "integration_agent": 0.4545728505903442
+    },
+    "timestamp": "2025-07-08T13:28:41.219907"
+  },
+  {
+    "interaction": 9,
+    "scores": {
+      "safety_assessment_agent": 0.4373901308327617,
+      "economic_agent": 0.4546679310772461,
+      "weather_agent": 0.4352199973149652,
+      "flight_info_agent": 0.4556502205332669,
+      "integration_agent": 0.4545728505903442
+    },
+    "timestamp": "2025-07-08T13:28:41.244162"
+  },
+  {
+    "interaction": 10,
+    "scores": {
+      "safety_assessment_agent": 0.4215694993408034,
+      "economic_agent": 0.4546679310772461,
+      "weather_agent": 0.41812545836976267,
+      "flight_info_agent": 0.4556502205332669,
+      "integration_agent": 0.4545728505903442
+    },
+    "timestamp": "2025-07-08T13:28:41.273972"
+  },
+  {
+    "interaction": 11,
+    "scores": {
+      "safety_assessment_agent": 0.42156949934080346,
+      "economic_agent": 0.4355330656679872,
+      "weather_agent": 0.41812545836976267,
+      "flight_info_agent": 0.4556502205332669,
+      "integration_agent": 0.4545728505903442
+    },
+    "timestamp": "2025-07-08T13:28:41.299632"
+  },
+  {
+    "interaction": 12,
+    "scores": {
+      "safety_assessment_agent": 0.4215694993408035,
+      "economic_agent": 0.4355330656679872,
+      "weather_agent": 0.41812545836976267,
+      "flight_info_agent": 0.4371220947015919,
+      "integration_agent": 0.4545728505903442
+    },
+    "timestamp": "2025-07-08T13:28:41.324226"
+  },
+  {
+    "interaction": 13,
+    "scores": {
+      "safety_assessment_agent": 0.4215694993408035,
+      "economic_agent": 0.4355330656679872,
+      "weather_agent": 0.41812545836976267,
+      "flight_info_agent": 0.4371220947015919,
+      "integration_agent": 0.4361882725105547
+    },
+    "timestamp": "2025-07-08T13:28:41.348803"
+  },
+  {
+    "interaction": 14,
+    "scores": {
+      "safety_assessment_agent": 0.4062863260074435,
+      "economic_agent": 0.4355330656679872,
+      "weather_agent": 0.4032250347657604,
+      "flight_info_agent": 0.4371220947015919,
+      "integration_agent": 0.4361882725105547
+    },
+    "timestamp": "2025-07-08T13:28:41.370971"
+  },
+  {
+    "interaction": 15,
+    "scores": {
+      "safety_assessment_agent": 0.3925038046348743,
+      "economic_agent": 0.4355330656679872,
+      "weather_agent": 0.3908167895407964,
+      "flight_info_agent": 0.4371220947015919,
+      "integration_agent": 0.4361882725105547
+    },
+    "timestamp": "2025-07-08T13:28:41.397793"
+  },
+  {
+    "interaction": 16,
+    "scores": {
+      "safety_assessment_agent": 0.3925038046348743,
+      "economic_agent": 0.4182539967077506,
+      "weather_agent": 0.3908167895407964,
+      "flight_info_agent": 0.4371220947015919,
+      "integration_agent": 0.4361882725105547
+    },
+    "timestamp": "2025-07-08T13:28:41.423197"
+  },
+  {
+    "interaction": 17,
+    "scores": {
+      "safety_assessment_agent": 0.3925038046348743,
+      "economic_agent": 0.41825399670775065,
+      "weather_agent": 0.3908167895407964,
+      "flight_info_agent": 0.4202855693518015,
+      "integration_agent": 0.4361882725105547
+    },
+    "timestamp": "2025-07-08T13:28:41.447195"
+  },
+  {
+    "interaction": 18,
+    "scores": {
+      "safety_assessment_agent": 0.3925038046348743,
+      "economic_agent": 0.4182539967077507,
+      "weather_agent": 0.3908167895407964,
+      "flight_info_agent": 0.4202855693518015,
+      "integration_agent": 0.42039490355692105
+    },
+    "timestamp": "2025-07-08T13:28:41.468017"
+  },
+  {
+    "interaction": 19,
+    "scores": {
+      "safety_assessment_agent": 0.38093764409054703,
+      "economic_agent": 0.4182539967077507,
+      "weather_agent": 0.37845775747612065,
+      "flight_info_agent": 0.4202855693518015,
+      "integration_agent": 0.42039490355692105
+    },
+    "timestamp": "2025-07-08T13:28:41.491334"
+  },
+  {
+    "interaction": 20,
+    "scores": {
+      "safety_assessment_agent": 0.3696057318804046,
+      "economic_agent": 0.4182539967077507,
+      "weather_agent": 0.3683243813985714,
+      "flight_info_agent": 0.4202855693518015,
+      "integration_agent": 0.42039490355692105
+    },
+    "timestamp": "2025-07-08T13:28:41.516617"
+  },
+  {
+    "interaction": 21,
+    "scores": {
+      "safety_assessment_agent": 0.3696057318804046,
+      "economic_agent": 0.4041588217785248,
+      "weather_agent": 0.3683243813985714,
+      "flight_info_agent": 0.4202855693518015,
+      "integration_agent": 0.42039490355692105
+    },
+    "timestamp": "2025-07-08T13:28:41.538814"
+  },
+  {
+    "interaction": 22,
+    "scores": {
+      "safety_assessment_agent": 0.3696057318804046,
+      "economic_agent": 0.4041588217785248,
+      "weather_agent": 0.3683243813985714,
+      "flight_info_agent": 0.4062242129615,
+      "integration_agent": 0.42039490355692105
+    },
+    "timestamp": "2025-07-08T13:28:41.564977"
+  },
+  {
+    "interaction": 23,
+    "scores": {
+      "safety_assessment_agent": 0.3696057318804046,
+      "economic_agent": 0.4041588217785248,
+      "weather_agent": 0.3683243813985714,
+      "flight_info_agent": 0.4062242129615,
+      "integration_agent": 0.4062673366342211
+    },
+    "timestamp": "2025-07-08T13:28:41.595429"
+  },
+  {
+    "interaction": 24,
+    "scores": {
+      "safety_assessment_agent": 0.3601868955622386,
+      "economic_agent": 0.4041588217785248,
+      "weather_agent": 0.35788006547896556,
+      "flight_info_agent": 0.4062242129615,
+      "integration_agent": 0.4062673366342211
+    },
+    "timestamp": "2025-07-08T13:28:41.619447"
+  },
+  {
+    "interaction": 25,
+    "scores": {
+      "safety_assessment_agent": 0.3511277867237205,
+      "economic_agent": 0.4041588217785248,
+      "weather_agent": 0.3498052925724925,
+      "flight_info_agent": 0.4062242129615,
+      "integration_agent": 0.4062673366342211
+    },
+    "timestamp": "2025-07-08T13:28:41.641200"
+  },
+  {
+    "interaction": 26,
+    "scores": {
+      "safety_assessment_agent": 0.3511277867237205,
+      "economic_agent": 0.3918883011477726,
+      "weather_agent": 0.3498052925724925,
+      "flight_info_agent": 0.4062242129615,
+      "integration_agent": 0.4062673366342211
+    },
+    "timestamp": "2025-07-08T13:28:41.666768"
+  },
+  {
+    "interaction": 27,
+    "scores": {
+      "safety_assessment_agent": 0.3511277867237205,
+      "economic_agent": 0.3918883011477726,
+      "weather_agent": 0.3498052925724925,
+      "flight_info_agent": 0.393212336779958,
+      "integration_agent": 0.4062673366342211
+    },
+    "timestamp": "2025-07-08T13:28:41.688344"
+  },
+  {
+    "interaction": 28,
+    "scores": {
+      "safety_assessment_agent": 0.3511277867237205,
+      "economic_agent": 0.3918883011477726,
+      "weather_agent": 0.3498052925724925,
+      "flight_info_agent": 0.393212336779958,
+      "integration_agent": 0.3940509478366134
+    },
+    "timestamp": "2025-07-08T13:28:41.713301"
+  },
+  {
+    "interaction": 29,
+    "scores": {
+      "safety_assessment_agent": 0.3439847988566048,
+      "economic_agent": 0.3918883011477726,
+      "weather_agent": 0.3411379825792505,
+      "flight_info_agent": 0.393212336779958,
+      "integration_agent": 0.3940509478366134
+    },
+    "timestamp": "2025-07-08T13:28:41.735065"
+  },
+  {
+    "interaction": 30,
+    "scores": {
+      "safety_assessment_agent": 0.33749452981777084,
+      "economic_agent": 0.3918883011477726,
+      "weather_agent": 0.33571678847666153,
+      "flight_info_agent": 0.393212336779958,
+      "integration_agent": 0.3940509478366134
+    },
+    "timestamp": "2025-07-08T13:28:41.764693"
+  },
+  {
+    "interaction": 31,
+    "scores": {
+      "safety_assessment_agent": 0.33749452981777084,
+      "economic_agent": 0.3815004272573059,
+      "weather_agent": 0.33571678847666153,
+      "flight_info_agent": 0.393212336779958,
+      "integration_agent": 0.3940509478366134
+    },
+    "timestamp": "2025-07-08T13:28:41.788378"
+  },
+  {
+    "interaction": 32,
+    "scores": {
+      "safety_assessment_agent": 0.33749452981777084,
+      "economic_agent": 0.3815004272573059,
+      "weather_agent": 0.33571678847666153,
+      "flight_info_agent": 0.37943142256324025,
+      "integration_agent": 0.3940509478366134
+    },
+    "timestamp": "2025-07-08T13:28:41.807750"
+  },
+  {
+    "interaction": 33,
+    "scores": {
+      "safety_assessment_agent": 0.33749452981777084,
+      "economic_agent": 0.3815004272573059,
+      "weather_agent": 0.33571678847666153,
+      "flight_info_agent": 0.37943142256324025,
+      "integration_agent": 0.38206064613211366
+    },
+    "timestamp": "2025-07-08T13:28:41.829954"
+  },
+  {
+    "interaction": 34,
+    "scores": {
+      "safety_assessment_agent": 0.33238142628207107,
+      "economic_agent": 0.3815004272573059,
+      "weather_agent": 0.3301035254181726,
+      "flight_info_agent": 0.37943142256324025,
+      "integration_agent": 0.38206064613211366
+    },
+    "timestamp": "2025-07-08T13:28:41.849036"
+  },
+  {
+    "interaction": 35,
+    "scores": {
+      "safety_assessment_agent": 0.3273551889111688,
+      "economic_agent": 0.3815004272573059,
+      "weather_agent": 0.3256512997038767,
+      "flight_info_agent": 0.37943142256324025,
+      "integration_agent": 0.38206064613211366
+    },
+    "timestamp": "2025-07-08T13:28:41.871516"
+  },
+  {
+    "interaction": 36,
+    "scores": {
+      "safety_assessment_agent": 0.3273551889111688,
+      "economic_agent": 0.3724700644319219,
+      "weather_agent": 0.3256512997038767,
+      "flight_info_agent": 0.37943142256324025,
+      "integration_agent": 0.38206064613211366
+    },
+    "timestamp": "2025-07-08T13:28:41.898673"
+  },
+  {
+    "interaction": 37,
+    "scores": {
+      "safety_assessment_agent": 0.3273551889111688,
+      "economic_agent": 0.3724700644319219,
+      "weather_agent": 0.3256512997038767,
+      "flight_info_agent": 0.3697931928516358,
+      "integration_agent": 0.38206064613211366
+    },
+    "timestamp": "2025-07-08T13:28:41.922063"
+  },
+  {
+    "interaction": 38,
+    "scores": {
+      "safety_assessment_agent": 0.3273551889111688,
+      "economic_agent": 0.3724700644319219,
+      "weather_agent": 0.3256512997038767,
+      "flight_info_agent": 0.3697931928516358,
+      "integration_agent": 0.3722838004087415
+    },
+    "timestamp": "2025-07-08T13:28:41.945401"
+  },
+  {
+    "interaction": 39,
+    "scores": {
+      "safety_assessment_agent": 0.3225650934734652,
+      "economic_agent": 0.3724700644319219,
+      "weather_agent": 0.32261265843228903,
+      "flight_info_agent": 0.3697931928516358,
+      "integration_agent": 0.3722838004087415
+    },
+    "timestamp": "2025-07-08T13:28:41.964922"
+  },
+  {
+    "interaction": 40,
+    "scores": {
+      "safety_assessment_agent": 0.31825744729559663,
+      "economic_agent": 0.3724700644319219,
+      "weather_agent": 0.3189004133505251,
+      "flight_info_agent": 0.3697931928516358,
+      "integration_agent": 0.3722838004087415
+    },
+    "timestamp": "2025-07-08T13:28:41.984929"
+  },
+  {
+    "interaction": 41,
+    "scores": {
+      "safety_assessment_agent": 0.31825744729559663,
+      "economic_agent": 0.36355083678176614,
+      "weather_agent": 0.3189004133505251,
+      "flight_info_agent": 0.3697931928516358,
+      "integration_agent": 0.3722838004087415
+    },
+    "timestamp": "2025-07-08T13:28:42.002853"
+  },
+  {
+    "interaction": 42,
+    "scores": {
+      "safety_assessment_agent": 0.31825744729559663,
+      "economic_agent": 0.3635508367817662,
+      "weather_agent": 0.3189004133505251,
+      "flight_info_agent": 0.36230000126503387,
+      "integration_agent": 0.3722838004087415
+    },
+    "timestamp": "2025-07-08T13:28:42.021787"
+  },
+  {
+    "interaction": 43,
+    "scores": {
+      "safety_assessment_agent": 0.31825744729559663,
+      "economic_agent": 0.3635508367817662,
+      "weather_agent": 0.3189004133505251,
+      "flight_info_agent": 0.36230000126503387,
+      "integration_agent": 0.3638350789157685
+    },
+    "timestamp": "2025-07-08T13:28:42.042034"
+  },
+  {
+    "interaction": 44,
+    "scores": {
+      "safety_assessment_agent": 0.31568640527704944,
+      "economic_agent": 0.3635508367817662,
+      "weather_agent": 0.31595377926943136,
+      "flight_info_agent": 0.36230000126503387,
+      "integration_agent": 0.3638350789157685
+    },
+    "timestamp": "2025-07-08T13:28:42.062015"
+  },
+  {
+    "interaction": 45,
+    "scores": {
+      "safety_assessment_agent": 0.3148403107153538,
+      "economic_agent": 0.3635508367817662,
+      "weather_agent": 0.3151102436890624,
+      "flight_info_agent": 0.36230000126503387,
+      "integration_agent": 0.3638350789157685
+    },
+    "timestamp": "2025-07-08T13:28:42.084615"
+  },
+  {
+    "interaction": 46,
+    "scores": {
+      "safety_assessment_agent": 0.3148403107153538,
+      "economic_agent": 0.35653582455087796,
+      "weather_agent": 0.3151102436890624,
+      "flight_info_agent": 0.36230000126503387,
+      "integration_agent": 0.3638350789157685
+    },
+    "timestamp": "2025-07-08T13:28:42.108552"
+  },
+  {
+    "interaction": 47,
+    "scores": {
+      "safety_assessment_agent": 0.3148403107153538,
+      "economic_agent": 0.356535824550878,
+      "weather_agent": 0.3151102436890624,
+      "flight_info_agent": 0.35482799395018005,
+      "integration_agent": 0.3638350789157685
+    },
+    "timestamp": "2025-07-08T13:28:42.131448"
+  },
+  {
+    "interaction": 48,
+    "scores": {
+      "safety_assessment_agent": 0.3148403107153538,
+      "economic_agent": 0.356535824550878,
+      "weather_agent": 0.3151102436890624,
+      "flight_info_agent": 0.3548279939501801,
+      "integration_agent": 0.35668915549920344
+    },
+    "timestamp": "2025-07-08T13:28:42.159478"
+  },
+  {
+    "interaction": 49,
+    "scores": {
+      "safety_assessment_agent": 0.3122628939333017,
+      "economic_agent": 0.356535824550878,
+      "weather_agent": 0.31296212249219235,
+      "flight_info_agent": 0.3548279939501801,
+      "integration_agent": 0.35668915549920344
+    },
+    "timestamp": "2025-07-08T13:28:42.181168"
+  },
+  {
+    "interaction": 50,
+    "scores": {
+      "safety_assessment_agent": 0.3113920793308237,
+      "economic_agent": 0.356535824550878,
+      "weather_agent": 0.3110917832837407,
+      "flight_info_agent": 0.3548279939501801,
+      "integration_agent": 0.35668915549920344
+    },
+    "timestamp": "2025-07-08T13:28:42.205564"
+  },
+  {
+    "interaction": 51,
+    "scores": {
+      "safety_assessment_agent": 0.31139207933082375,
+      "economic_agent": 0.3513771473418161,
+      "weather_agent": 0.3110917832837407,
+      "flight_info_agent": 0.3548279939501801,
+      "integration_agent": 0.35668915549920344
+    },
+    "timestamp": "2025-07-08T13:28:42.225209"
+  },
+  {
+    "interaction": 52,
+    "scores": {
+      "safety_assessment_agent": 0.31139207933082375,
+      "economic_agent": 0.3513771473418161,
+      "weather_agent": 0.3110917832837407,
+      "flight_info_agent": 0.34744915527034465,
+      "integration_agent": 0.35668915549920344
+    },
+    "timestamp": "2025-07-08T13:28:42.249506"
+  },
+  {
+    "interaction": 53,
+    "scores": {
+      "safety_assessment_agent": 0.31139207933082375,
+      "economic_agent": 0.3513771473418161,
+      "weather_agent": 0.3110917832837407,
+      "flight_info_agent": 0.34744915527034465,
+      "integration_agent": 0.3505034300047979
+    },
+    "timestamp": "2025-07-08T13:28:42.270277"
+  },
+  {
+    "interaction": 54,
+    "scores": {
+      "safety_assessment_agent": 0.31061698525414233,
+      "economic_agent": 0.3513771473418161,
+      "weather_agent": 0.30894830668955675,
+      "flight_info_agent": 0.34744915527034465,
+      "integration_agent": 0.3505034300047979
+    },
+    "timestamp": "2025-07-08T13:28:42.298028"
+  },
+  {
+    "interaction": 55,
+    "scores": {
+      "safety_assessment_agent": 0.3107937335017279,
+      "economic_agent": 0.3513771473418161,
+      "weather_agent": 0.3071603622808737,
+      "flight_info_agent": 0.34744915527034465,
+      "integration_agent": 0.3505034300047979
+    },
+    "timestamp": "2025-07-08T13:28:42.323869"
+  },
+  {
+    "interaction": 56,
+    "scores": {
+      "safety_assessment_agent": 0.3107937335017279,
+      "economic_agent": 0.3455483650228794,
+      "weather_agent": 0.3071603622808737,
+      "flight_info_agent": 0.34744915527034465,
+      "integration_agent": 0.3505034300047979
+    },
+    "timestamp": "2025-07-08T13:28:42.356553"
+  },
+  {
+    "interaction": 57,
+    "scores": {
+      "safety_assessment_agent": 0.3107937335017279,
+      "economic_agent": 0.34554836502287944,
+      "weather_agent": 0.3071603622808737,
+      "flight_info_agent": 0.3417398073908299,
+      "integration_agent": 0.3505034300047979
+    },
+    "timestamp": "2025-07-08T13:28:42.379121"
+  },
+  {
+    "interaction": 58,
+    "scores": {
+      "safety_assessment_agent": 0.3107937335017279,
+      "economic_agent": 0.3455483650228795,
+      "weather_agent": 0.3071603622808737,
+      "flight_info_agent": 0.34173980739082993,
+      "integration_agent": 0.3460250654765443
+    },
+    "timestamp": "2025-07-08T13:28:42.406474"
+  },
+  {
+    "interaction": 59,
+    "scores": {
+      "safety_assessment_agent": 0.3097095881310065,
+      "economic_agent": 0.3455483650228795,
+      "weather_agent": 0.30554786246265847,
+      "flight_info_agent": 0.34173980739082993,
+      "integration_agent": 0.3460250654765444
+    },
+    "timestamp": "2025-07-08T13:28:42.428400"
+  },
+  {
+    "interaction": 60,
+    "scores": {
+      "safety_assessment_agent": 0.310266162630282,
+      "economic_agent": 0.3455483650228795,
+      "weather_agent": 0.3054434516057451,
+      "flight_info_agent": 0.34173980739082993,
+      "integration_agent": 0.3460250654765444
+    },
+    "timestamp": "2025-07-08T13:28:42.456170"
+  },
+  {
+    "interaction": 61,
+    "scores": {
+      "safety_assessment_agent": 0.310266162630282,
+      "economic_agent": 0.3403954350941294,
+      "weather_agent": 0.3054434516057451,
+      "flight_info_agent": 0.34173980739082993,
+      "integration_agent": 0.3460250654765444
+    },
+    "timestamp": "2025-07-08T13:28:42.474056"
+  },
+  {
+    "interaction": 62,
+    "scores": {
+      "safety_assessment_agent": 0.310266162630282,
+      "economic_agent": 0.34039543509412945,
+      "weather_agent": 0.3054434516057451,
+      "flight_info_agent": 0.3371690609779236,
+      "integration_agent": 0.3460250654765444
+    },
+    "timestamp": "2025-07-08T13:28:42.499158"
+  },
+  {
+    "interaction": 63,
+    "scores": {
+      "safety_assessment_agent": 0.310266162630282,
+      "economic_agent": 0.34039543509412945,
+      "weather_agent": 0.3054434516057451,
+      "flight_info_agent": 0.3371690609779236,
+      "integration_agent": 0.3411010900426482
+    },
+    "timestamp": "2025-07-08T13:28:42.523588"
+  },
+  {
+    "interaction": 64,
+    "scores": {
+      "safety_assessment_agent": 0.3095441319709736,
+      "economic_agent": 0.34039543509412945,
+      "weather_agent": 0.3047042596162187,
+      "flight_info_agent": 0.3371690609779236,
+      "integration_agent": 0.3411010900426482
+    },
+    "timestamp": "2025-07-08T13:28:42.544015"
+  },
+  {
+    "interaction": 65,
+    "scores": {
+      "safety_assessment_agent": 0.309384709808954,
+      "economic_agent": 0.34039543509412945,
+      "weather_agent": 0.30486408368662726,
+      "flight_info_agent": 0.3371690609779236,
+      "integration_agent": 0.3411010900426482
+    },
+    "timestamp": "2025-07-08T13:28:42.566009"
+  },
+  {
+    "interaction": 66,
+    "scores": {
+      "safety_assessment_agent": 0.309384709808954,
+      "economic_agent": 0.33702597371437665,
+      "weather_agent": 0.30486408368662726,
+      "flight_info_agent": 0.3371690609779236,
+      "integration_agent": 0.3411010900426482
+    },
+    "timestamp": "2025-07-08T13:28:42.588561"
+  },
+  {
+    "interaction": 67,
+    "scores": {
+      "safety_assessment_agent": 0.309384709808954,
+      "economic_agent": 0.33702597371437665,
+      "weather_agent": 0.30486408368662726,
+      "flight_info_agent": 0.333112352498064,
+      "integration_agent": 0.3411010900426482
+    },
+    "timestamp": "2025-07-08T13:28:42.613939"
+  },
+  {
+    "interaction": 68,
+    "scores": {
+      "safety_assessment_agent": 0.309384709808954,
+      "economic_agent": 0.33702597371437665,
+      "weather_agent": 0.30486408368662726,
+      "flight_info_agent": 0.333112352498064,
+      "integration_agent": 0.33843931760628226
+    },
+    "timestamp": "2025-07-08T13:28:42.635698"
+  },
+  {
+    "interaction": 69,
+    "scores": {
+      "safety_assessment_agent": 0.30955246432094363,
+      "economic_agent": 0.33702597371437665,
+      "weather_agent": 0.30461018659833233,
+      "flight_info_agent": 0.333112352498064,
+      "integration_agent": 0.33843931760628226
+    },
+    "timestamp": "2025-07-08T13:28:42.656047"
+  },
+  {
+    "interaction": 70,
+    "scores": {
+      "safety_assessment_agent": 0.30888175859810385,
+      "economic_agent": 0.33702597371437665,
+      "weather_agent": 0.304407821486082,
+      "flight_info_agent": 0.333112352498064,
+      "integration_agent": 0.33843931760628226
+    },
+    "timestamp": "2025-07-08T13:28:42.677234"
+  },
+  {
+    "interaction": 71,
+    "scores": {
+      "safety_assessment_agent": 0.3088817585981039,
+      "economic_agent": 0.33331897741693023,
+      "weather_agent": 0.304407821486082,
+      "flight_info_agent": 0.333112352498064,
+      "integration_agent": 0.33843931760628226
+    },
+    "timestamp": "2025-07-08T13:28:42.702136"
+  },
+  {
+    "interaction": 72,
+    "scores": {
+      "safety_assessment_agent": 0.3088817585981039,
+      "economic_agent": 0.33331897741693023,
+      "weather_agent": 0.304407821486082,
+      "flight_info_agent": 0.33068863308394153,
+      "integration_agent": 0.33843931760628226
+    },
+    "timestamp": "2025-07-08T13:28:42.723446"
+  },
+  {
+    "interaction": 73,
+    "scores": {
+      "safety_assessment_agent": 0.3088817585981039,
+      "economic_agent": 0.33331897741693023,
+      "weather_agent": 0.304407821486082,
+      "flight_info_agent": 0.33068863308394153,
+      "integration_agent": 0.3346703686561138
+    },
+    "timestamp": "2025-07-08T13:28:42.751544"
+  },
+  {
+    "interaction": 74,
+    "scores": {
+      "safety_assessment_agent": 0.3088262865355471,
+      "economic_agent": 0.33331897741693023,
+      "weather_agent": 0.3057757258855839,
+      "flight_info_agent": 0.33068863308394153,
+      "integration_agent": 0.3346703686561138
+    },
+    "timestamp": "2025-07-08T13:28:42.777369"
+  },
+  {
+    "interaction": 75,
+    "scores": {
+      "safety_assessment_agent": 0.3081339743817843,
+      "economic_agent": 0.33331897741693023,
+      "weather_agent": 0.30516618457723266,
+      "flight_info_agent": 0.33068863308394153,
+      "integration_agent": 0.3346703686561138
+    },
+    "timestamp": "2025-07-08T13:28:42.806906"
+  },
+  {
+    "interaction": 76,
+    "scores": {
+      "safety_assessment_agent": 0.30813397438178436,
+      "economic_agent": 0.3288962370275506,
+      "weather_agent": 0.30516618457723266,
+      "flight_info_agent": 0.33068863308394153,
+      "integration_agent": 0.3346703686561138
+    },
+    "timestamp": "2025-07-08T13:28:42.832378"
+  },
+  {
+    "interaction": 77,
+    "scores": {
+      "safety_assessment_agent": 0.3081339743817844,
+      "economic_agent": 0.3288962370275506,
+      "weather_agent": 0.30516618457723266,
+      "flight_info_agent": 0.3288004778560923,
+      "integration_agent": 0.3346703686561138
+    },
+    "timestamp": "2025-07-08T13:28:42.856072"
+  },
+  {
+    "interaction": 78,
+    "scores": {
+      "safety_assessment_agent": 0.3081339743817844,
+      "economic_agent": 0.3288962370275506,
+      "weather_agent": 0.30516618457723266,
+      "flight_info_agent": 0.3288004778560923,
+      "integration_agent": 0.3336065261813686
+    },
+    "timestamp": "2025-07-08T13:28:42.882551"
+  },
+  {
+    "interaction": 79,
+    "scores": {
+      "safety_assessment_agent": 0.30958411176427075,
+      "economic_agent": 0.3288962370275506,
+      "weather_agent": 0.30479022343040185,
+      "flight_info_agent": 0.3288004778560923,
+      "integration_agent": 0.3336065261813686
+    },
+    "timestamp": "2025-07-08T13:28:42.910384"
+  },
+  {
+    "interaction": 80,
+    "scores": {
+      "safety_assessment_agent": 0.31097627799717237,
+      "economic_agent": 0.3288962370275506,
+      "weather_agent": 0.3047412930037212,
+      "flight_info_agent": 0.3288004778560923,
+      "integration_agent": 0.3336065261813686
+    },
+    "timestamp": "2025-07-08T13:28:42.939803"
+  },
+  {
+    "interaction": 81,
+    "scores": {
+      "safety_assessment_agent": 0.31097627799717237,
+      "economic_agent": 0.3271067566787559,
+      "weather_agent": 0.3047412930037212,
+      "flight_info_agent": 0.3288004778560923,
+      "integration_agent": 0.3336065261813686
+    },
+    "timestamp": "2025-07-08T13:28:42.963210"
+  },
+  {
+    "interaction": 82,
+    "scores": {
+      "safety_assessment_agent": 0.31097627799717237,
+      "economic_agent": 0.32710675667875594,
+      "weather_agent": 0.3047412930037212,
+      "flight_info_agent": 0.3269689183207345,
+      "integration_agent": 0.3336065261813686
+    },
+    "timestamp": "2025-07-08T13:28:42.984650"
+  },
+  {
+    "interaction": 83,
+    "scores": {
+      "safety_assessment_agent": 0.31097627799717237,
+      "economic_agent": 0.32710675667875594,
+      "weather_agent": 0.3047412930037212,
+      "flight_info_agent": 0.32696891832073455,
+      "integration_agent": 0.3313432716271179
+    },
+    "timestamp": "2025-07-08T13:28:43.006567"
+  },
+  {
+    "interaction": 84,
+    "scores": {
+      "safety_assessment_agent": 0.31179795908893676,
+      "economic_agent": 0.32710675667875594,
+      "weather_agent": 0.3059874051125186,
+      "flight_info_agent": 0.32696891832073455,
+      "integration_agent": 0.3313432716271179
+    },
+    "timestamp": "2025-07-08T13:28:43.029108"
+  },
+  {
+    "interaction": 85,
+    "scores": {
+      "safety_assessment_agent": 0.3124215221972121,
+      "economic_agent": 0.32710675667875594,
+      "weather_agent": 0.30662352352368594,
+      "flight_info_agent": 0.32696891832073455,
+      "integration_agent": 0.3313432716271179
+    },
+    "timestamp": "2025-07-08T13:28:43.049909"
+  },
+  {
+    "interaction": 86,
+    "scores": {
+      "safety_assessment_agent": 0.3124215221972121,
+      "economic_agent": 0.32695273885407417,
+      "weather_agent": 0.30662352352368594,
+      "flight_info_agent": 0.32696891832073455,
+      "integration_agent": 0.3313432716271179
+    },
+    "timestamp": "2025-07-08T13:28:43.075125"
+  },
+  {
+    "interaction": 87,
+    "scores": {
+      "safety_assessment_agent": 0.3124215221972121,
+      "economic_agent": 0.3269527388540742,
+      "weather_agent": 0.30662352352368594,
+      "flight_info_agent": 0.3254914314381383,
+      "integration_agent": 0.3313432716271179
+    },
+    "timestamp": "2025-07-08T13:28:43.093652"
+  },
+  {
+    "interaction": 88,
+    "scores": {
+      "safety_assessment_agent": 0.3124215221972121,
+      "economic_agent": 0.3269527388540742,
+      "weather_agent": 0.30662352352368594,
+      "flight_info_agent": 0.32549143143813836,
+      "integration_agent": 0.33022348003002866
+    },
+    "timestamp": "2025-07-08T13:28:43.120960"
+  },
+  {
+    "interaction": 89,
+    "scores": {
+      "safety_assessment_agent": 0.312652193049834,
+      "economic_agent": 0.3269527388540742,
+      "weather_agent": 0.30881392316567924,
+      "flight_info_agent": 0.32549143143813836,
+      "integration_agent": 0.33022348003002866
+    },
+    "timestamp": "2025-07-08T13:28:43.148109"
+  },
+  {
+    "interaction": 90,
+    "scores": {
+      "safety_assessment_agent": 0.314803614253359,
+      "economic_agent": 0.3269527388540742,
+      "weather_agent": 0.3094825574283959,
+      "flight_info_agent": 0.32549143143813836,
+      "integration_agent": 0.33022348003002866
+    },
+    "timestamp": "2025-07-08T13:28:43.167708"
+  },
+  {
+    "interaction": 91,
+    "scores": {
+      "safety_assessment_agent": 0.314803614253359,
+      "economic_agent": 0.326820669313374,
+      "weather_agent": 0.3094825574283959,
+      "flight_info_agent": 0.32549143143813836,
+      "integration_agent": 0.33022348003002866
+    },
+    "timestamp": "2025-07-08T13:28:43.192781"
+  },
+  {
+    "interaction": 92,
+    "scores": {
+      "safety_assessment_agent": 0.314803614253359,
+      "economic_agent": 0.326820669313374,
+      "weather_agent": 0.3094825574283959,
+      "flight_info_agent": 0.32421077639533125,
+      "integration_agent": 0.33022348003002866
+    },
+    "timestamp": "2025-07-08T13:28:43.221558"
+  },
+  {
+    "interaction": 93,
+    "scores": {
+      "safety_assessment_agent": 0.314803614253359,
+      "economic_agent": 0.326820669313374,
+      "weather_agent": 0.3094825574283959,
+      "flight_info_agent": 0.32421077639533125,
+      "integration_agent": 0.32905353504507995
+    },
+    "timestamp": "2025-07-08T13:28:43.250487"
+  },
+  {
+    "interaction": 94,
+    "scores": {
+      "safety_assessment_agent": 0.3153425817959149,
+      "economic_agent": 0.326820669313374,
+      "weather_agent": 0.31008528251044737,
+      "flight_info_agent": 0.32421077639533125,
+      "integration_agent": 0.32905353504508
+    },
+    "timestamp": "2025-07-08T13:28:43.273731"
+  },
+  {
+    "interaction": 95,
+    "scores": {
+      "safety_assessment_agent": 0.31635529716235217,
+      "economic_agent": 0.326820669313374,
+      "weather_agent": 0.3114759147841563,
+      "flight_info_agent": 0.32421077639533125,
+      "integration_agent": 0.32905353504508
+    },
+    "timestamp": "2025-07-08T13:28:43.297722"
+  },
+  {
+    "interaction": 96,
+    "scores": {
+      "safety_assessment_agent": 0.31635529716235217,
+      "economic_agent": 0.32618220036491596,
+      "weather_agent": 0.3114759147841563,
+      "flight_info_agent": 0.32421077639533125,
+      "integration_agent": 0.32905353504508
+    },
+    "timestamp": "2025-07-08T13:28:43.320832"
+  },
+  {
+    "interaction": 97,
+    "scores": {
+      "safety_assessment_agent": 0.31635529716235217,
+      "economic_agent": 0.326182200364916,
+      "weather_agent": 0.3114759147841563,
+      "flight_info_agent": 0.324443737208494,
+      "integration_agent": 0.32905353504508
+    },
+    "timestamp": "2025-07-08T13:28:43.349353"
+  },
+  {
+    "interaction": 98,
+    "scores": {
+      "safety_assessment_agent": 0.31635529716235217,
+      "economic_agent": 0.326182200364916,
+      "weather_agent": 0.3114759147841563,
+      "flight_info_agent": 0.324443737208494,
+      "integration_agent": 0.3290754758851118
+    },
+    "timestamp": "2025-07-08T13:28:43.371615"
+  },
+  {
+    "interaction": 99,
+    "scores": {
+      "safety_assessment_agent": 0.3168095754587159,
+      "economic_agent": 0.326182200364916,
+      "weather_agent": 0.3124184136038955,
+      "flight_info_agent": 0.324443737208494,
+      "integration_agent": 0.3290754758851118
+    },
+    "timestamp": "2025-07-08T13:28:43.400018"
+  },
+  {
+    "interaction": 100,
+    "scores": {
+      "safety_assessment_agent": 0.31733868754451144,
+      "economic_agent": 0.326182200364916,
+      "weather_agent": 0.31434958436437704,
+      "flight_info_agent": 0.324443737208494,
+      "integration_agent": 0.3290754758851118
+    },
+    "timestamp": "2025-07-08T13:28:43.422851"
+  },
+  {
+    "interaction": 101,
+    "scores": {
+      "safety_assessment_agent": 0.3173386875445115,
+      "economic_agent": 0.32598715241380893,
+      "weather_agent": 0.3143495843643771,
+      "flight_info_agent": 0.324443737208494,
+      "integration_agent": 0.3290754758851118
+    },
+    "timestamp": "2025-07-08T13:28:43.445323"
+  },
+  {
+    "interaction": 102,
+    "scores": {
+      "safety_assessment_agent": 0.3173386875445115,
+      "economic_agent": 0.325987152413809,
+      "weather_agent": 0.31434958436437715,
+      "flight_info_agent": 0.3243852744484157,
+      "integration_agent": 0.3290754758851118
+    },
+    "timestamp": "2025-07-08T13:28:43.467107"
+  },
+  {
+    "interaction": 103,
+    "scores": {
+      "safety_assessment_agent": 0.3173386875445115,
+      "economic_agent": 0.325987152413809,
+      "weather_agent": 0.31434958436437715,
+      "flight_info_agent": 0.3243852744484157,
+      "integration_agent": 0.3295071188278212
+    },
+    "timestamp": "2025-07-08T13:28:43.486988"
+  },
+  {
+    "interaction": 104,
+    "scores": {
+      "safety_assessment_agent": 0.31942511498785997,
+      "economic_agent": 0.325987152413809,
+      "weather_agent": 0.3162537784861586,
+      "flight_info_agent": 0.3243852744484157,
+      "integration_agent": 0.32950711882782124
+    },
+    "timestamp": "2025-07-08T13:28:43.505719"
+  },
+  {
+    "interaction": 105,
+    "scores": {
+      "safety_assessment_agent": 0.32034890902482055,
+      "economic_agent": 0.325987152413809,
+      "weather_agent": 0.31792333928464106,
+      "flight_info_agent": 0.3243852744484157,
+      "integration_agent": 0.3295071188278213
+    },
+    "timestamp": "2025-07-08T13:28:43.524561"
+  },
+  {
+    "interaction": 106,
+    "scores": {
+      "safety_assessment_agent": 0.32034890902482055,
+      "economic_agent": 0.3269714911840076,
+      "weather_agent": 0.31792333928464106,
+      "flight_info_agent": 0.3243852744484157,
+      "integration_agent": 0.3295071188278213
+    },
+    "timestamp": "2025-07-08T13:28:43.543793"
+  },
+  {
+    "interaction": 107,
+    "scores": {
+      "safety_assessment_agent": 0.32034890902482055,
+      "economic_agent": 0.3269714911840076,
+      "weather_agent": 0.31792333928464106,
+      "flight_info_agent": 0.32523535233122614,
+      "integration_agent": 0.3295071188278213
+    },
+    "timestamp": "2025-07-08T13:28:43.561797"
+  },
+  {
+    "interaction": 108,
+    "scores": {
+      "safety_assessment_agent": 0.32034890902482055,
+      "economic_agent": 0.3269714911840076,
+      "weather_agent": 0.31792333928464106,
+      "flight_info_agent": 0.32523535233122614,
+      "integration_agent": 0.32970380673618077
+    },
+    "timestamp": "2025-07-08T13:28:43.584079"
+  },
+  {
+    "interaction": 109,
+    "scores": {
+      "safety_assessment_agent": 0.32042227366867215,
+      "economic_agent": 0.3269714911840076,
+      "weather_agent": 0.31858068576913906,
+      "flight_info_agent": 0.32523535233122614,
+      "integration_agent": 0.32970380673618077
+    },
+    "timestamp": "2025-07-08T13:28:43.608313"
+  },
+  {
+    "interaction": 110,
+    "scores": {
+      "safety_assessment_agent": 0.3224113454977624,
+      "economic_agent": 0.3269714911840076,
+      "weather_agent": 0.31997660983453496,
+      "flight_info_agent": 0.32523535233122614,
+      "integration_agent": 0.32970380673618077
+    },
+    "timestamp": "2025-07-08T13:28:43.630636"
+  },
+  {
+    "interaction": 111,
+    "scores": {
+      "safety_assessment_agent": 0.3224113454977624,
+      "economic_agent": 0.32795598638281825,
+      "weather_agent": 0.319976609834535,
+      "flight_info_agent": 0.32523535233122614,
+      "integration_agent": 0.32970380673618077
+    },
+    "timestamp": "2025-07-08T13:28:43.653150"
+  },
+  {
+    "interaction": 112,
+    "scores": {
+      "safety_assessment_agent": 0.3224113454977624,
+      "economic_agent": 0.3279559863828183,
+      "weather_agent": 0.3199766098345351,
+      "flight_info_agent": 0.32633570070053136,
+      "integration_agent": 0.32970380673618077
+    },
+    "timestamp": "2025-07-08T13:28:43.688764"
+  },
+  {
+    "interaction": 113,
+    "scores": {
+      "safety_assessment_agent": 0.3224113454977624,
+      "economic_agent": 0.32795598638281837,
+      "weather_agent": 0.3199766098345351,
+      "flight_info_agent": 0.32633570070053136,
+      "integration_agent": 0.32990981264932423
+    },
+    "timestamp": "2025-07-08T13:28:43.710501"
+  },
+  {
+    "interaction": 114,
+    "scores": {
+      "safety_assessment_agent": 0.32225857836322974,
+      "economic_agent": 0.32795598638281837,
+      "weather_agent": 0.3196398453897784,
+      "flight_info_agent": 0.32633570070053136,
+      "integration_agent": 0.32990981264932423
+    },
+    "timestamp": "2025-07-08T13:28:43.737005"
+  },
+  {
+    "interaction": 115,
+    "scores": {
+      "safety_assessment_agent": 0.3229258062790701,
+      "economic_agent": 0.32795598638281837,
+      "weather_agent": 0.3213396454861948,
+      "flight_info_agent": 0.32633570070053136,
+      "integration_agent": 0.32990981264932423
+    },
+    "timestamp": "2025-07-08T13:28:43.759865"
+  },
+  {
+    "interaction": 116,
+    "scores": {
+      "safety_assessment_agent": 0.3229258062790701,
+      "economic_agent": 0.3286959791718534,
+      "weather_agent": 0.3213396454861948,
+      "flight_info_agent": 0.32633570070053136,
+      "integration_agent": 0.32990981264932423
+    },
+    "timestamp": "2025-07-08T13:28:43.782629"
+  },
+  {
+    "interaction": 117,
+    "scores": {
+      "safety_assessment_agent": 0.3229258062790701,
+      "economic_agent": 0.3286959791718534,
+      "weather_agent": 0.3213396454861948,
+      "flight_info_agent": 0.32824183757680847,
+      "integration_agent": 0.32990981264932423
+    },
+    "timestamp": "2025-07-08T13:28:43.808717"
+  },
+  {
+    "interaction": 118,
+    "scores": {
+      "safety_assessment_agent": 0.3229258062790701,
+      "economic_agent": 0.3286959791718534,
+      "weather_agent": 0.3213396454861948,
+      "flight_info_agent": 0.3282418375768085,
+      "integration_agent": 0.33094357773481237
+    },
+    "timestamp": "2025-07-08T13:28:43.836206"
+  },
+  {
+    "interaction": 119,
+    "scores": {
+      "safety_assessment_agent": 0.3259553300270286,
+      "economic_agent": 0.3286959791718534,
+      "weather_agent": 0.3226178798680171,
+      "flight_info_agent": 0.3282418375768085,
+      "integration_agent": 0.33094357773481237
+    },
+    "timestamp": "2025-07-08T13:28:43.863490"
+  },
+  {
+    "interaction": 120,
+    "scores": {
+      "safety_assessment_agent": 0.3269008370211749,
+      "economic_agent": 0.3286959791718534,
+      "weather_agent": 0.32470515081695467,
+      "flight_info_agent": 0.3282418375768085,
+      "integration_agent": 0.33094357773481237
+    },
+    "timestamp": "2025-07-08T13:28:43.892462"
+  },
+  {
+    "interaction": 121,
+    "scores": {
+      "safety_assessment_agent": 0.32690083702117495,
+      "economic_agent": 0.32855818066223264,
+      "weather_agent": 0.32470515081695467,
+      "flight_info_agent": 0.3282418375768085,
+      "integration_agent": 0.33094357773481237
+    },
+    "timestamp": "2025-07-08T13:28:43.922125"
+  },
+  {
+    "interaction": 122,
+    "scores": {
+      "safety_assessment_agent": 0.32690083702117495,
+      "economic_agent": 0.3285581806622327,
+      "weather_agent": 0.32470515081695467,
+      "flight_info_agent": 0.3300728454551917,
+      "integration_agent": 0.33094357773481237
+    },
+    "timestamp": "2025-07-08T13:28:43.971864"
+  },
+  {
+    "interaction": 123,
+    "scores": {
+      "safety_assessment_agent": 0.32690083702117495,
+      "economic_agent": 0.3285581806622327,
+      "weather_agent": 0.32470515081695467,
+      "flight_info_agent": 0.3300728454551917,
+      "integration_agent": 0.33202877670453795
+    },
+    "timestamp": "2025-07-08T13:28:44.001118"
+  },
+  {
+    "interaction": 124,
+    "scores": {
+      "safety_assessment_agent": 0.3294156032011316,
+      "economic_agent": 0.3285581806622327,
+      "weather_agent": 0.32422246830542184,
+      "flight_info_agent": 0.3300728454551917,
+      "integration_agent": 0.332028776704538
+    },
+    "timestamp": "2025-07-08T13:28:44.022983"
+  },
+  {
+    "interaction": 125,
+    "scores": {
+      "safety_assessment_agent": 0.3297716310337751,
+      "economic_agent": 0.3285581806622327,
+      "weather_agent": 0.32609601834510965,
+      "flight_info_agent": 0.3300728454551917,
+      "integration_agent": 0.33202877670453806
+    },
+    "timestamp": "2025-07-08T13:28:44.039971"
+  },
+  {
+    "interaction": 126,
+    "scores": {
+      "safety_assessment_agent": 0.3297716310337751,
+      "economic_agent": 0.3288570970770816,
+      "weather_agent": 0.32609601834510965,
+      "flight_info_agent": 0.3300728454551917,
+      "integration_agent": 0.33202877670453806
+    },
+    "timestamp": "2025-07-08T13:28:44.056865"
+  },
+  {
+    "interaction": 127,
+    "scores": {
+      "safety_assessment_agent": 0.3297716310337751,
+      "economic_agent": 0.3288570970770816,
+      "weather_agent": 0.32609601834510965,
+      "flight_info_agent": 0.33172325890356047,
+      "integration_agent": 0.33202877670453806
+    },
+    "timestamp": "2025-07-08T13:28:44.074018"
+  },
+  {
+    "interaction": 128,
+    "scores": {
+      "safety_assessment_agent": 0.3297716310337751,
+      "economic_agent": 0.3288570970770816,
+      "weather_agent": 0.32609601834510965,
+      "flight_info_agent": 0.3317232589035605,
+      "integration_agent": 0.33363642314813596
+    },
+    "timestamp": "2025-07-08T13:28:44.093655"
+  },
+  {
+    "interaction": 129,
+    "scores": {
+      "safety_assessment_agent": 0.3330651676942222,
+      "economic_agent": 0.3288570970770816,
+      "weather_agent": 0.32897296276398874,
+      "flight_info_agent": 0.3317232589035605,
+      "integration_agent": 0.33363642314813596
+    },
+    "timestamp": "2025-07-08T13:28:44.111955"
+  },
+  {
+    "interaction": 130,
+    "scores": {
+      "safety_assessment_agent": 0.3359565426745601,
+      "economic_agent": 0.3288570970770816,
+      "weather_agent": 0.33113887866463465,
+      "flight_info_agent": 0.3317232589035605,
+      "integration_agent": 0.33363642314813596
+    },
+    "timestamp": "2025-07-08T13:28:44.134143"
+  },
+  {
+    "interaction": 131,
+    "scores": {
+      "safety_assessment_agent": 0.33595654267456015,
+      "economic_agent": 0.33165434494715507,
+      "weather_agent": 0.33113887866463465,
+      "flight_info_agent": 0.3317232589035605,
+      "integration_agent": 0.33363642314813596
+    },
+    "timestamp": "2025-07-08T13:28:44.152609"
+  },
+  {
+    "interaction": 132,
+    "scores": {
+      "safety_assessment_agent": 0.33595654267456015,
+      "economic_agent": 0.33165434494715507,
+      "weather_agent": 0.33113887866463465,
+      "flight_info_agent": 0.3343025094043442,
+      "integration_agent": 0.33363642314813596
+    },
+    "timestamp": "2025-07-08T13:28:44.177293"
+  },
+  {
+    "interaction": 133,
+    "scores": {
+      "safety_assessment_agent": 0.33595654267456015,
+      "economic_agent": 0.33165434494715507,
+      "weather_agent": 0.33113887866463465,
+      "flight_info_agent": 0.33430250940434425,
+      "integration_agent": 0.336415051550569
+    },
+    "timestamp": "2025-07-08T13:28:44.197970"
+  },
+  {
+    "interaction": 134,
+    "scores": {
+      "safety_assessment_agent": 0.3366166526617828,
+      "economic_agent": 0.33165434494715507,
+      "weather_agent": 0.33189985229677854,
+      "flight_info_agent": 0.3343025094043443,
+      "integration_agent": 0.33641505155056906
+    },
+    "timestamp": "2025-07-08T13:28:44.227367"
+  },
+  {
+    "interaction": 135,
+    "scores": {
+      "safety_assessment_agent": 0.3387403997851978,
+      "economic_agent": 0.33165434494715507,
+      "weather_agent": 0.3325982090936898,
+      "flight_info_agent": 0.3343025094043443,
+      "integration_agent": 0.3364150515505691
+    },
+    "timestamp": "2025-07-08T13:28:44.253695"
+  },
+  {
+    "interaction": 136,
+    "scores": {
+      "safety_assessment_agent": 0.3387403997851978,
+      "economic_agent": 0.33416271999093566,
+      "weather_agent": 0.3325982090936898,
+      "flight_info_agent": 0.3343025094043443,
+      "integration_agent": 0.3364150515505691
+    },
+    "timestamp": "2025-07-08T13:28:44.279651"
+  },
+  {
+    "interaction": 137,
+    "scores": {
+      "safety_assessment_agent": 0.3387403997851978,
+      "economic_agent": 0.33416271999093566,
+      "weather_agent": 0.3325982090936898,
+      "flight_info_agent": 0.33474919131434466,
+      "integration_agent": 0.3364150515505691
+    },
+    "timestamp": "2025-07-08T13:28:44.308352"
+  },
+  {
+    "interaction": 138,
+    "scores": {
+      "safety_assessment_agent": 0.3387403997851978,
+      "economic_agent": 0.33416271999093566,
+      "weather_agent": 0.3325982090936898,
+      "flight_info_agent": 0.33474919131434466,
+      "integration_agent": 0.33832592618588053
+    },
+    "timestamp": "2025-07-08T13:28:44.335552"
+  },
+  {
+    "interaction": 139,
+    "scores": {
+      "safety_assessment_agent": 0.3403121577805964,
+      "economic_agent": 0.33416271999093566,
+      "weather_agent": 0.33470289285341337,
+      "flight_info_agent": 0.33474919131434466,
+      "integration_agent": 0.33832592618588053
+    },
+    "timestamp": "2025-07-08T13:28:44.360523"
+  },
+  {
+    "interaction": 140,
+    "scores": {
+      "safety_assessment_agent": 0.3410839546018294,
+      "economic_agent": 0.33416271999093566,
+      "weather_agent": 0.33601161274316865,
+      "flight_info_agent": 0.33474919131434466,
+      "integration_agent": 0.33832592618588053
+    },
+    "timestamp": "2025-07-08T13:28:44.387073"
+  },
+  {
+    "interaction": 141,
+    "scores": {
+      "safety_assessment_agent": 0.34108395460182944,
+      "economic_agent": 0.3378625672940608,
+      "weather_agent": 0.3360116127431687,
+      "flight_info_agent": 0.33474919131434466,
+      "integration_agent": 0.33832592618588053
+    },
+    "timestamp": "2025-07-08T13:28:44.408331"
+  },
+  {
+    "interaction": 142,
+    "scores": {
+      "safety_assessment_agent": 0.34108395460182944,
+      "economic_agent": 0.33786256729406083,
+      "weather_agent": 0.33601161274316876,
+      "flight_info_agent": 0.33609799919520106,
+      "integration_agent": 0.33832592618588053
+    },
+    "timestamp": "2025-07-08T13:28:44.434784"
+  },
+  {
+    "interaction": 143,
+    "scores": {
+      "safety_assessment_agent": 0.34108395460182944,
+      "economic_agent": 0.3378625672940609,
+      "weather_agent": 0.33601161274316876,
+      "flight_info_agent": 0.33609799919520106,
+      "integration_agent": 0.3400539336752332
+    },
+    "timestamp": "2025-07-08T13:28:44.461743"
+  },
+  {
+    "interaction": 144,
+    "scores": {
+      "safety_assessment_agent": 0.3419595805567996,
+      "economic_agent": 0.3378625672940609,
+      "weather_agent": 0.336765734951889,
+      "flight_info_agent": 0.33609799919520106,
+      "integration_agent": 0.34005393367523323
+    },
+    "timestamp": "2025-07-08T13:28:44.483120"
+  },
+  {
+    "interaction": 145,
+    "scores": {
+      "safety_assessment_agent": 0.3447683470772565,
+      "economic_agent": 0.3378625672940609,
+      "weather_agent": 0.3392024896533842,
+      "flight_info_agent": 0.33609799919520106,
+      "integration_agent": 0.34005393367523323
+    },
+    "timestamp": "2025-07-08T13:28:44.512939"
+  },
+  {
+    "interaction": 146,
+    "scores": {
+      "safety_assessment_agent": 0.3447683470772565,
+      "economic_agent": 0.3392212199439163,
+      "weather_agent": 0.3392024896533842,
+      "flight_info_agent": 0.33609799919520106,
+      "integration_agent": 0.34005393367523323
+    },
+    "timestamp": "2025-07-08T13:28:44.544956"
+  },
+  {
+    "interaction": 147,
+    "scores": {
+      "safety_assessment_agent": 0.3447683470772565,
+      "economic_agent": 0.33922121994391635,
+      "weather_agent": 0.3392024896533842,
+      "flight_info_agent": 0.3380409061043189,
+      "integration_agent": 0.34005393367523323
+    },
+    "timestamp": "2025-07-08T13:28:44.570620"
+  },
+  {
+    "interaction": 148,
+    "scores": {
+      "safety_assessment_agent": 0.3447683470772565,
+      "economic_agent": 0.33922121994391635,
+      "weather_agent": 0.3392024896533842,
+      "flight_info_agent": 0.3380409061043189,
+      "integration_agent": 0.3423216000359066
+    },
+    "timestamp": "2025-07-08T13:28:44.596266"
+  },
+  {
+    "interaction": 149,
+    "scores": {
+      "safety_assessment_agent": 0.34653570858648897,
+      "economic_agent": 0.33922121994391635,
+      "weather_agent": 0.34128103750821714,
+      "flight_info_agent": 0.3380409061043189,
+      "integration_agent": 0.3423216000359066
+    },
+    "timestamp": "2025-07-08T13:28:44.619248"
+  },
+  {
+    "interaction": 150,
+    "scores": {
+      "safety_assessment_agent": 0.34813949597279686,
+      "economic_agent": 0.33922121994391635,
+      "weather_agent": 0.3425483376298012,
+      "flight_info_agent": 0.3380409061043189,
+      "integration_agent": 0.3423216000359066
+    },
+    "timestamp": "2025-07-08T13:28:44.647207"
+  }
+]
