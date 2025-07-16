@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-超参数优化器 - MAMA 系统学术实验
-解决论文中超参数选择的随意性问题，进行网格搜索和敏感性分析
+Hyperparameter Optimizer - MAMA System Academic Experiments
+Solve randomness in hyperparameter selection in papers, perform grid search and sensitivity analysis
 """
 
 import json
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# 导入模型和评估器
+# Import models and evaluators
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,494 +27,561 @@ from evaluation.standard_evaluator import StandardEvaluator
 logger = logging.getLogger(__name__)
 
 class HyperparameterOptimizer:
-    """超参数优化器"""
+    """Hyperparameter Optimizer"""
     
     def __init__(self, random_seed: int = 42):
         """
-        初始化超参数优化器
+        Initialize Hyperparameter Optimizer
         
         Args:
-            random_seed: 随机种子确保可复现性
+            random_seed: Random seed for reproducibility
         """
         self.random_seed = random_seed
         np.random.seed(random_seed)
         
-        # 评估器
+        # Evaluator
         self.evaluator = StandardEvaluator(random_seed)
         
-        # 优化历史
+        # Optimization history
         self.optimization_history = []
         
-        # 最佳配置
+        # Best configuration
         self.best_config = None
         self.best_score = -np.inf
         
-        logger.info("✅ 超参数优化器初始化完成")
-    
-    def define_search_space(self) -> Dict[str, List[float]]:
-        """
-        定义超参数搜索空间
-        
-        Returns:
-            超参数搜索空间字典
-        """
-        search_space = {
-            # MAMA核心权重参数
-            'alpha': [0.5, 0.6, 0.7, 0.8, 0.9],  # SBERT相似度权重
-            'beta': [0.1, 0.2, 0.3, 0.4, 0.5],   # 信任分数权重
-            'gamma': [0.05, 0.1, 0.15, 0.2, 0.25], # 历史表现权重
-            
-            # 信任分数权重分配
-            'trust_reliability': [0.2, 0.25, 0.3],
-            'trust_accuracy': [0.2, 0.25, 0.3],
-            'trust_consistency': [0.15, 0.2, 0.25],
-            'trust_transparency': [0.1, 0.15, 0.2],
-            'trust_robustness': [0.1, 0.15, 0.2],
-            
-            # 系统参数
-            'max_agents': [2, 3, 4, 5],
-            'trust_threshold': [0.3, 0.4, 0.5, 0.6, 0.7]
+        # Hyperparameter search space
+        self.search_space = {
+            'learning_rate': [0.001, 0.005, 0.01, 0.05, 0.1],
+            'trust_decay': [0.9, 0.95, 0.99, 0.995],
+            'reward_scale': [0.1, 0.5, 1.0, 2.0],
+            'exploration_rate': [0.1, 0.2, 0.3, 0.5],
+            'batch_size': [16, 32, 64, 128],
+            'hidden_dim': [64, 128, 256, 512],
+            'num_layers': [2, 3, 4, 5],
+            'dropout_rate': [0.0, 0.1, 0.2, 0.3]
         }
         
-        return search_space
-    
-    def grid_search(self, test_data: List[Dict[str, Any]], 
-                   max_combinations: int = 50,
-                   validation_split: float = 0.3) -> Dict[str, Any]:
-        """
-        网格搜索最优超参数
+        # Results storage
+        self.results_dir = Path('results/hyperparameter_optimization')
+        self.results_dir.mkdir(parents=True, exist_ok=True)
         
-        Args:
-            test_data: 测试数据
-            max_combinations: 最大搜索组合数
-            validation_split: 验证集比例
-            
-        Returns:
-            优化结果
-        """
-        logger.info(f"🔍 开始网格搜索超参数优化")
-        logger.info(f"📊 测试数据: {len(test_data)} 条")
-        logger.info(f"📊 最大搜索组合: {max_combinations}")
+    def generate_hyperparameter_configurations(self, 
+                                             strategy: str = 'grid',
+                                             max_configs: int = 100) -> List[Dict[str, Any]]:
+        """Generate hyperparameter configurations"""
         
-        # 分割验证集
-        val_size = int(len(test_data) * validation_split)
-        validation_data = test_data[:val_size]
-        remaining_data = test_data[val_size:]
-        
-        # 获取搜索空间
-        search_space = self.define_search_space()
-        
-        # 生成超参数组合
-        param_combinations = self._generate_param_combinations(search_space, max_combinations)
-        
-        logger.info(f"🎯 实际搜索组合数: {len(param_combinations)}")
-        
-        # 执行网格搜索
-        search_results = []
-        
-        for i, params in enumerate(param_combinations):
-            logger.info(f"🔄 测试组合 {i+1}/{len(param_combinations)}: {params}")
-            
-            try:
-                # 创建模型配置
-                config = self._create_model_config(params)
-                
-                # 评估模型
-                result = self._evaluate_config(config, validation_data)
-                
-                # 记录结果
-                search_results.append({
-                    'combination_id': i + 1,
-                    'parameters': params,
-                    'metrics': result['metrics'],
-                    'evaluation_time': result['evaluation_time']
-                })
-                
-                # 更新最佳配置
-                score = result['metrics']['MRR']  # 使用MRR作为主要指标
-                if score > self.best_score:
-                    self.best_score = score
-                    self.best_config = params
-                    logger.info(f"🌟 发现更好配置! MRR = {score:.4f}")
-                
-            except Exception as e:
-                logger.error(f"❌ 评估组合 {i+1} 失败: {e}")
-                continue
-        
-        # 分析结果
-        optimization_result = self._analyze_grid_search_results(search_results)
-        
-        # 在剩余数据上验证最佳配置
-        best_validation = self._validate_best_config(remaining_data)
-        optimization_result['final_validation'] = best_validation
-        
-        logger.info(f"✅ 网格搜索完成!")
-        logger.info(f"🏆 最佳配置 MRR: {self.best_score:.4f}")
-        
-        return optimization_result
-    
-    def _generate_param_combinations(self, search_space: Dict[str, List[float]], 
-                                   max_combinations: int) -> List[Dict[str, float]]:
-        """生成参数组合"""
-        # 计算所有可能的组合数
-        total_combinations = 1
-        for values in search_space.values():
-            total_combinations *= len(values)
-        
-        logger.info(f"📊 理论组合数: {total_combinations}")
-        
-        if total_combinations <= max_combinations:
-            # 如果组合数不多，使用完整网格搜索
-            param_names = list(search_space.keys())
-            param_values = list(search_space.values())
-            
-            combinations = []
-            for combination in product(*param_values):
-                param_dict = dict(zip(param_names, combination))
-                
-                # 检查权重约束
-                if self._is_valid_combination(param_dict):
-                    combinations.append(param_dict)
-            
-            return combinations
+        if strategy == 'grid':
+            return self._generate_grid_search_configs(max_configs)
+        elif strategy == 'random':
+            return self._generate_random_search_configs(max_configs)
+        elif strategy == 'focused':
+            return self._generate_focused_search_configs(max_configs)
         else:
-            # 如果组合数太多，使用随机采样
-            logger.info(f"🎲 使用随机采样 {max_combinations} 个组合")
-            
-            combinations = []
-            attempts = 0
-            max_attempts = max_combinations * 10
-            
-            while len(combinations) < max_combinations and attempts < max_attempts:
-                param_dict = {}
-                for param_name, values in search_space.items():
-                    param_dict[param_name] = np.random.choice(values)
-                
-                if self._is_valid_combination(param_dict):
-                    combinations.append(param_dict)
-                
-                attempts += 1
-            
-            return combinations
+            raise ValueError(f"Unknown strategy: {strategy}")
     
-    def _is_valid_combination(self, params: Dict[str, float]) -> bool:
-        """检查参数组合是否有效"""
-        # 检查主要权重和是否接近1.0
-        main_weights_sum = params.get('alpha', 0.7) + params.get('beta', 0.2) + params.get('gamma', 0.1)
-        if not (0.95 <= main_weights_sum <= 1.05):
-            return False
-        
-        # 检查信任权重和是否接近1.0
-        trust_weights_sum = (
-            params.get('trust_reliability', 0.25) +
-            params.get('trust_accuracy', 0.25) +
-            params.get('trust_consistency', 0.2) +
-            params.get('trust_transparency', 0.15) +
-            params.get('trust_robustness', 0.15)
-        )
-        if not (0.95 <= trust_weights_sum <= 1.05):
-            return False
-        
-        return True
-    
-    def _create_model_config(self, params: Dict[str, float]) -> ModelConfig:
-        """根据参数创建模型配置"""
-        # 归一化主要权重
-        total_main = params.get('alpha', 0.7) + params.get('beta', 0.2) + params.get('gamma', 0.1)
-        alpha = params.get('alpha', 0.7) / total_main
-        beta = params.get('beta', 0.2) / total_main
-        gamma = params.get('gamma', 0.1) / total_main
-        
-        # 归一化信任权重
-        total_trust = (
-            params.get('trust_reliability', 0.25) +
-            params.get('trust_accuracy', 0.25) +
-            params.get('trust_consistency', 0.2) +
-            params.get('trust_transparency', 0.15) +
-            params.get('trust_robustness', 0.15)
-        )
-        
-        trust_weights = {
-            'reliability': params.get('trust_reliability', 0.25) / total_trust,
-            'accuracy': params.get('trust_accuracy', 0.25) / total_trust,
-            'consistency': params.get('trust_consistency', 0.2) / total_trust,
-            'transparency': params.get('trust_transparency', 0.15) / total_trust,
-            'robustness': params.get('trust_robustness', 0.15) / total_trust
+    def _generate_grid_search_configs(self, max_configs: int) -> List[Dict[str, Any]]:
+        """Generate grid search configurations"""
+        # For full grid search, we need to limit the search space
+        reduced_space = {
+            'learning_rate': [0.001, 0.01, 0.1],
+            'trust_decay': [0.9, 0.95, 0.99],
+            'reward_scale': [0.5, 1.0, 2.0],
+            'exploration_rate': [0.1, 0.3, 0.5],
+            'batch_size': [32, 64, 128],
+            'hidden_dim': [128, 256, 512],
+            'num_layers': [2, 3, 4],
+            'dropout_rate': [0.0, 0.1, 0.2]
         }
         
-        config = ModelConfig(
-            alpha=alpha,
-            beta=beta,
-            gamma=gamma,
-            trust_weights=trust_weights,
-            max_agents=int(params.get('max_agents', 3)),
-            trust_threshold=params.get('trust_threshold', 0.5),
-            random_seed=self.random_seed
-        )
+        # Generate all combinations
+        param_names = list(reduced_space.keys())
+        param_values = list(reduced_space.values())
         
-        return config
+        configurations = []
+        for combination in product(*param_values):
+            config = dict(zip(param_names, combination))
+            configurations.append(config)
+            
+            if len(configurations) >= max_configs:
+                break
+        
+        logger.info(f"Generated {len(configurations)} grid search configurations")
+        return configurations
     
-    def _evaluate_config(self, config: ModelConfig, test_data: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """评估单个配置"""
-        start_time = time.time()
+    def _generate_random_search_configs(self, max_configs: int) -> List[Dict[str, Any]]:
+        """Generate random search configurations"""
+        configurations = []
         
-        # 创建模型
-        model = MAMAFull(config)
+        for _ in range(max_configs):
+            config = {}
+            for param_name, param_values in self.search_space.items():
+                config[param_name] = np.random.choice(param_values)
+            configurations.append(config)
         
-        # 评估模型
-        result = self.evaluator.evaluate_model(model, test_data, f"MAMA_Config_{len(self.optimization_history)}")
-        
-        evaluation_time = time.time() - start_time
-        
-        return {
-            'metrics': result['metrics'],
-            'evaluation_time': evaluation_time
+        logger.info(f"Generated {len(configurations)} random search configurations")
+        return configurations
+    
+    def _generate_focused_search_configs(self, max_configs: int) -> List[Dict[str, Any]]:
+        """Generate focused search around known good configurations"""
+        # Start with known good baseline
+        baseline_config = {
+            'learning_rate': 0.01,
+            'trust_decay': 0.95,
+            'reward_scale': 1.0,
+            'exploration_rate': 0.2,
+            'batch_size': 64,
+            'hidden_dim': 256,
+            'num_layers': 3,
+            'dropout_rate': 0.1
         }
+        
+        configurations = [baseline_config]
+        
+        # Generate variations around baseline
+        for _ in range(max_configs - 1):
+            config = baseline_config.copy()
+            
+            # Randomly select 1-3 parameters to vary
+            params_to_vary = np.random.choice(
+                list(self.search_space.keys()), 
+                size=np.random.randint(1, 4),
+                replace=False
+            )
+            
+            for param in params_to_vary:
+                # Choose from nearby values
+                current_value = config[param]
+                available_values = self.search_space[param]
+                
+                if current_value in available_values:
+                    current_idx = available_values.index(current_value)
+                    # Select from nearby indices
+                    nearby_indices = [
+                        max(0, current_idx - 1),
+                        current_idx,
+                        min(len(available_values) - 1, current_idx + 1)
+                    ]
+                    selected_idx = np.random.choice(nearby_indices)
+                    config[param] = available_values[selected_idx]
+                else:
+                    config[param] = np.random.choice(available_values)
+            
+            configurations.append(config)
+        
+        logger.info(f"Generated {len(configurations)} focused search configurations")
+        return configurations
     
-    def _analyze_grid_search_results(self, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """分析网格搜索结果"""
-        if not search_results:
-            return {}
+    def evaluate_configuration(self, config: Dict[str, Any], 
+                             test_queries: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Evaluate a single hyperparameter configuration"""
         
-        # 提取指标数据
-        mrr_scores = [result['metrics']['MRR'] for result in search_results]
-        ndcg_scores = [result['metrics']['NDCG@5'] for result in search_results]
-        art_scores = [result['metrics']['ART'] for result in search_results]
+        try:
+            # Create model with configuration
+            model_config = ModelConfig(**config)
+            model = MAMAFull(model_config)
+            
+            # Evaluate on test queries
+            start_time = time.time()
+            results = self.evaluator.evaluate_model(model, test_queries, 
+                                                   f"MAMA_config_{len(self.optimization_history)}")
+            evaluation_time = time.time() - start_time
+            
+            # Extract key metrics
+            metrics = results['metrics']
+            score = metrics['MRR']  # Use MRR as primary optimization metric
+            
+            evaluation_result = {
+                'config': config,
+                'score': score,
+                'metrics': metrics,
+                'evaluation_time': evaluation_time,
+                'success': True,
+                'timestamp': datetime.now().isoformat()
+            }
+            
+            # Update best configuration
+            if score > self.best_score:
+                self.best_score = score
+                self.best_config = config.copy()
+                logger.info(f"New best configuration found! Score: {score:.4f}")
+            
+            return evaluation_result
+            
+        except Exception as e:
+            logger.error(f"Error evaluating configuration: {e}")
+            return {
+                'config': config,
+                'score': -1.0,
+                'metrics': {},
+                'evaluation_time': 0.0,
+                'success': False,
+                'error': str(e),
+                'timestamp': datetime.now().isoformat()
+            }
+    
+    def run_optimization(self, 
+                        test_queries: List[Dict[str, Any]], 
+                        strategy: str = 'grid',
+                        max_configs: int = 50) -> Dict[str, Any]:
+        """Run hyperparameter optimization"""
         
-        # 统计分析
+        logger.info(f"Starting hyperparameter optimization with {strategy} strategy")
+        logger.info(f"Max configurations: {max_configs}")
+        
+        # Generate configurations
+        configurations = self.generate_hyperparameter_configurations(strategy, max_configs)
+        
+        # Evaluate each configuration
+        for i, config in enumerate(configurations):
+            logger.info(f"Evaluating configuration {i+1}/{len(configurations)}")
+            
+            result = self.evaluate_configuration(config, test_queries)
+            self.optimization_history.append(result)
+            
+            # Log progress
+            if result['success']:
+                logger.info(f"Config {i+1}: Score={result['score']:.4f}, "
+                          f"Time={result['evaluation_time']:.2f}s")
+            else:
+                logger.warning(f"Config {i+1}: Failed - {result.get('error', 'Unknown error')}")
+        
+        # Analyze results
+        analysis = self._analyze_optimization_results()
+        
+        # Generate final report
+        optimization_report = {
+            'metadata': {
+                'strategy': strategy,
+                'max_configs': max_configs,
+                'total_evaluated': len(self.optimization_history),
+                'successful_evaluations': sum(1 for r in self.optimization_history if r['success']),
+                'best_score': self.best_score,
+                'best_config': self.best_config,
+                'timestamp': datetime.now().isoformat()
+            },
+            'optimization_history': self.optimization_history,
+            'analysis': analysis,
+            'recommendations': self._generate_recommendations(analysis)
+        }
+        
+        # Save results
+        self._save_optimization_results(optimization_report)
+        
+        logger.info("Hyperparameter optimization completed!")
+        logger.info(f"Best score: {self.best_score:.4f}")
+        
+        return optimization_report
+    
+    def _analyze_optimization_results(self) -> Dict[str, Any]:
+        """Analyze optimization results"""
+        
+        successful_results = [r for r in self.optimization_history if r['success']]
+        
+        if not successful_results:
+            return {'error': 'No successful evaluations'}
+        
+        # Extract scores and configurations
+        scores = [r['score'] for r in successful_results]
+        configs = [r['config'] for r in successful_results]
+        
+        # Basic statistics
         analysis = {
-            'search_summary': {
-                'total_combinations': len(search_results),
-                'best_mrr': max(mrr_scores),
-                'best_ndcg': max(ndcg_scores),
-                'best_art': min(art_scores),
-                'avg_mrr': np.mean(mrr_scores),
-                'std_mrr': np.std(mrr_scores),
-                'best_configuration': self.best_config
+            'score_statistics': {
+                'mean': float(np.mean(scores)),
+                'std': float(np.std(scores)),
+                'min': float(np.min(scores)),
+                'max': float(np.max(scores)),
+                'median': float(np.median(scores))
             },
-            'performance_distribution': {
-                'mrr_percentiles': {
-                    '25th': np.percentile(mrr_scores, 25),
-                    '50th': np.percentile(mrr_scores, 50),
-                    '75th': np.percentile(mrr_scores, 75),
-                    '90th': np.percentile(mrr_scores, 90)
-                },
-                'ndcg_percentiles': {
-                    '25th': np.percentile(ndcg_scores, 25),
-                    '50th': np.percentile(ndcg_scores, 50),
-                    '75th': np.percentile(ndcg_scores, 75),
-                    '90th': np.percentile(ndcg_scores, 90)
-                }
-            },
-            'detailed_results': search_results
+            'parameter_importance': self._calculate_parameter_importance(configs, scores),
+            'top_configurations': self._get_top_configurations(successful_results, top_k=10),
+            'convergence_analysis': self._analyze_convergence(scores)
         }
-        
-        # 参数敏感性分析
-        sensitivity_analysis = self._parameter_sensitivity_analysis(search_results)
-        analysis['sensitivity_analysis'] = sensitivity_analysis
-        
-        # 保存结果
-        self.optimization_history.append(analysis)
         
         return analysis
     
-    def _parameter_sensitivity_analysis(self, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """参数敏感性分析"""
-        sensitivity = {}
+    def _calculate_parameter_importance(self, configs: List[Dict[str, Any]], 
+                                      scores: List[float]) -> Dict[str, float]:
+        """Calculate parameter importance using correlation analysis"""
         
-        # 分析每个参数对性能的影响
-        for param_name in ['alpha', 'beta', 'gamma', 'max_agents', 'trust_threshold']:
-            param_impact = self._analyze_parameter_impact(search_results, param_name)
-            sensitivity[param_name] = param_impact
+        importance = {}
         
-        return sensitivity
+        for param_name in self.search_space.keys():
+            param_values = []
+            param_scores = []
+            
+            for config, score in zip(configs, scores):
+                if param_name in config:
+                    param_values.append(config[param_name])
+                    param_scores.append(score)
+            
+            if len(set(param_values)) > 1:  # Need variation to calculate correlation
+                # Convert to numeric if needed
+                if isinstance(param_values[0], (int, float)):
+                    correlation = np.corrcoef(param_values, param_scores)[0, 1]
+                    importance[param_name] = abs(correlation) if not np.isnan(correlation) else 0.0
+                else:
+                    # For categorical parameters, use variance analysis
+                    unique_values = list(set(param_values))
+                    if len(unique_values) > 1:
+                        score_groups = {}
+                        for val, score in zip(param_values, param_scores):
+                            if val not in score_groups:
+                                score_groups[val] = []
+                            score_groups[val].append(score)
+                        
+                        # Calculate between-group variance
+                        group_means = [np.mean(scores) for scores in score_groups.values()]
+                        overall_mean = np.mean(param_scores)
+                        between_var = np.var(group_means)
+                        total_var = np.var(param_scores)
+                        
+                        importance[param_name] = between_var / total_var if total_var > 0 else 0.0
+                    else:
+                        importance[param_name] = 0.0
+            else:
+                importance[param_name] = 0.0
+        
+        return importance
     
-    def _analyze_parameter_impact(self, search_results: List[Dict[str, Any]], 
-                                 param_name: str) -> Dict[str, Any]:
-        """分析单个参数的影响"""
-        param_values = []
-        mrr_scores = []
+    def _get_top_configurations(self, results: List[Dict[str, Any]], 
+                              top_k: int = 10) -> List[Dict[str, Any]]:
+        """Get top k configurations by score"""
         
-        for result in search_results:
-            if param_name in result['parameters']:
-                param_values.append(result['parameters'][param_name])
-                mrr_scores.append(result['metrics']['MRR'])
+        sorted_results = sorted(results, key=lambda x: x['score'], reverse=True)
         
-        if not param_values:
-            return {}
+        top_configs = []
+        for i, result in enumerate(sorted_results[:top_k]):
+            top_configs.append({
+                'rank': i + 1,
+                'score': result['score'],
+                'config': result['config'],
+                'metrics': result['metrics']
+            })
         
-        # 计算相关性
-        correlation = np.corrcoef(param_values, mrr_scores)[0, 1] if len(param_values) > 1 else 0.0
+        return top_configs
+    
+    def _analyze_convergence(self, scores: List[float]) -> Dict[str, Any]:
+        """Analyze convergence of optimization"""
         
-        # 按参数值分组计算平均性能
-        unique_values = sorted(list(set(param_values)))
-        avg_performance = {}
+        if len(scores) < 10:
+            return {'error': 'Insufficient data for convergence analysis'}
         
-        for value in unique_values:
-            scores = [mrr_scores[i] for i, pv in enumerate(param_values) if pv == value]
-            avg_performance[value] = {
-                'mean_mrr': np.mean(scores),
-                'std_mrr': np.std(scores),
-                'count': len(scores)
-            }
+        # Calculate running best
+        running_best = []
+        current_best = -np.inf
         
-        return {
-            'correlation_with_mrr': correlation,
-            'value_impact': avg_performance,
-            'sensitivity_level': 'high' if abs(correlation) > 0.5 else 'medium' if abs(correlation) > 0.3 else 'low'
+        for score in scores:
+            if score > current_best:
+                current_best = score
+            running_best.append(current_best)
+        
+        # Calculate improvement rate
+        improvements = []
+        for i in range(1, len(running_best)):
+            if running_best[i] > running_best[i-1]:
+                improvements.append(i)
+        
+        # Convergence metrics
+        convergence_analysis = {
+            'total_improvements': len(improvements),
+            'improvement_rate': len(improvements) / len(scores),
+            'final_score': running_best[-1],
+            'score_range': max(scores) - min(scores),
+            'convergence_point': improvements[-1] if improvements else 0,
+            'plateau_length': len(scores) - (improvements[-1] if improvements else 0)
         }
+        
+        return convergence_analysis
     
-    def _validate_best_config(self, test_data: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """在独立测试集上验证最佳配置"""
-        if not self.best_config:
-            return {}
+    def _generate_recommendations(self, analysis: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate optimization recommendations"""
         
-        logger.info("🧪 在独立测试集上验证最佳配置...")
+        if 'error' in analysis:
+            return {'error': 'Cannot generate recommendations due to analysis error'}
         
-        # 创建最佳配置的模型
-        best_model_config = self._create_model_config(self.best_config)
-        
-        # 评估最佳模型
-        result = self._evaluate_config(best_model_config, test_data)
-        
-        logger.info(f"✅ 最佳配置验证完成: MRR={result['metrics']['MRR']:.4f}")
-        
-        return {
-            'best_config': self.best_config,
-            'validation_metrics': result['metrics'],
-            'validation_note': 'Evaluated on independent test set'
+        recommendations = {
+            'best_parameters': {},
+            'parameter_insights': {},
+            'optimization_insights': []
         }
+        
+        # Best parameter recommendations
+        if self.best_config:
+            recommendations['best_parameters'] = self.best_config.copy()
+        
+        # Parameter insights
+        param_importance = analysis.get('parameter_importance', {})
+        sorted_importance = sorted(param_importance.items(), key=lambda x: x[1], reverse=True)
+        
+        for param, importance in sorted_importance[:5]:  # Top 5 most important
+            if importance > 0.1:  # Significant importance threshold
+                recommendations['parameter_insights'][param] = {
+                    'importance_score': importance,
+                    'recommendation': f"This parameter significantly affects performance (importance: {importance:.3f})"
+                }
+        
+        # Optimization insights
+        convergence = analysis.get('convergence_analysis', {})
+        
+        if convergence.get('improvement_rate', 0) > 0.3:
+            recommendations['optimization_insights'].append(
+                "High improvement rate suggests more configurations could be beneficial"
+            )
+        
+        if convergence.get('plateau_length', 0) > len(self.optimization_history) * 0.5:
+            recommendations['optimization_insights'].append(
+                "Long plateau suggests convergence - current best may be near optimal"
+            )
+        
+        score_stats = analysis.get('score_statistics', {})
+        if score_stats.get('std', 0) > 0.1:
+            recommendations['optimization_insights'].append(
+                "High score variance suggests hyperparameters have significant impact"
+            )
+        
+        return recommendations
     
-    def generate_optimization_report(self, output_dir: str = "results/hyperparameter_optimization"):
-        """生成优化报告"""
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
+    def _save_optimization_results(self, report: Dict[str, Any]) -> None:
+        """Save optimization results to file"""
         
-        if not self.optimization_history:
-            logger.warning("⚠️ 没有优化历史数据")
-            return
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'hyperparameter_optimization_{timestamp}.json'
+        filepath = self.results_dir / filename
         
-        latest_analysis = self.optimization_history[-1]
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
         
-        # 1. 保存详细结果
-        results_file = Path(output_dir) / "optimization_results.json"
-        with open(results_file, 'w', encoding='utf-8') as f:
-            json.dump(latest_analysis, f, ensure_ascii=False, indent=2, default=str)
-        
-        # 2. 生成可视化
-        self._create_optimization_visualizations(latest_analysis, output_dir)
-        
-        # 3. 生成文本报告
-        self._create_text_report(latest_analysis, output_dir)
-        
-        logger.info(f"📊 优化报告已生成: {output_dir}")
+        logger.info(f"Optimization results saved to: {filepath}")
     
-    def _create_optimization_visualizations(self, analysis: Dict[str, Any], output_dir: str):
-        """创建优化可视化图表"""
-        # 设置中文字体
-        plt.rcParams['font.sans-serif'] = ['SimHei', 'Arial']
-        plt.rcParams['axes.unicode_minus'] = False
+    def generate_visualization(self, report: Dict[str, Any]) -> None:
+        """Generate optimization visualization"""
         
-        # 1. 性能分布图
-        fig, axes = plt.subplots(2, 2, figsize=(15, 12))
-        
-        # MRR分布
-        search_results = analysis['detailed_results']
-        mrr_scores = [result['metrics']['MRR'] for result in search_results]
-        
-        axes[0, 0].hist(mrr_scores, bins=20, alpha=0.7, color='blue')
-        axes[0, 0].axvline(analysis['search_summary']['best_mrr'], color='red', linestyle='--', label='Best MRR')
-        axes[0, 0].set_title('MRR Score Distribution')
-        axes[0, 0].set_xlabel('MRR Score')
-        axes[0, 0].set_ylabel('Frequency')
-        axes[0, 0].legend()
-        
-        # NDCG分布
-        ndcg_scores = [result['metrics']['NDCG@5'] for result in search_results]
-        axes[0, 1].hist(ndcg_scores, bins=20, alpha=0.7, color='green')
-        axes[0, 1].axvline(analysis['search_summary']['best_ndcg'], color='red', linestyle='--', label='Best NDCG@5')
-        axes[0, 1].set_title('NDCG@5 Score Distribution')
-        axes[0, 1].set_xlabel('NDCG@5 Score')
-        axes[0, 1].set_ylabel('Frequency')
-        axes[0, 1].legend()
-        
-        # 参数敏感性热力图
-        if 'sensitivity_analysis' in analysis:
-            sensitivity = analysis['sensitivity_analysis']
-            param_names = list(sensitivity.keys())
-            correlations = [sensitivity[param].get('correlation_with_mrr', 0) for param in param_names]
-            
-            axes[1, 0].barh(param_names, correlations)
-            axes[1, 0].set_title('Parameter Sensitivity (Correlation with MRR)')
-            axes[1, 0].set_xlabel('Correlation Coefficient')
-            
-        # 性能vs评估时间
-        eval_times = [result['evaluation_time'] for result in search_results]
-        axes[1, 1].scatter(eval_times, mrr_scores, alpha=0.6)
-        axes[1, 1].set_title('Performance vs Evaluation Time')
-        axes[1, 1].set_xlabel('Evaluation Time (seconds)')
-        axes[1, 1].set_ylabel('MRR Score')
-        
-        plt.tight_layout()
-        plt.savefig(Path(output_dir) / "optimization_analysis.png", dpi=300, bbox_inches='tight')
-        plt.close()
-        
-        logger.info("📈 优化可视化图表已生成")
-    
-    def _create_text_report(self, analysis: Dict[str, Any], output_dir: str):
-        """创建文本报告"""
-        report_file = Path(output_dir) / "optimization_report.md"
-        
-        with open(report_file, 'w', encoding='utf-8') as f:
-            f.write("# MAMA系统超参数优化报告\n\n")
-            f.write(f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
-            # 搜索摘要
-            f.write("## 搜索摘要\n\n")
-            summary = analysis['search_summary']
-            f.write(f"- 搜索组合数: {summary['total_combinations']}\n")
-            f.write(f"- 最佳MRR: {summary['best_mrr']:.4f}\n")
-            f.write(f"- 最佳NDCG@5: {summary['best_ndcg']:.4f}\n")
-            f.write(f"- 平均MRR: {summary['avg_mrr']:.4f} ± {summary['std_mrr']:.4f}\n\n")
-            
-            # 最佳配置
-            f.write("## 最佳配置\n\n")
-            best_config = summary['best_configuration']
-            f.write("```json\n")
-            f.write(json.dumps(best_config, indent=2, ensure_ascii=False))
-            f.write("\n```\n\n")
-            
-            # 敏感性分析
-            if 'sensitivity_analysis' in analysis:
-                f.write("## 参数敏感性分析\n\n")
-                sensitivity = analysis['sensitivity_analysis']
-                
-                for param_name, param_analysis in sensitivity.items():
-                    correlation = param_analysis.get('correlation_with_mrr', 0)
-                    sensitivity_level = param_analysis.get('sensitivity_level', 'unknown')
-                    
-                    f.write(f"### {param_name}\n")
-                    f.write(f"- 与MRR相关性: {correlation:.3f}\n")
-                    f.write(f"- 敏感性等级: {sensitivity_level}\n\n")
-            
-            # 学术意义
-            f.write("## 学术意义\n\n")
-            f.write("本优化过程解决了以下学术问题:\n\n")
-            f.write("1. **超参数选择的科学性**: 通过网格搜索而非经验设定超参数\n")
-            f.write("2. **模型鲁棒性验证**: 敏感性分析证明模型对参数变化的稳定性\n")
-            f.write("3. **性能上限探索**: 系统性搜索找到最优配置\n")
-            f.write("4. **实验可复现性**: 详细记录所有参数组合和结果\n\n")
-        
-        logger.info("📝 文本报告已生成")
-    
-    def load_optimization_results(self, results_file: str) -> Dict[str, Any]:
-        """加载之前的优化结果"""
         try:
-            with open(results_file, 'r', encoding='utf-8') as f:
-                results = json.load(f)
+            # Extract data for plotting
+            successful_results = [r for r in report['optimization_history'] if r['success']]
             
-            logger.info(f"✅ 加载优化结果: {results_file}")
-            return results
+            if not successful_results:
+                logger.warning("No successful results to visualize")
+                return
+            
+            scores = [r['score'] for r in successful_results]
+            
+            # Create figure with subplots
+            fig, axes = plt.subplots(2, 2, figsize=(15, 12))
+            fig.suptitle('Hyperparameter Optimization Results', fontsize=16)
+            
+            # 1. Score progression
+            axes[0, 0].plot(scores, 'b-', alpha=0.7, label='Scores')
+            running_best = []
+            current_best = -np.inf
+            for score in scores:
+                if score > current_best:
+                    current_best = score
+                running_best.append(current_best)
+            axes[0, 0].plot(running_best, 'r-', linewidth=2, label='Running Best')
+            axes[0, 0].set_xlabel('Configuration Index')
+            axes[0, 0].set_ylabel('Score (MRR)')
+            axes[0, 0].set_title('Score Progression')
+            axes[0, 0].legend()
+            axes[0, 0].grid(True, alpha=0.3)
+            
+            # 2. Score distribution
+            axes[0, 1].hist(scores, bins=20, alpha=0.7, color='skyblue', edgecolor='black')
+            axes[0, 1].axvline(np.mean(scores), color='red', linestyle='--', label=f'Mean: {np.mean(scores):.3f}')
+            axes[0, 1].axvline(np.median(scores), color='green', linestyle='--', label=f'Median: {np.median(scores):.3f}')
+            axes[0, 1].set_xlabel('Score (MRR)')
+            axes[0, 1].set_ylabel('Frequency')
+            axes[0, 1].set_title('Score Distribution')
+            axes[0, 1].legend()
+            axes[0, 1].grid(True, alpha=0.3)
+            
+            # 3. Parameter importance
+            param_importance = report['analysis'].get('parameter_importance', {})
+            if param_importance:
+                params = list(param_importance.keys())
+                importance_values = list(param_importance.values())
+                
+                axes[1, 0].barh(params, importance_values, color='lightcoral')
+                axes[1, 0].set_xlabel('Importance Score')
+                axes[1, 0].set_title('Parameter Importance')
+                axes[1, 0].grid(True, alpha=0.3)
+            
+            # 4. Top configurations comparison
+            top_configs = report['analysis'].get('top_configurations', [])[:10]
+            if top_configs:
+                top_scores = [config['score'] for config in top_configs]
+                ranks = [config['rank'] for config in top_configs]
+                
+                axes[1, 1].bar(ranks, top_scores, color='lightgreen', alpha=0.7)
+                axes[1, 1].set_xlabel('Configuration Rank')
+                axes[1, 1].set_ylabel('Score (MRR)')
+                axes[1, 1].set_title('Top 10 Configurations')
+                axes[1, 1].grid(True, alpha=0.3)
+            
+            plt.tight_layout()
+            
+            # Save plot
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            plot_filename = f'optimization_visualization_{timestamp}.png'
+            plot_filepath = self.results_dir / plot_filename
+            plt.savefig(plot_filepath, dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            logger.info(f"Visualization saved to: {plot_filepath}")
             
         except Exception as e:
-            logger.error(f"❌ 加载优化结果失败: {e}")
-            return {} 
+            logger.error(f"Error generating visualization: {e}")
+
+def load_test_queries() -> List[Dict[str, Any]]:
+    """Load test queries for optimization"""
+    
+    # Generate synthetic test queries for optimization
+    test_queries = []
+    
+    for i in range(50):  # Use smaller set for optimization
+        query = {
+            'query_id': f'opt_query_{i+1:03d}',
+            'departure_city': f'City_{np.random.randint(1, 11)}',
+            'arrival_city': f'City_{np.random.randint(1, 11)}',
+            'preferences': {
+                'safety_priority': np.random.uniform(0.3, 0.9),
+                'cost_priority': np.random.uniform(0.2, 0.8),
+                'time_priority': np.random.uniform(0.1, 0.7)
+            },
+            'ground_truth_ranking': [f'flight_{j+1:03d}' for j in range(10)],
+            'relevance_scores': {
+                f'flight_{j+1:03d}': np.random.uniform(0.1, 1.0) for j in range(10)
+            }
+        }
+        test_queries.append(query)
+    
+    return test_queries
+
+def main():
+    """Main function"""
+    
+    # Initialize optimizer
+    optimizer = HyperparameterOptimizer(random_seed=42)
+    
+    # Load test queries
+    test_queries = load_test_queries()
+    
+    # Run optimization
+    report = optimizer.run_optimization(
+        test_queries=test_queries,
+        strategy='focused',  # Use focused search for better results
+        max_configs=30
+    )
+    
+    # Generate visualization
+    optimizer.generate_visualization(report)
+    
+    print("Hyperparameter optimization completed!")
+    print(f"Best score: {report['metadata']['best_score']:.4f}")
+    print(f"Best configuration: {report['metadata']['best_config']}")
+    
+    return report
+
+if __name__ == "__main__":
+    main() 

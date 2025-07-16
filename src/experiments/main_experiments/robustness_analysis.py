@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """
 Ground Truth鲁棒性敏感性分析 - 最终修正版
-============================================
 
 本脚本严格按照学术研究要求，分析MAMA系统在不同Ground Truth生成参数下的性能稳定性。
-
 核心修正：
 - 步骤1: 加载真实的、由模型生成的【航班排序列表】，而非旧的MRR分数。
-- 步骤2: 基于真实的预测排序和新生成的Ground Truth，【重新、真实地计算】MRR。
+- 步骤2: 基于真实的预测排序和新生成的Ground Truth，【重新、真实地计算】MRR。                            
 - 绝对禁止任何形式的模拟或基于随机数的调整。
 """
 
@@ -88,7 +86,7 @@ class GroundTruthRobustnessAnalyzer:
                 self.test_queries_data.append(query_data)
 
         logger.info(f"✅ 成功加载 {len(self.test_queries_data)} 个查询的真实数据和模型预测排序。")
-            return True
+        return True
             
     def _get_mock_preferences(self, query_id):
         """生成确定性的用户偏好"""
