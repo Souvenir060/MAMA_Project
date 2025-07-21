@@ -84,7 +84,7 @@ The MAMA framework consists of 5 specialized agents that work collaboratively:
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/MAMA_Project.git
+git clone https://github.com/Souvenir060/MAMA_Project.git
 cd MAMA_Project
 
 # Install main dependencies
