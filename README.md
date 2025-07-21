@@ -1,6 +1,6 @@
-# MAMA Framework: Multi-Agent Model AI for Dynamic Knowledge Acquisition
+# MAMA Framework: The Multi-Agent Model AI Framework
 
-A sophisticated framework for dynamic, trust-aware agent collaboration in complex multi-domain applications, supporting academic-grade experiments and real-world use cases.
+MAMA introduces a novel architecture designed to address the challenges of dynamic orchestration and collaborative trustworthiness in multi-agent AI systems. The framework enables dynamic, trust-aware agent collaboration by integrating a formal definition of agent expertise, a quantitative trust ledger, and a learning-based selection policy.
 
 ## Project Structure
 
