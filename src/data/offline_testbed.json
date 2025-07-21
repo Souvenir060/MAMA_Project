@@ -1,0 +1,2552 @@
+[
+    {
+        "query_index": 1,
+        "query": {
+            "query_id": "query_0328",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8712995633336852,
+            "latency": 1.637153280715104,
+            "cost": 40.97947064139885,
+            "data_freshness": 0.939908039584249
+        }
+    },
+    {
+        "query_index": 2,
+        "query": {
+            "query_id": "query_0038",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9339048212408895,
+            "latency": 1.5048794564576229,
+            "cost": 47.49304234478254,
+            "data_freshness": 0.9568765878094769
+        }
+    },
+    {
+        "query_index": 3,
+        "query": {
+            "query_id": "query_0989",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9373319817459509,
+            "latency": 1.4695788421097573,
+            "cost": 45.90409130183974,
+            "data_freshness": 0.9448457562585846
+        }
+    },
+    {
+        "query_index": 4,
+        "query": {
+            "query_id": "query_0497",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8740961626587438,
+            "latency": 1.4701405369644616,
+            "cost": 49.742160451519595,
+            "data_freshness": 0.9771637436795232
+        }
+    },
+    {
+        "query_index": 5,
+        "query": {
+            "query_id": "query_0472",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.855759698565528,
+            "latency": 1.281262325123045,
+            "cost": 29.061248310022194,
+            "data_freshness": 0.9882553976605968
+        }
+    },
+    {
+        "query_index": 6,
+        "query": {
+            "query_id": "query_0147",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8067004607163006,
+            "latency": 1.587137099889291,
+            "cost": 39.07521416271337,
+            "data_freshness": 0.920779144457395
+        }
+    },
+    {
+        "query_index": 7,
+        "query": {
+            "query_id": "query_0541",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7856105313932061,
+            "latency": 1.759847315338233,
+            "cost": 31.407760011585744,
+            "data_freshness": 0.9607415129370401
+        }
+    },
+    {
+        "query_index": 8,
+        "query": {
+            "query_id": "query_0021",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8272276456703213,
+            "latency": 1.3262877720679815,
+            "cost": 27.210599237955275,
+            "data_freshness": 0.9679489334906017
+        }
+    },
+    {
+        "query_index": 9,
+        "query": {
+            "query_id": "query_0429",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8077926538039638,
+            "latency": 1.3673509633866545,
+            "cost": 35.96980460900263,
+            "data_freshness": 0.9201438869378865
+        }
+    },
+    {
+        "query_index": 10,
+        "query": {
+            "query_id": "query_0047",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.863917579119086,
+            "latency": 1.4962459375310084,
+            "cost": 29.903572166907246,
+            "data_freshness": 0.9512223458605001
+        }
+    },
+    {
+        "query_index": 11,
+        "query": {
+            "query_id": "query_0711",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8042958966540068,
+            "latency": 1.53797541628931,
+            "cost": 43.658825172638885,
+            "data_freshness": 0.911498650186369
+        }
+    },
+    {
+        "query_index": 12,
+        "query": {
+            "query_id": "query_0005",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7764796333336901,
+            "latency": 1.3568734525043467,
+            "cost": 39.97409450918278,
+            "data_freshness": 0.9773241510003097
+        }
+    },
+    {
+        "query_index": 13,
+        "query": {
+            "query_id": "query_0391",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8537406792952901,
+            "latency": 1.3407720926652356,
+            "cost": 47.118934689789725,
+            "data_freshness": 0.9363350349706054
+        }
+    },
+    {
+        "query_index": 14,
+        "query": {
+            "query_id": "query_0227",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8530085353880165,
+            "latency": 1.5657052421784956,
+            "cost": 23.839127337368442,
+            "data_freshness": 0.9175287174704371
+        }
+    },
+    {
+        "query_index": 15,
+        "query": {
+            "query_id": "query_0606",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8339454547743173,
+            "latency": 1.318221701444886,
+            "cost": 37.635216940786165,
+            "data_freshness": 0.9453328437069427
+        }
+    },
+    {
+        "query_index": 16,
+        "query": {
+            "query_id": "query_0088",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7970895032879227,
+            "latency": 1.6985683339328375,
+            "cost": 22.566308175950304,
+            "data_freshness": 0.9764985594993599
+        }
+    },
+    {
+        "query_index": 17,
+        "query": {
+            "query_id": "query_0095",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8619607156636762,
+            "latency": 1.5886125954092192,
+            "cost": 30.5559660735986,
+            "data_freshness": 0.9368237154066524
+        }
+    },
+    {
+        "query_index": 18,
+        "query": {
+            "query_id": "query_0474",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8175099808946047,
+            "latency": 1.6317514433261302,
+            "cost": 39.65394236868193,
+            "data_freshness": 0.9390508402790739
+        }
+    },
+    {
+        "query_index": 19,
+        "query": {
+            "query_id": "query_0893",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.903890970872253,
+            "latency": 1.4141173715166042,
+            "cost": 45.56764741699138,
+            "data_freshness": 0.9689055577119171
+        }
+    },
+    {
+        "query_index": 20,
+        "query": {
+            "query_id": "query_0305",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8221380450730759,
+            "latency": 1.686331769068354,
+            "cost": 47.67298096892742,
+            "data_freshness": 0.9422710021229246
+        }
+    },
+    {
+        "query_index": 21,
+        "query": {
+            "query_id": "query_0164",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8117703714914373,
+            "latency": 1.374049753899096,
+            "cost": 47.2037502225781,
+            "data_freshness": 0.9478107918271164
+        }
+    },
+    {
+        "query_index": 22,
+        "query": {
+            "query_id": "query_0910",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.768031395931079,
+            "latency": 1.7434360042856234,
+            "cost": 36.13585259216822,
+            "data_freshness": 0.9786681138853567
+        }
+    },
+    {
+        "query_index": 23,
+        "query": {
+            "query_id": "query_0181",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8366073825835996,
+            "latency": 1.5942454037571452,
+            "cost": 32.371160179890474,
+            "data_freshness": 0.9704121333885332
+        }
+    },
+    {
+        "query_index": 24,
+        "query": {
+            "query_id": "query_0634",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8016476949690874,
+            "latency": 1.7707054849698953,
+            "cost": 23.6533759811929,
+            "data_freshness": 0.9070110320038939
+        }
+    },
+    {
+        "query_index": 25,
+        "query": {
+            "query_id": "query_0551",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8388146116142929,
+            "latency": 1.1470382343865384,
+            "cost": 35.302405064935364,
+            "data_freshness": 0.9167003983771672
+        }
+    },
+    {
+        "query_index": 26,
+        "query": {
+            "query_id": "query_0205",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8911360527668886,
+            "latency": 1.49514889743012,
+            "cost": 44.189754529914055,
+            "data_freshness": 0.9266710527122771
+        }
+    },
+    {
+        "query_index": 27,
+        "query": {
+            "query_id": "query_0781",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8465974073686656,
+            "latency": 1.5070492168243732,
+            "cost": 29.76070150807797,
+            "data_freshness": 0.9795661873357466
+        }
+    },
+    {
+        "query_index": 28,
+        "query": {
+            "query_id": "query_0379",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8627838668622165,
+            "latency": 1.4622594672589528,
+            "cost": 46.67561429245784,
+            "data_freshness": 0.9899841173578453
+        }
+    },
+    {
+        "query_index": 29,
+        "query": {
+            "query_id": "query_0931",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7916818902235155,
+            "latency": 1.6773103176553112,
+            "cost": 22.828809937256338,
+            "data_freshness": 0.9531100941900319
+        }
+    },
+    {
+        "query_index": 30,
+        "query": {
+            "query_id": "query_0224",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8610538176892407,
+            "latency": 1.6169901149670034,
+            "cost": 34.041968630409016,
+            "data_freshness": 0.9205006066507225
+        }
+    },
+    {
+        "query_index": 31,
+        "query": {
+            "query_id": "query_0588",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8469217305102305,
+            "latency": 1.4346920359183972,
+            "cost": 21.577868316193683,
+            "data_freshness": 0.9550093481116084
+        }
+    },
+    {
+        "query_index": 32,
+        "query": {
+            "query_id": "query_0086",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8210126090575361,
+            "latency": 1.3204727577801822,
+            "cost": 31.18285634048026,
+            "data_freshness": 0.9376665167302409
+        }
+    },
+    {
+        "query_index": 33,
+        "query": {
+            "query_id": "query_0942",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8590633369009391,
+            "latency": 1.540767018496369,
+            "cost": 29.86421016930936,
+            "data_freshness": 0.9585008495051471
+        }
+    },
+    {
+        "query_index": 34,
+        "query": {
+            "query_id": "query_0755",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.826690184864116,
+            "latency": 1.4769032015851962,
+            "cost": 26.301033047658162,
+            "data_freshness": 0.994740531233291
+        }
+    },
+    {
+        "query_index": 35,
+        "query": {
+            "query_id": "query_0051",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.820094414491867,
+            "latency": 1.5158071432500986,
+            "cost": 38.76110073068205,
+            "data_freshness": 0.9473293255087467
+        }
+    },
+    {
+        "query_index": 36,
+        "query": {
+            "query_id": "query_0076",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8656471022656869,
+            "latency": 1.566186671924776,
+            "cost": 45.15179877737087,
+            "data_freshness": 0.9399471546008018
+        }
+    },
+    {
+        "query_index": 37,
+        "query": {
+            "query_id": "query_0629",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8567105738340886,
+            "latency": 1.2521843177051437,
+            "cost": 39.890207452128394,
+            "data_freshness": 0.9640158586690535
+        }
+    },
+    {
+        "query_index": 38,
+        "query": {
+            "query_id": "query_0237",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8393826535975978,
+            "latency": 1.909486316872793,
+            "cost": 43.80994232683416,
+            "data_freshness": 0.9931422298460165
+        }
+    },
+    {
+        "query_index": 39,
+        "query": {
+            "query_id": "query_0734",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8292659811483515,
+            "latency": 1.5347932345442135,
+            "cost": 38.22009820065568,
+            "data_freshness": 0.902227457956159
+        }
+    },
+    {
+        "query_index": 40,
+        "query": {
+            "query_id": "query_0019",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7697106397052085,
+            "latency": 1.652789954903016,
+            "cost": 27.31173842048618,
+            "data_freshness": 0.9271592154464615
+        }
+    },
+    {
+        "query_index": 41,
+        "query": {
+            "query_id": "query_0911",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8892529487696258,
+            "latency": 1.7504191466404149,
+            "cost": 25.142250226359273,
+            "data_freshness": 0.990167187377055
+        }
+    },
+    {
+        "query_index": 42,
+        "query": {
+            "query_id": "query_0662",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7554870851696709,
+            "latency": 1.8685683438714968,
+            "cost": 36.17881832424912,
+            "data_freshness": 0.9490064558386506
+        }
+    },
+    {
+        "query_index": 43,
+        "query": {
+            "query_id": "query_0291",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.780577284167028,
+            "latency": 1.5549477047631461,
+            "cost": 49.84745148270686,
+            "data_freshness": 0.9168341532001422
+        }
+    },
+    {
+        "query_index": 44,
+        "query": {
+            "query_id": "query_0856",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8102879850989119,
+            "latency": 1.5502844462209042,
+            "cost": 37.32293310655121,
+            "data_freshness": 0.9165829739772874
+        }
+    },
+    {
+        "query_index": 45,
+        "query": {
+            "query_id": "query_0488",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7761994734627076,
+            "latency": 1.4020863648649295,
+            "cost": 49.72960486242698,
+            "data_freshness": 0.9298279427549402
+        }
+    },
+    {
+        "query_index": 46,
+        "query": {
+            "query_id": "query_0068",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9355459987060699,
+            "latency": 1.4916907725691486,
+            "cost": 33.38483255806531,
+            "data_freshness": 0.916415931064575
+        }
+    },
+    {
+        "query_index": 47,
+        "query": {
+            "query_id": "query_0189",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8906245502595498,
+            "latency": 1.5741189901906194,
+            "cost": 26.386812378770927,
+            "data_freshness": 0.9432598642945765
+        }
+    },
+    {
+        "query_index": 48,
+        "query": {
+            "query_id": "query_0198",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9207357080112281,
+            "latency": 1.5676950787798456,
+            "cost": 22.64089409457492,
+            "data_freshness": 0.9950108344712104
+        }
+    },
+    {
+        "query_index": 49,
+        "query": {
+            "query_id": "query_0440",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8568528504491538,
+            "latency": 1.3544573933682877,
+            "cost": 45.186126689674396,
+            "data_freshness": 0.9017853448757922
+        }
+    },
+    {
+        "query_index": 50,
+        "query": {
+            "query_id": "query_0369",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7604521466018591,
+            "latency": 1.584547700984978,
+            "cost": 25.72161418567763,
+            "data_freshness": 0.9015890889311596
+        }
+    },
+    {
+        "query_index": 51,
+        "query": {
+            "query_id": "query_0594",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8562800638710985,
+            "latency": 1.4379962917632265,
+            "cost": 30.30889146865362,
+            "data_freshness": 0.9296149491826284
+        }
+    },
+    {
+        "query_index": 52,
+        "query": {
+            "query_id": "query_0053",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8551674755268212,
+            "latency": 1.432847287296045,
+            "cost": 44.182580045285846,
+            "data_freshness": 0.9003351044667979
+        }
+    },
+    {
+        "query_index": 53,
+        "query": {
+            "query_id": "query_0859",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9548122451798301,
+            "latency": 1.3613044754196029,
+            "cost": 21.89218021552179,
+            "data_freshness": 0.9511824332369058
+        }
+    },
+    {
+        "query_index": 54,
+        "query": {
+            "query_id": "query_0847",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8810497701266636,
+            "latency": 1.6580626905613678,
+            "cost": 28.154703083432217,
+            "data_freshness": 0.9913159750798511
+        }
+    },
+    {
+        "query_index": 55,
+        "query": {
+            "query_id": "query_0350",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9116743303194517,
+            "latency": 1.6845064193866484,
+            "cost": 33.24593292315079,
+            "data_freshness": 0.913287837914258
+        }
+    },
+    {
+        "query_index": 56,
+        "query": {
+            "query_id": "query_0850",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8661796365431264,
+            "latency": 1.824518947398092,
+            "cost": 38.62403384663399,
+            "data_freshness": 0.9290659930914612
+        }
+    },
+    {
+        "query_index": 57,
+        "query": {
+            "query_id": "query_0268",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8260313249238249,
+            "latency": 1.4065728355561715,
+            "cost": 22.06519296441331,
+            "data_freshness": 0.9661268342598244
+        }
+    },
+    {
+        "query_index": 58,
+        "query": {
+            "query_id": "query_0000",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7912355726171082,
+            "latency": 1.5911727962224966,
+            "cost": 26.84748108100078,
+            "data_freshness": 0.9138790308424676
+        }
+    },
+    {
+        "query_index": 59,
+        "query": {
+            "query_id": "query_0408",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8578781387591311,
+            "latency": 1.541950283781686,
+            "cost": 44.349590563627736,
+            "data_freshness": 0.9520788632341559
+        }
+    },
+    {
+        "query_index": 60,
+        "query": {
+            "query_id": "query_0419",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9296655787065963,
+            "latency": 1.9480253749884429,
+            "cost": 28.880637881950264,
+            "data_freshness": 0.9387423026194093
+        }
+    },
+    {
+        "query_index": 61,
+        "query": {
+            "query_id": "query_0137",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8791657082136654,
+            "latency": 1.3793661252908331,
+            "cost": 20.777757502682903,
+            "data_freshness": 0.9650270480422143
+        }
+    },
+    {
+        "query_index": 62,
+        "query": {
+            "query_id": "query_0040",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8704308173298343,
+            "latency": 1.6471000741138138,
+            "cost": 48.183710366762675,
+            "data_freshness": 0.9455339889677694
+        }
+    },
+    {
+        "query_index": 63,
+        "query": {
+            "query_id": "query_0454",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8698674950989862,
+            "latency": 1.4129809422897393,
+            "cost": 47.60013820564893,
+            "data_freshness": 0.9786488257220868
+        }
+    },
+    {
+        "query_index": 64,
+        "query": {
+            "query_id": "query_0710",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7485943192941622,
+            "latency": 1.668459819148521,
+            "cost": 33.96550483075586,
+            "data_freshness": 0.9638446478263392
+        }
+    },
+    {
+        "query_index": 65,
+        "query": {
+            "query_id": "query_0851",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8540597183919424,
+            "latency": 1.5659771388776773,
+            "cost": 23.279408296344872,
+            "data_freshness": 0.9782705990866138
+        }
+    },
+    {
+        "query_index": 66,
+        "query": {
+            "query_id": "query_0174",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.864504360163459,
+            "latency": 1.5630587658918291,
+            "cost": 42.32324638987345,
+            "data_freshness": 0.9764092620696634
+        }
+    },
+    {
+        "query_index": 67,
+        "query": {
+            "query_id": "query_0403",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.844550731825206,
+            "latency": 1.5936681040522425,
+            "cost": 21.326987262999165,
+            "data_freshness": 0.9573922156473974
+        }
+    },
+    {
+        "query_index": 68,
+        "query": {
+            "query_id": "query_0427",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8752078561084623,
+            "latency": 1.6980703078052355,
+            "cost": 26.242461343296142,
+            "data_freshness": 0.908382354841049
+        }
+    },
+    {
+        "query_index": 69,
+        "query": {
+            "query_id": "query_0670",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7569621685546174,
+            "latency": 1.617255290081299,
+            "cost": 37.551052341945024,
+            "data_freshness": 0.9825583107130612
+        }
+    },
+    {
+        "query_index": 70,
+        "query": {
+            "query_id": "query_0719",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8723409430056447,
+            "latency": 2.117909723598208,
+            "cost": 35.77360603098238,
+            "data_freshness": 0.9087734151138253
+        }
+    },
+    {
+        "query_index": 71,
+        "query": {
+            "query_id": "query_0620",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8758243211522831,
+            "latency": 1.6831002645239803,
+            "cost": 42.011617565120815,
+            "data_freshness": 0.9224896608618325
+        }
+    },
+    {
+        "query_index": 72,
+        "query": {
+            "query_id": "query_0937",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8807348663296537,
+            "latency": 1.65384538307399,
+            "cost": 35.90473010441659,
+            "data_freshness": 0.9785702508271021
+        }
+    },
+    {
+        "query_index": 73,
+        "query": {
+            "query_id": "query_0806",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7938576619132081,
+            "latency": 1.4671954678256345,
+            "cost": 39.23216371355777,
+            "data_freshness": 0.9574369205011549
+        }
+    },
+    {
+        "query_index": 74,
+        "query": {
+            "query_id": "query_0011",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8459943225025657,
+            "latency": 1.2599102211112378,
+            "cost": 27.47134735488667,
+            "data_freshness": 0.9415047568011358
+        }
+    },
+    {
+        "query_index": 75,
+        "query": {
+            "query_id": "query_0608",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8828618716128452,
+            "latency": 1.469210220131585,
+            "cost": 24.747806633888377,
+            "data_freshness": 0.9972496434935845
+        }
+    },
+    {
+        "query_index": 76,
+        "query": {
+            "query_id": "query_0179",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9074259864150093,
+            "latency": 1.3783382833106042,
+            "cost": 38.92281560915973,
+            "data_freshness": 0.9864034711857816
+        }
+    },
+    {
+        "query_index": 77,
+        "query": {
+            "query_id": "query_0587",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7973664737351419,
+            "latency": 1.4304450052424296,
+            "cost": 45.05336724729068,
+            "data_freshness": 0.9940264261241998
+        }
+    },
+    {
+        "query_index": 78,
+        "query": {
+            "query_id": "query_0583",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8542039739645004,
+            "latency": 1.4422599478591276,
+            "cost": 21.72993206430868,
+            "data_freshness": 0.9422755236900925
+        }
+    },
+    {
+        "query_index": 79,
+        "query": {
+            "query_id": "query_0294",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9717805894488448,
+            "latency": 1.236228612001359,
+            "cost": 37.94320461931028,
+            "data_freshness": 0.9713288321421365
+        }
+    },
+    {
+        "query_index": 80,
+        "query": {
+            "query_id": "query_0089",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.852373713200935,
+            "latency": 1.6678650002194337,
+            "cost": 33.612923035864426,
+            "data_freshness": 0.9445417046474018
+        }
+    },
+    {
+        "query_index": 81,
+        "query": {
+            "query_id": "query_0280",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7926562349556052,
+            "latency": 1.6157480918470686,
+            "cost": 24.058708870562327,
+            "data_freshness": 0.9430191338633774
+        }
+    },
+    {
+        "query_index": 82,
+        "query": {
+            "query_id": "query_0251",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8938110668443774,
+            "latency": 1.4898248146238577,
+            "cost": 49.50635437902563,
+            "data_freshness": 0.9156978590645143
+        }
+    },
+    {
+        "query_index": 83,
+        "query": {
+            "query_id": "query_0166",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8120283360191817,
+            "latency": 1.8048181360421647,
+            "cost": 47.04608603641749,
+            "data_freshness": 0.9626375652474954
+        }
+    },
+    {
+        "query_index": 84,
+        "query": {
+            "query_id": "query_0811",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8657038843686182,
+            "latency": 1.6776792920582164,
+            "cost": 38.22217250645956,
+            "data_freshness": 0.922416660674581
+        }
+    },
+    {
+        "query_index": 85,
+        "query": {
+            "query_id": "query_0173",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9704515280177706,
+            "latency": 1.312094505106898,
+            "cost": 31.419902487288155,
+            "data_freshness": 0.9505472520381015
+        }
+    },
+    {
+        "query_index": 86,
+        "query": {
+            "query_id": "query_0871",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8114617215551586,
+            "latency": 1.433849580157183,
+            "cost": 36.76044030882966,
+            "data_freshness": 0.9675602625272793
+        }
+    },
+    {
+        "query_index": 87,
+        "query": {
+            "query_id": "query_0092",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8680729851169199,
+            "latency": 1.4009604292632876,
+            "cost": 27.25021174954987,
+            "data_freshness": 0.9511718214399502
+        }
+    },
+    {
+        "query_index": 88,
+        "query": {
+            "query_id": "query_0013",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8373689532802302,
+            "latency": 1.3863418537998566,
+            "cost": 36.76570814663533,
+            "data_freshness": 0.9839563903353515
+        }
+    },
+    {
+        "query_index": 89,
+        "query": {
+            "query_id": "query_0661",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8255933427650172,
+            "latency": 1.7848616955897454,
+            "cost": 27.390196180715556,
+            "data_freshness": 0.928006942049614
+        }
+    },
+    {
+        "query_index": 90,
+        "query": {
+            "query_id": "query_0184",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7537613759444014,
+            "latency": 1.5596110865929138,
+            "cost": 43.69969145717713,
+            "data_freshness": 0.9977964989110945
+        }
+    },
+    {
+        "query_index": 91,
+        "query": {
+            "query_id": "query_0901",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.928917670633033,
+            "latency": 1.714474562823244,
+            "cost": 31.499261525368507,
+            "data_freshness": 0.9522124307176444
+        }
+    },
+    {
+        "query_index": 92,
+        "query": {
+            "query_id": "query_0257",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8416242167221948,
+            "latency": 1.6093155211394907,
+            "cost": 25.170199837159668,
+            "data_freshness": 0.9781536029437836
+        }
+    },
+    {
+        "query_index": 93,
+        "query": {
+            "query_id": "query_0778",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8531426414299816,
+            "latency": 1.5504703127485029,
+            "cost": 40.145306901453935,
+            "data_freshness": 0.9217160205169638
+        }
+    },
+    {
+        "query_index": 94,
+        "query": {
+            "query_id": "query_0603",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8174958705914326,
+            "latency": 1.639319601178157,
+            "cost": 48.7455861323876,
+            "data_freshness": 0.9405207061694287
+        }
+    },
+    {
+        "query_index": 95,
+        "query": {
+            "query_id": "query_0193",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9377470257848665,
+            "latency": 1.85995500619844,
+            "cost": 46.35774017265409,
+            "data_freshness": 0.9360444317386822
+        }
+    },
+    {
+        "query_index": 96,
+        "query": {
+            "query_id": "query_0421",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7219226442291273,
+            "latency": 1.6282475809726864,
+            "cost": 30.635586568940248,
+            "data_freshness": 0.9773904054461702
+        }
+    },
+    {
+        "query_index": 97,
+        "query": {
+            "query_id": "query_0565",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8581405039318369,
+            "latency": 1.5087816624464088,
+            "cost": 22.218815360170154,
+            "data_freshness": 0.9722849317583213
+        }
+    },
+    {
+        "query_index": 98,
+        "query": {
+            "query_id": "query_0967",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8109269429858111,
+            "latency": 1.6674403145531538,
+            "cost": 47.75688517947734,
+            "data_freshness": 0.9662932997570093
+        }
+    },
+    {
+        "query_index": 99,
+        "query": {
+            "query_id": "query_0457",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8627779446438678,
+            "latency": 1.6749399813149877,
+            "cost": 33.364434184090165,
+            "data_freshness": 0.9996995247348187
+        }
+    },
+    {
+        "query_index": 100,
+        "query": {
+            "query_id": "query_0307",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8597452707734732,
+            "latency": 1.634444326288542,
+            "cost": 28.71076132596245,
+            "data_freshness": 0.9395271557320188
+        }
+    },
+    {
+        "query_index": 101,
+        "query": {
+            "query_id": "query_0904",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7904313043337535,
+            "latency": 1.6520940407684892,
+            "cost": 22.750327188160934,
+            "data_freshness": 0.9493955729998589
+        }
+    },
+    {
+        "query_index": 102,
+        "query": {
+            "query_id": "query_0775",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8782325861914413,
+            "latency": 1.5575991074963174,
+            "cost": 40.85001833249448,
+            "data_freshness": 0.9550958933756338
+        }
+    },
+    {
+        "query_index": 103,
+        "query": {
+            "query_id": "query_0970",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9189375586430939,
+            "latency": 1.6220646071755058,
+            "cost": 34.5652796810194,
+            "data_freshness": 0.9121682236049539
+        }
+    },
+    {
+        "query_index": 104,
+        "query": {
+            "query_id": "query_0415",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8286662482015325,
+            "latency": 1.7048165277980785,
+            "cost": 48.268421848884316,
+            "data_freshness": 0.9081062424993412
+        }
+    },
+    {
+        "query_index": 105,
+        "query": {
+            "query_id": "query_0650",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8913503972882698,
+            "latency": 1.7358218210731493,
+            "cost": 36.096262680426484,
+            "data_freshness": 0.9315365846015131
+        }
+    },
+    {
+        "query_index": 106,
+        "query": {
+            "query_id": "query_0679",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8422812343395982,
+            "latency": 1.4934599865109817,
+            "cost": 28.318814206486238,
+            "data_freshness": 0.9934809199669941
+        }
+    },
+    {
+        "query_index": 107,
+        "query": {
+            "query_id": "query_0814",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8607741475017949,
+            "latency": 1.5545493947489077,
+            "cost": 46.606579688174094,
+            "data_freshness": 0.922799333248377
+        }
+    },
+    {
+        "query_index": 108,
+        "query": {
+            "query_id": "query_0746",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8773045785516517,
+            "latency": 1.853858091352819,
+            "cost": 43.586421854438186,
+            "data_freshness": 0.9527563986663562
+        }
+    },
+    {
+        "query_index": 109,
+        "query": {
+            "query_id": "query_0361",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7796329397285181,
+            "latency": 1.7137166310250103,
+            "cost": 27.932611599168858,
+            "data_freshness": 0.9049569148556402
+        }
+    },
+    {
+        "query_index": 110,
+        "query": {
+            "query_id": "query_0966",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.889291424331739,
+            "latency": 1.634251826389642,
+            "cost": 21.239046003189554,
+            "data_freshness": 0.9255526012858788
+        }
+    },
+    {
+        "query_index": 111,
+        "query": {
+            "query_id": "query_0546",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8402529468563382,
+            "latency": 1.551370683729059,
+            "cost": 41.156174385442554,
+            "data_freshness": 0.9567311753502907
+        }
+    },
+    {
+        "query_index": 112,
+        "query": {
+            "query_id": "query_0108",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7996931355977611,
+            "latency": 1.5179413927746792,
+            "cost": 46.85311646630633,
+            "data_freshness": 0.9782723170491255
+        }
+    },
+    {
+        "query_index": 113,
+        "query": {
+            "query_id": "query_0773",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7906446709956567,
+            "latency": 1.6019397181413437,
+            "cost": 35.20861606308161,
+            "data_freshness": 0.9320517896791978
+        }
+    },
+    {
+        "query_index": 114,
+        "query": {
+            "query_id": "query_0008",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8066128022789575,
+            "latency": 1.576553081723787,
+            "cost": 23.369070943144568,
+            "data_freshness": 0.9361729964453482
+        }
+    },
+    {
+        "query_index": 115,
+        "query": {
+            "query_id": "query_0358",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8559429608376321,
+            "latency": 1.4693442541572517,
+            "cost": 40.3405802358876,
+            "data_freshness": 0.9893832625704833
+        }
+    },
+    {
+        "query_index": 116,
+        "query": {
+            "query_id": "query_0890",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8551550461788158,
+            "latency": 1.3288804338435167,
+            "cost": 46.50544458470118,
+            "data_freshness": 0.943291684745833
+        }
+    },
+    {
+        "query_index": 117,
+        "query": {
+            "query_id": "query_0187",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7971749025036013,
+            "latency": 1.5866361348397007,
+            "cost": 26.339782703558434,
+            "data_freshness": 0.9701752878770056
+        }
+    },
+    {
+        "query_index": 118,
+        "query": {
+            "query_id": "query_0997",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9309967292339226,
+            "latency": 1.516009220505486,
+            "cost": 25.54262120097402,
+            "data_freshness": 0.9038313251410764
+        }
+    },
+    {
+        "query_index": 119,
+        "query": {
+            "query_id": "query_0162",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.839840011317936,
+            "latency": 1.5372230296011415,
+            "cost": 34.04896454486786,
+            "data_freshness": 0.9464801521601719
+        }
+    },
+    {
+        "query_index": 120,
+        "query": {
+            "query_id": "query_0568",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8233918230258715,
+            "latency": 1.4159153584671516,
+            "cost": 30.973050998349848,
+            "data_freshness": 0.9845802446760366
+        }
+    },
+    {
+        "query_index": 121,
+        "query": {
+            "query_id": "query_0986",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8726801373687115,
+            "latency": 1.5236859777314713,
+            "cost": 45.48911002747211,
+            "data_freshness": 0.9601467604358579
+        }
+    },
+    {
+        "query_index": 122,
+        "query": {
+            "query_id": "query_0401",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8655044150480354,
+            "latency": 1.4798169292171246,
+            "cost": 27.248080051247978,
+            "data_freshness": 0.9995263118719183
+        }
+    },
+    {
+        "query_index": 123,
+        "query": {
+            "query_id": "query_0599",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8546696413904354,
+            "latency": 1.5546514147823247,
+            "cost": 29.935134439094778,
+            "data_freshness": 0.9862044227791632
+        }
+    },
+    {
+        "query_index": 124,
+        "query": {
+            "query_id": "query_0804",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7938464031848165,
+            "latency": 1.6146997436868176,
+            "cost": 22.668049688701732,
+            "data_freshness": 0.9756502728198819
+        }
+    },
+    {
+        "query_index": 125,
+        "query": {
+            "query_id": "query_0082",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9295197600754975,
+            "latency": 1.8629773686267335,
+            "cost": 44.91144634183813,
+            "data_freshness": 0.9902164425462872
+        }
+    },
+    {
+        "query_index": 126,
+        "query": {
+            "query_id": "query_0382",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7941917986638289,
+            "latency": 1.5675013008607528,
+            "cost": 49.16798314926786,
+            "data_freshness": 0.9907131207808966
+        }
+    },
+    {
+        "query_index": 127,
+        "query": {
+            "query_id": "query_0754",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.974577978926278,
+            "latency": 1.4140417236728837,
+            "cost": 42.227552272368946,
+            "data_freshness": 0.9550106275346201
+        }
+    },
+    {
+        "query_index": 128,
+        "query": {
+            "query_id": "query_0326",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8044370486279147,
+            "latency": 1.461136746747886,
+            "cost": 35.92666191768774,
+            "data_freshness": 0.9091247959898049
+        }
+    },
+    {
+        "query_index": 129,
+        "query": {
+            "query_id": "query_0895",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7946929076452244,
+            "latency": 1.5912633963665739,
+            "cost": 43.44335159480497,
+            "data_freshness": 0.9465575086882649
+        }
+    },
+    {
+        "query_index": 130,
+        "query": {
+            "query_id": "query_0652",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.955446421192169,
+            "latency": 1.4534644516506396,
+            "cost": 26.02246907447354,
+            "data_freshness": 0.937994623289075
+        }
+    },
+    {
+        "query_index": 131,
+        "query": {
+            "query_id": "query_0798",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7861967050477501,
+            "latency": 1.3419650189469037,
+            "cost": 37.47798514918121,
+            "data_freshness": 0.9843121305113433
+        }
+    },
+    {
+        "query_index": 132,
+        "query": {
+            "query_id": "query_0882",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9527189847171156,
+            "latency": 1.4696236521842942,
+            "cost": 33.74228256134559,
+            "data_freshness": 0.9954443237025971
+        }
+    },
+    {
+        "query_index": 133,
+        "query": {
+            "query_id": "query_0221",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7364987937254565,
+            "latency": 1.5228190232121073,
+            "cost": 47.454572187878924,
+            "data_freshness": 0.9612484564834927
+        }
+    },
+    {
+        "query_index": 134,
+        "query": {
+            "query_id": "query_0946",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9165067950303811,
+            "latency": 1.4500937465569341,
+            "cost": 39.221717543451646,
+            "data_freshness": 0.9628107756549202
+        }
+    },
+    {
+        "query_index": 135,
+        "query": {
+            "query_id": "query_0312",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8413198656828091,
+            "latency": 1.4724901792781135,
+            "cost": 43.78451968073433,
+            "data_freshness": 0.9755577693971487
+        }
+    },
+    {
+        "query_index": 136,
+        "query": {
+            "query_id": "query_0371",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8789938458731974,
+            "latency": 1.518643077246806,
+            "cost": 40.17426473474271,
+            "data_freshness": 0.9921368660726849
+        }
+    },
+    {
+        "query_index": 137,
+        "query": {
+            "query_id": "query_0172",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8483380335344258,
+            "latency": 1.6467422317133336,
+            "cost": 42.27842815419655,
+            "data_freshness": 0.9499533593135018
+        }
+    },
+    {
+        "query_index": 138,
+        "query": {
+            "query_id": "query_0797",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7723968323978899,
+            "latency": 1.7316515232847765,
+            "cost": 41.56393054674435,
+            "data_freshness": 0.9892695621887705
+        }
+    },
+    {
+        "query_index": 139,
+        "query": {
+            "query_id": "query_0598",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8612711547307551,
+            "latency": 1.7726727963283784,
+            "cost": 21.747550281196204,
+            "data_freshness": 0.9401331053253036
+        }
+    },
+    {
+        "query_index": 140,
+        "query": {
+            "query_id": "query_0674",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8480561526918643,
+            "latency": 1.5501277722115163,
+            "cost": 38.17266676009487,
+            "data_freshness": 0.9517977763272161
+        }
+    },
+    {
+        "query_index": 141,
+        "query": {
+            "query_id": "query_0128",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9667056234178012,
+            "latency": 1.502655377728139,
+            "cost": 25.461454823133813,
+            "data_freshness": 0.9296884419615338
+        }
+    },
+    {
+        "query_index": 142,
+        "query": {
+            "query_id": "query_0493",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.9002658280082156,
+            "latency": 1.7452947336298523,
+            "cost": 42.99538761179237,
+            "data_freshness": 0.9721970605430637
+        }
+    },
+    {
+        "query_index": 143,
+        "query": {
+            "query_id": "query_0407",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7821396689046136,
+            "latency": 1.6987636730274382,
+            "cost": 27.580995897123547,
+            "data_freshness": 0.9833259501042977
+        }
+    },
+    {
+        "query_index": 144,
+        "query": {
+            "query_id": "query_0272",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.73371689132819,
+            "latency": 1.234115173335985,
+            "cost": 44.170508293978784,
+            "data_freshness": 0.9539573554805673
+        }
+    },
+    {
+        "query_index": 145,
+        "query": {
+            "query_id": "query_0520",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.824566183098882,
+            "latency": 1.7653535578144042,
+            "cost": 48.24270424901738,
+            "data_freshness": 0.9333171575323602
+        }
+    },
+    {
+        "query_index": 146,
+        "query": {
+            "query_id": "query_0757",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8455197816056063,
+            "latency": 1.3329847812677664,
+            "cost": 42.64583111031817,
+            "data_freshness": 0.9922625773772807
+        }
+    },
+    {
+        "query_index": 147,
+        "query": {
+            "query_id": "query_0018",
+            "preferences": {
+                "priority": "time",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7370936711993356,
+            "latency": 1.5976098173408961,
+            "cost": 38.85885085284521,
+            "data_freshness": 0.90226610285779
+        }
+    },
+    {
+        "query_index": 148,
+        "query": {
+            "query_id": "query_0176",
+            "preferences": {
+                "priority": "comfort",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.8390056203662603,
+            "latency": 1.5266319940730817,
+            "cost": 46.67320000332851,
+            "data_freshness": 0.9140339766940195
+        }
+    },
+    {
+        "query_index": 149,
+        "query": {
+            "query_id": "query_0807",
+            "preferences": {
+                "priority": "safety",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7614273604692039,
+            "latency": 1.5949897369145272,
+            "cost": 44.15567902926132,
+            "data_freshness": 0.9145627612693704
+        }
+    },
+    {
+        "query_index": 150,
+        "query": {
+            "query_id": "query_0414",
+            "preferences": {
+                "priority": "cost",
+                "budget": "medium",
+                "passengers": 1
+            }
+        },
+        "performance_metrics": {
+            "accuracy": 0.7836673330340314,
+            "latency": 1.3811179717166573,
+            "cost": 43.91062112220585,
+            "data_freshness": 0.9802399290108263
+        }
+    }
+]

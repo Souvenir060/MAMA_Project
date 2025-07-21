@@ -2,7 +2,7 @@
 """
 SBERT (Sentence-BERT) Semantic Similarity System
 
-Academic implementation of Sentence-BERT for measuring semantic similarity between 
+Implementation of Sentence-BERT for measuring semantic similarity between 
 user queries and agent expertise profiles using real transformer models.
 
 Mathematical Foundation:
@@ -10,9 +10,6 @@ Mathematical Foundation:
 - Expertise encoding: e = SBERT(expertise_text)
 - Cosine similarity: similarity = cos(θ) = (q · e) / (||q|| * ||e||)
 - Semantic distance: d = 1 - similarity
-
-This implementation uses authentic pre-trained Sentence-BERT models from Hugging Face
-for high-quality semantic embeddings without any simplified approximations.
 """
 
 import numpy as np
@@ -89,7 +86,7 @@ class SBERTSimilarityEngine:
     def __init__(self, model_name="all-MiniLM-L6-v2"):
         """Initialize SBERT engine with specified model."""
         try:
-            # 确定设备类型
+            # Determine device type
             if torch.cuda.is_available():
                 self.device = "cuda"
             elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
@@ -99,12 +96,12 @@ class SBERTSimilarityEngine:
             
             logger.info(f"Using device: {self.device}")
             
-            # 初始化模型
+            # Initialize model
             self.model = SentenceTransformer(model_name)
             self.model.to(self.device)
             logger.info(f"SBERT model loaded successfully on {self.device}")
             
-            # 初始化专业知识向量存储
+            # Initialize expertise vector storage
             self.expertise_vectors: Dict[str, Dict[str, torch.Tensor]] = {}
             
         except Exception as e:
@@ -114,11 +111,11 @@ class SBERTSimilarityEngine:
     async def compute_similarity(self, text1, text2):
         """Compute semantic similarity between two texts."""
         try:
-            # 将文本编码为向量
+            # Encode text into vectors
             embeddings1 = self.model.encode([text1], convert_to_tensor=True)
             embeddings2 = self.model.encode([text2], convert_to_tensor=True)
             
-            # 计算余弦相似度
+            # Calculate cosine similarity
             similarity = torch.nn.functional.cosine_similarity(embeddings1, embeddings2)
             return float(similarity[0])
             
@@ -217,13 +214,13 @@ class SBERTSimilarityEngine:
                              expertise_area: str, capabilities: List[str]) -> bool:
         """Encode agent expertise into vector representations."""
         try:
-            # 编码专业知识文本
+            # Encode expertise text
             expertise_embeddings = self.model.encode(expertise_texts, convert_to_tensor=True)
             
-            # 计算平均向量作为代理的专业知识表示
+            # Calculate average vector as a proxy for agent expertise representation
             mean_embedding = torch.mean(expertise_embeddings, dim=0)
             
-            # 存储编码的向量
+            # Store encoded vectors
             self.expertise_vectors[agent_id] = {
                 'vector': mean_embedding,
                 'area': expertise_area,
@@ -443,10 +440,10 @@ class SBERTSimilarityEngine:
                 logger.error(f"No expertise vector found for agent {agent_id}")
                 return 0.0
                 
-            # 编码查询文本
+            # Encode query text
             query_embedding = self.model.encode([query_text], convert_to_tensor=True)
             
-            # 计算与代理专业知识的相似度
+            # Calculate similarity with agent expertise
             agent_vector = self.expertise_vectors[agent_id]['vector']
             similarity = torch.nn.functional.cosine_similarity(query_embedding, agent_vector.unsqueeze(0))
             
@@ -771,7 +768,7 @@ class SBERTSimilarityEngine:
 _global_sbert_engine = None
 
 def get_global_sbert_engine():
-    """获取或创建全局SBERT引擎实例"""
+    """Get or create global SBERT engine instance"""
     global _global_sbert_engine
     if _global_sbert_engine is None:
         try:

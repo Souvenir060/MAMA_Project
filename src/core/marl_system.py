@@ -732,12 +732,12 @@ class TrustAwareMARLEngine:
         char_freq = np.zeros(26)  # Only consider English letters
         total_chars = 0
         for c in query_text.lower():
-            # 只处理英文字母
+            # Only process English letters
             if ord('a') <= ord(c) <= ord('z'):
                 char_freq[ord(c) - ord('a')] += 1
                 total_chars += 1
         
-        # 归一化字符频率
+        # Normalize character frequency
         if total_chars > 0:
             char_freq = char_freq / total_chars
         features.extend(char_freq)

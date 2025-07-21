@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Academic Weather API Module
-
-This module provides weather data integration for the MAMA Flight Selection Assistant.
-Designed for academic research with proper error handling and data validation.
+Weather API Module
 """
 
 import os
@@ -16,7 +13,7 @@ import random
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 
-# 设置日志
+# Set up logging
 logger = logging.getLogger(__name__)
 
 class OpenWeatherMapAPI:
@@ -33,22 +30,22 @@ class OpenWeatherMapAPI:
         
         # Common city coordinates for quick lookup
         self.city_coordinates = {
-            "北京": {"lat": 39.9042, "lon": 116.4074},
-            "上海": {"lat": 31.2304, "lon": 121.4737},
-            "广州": {"lat": 23.1291, "lon": 113.2644},
-            "深圳": {"lat": 22.5431, "lon": 114.0579},
-            "杭州": {"lat": 30.2741, "lon": 120.1551},
-            "成都": {"lat": 30.5728, "lon": 104.0668},
-            "西安": {"lat": 34.3416, "lon": 108.9398},
-            "南京": {"lat": 32.0603, "lon": 118.7969},
-            "天津": {"lat": 39.3434, "lon": 117.3616},
-            "重庆": {"lat": 29.4316, "lon": 106.9123},
-            "新加坡": {"lat": 1.3521, "lon": 103.8198},
-            "纽约": {"lat": 40.7128, "lon": -74.0060},
-            "伦敦": {"lat": 51.5074, "lon": -0.1278},
-            "巴黎": {"lat": 48.8566, "lon": 2.3522},
-            "东京": {"lat": 35.6762, "lon": 139.6503},
-            "悉尼": {"lat": -33.8688, "lon": 151.2093},
+            "Beijing": {"lat": 39.9042, "lon": 116.4074},
+            "Shanghai": {"lat": 31.2304, "lon": 121.4737},
+            "Guangzhou": {"lat": 23.1291, "lon": 113.2644},
+            "Shenzhen": {"lat": 22.5431, "lon": 114.0579},
+            "Hangzhou": {"lat": 30.2741, "lon": 120.1551},
+            "Chengdu": {"lat": 30.5728, "lon": 104.0668},
+            "Xi'an": {"lat": 34.3416, "lon": 108.9398},
+            "Nanjing": {"lat": 32.0603, "lon": 118.7969},
+            "Tianjin": {"lat": 39.3434, "lon": 117.3616},
+            "Chongqing": {"lat": 29.4316, "lon": 106.9123},
+            "Singapore": {"lat": 1.3521, "lon": 103.8198},
+            "New York": {"lat": 40.7128, "lon": -74.0060},
+            "London": {"lat": 51.5074, "lon": -0.1278},
+            "Paris": {"lat": 48.8566, "lon": 2.3522},
+            "Tokyo": {"lat": 35.6762, "lon": 139.6503},
+            "Sydney": {"lat": -33.8688, "lon": 151.2093},
         }
     
     def get_weather_assessment(self, location: str, date: str = None) -> Dict[str, Any]:

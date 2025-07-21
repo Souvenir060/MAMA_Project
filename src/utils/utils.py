@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 MAMA Framework - Utility Functions
-包含鲁棒的API调用函数和重试机制
+Contains robust API call functions and retry mechanisms
 """
 
 import time
@@ -13,7 +13,7 @@ from requests.exceptions import RequestException, Timeout, ConnectionError
 import aiohttp
 import json
 
-# 设置日志
+# Set up logging
 logger = logging.getLogger(__name__)
 
 def make_robust_api_call(
@@ -25,65 +25,65 @@ def make_robust_api_call(
     **kwargs
 ) -> Dict[str, Any]:
     """
-    鲁棒的API调用函数，包含重试机制和错误处理
+    Robust API call function with retry mechanism and error handling
     
     Args:
-        api_function: 要调用的API函数
-        max_retries: 最大重试次数
-        base_delay: 基础延迟时间（秒）
-        backoff_factor: 退避因子（每次重试延迟倍数）
-        timeout: 超时时间（秒）
-        **kwargs: 传递给API函数的参数
+        api_function: API function to call
+        max_retries: Maximum number of retries
+        base_delay: Base delay time (seconds)
+        backoff_factor: Backoff factor (delay multiplier for each retry)
+        timeout: Timeout (seconds)
+        **kwargs: Parameters to pass to the API function
     
     Returns:
-        API响应数据，失败时返回错误信息
+        API response data, or error information on failure
     """
     
     last_exception = None
     
     for attempt in range(max_retries + 1):
         try:
-            # 计算当前延迟时间
+            # Calculate current delay time
             if attempt > 0:
                 delay = base_delay * (backoff_factor ** (attempt - 1))
-                logger.info(f"API调用重试 {attempt}/{max_retries}，延迟 {delay:.2f}秒...")
+                logger.info(f"API call retry {attempt}/{max_retries}, delaying {delay:.2f} seconds...")
                 time.sleep(delay)
             
-            # 调用API函数
-            logger.debug(f"正在调用API函数: {api_function.__name__}")
+            # Call API function
+            logger.debug(f"Calling API function: {api_function.__name__}")
             
-            # 设置超时
+            # Set timeout
             if 'timeout' not in kwargs:
                 kwargs['timeout'] = timeout
             
             result = api_function(**kwargs)
             
-            # 检查结果是否有效
+            # Check if result is valid
             if result is not None and not (isinstance(result, dict) and result.get('error')):
-                logger.info(f"API调用成功: {api_function.__name__}")
+                logger.info(f"API call successful: {api_function.__name__}")
                 return result
             else:
-                logger.warning(f"API调用返回空结果或错误: {api_function.__name__}")
+                logger.warning(f"API call returned empty result or error: {api_function.__name__}")
                 if attempt < max_retries:
                     continue
                 else:
-                    return {"error": "API调用返回空结果", "success": False}
+                    return {"error": "API call returned empty result", "success": False}
                     
         except (RequestException, ConnectionError, Timeout) as e:
             last_exception = e
-            logger.warning(f"API调用网络错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.warning(f"API call network error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
         except Exception as e:
             last_exception = e
-            logger.error(f"API调用未知错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.error(f"API call unknown error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
-        # 如果是最后一次尝试，记录失败
+        # If this is the last attempt, record the failure
         if attempt == max_retries:
-            logger.error(f"API调用最终失败: {api_function.__name__}, 错误: {last_exception}")
+            logger.error(f"API call ultimately failed: {api_function.__name__}, error: {last_exception}")
     
-    # 返回失败结果
+    # Return failure result
     return {
-        "error": f"API调用失败，已重试{max_retries}次",
+        "error": f"API call failed after {max_retries} retries",
         "last_exception": str(last_exception),
         "success": False
     }
@@ -98,65 +98,65 @@ async def make_robust_async_api_call(
     **kwargs
 ) -> Dict[str, Any]:
     """
-    异步版本的鲁棒API调用函数
+    Asynchronous version of the robust API call function
     
     Args:
-        api_function: 要调用的异步API函数
-        max_retries: 最大重试次数
-        base_delay: 基础延迟时间（秒）
-        backoff_factor: 退避因子
-        timeout: 超时时间（秒）
-        **kwargs: 传递给API函数的参数
+        api_function: Async API function to call
+        max_retries: Maximum number of retries
+        base_delay: Base delay time (seconds)
+        backoff_factor: Backoff factor
+        timeout: Timeout (seconds)
+        **kwargs: Parameters to pass to the API function
     
     Returns:
-        API响应数据，失败时返回错误信息
+        API response data, or error information on failure
     """
     
     last_exception = None
     
     for attempt in range(max_retries + 1):
         try:
-            # 计算当前延迟时间
+            # Calculate current delay time
             if attempt > 0:
                 delay = base_delay * (backoff_factor ** (attempt - 1))
-                logger.info(f"异步API调用重试 {attempt}/{max_retries}，延迟 {delay:.2f}秒...")
+                logger.info(f"Async API call retry {attempt}/{max_retries}, delaying {delay:.2f} seconds...")
                 await asyncio.sleep(delay)
             
-            # 调用异步API函数
-            logger.debug(f"正在调用异步API函数: {api_function.__name__}")
+            # Call async API function
+            logger.debug(f"Calling async API function: {api_function.__name__}")
             
-            # 设置超时
+            # Set timeout
             if 'timeout' not in kwargs:
                 kwargs['timeout'] = timeout
             
             result = await api_function(**kwargs)
             
-            # 检查结果是否有效
+            # Check if result is valid
             if result is not None and not (isinstance(result, dict) and result.get('error')):
-                logger.info(f"异步API调用成功: {api_function.__name__}")
+                logger.info(f"Async API call successful: {api_function.__name__}")
                 return result
             else:
-                logger.warning(f"异步API调用返回空结果或错误: {api_function.__name__}")
+                logger.warning(f"Async API call returned empty result or error: {api_function.__name__}")
                 if attempt < max_retries:
                     continue
                 else:
-                    return {"error": "异步API调用返回空结果", "success": False}
+                    return {"error": "Async API call returned empty result", "success": False}
                     
         except (aiohttp.ClientError, asyncio.TimeoutError) as e:
             last_exception = e
-            logger.warning(f"异步API调用网络错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.warning(f"Async API call network error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
         except Exception as e:
             last_exception = e
-            logger.error(f"异步API调用未知错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.error(f"Async API call unknown error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
-        # 如果是最后一次尝试，记录失败
+        # If this is the last attempt, record the failure
         if attempt == max_retries:
-            logger.error(f"异步API调用最终失败: {api_function.__name__}, 错误: {last_exception}")
+            logger.error(f"Async API call ultimately failed: {api_function.__name__}, error: {last_exception}")
     
-    # 返回失败结果
+    # Return failure result
     return {
-        "error": f"异步API调用失败，已重试{max_retries}次",
+        "error": f"Async API call failed after {max_retries} retries",
         "last_exception": str(last_exception),
         "success": False
     }
@@ -175,37 +175,37 @@ def make_robust_http_request(
     timeout: float = 30.0
 ) -> Dict[str, Any]:
     """
-    鲁棒的HTTP请求函数
+    Robust HTTP request function
     
     Args:
-        url: 请求URL
-        method: HTTP方法 (GET, POST, PUT, DELETE)
-        headers: 请求头
-        params: URL参数
-        data: 表单数据
-        json_data: JSON数据
-        max_retries: 最大重试次数
-        base_delay: 基础延迟时间
-        backoff_factor: 退避因子
-        timeout: 超时时间
+        url: Request URL
+        method: HTTP method (GET, POST, PUT, DELETE)
+        headers: Request headers
+        params: URL parameters
+        data: Form data
+        json_data: JSON data
+        max_retries: Maximum number of retries
+        base_delay: Base delay time
+        backoff_factor: Backoff factor
+        timeout: Timeout
     
     Returns:
-        响应数据
+        Response data
     """
     
     last_exception = None
     
     for attempt in range(max_retries + 1):
         try:
-            # 计算当前延迟时间
+            # Calculate current delay time
             if attempt > 0:
                 delay = base_delay * (backoff_factor ** (attempt - 1))
-                logger.info(f"HTTP请求重试 {attempt}/{max_retries}，延迟 {delay:.2f}秒...")
+                logger.info(f"HTTP request retry {attempt}/{max_retries}, delaying {delay:.2f} seconds...")
                 time.sleep(delay)
             
-            logger.debug(f"正在发送HTTP请求: {method} {url}")
+            logger.debug(f"Sending HTTP request: {method} {url}")
             
-            # 发送HTTP请求
+            # Send HTTP request
             response = requests.request(
                 method=method,
                 url=url,
@@ -216,46 +216,46 @@ def make_robust_http_request(
                 timeout=timeout
             )
             
-            # 检查响应状态
+            # Check response status
             if response.status_code == 200:
                 try:
                     result = response.json()
-                    logger.info(f"HTTP请求成功: {method} {url}")
+                    logger.info(f"HTTP request successful: {method} {url}")
                     return {"success": True, "data": result, "status_code": response.status_code}
                 except json.JSONDecodeError:
                     return {"success": True, "data": response.text, "status_code": response.status_code}
             else:
-                logger.warning(f"HTTP请求返回错误状态码: {response.status_code}")
+                logger.warning(f"HTTP request returned error status code: {response.status_code}")
                 if attempt < max_retries:
                     continue
                 else:
                     return {
-                        "error": f"HTTP请求失败，状态码: {response.status_code}",
+                        "error": f"HTTP request failed, status code: {response.status_code}",
                         "status_code": response.status_code,
                         "success": False
                     }
                     
         except (RequestException, ConnectionError, Timeout) as e:
             last_exception = e
-            logger.warning(f"HTTP请求网络错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.warning(f"HTTP request network error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
         except Exception as e:
             last_exception = e
-            logger.error(f"HTTP请求未知错误 (attempt {attempt + 1}/{max_retries + 1}): {e}")
+            logger.error(f"HTTP request unknown error (attempt {attempt + 1}/{max_retries + 1}): {e}")
             
-        # 如果是最后一次尝试，记录失败
+        # If this is the last attempt, record the failure
         if attempt == max_retries:
-            logger.error(f"HTTP请求最终失败: {method} {url}, 错误: {last_exception}")
+            logger.error(f"HTTP request ultimately failed: {method} {url}, error: {last_exception}")
     
-    # 返回失败结果
+    # Return failure result
     return {
-        "error": f"HTTP请求失败，已重试{max_retries}次",
+        "error": f"HTTP request failed after {max_retries} retries",
         "last_exception": str(last_exception),
         "success": False
     }
 
 
-# API密钥配置
+# API key configuration
 API_KEYS = {
     "WEATHER_API_KEY": "498ae38fb9831291de1d0432ea2fdf07",
     "FLIGHT_API_KEY": "10fa3e346f7606412b86a9cbde4b00a4",
@@ -265,48 +265,48 @@ API_KEYS = {
 
 def get_api_key(key_name: str) -> Optional[str]:
     """
-    获取API密钥
+    Get API key
     
     Args:
-        key_name: 密钥名称
+        key_name: Key name
     
     Returns:
-        API密钥或None
+        API key or None
     """
     import os
     
-    # 首先尝试从环境变量获取
+    # First try to get from environment variables
     env_key = os.getenv(key_name)
     if env_key:
         return env_key
     
-    # 然后从内置配置获取
+    # Then get from built-in configuration
     return API_KEYS.get(key_name)
 
 
 def validate_api_response(response: Dict[str, Any]) -> bool:
     """
-    验证API响应是否有效
+    Validate if API response is valid
     
     Args:
-        response: API响应数据
+        response: API response data
     
     Returns:
-        是否有效
+        Whether it's valid
     """
     
     if not response:
         return False
     
     if isinstance(response, dict):
-        # 检查是否有错误标识
+        # Check if there's an error indicator
         if response.get('error') or response.get('success') is False:
             return False
         
-        # 检查是否有实际数据
+        # Check if there's actual data
         if 'data' in response and response['data']:
             return True
-        elif len(response) > 1:  # 有多个字段，假设包含有效数据
+        elif len(response) > 1:  # Has multiple fields, assume it contains valid data
             return True
     
     return False 

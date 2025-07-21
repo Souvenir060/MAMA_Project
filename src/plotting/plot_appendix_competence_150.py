@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
 Complete 150-Interaction Chart Generator
-Based on real reward-driven learning data, extends to 150 interactions and generates complete academic charts
-Absolutely no simulation or simplification logic, uses mathematical extension of real data
 """
 
 import json

@@ -1,17 +1,6 @@
 #!/usr/bin/env python3
 """
 MAMA Flight Selection Assistant - Weather Analysis Agent
-
-This module implements the Weather Analysis Agent, responsible for
-providing comprehensive meteorological analysis and weather-related
-risk assessment for flight planning.
-
-Academic Features:
-- Multi-source weather data integration
-- Real-time meteorological analysis
-- Weather pattern recognition
-- Risk assessment algorithms
-- Historical weather data analysis
 """
 
 import os

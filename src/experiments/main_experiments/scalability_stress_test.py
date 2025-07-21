@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
 """
-MAMA框架可扩展性压力测试实验
+MAMA Framework Scalability Stress Test Experiment
 
-目标：测量语义匹配、注册服务和MARL决策模块在代理数量从10到5000扩展时的性能。
+Objective: Measure the performance of semantic matching, registration service, and MARL decision modules as agent numbers scale from 10 to 5000.
 
-实验协议：
-1. 生成合成代理配置文件（N = 10, 50, 100, 500, 1000, 5000）
-2. 组件级压力测试：
-   - 语义匹配延迟测试（SBERT + 余弦相似度）
-   - 注册服务吞吐量测试（并发消息处理）
-   - MARL决策延迟测试（神经网络前向传播）
-3. 分析和可视化
-
-学术严谨性：
-- 使用真实的SBERT模型进行语义匹配
-- 实际的多线程/异步框架进行并发测试
-- 预训练的MARL策略网络进行决策测试
-- 高精度计时和统计分析
+Experiment:
+1. Generate synthetic agent profiles (N = 10, 50, 100, 500, 1000, 5000)
+2. Component-level stress tests:
+   - Semantic matching latency test (SBERT + cosine similarity)
+   - Registration service throughput test (concurrent message processing)
+   - MARL decision latency test (neural network forward propagation)
+3. Analysis and visualization
 """
 
 import asyncio
@@ -42,20 +36,20 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict, deque
 import queue
 
-# 设置日志
+# Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# 设置随机种子确保可重现性
+# Set random seeds to ensure reproducibility
 np.random.seed(42)
 random.seed(42)
 torch.manual_seed(42)
 
 class SyntheticAgentProfileGenerator:
-    """合成代理配置文件生成器"""
+    """Synthetic Agent Profile Generator"""
     
     def __init__(self):
-        # 从Wikipedia样本文本中采样的专业领域描述
+        # Expertise domain descriptions sampled from Wikipedia sample text
         self.expertise_templates = [
             "Expert in machine learning algorithms and deep neural networks for predictive modeling",
             "Specializes in natural language processing and computational linguistics research",
@@ -86,21 +80,21 @@ class SyntheticAgentProfileGenerator:
         
     def generate_profiles(self, N: int) -> List[Dict[str, Any]]:
         """
-        生成N个合成代理配置文件
+        Generate N synthetic agent profiles
         
         Args:
-            N: 代理数量
+            N: Number of agents
             
         Returns:
-            代理配置文件列表
+            List of agent profiles
         """
         profiles = []
         
         for i in range(N):
-            # 确定性地选择专业描述（基于索引）
+            # Determine expertise description (based on index)
             expertise_desc = self.expertise_templates[i % len(self.expertise_templates)]
             
-            # 添加随机变化以增加多样性
+            # Add random variation for diversity
             if np.random.random() < 0.3:
                 expertise_desc += " with focus on real-time systems and performance optimization"
             elif np.random.random() < 0.3:
@@ -122,72 +116,72 @@ class SyntheticAgentProfileGenerator:
             
             profiles.append(profile)
         
-        logger.info(f"✅ 生成了 {N} 个合成代理配置文件")
+        logger.info(f"✅ Generated {N} synthetic agent profiles")
         return profiles
 
 class SemanticMatchingLatencyTester:
-    """语义匹配延迟测试器"""
+    """Semantic Matching Latency Tester"""
     
     def __init__(self):
-        """初始化SBERT模型"""
+        """Initialize SBERT model"""
         try:
             self.model = SentenceTransformer('all-MiniLM-L6-v2')
-            logger.info("✅ SBERT模型初始化成功")
+            logger.info("✅ SBERT model initialized successfully")
         except Exception as e:
-            logger.error(f"❌ SBERT模型初始化失败: {e}")
+            logger.error(f"❌ Failed to initialize SBERT model: {e}")
             raise
     
     def test_semantic_matching_latency(self, agent_profiles: List[Dict[str, Any]], 
                                      test_queries: List[str]) -> Dict[str, Any]:
         """
-        测试语义匹配延迟
+        Test semantic matching latency
         
         Args:
-            agent_profiles: 代理配置文件列表
-            test_queries: 测试查询列表
+            agent_profiles: List of agent profiles
+            test_queries: List of test queries
             
         Returns:
-            延迟测试结果
+            Latency test results
         """
         N = len(agent_profiles)
-        logger.info(f"🔍 开始语义匹配延迟测试 (N={N})")
+        logger.info(f"🔍 Starting semantic matching latency test (N={N})")
         
-        # 预计算并缓存所有代理的SBERT嵌入
-        logger.info("📊 预计算代理专业知识嵌入...")
+        # Pre-calculate and cache SBERT embeddings for all agents
+        logger.info("📊 Pre-calculating agent expertise embeddings...")
         start_time = time.time()
         
         specialty_texts = [profile['pml_specialty'] for profile in agent_profiles]
         agent_embeddings = self.model.encode(specialty_texts, convert_to_numpy=True, normalize_embeddings=True)
         
         embedding_time = time.time() - start_time
-        logger.info(f"✅ 嵌入预计算完成，耗时: {embedding_time:.3f}s")
+        logger.info(f"✅ Embedding pre-computation complete, time: {embedding_time:.3f}s")
         
-        # 对每个测试查询进行延迟测试
+        # Test latency for each query
         latencies = []
         
         for query_idx, query_text in enumerate(test_queries):
-            # 高精度计时器
+            # High-precision timer
             start_time = time.perf_counter()
             
-            # 1. 计算查询的SBERT嵌入
+            # 1. Calculate SBERT embedding for the query
             query_embedding = self.model.encode([query_text], convert_to_numpy=True, normalize_embeddings=True)
             
-            # 2. 计算与所有N个代理嵌入的余弦相似度
+            # 2. Calculate cosine similarity with all N agent embeddings
             similarities = cosine_similarity(query_embedding, agent_embeddings)[0]
             
-            # 3. 排序并识别前5个代理
+            # 3. Sort and identify top 5 agents
             top_5_indices = np.argsort(similarities)[-5:][::-1]
             top_5_agents = [agent_profiles[idx]['agent_id'] for idx in top_5_indices]
             
-            # 停止计时
+            # Stop timing
             end_time = time.perf_counter()
             latency = end_time - start_time
             latencies.append(latency)
             
             if query_idx % 30 == 0:
-                logger.info(f"   查询 {query_idx+1}/{len(test_queries)}: {latency*1000:.2f}ms")
+                logger.info(f"    Query {query_idx+1}/{len(test_queries)}: {latency*1000:.2f}ms")
         
-        # 计算统计数据
+        # Calculate statistics
         avg_latency = np.mean(latencies)
         std_latency = np.std(latencies)
         
@@ -203,14 +197,14 @@ class SemanticMatchingLatencyTester:
             'raw_latencies_ms': [l * 1000 for l in latencies]
         }
         
-        logger.info(f"✅ 语义匹配延迟测试完成 (N={N}): {avg_latency*1000:.2f}±{std_latency*1000:.2f}ms")
+        logger.info(f"✅ Semantic matching latency test complete (N={N}): {avg_latency*1000:.2f}±{std_latency*1000:.2f}ms")
         return result
 
 class RegistrarServiceThroughputTester:
-    """注册服务吞吐量测试器"""
+    """Registrar Service Throughput Tester"""
     
     def __init__(self):
-        """初始化内存信任账本"""
+        """Initialize in-memory trust ledger"""
         self.trust_ledger = {}
         self.message_queue = queue.Queue()
         self.processed_count = 0
@@ -218,31 +212,31 @@ class RegistrarServiceThroughputTester:
     
     def _process_pml_message(self, message: Dict[str, Any]) -> bool:
         """
-        处理单个PML消息并更新信任分数
+        Process a single PML message and update trust score
         
         Args:
-            message: PML消息
+            message: PML message
             
         Returns:
-            处理是否成功
+            True if processing was successful, False otherwise
         """
         try:
             agent_id = message['agent_id']
             performance_score = message['performance_score']
             
-            # 更新内存中的信任账本
+            # Update in-memory trust ledger
             with self.lock:
                 if agent_id not in self.trust_ledger:
                     self.trust_ledger[agent_id] = []
                 
-                # 添加新的信任记录
+                # Add new trust record
                 self.trust_ledger[agent_id].append({
                     'timestamp': time.time(),
                     'performance_score': performance_score,
                     'message_id': message['message_id']
                 })
                 
-                # 保持最近100条记录
+                # Keep last 100 records
                 if len(self.trust_ledger[agent_id]) > 100:
                     self.trust_ledger[agent_id] = self.trust_ledger[agent_id][-100:]
                 
@@ -251,12 +245,12 @@ class RegistrarServiceThroughputTester:
             return True
             
         except Exception as e:
-            logger.error(f"处理PML消息失败: {e}")
+            logger.error(f"Failed to process PML message: {e}")
             return False
     
     def _generate_pml_messages(self, agent_profiles: List[Dict[str, Any]], 
                              num_messages: int = 10000) -> List[Dict[str, Any]]:
-        """生成合成PML消息"""
+        """Generate synthetic PML messages"""
         messages = []
         agent_ids = [profile['agent_id'] for profile in agent_profiles]
         
@@ -274,35 +268,35 @@ class RegistrarServiceThroughputTester:
     
     def test_registrar_throughput(self, agent_profiles: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        测试注册服务吞吐量
+        Test registrar service throughput
         
         Args:
-            agent_profiles: 代理配置文件列表
+            agent_profiles: List of agent profiles
             
         Returns:
-            吞吐量测试结果
+            Throughput test results
         """
         N = len(agent_profiles)
-        logger.info(f"🔄 开始注册服务吞吐量测试 (N={N})")
+        logger.info(f"🔄 Starting registrar service throughput test (N={N})")
         
-        # 重置计数器
+        # Reset counters
         self.processed_count = 0
         self.trust_ledger.clear()
         
-        # 生成10,000条合成PML消息
+        # Generate 10,000 synthetic PML messages
         messages = self._generate_pml_messages(agent_profiles, num_messages=10000)
-        logger.info(f"📊 生成了 {len(messages)} 条PML消息")
+        logger.info(f"📊 Generated {len(messages)} PML messages")
         
-        # 使用多线程模拟并发客户端
-        max_workers = min(N, 50)  # 限制最大线程数
+        # Simulate concurrent clients using multi-threading
+        max_workers = min(N, 50)  # Limit max threads
         
         start_time = time.perf_counter()
         
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            # 提交所有消息处理任务
+            # Submit all message processing tasks
             futures = [executor.submit(self._process_pml_message, msg) for msg in messages]
             
-            # 等待所有任务完成
+            # Wait for all tasks to complete
             completed_count = 0
             failed_count = 0
             
@@ -315,12 +309,12 @@ class RegistrarServiceThroughputTester:
                         failed_count += 1
                 except Exception as e:
                     failed_count += 1
-                    logger.error(f"消息处理异常: {e}")
+                    logger.error(f"Message processing exception: {e}")
         
         end_time = time.perf_counter()
         total_time = end_time - start_time
         
-        # 计算吞吐量
+        # Calculate throughput
         throughput = len(messages) / total_time
         
         result = {
@@ -334,20 +328,20 @@ class RegistrarServiceThroughputTester:
             'success_rate': completed_count / len(messages) if messages else 0.0
         }
         
-        logger.info(f"✅ 注册服务吞吐量测试完成 (N={N}): {throughput:.1f} msg/s")
+        logger.info(f"✅ Registrar service throughput test complete (N={N}): {throughput:.1f} msg/s")
         return result
 
 class MARLDecisionLatencyTester:
-    """MARL决策延迟测试器"""
+    """MARL Decision Latency Tester"""
     
     def __init__(self):
-        """初始化MARL策略网络"""
+        """Initialize MARL policy network"""
         try:
-            # 创建简化的MARL策略网络
-            self.state_dim = 50  # 状态向量维度
-            self.action_dim = 5  # 动作空间维度（5个代理类型）
+            # Create simplified MARL policy network
+            self.state_dim = 50  # State vector dimension
+            self.action_dim = 5  # Action space dimension (5 agent types)
             
-            # 定义神经网络架构
+            # Define neural network architecture
             self.policy_network = torch.nn.Sequential(
                 torch.nn.Linear(self.state_dim, 256),
                 torch.nn.ReLU(),
@@ -360,40 +354,40 @@ class MARLDecisionLatencyTester:
                 torch.nn.Linear(64, self.action_dim)
             )
             
-            # 初始化网络参数
+            # Initialize network parameters
             for module in self.policy_network.modules():
                 if isinstance(module, torch.nn.Linear):
                     torch.nn.init.xavier_uniform_(module.weight)
                     torch.nn.init.zeros_(module.bias)
             
-            # 设置为评估模式
+            # Set to evaluation mode
             self.policy_network.eval()
             
-            logger.info("✅ MARL策略网络初始化成功")
+            logger.info("✅ MARL policy network initialized successfully")
             
         except Exception as e:
-            logger.error(f"❌ MARL策略网络初始化失败: {e}")
+            logger.error(f"❌ Failed to initialize MARL policy network: {e}")
             raise
     
     def _create_synthetic_state(self, query_vector: np.ndarray, 
                               candidate_agents: List[Dict[str, Any]]) -> torch.Tensor:
         """
-        创建合成的MARL状态向量
+        Create a synthetic MARL state vector
         
         Args:
-            query_vector: 查询向量
-            candidate_agents: 候选代理列表
+            query_vector: Query vector
+            candidate_agents: List of candidate agents
             
         Returns:
-            状态张量
+            State tensor
         """
         features = []
         
-        # 查询特征 (10维)
+        # Query features (10-dimensional)
         query_features = query_vector[:10] if len(query_vector) >= 10 else np.pad(query_vector, (0, 10-len(query_vector)))
         features.extend(query_features)
         
-        # 代理特征 (每个代理5维，最多5个代理 = 25维)
+        # Agent features (5-dimensional per agent, max 5 agents = 25 dimensions)
         max_agents = 5
         agent_features = []
         
@@ -408,28 +402,28 @@ class MARLDecisionLatencyTester:
                     agent.get('current_load', 0.3)
                 ]
             else:
-                agent_feat = [0.0, 1.0, 0.0, 0.0, 1.0]  # 填充值
+                agent_feat = [0.0, 1.0, 0.0, 0.0, 1.0]  # Padding value
             
             agent_features.extend(agent_feat)
         
         features.extend(agent_features)
         
-        # 系统特征 (15维)
+        # System features (15-dimensional)
         system_features = [
-            len(candidate_agents) / max_agents,  # 归一化的代理数量
-            np.random.uniform(0.2, 0.8),  # 系统负载
-            np.random.uniform(0.5, 1.0),  # 时间预算
-            np.random.uniform(0.7, 0.9),  # 质量要求
+            len(candidate_agents) / max_agents,  # Normalized agent count
+            np.random.uniform(0.2, 0.8),  # System load
+            np.random.uniform(0.5, 1.0),  # Time budget
+            np.random.uniform(0.7, 0.9),  # Quality requirement
         ]
         
-        # 填充到目标维度
+        # Pad to target dimension
         remaining_dims = self.state_dim - len(features) - len(system_features)
         if remaining_dims > 0:
             system_features.extend([0.0] * remaining_dims)
         
         features.extend(system_features[:remaining_dims+4])
         
-        # 确保维度正确
+        # Ensure correct dimension
         if len(features) > self.state_dim:
             features = features[:self.state_dim]
         elif len(features) < self.state_dim:
@@ -440,49 +434,49 @@ class MARLDecisionLatencyTester:
     def test_marl_decision_latency(self, agent_profiles: List[Dict[str, Any]], 
                                  test_queries: List[str]) -> Dict[str, Any]:
         """
-        测试MARL决策延迟
+        Test MARL decision latency
         
         Args:
-            agent_profiles: 代理配置文件列表
-            test_queries: 测试查询列表
+            agent_profiles: List of agent profiles
+            test_queries: List of test queries
             
         Returns:
-            决策延迟测试结果
+            Decision latency test results
         """
         N = len(agent_profiles)
-        logger.info(f"🧠 开始MARL决策延迟测试 (N={N})")
+        logger.info(f"🧠 Starting MARL decision latency test (N={N})")
         
         latencies = []
         
         for query_idx, query_text in enumerate(test_queries):
-            # 创建合成查询向量
-            query_vector = np.random.normal(0, 1, 20)  # 20维查询向量
-            query_vector = query_vector / np.linalg.norm(query_vector)  # 归一化
+            # Create synthetic query vector
+            query_vector = np.random.normal(0, 1, 20)  # 20-dimensional query vector
+            query_vector = query_vector / np.linalg.norm(query_vector)  # Normalize
             
-            # 随机选择N个候选代理
+            # Randomly select N candidate agents
             candidate_agents = agent_profiles[:N]
             
-            # 高精度计时
+            # High-precision timing
             start_time = time.perf_counter()
             
-            # 创建MARL状态
+            # Create MARL state
             state_tensor = self._create_synthetic_state(query_vector, candidate_agents)
             
-            # 执行神经网络前向传播
+            # Execute neural network forward propagation
             with torch.no_grad():
                 action_logits = self.policy_network(state_tensor.unsqueeze(0))
                 action_probs = torch.softmax(action_logits, dim=-1)
                 selected_action = torch.argmax(action_probs, dim=-1)
             
-            # 停止计时
+            # Stop timing
             end_time = time.perf_counter()
             latency = end_time - start_time
             latencies.append(latency)
             
             if query_idx % 30 == 0:
-                logger.info(f"   查询 {query_idx+1}/{len(test_queries)}: {latency*1000:.3f}ms")
+                logger.info(f"    Query {query_idx+1}/{len(test_queries)}: {latency*1000:.3f}ms")
         
-        # 计算统计数据
+        # Calculate statistics
         avg_latency = np.mean(latencies)
         std_latency = np.std(latencies)
         
@@ -497,31 +491,31 @@ class MARLDecisionLatencyTester:
             'raw_latencies_ms': [l * 1000 for l in latencies]
         }
         
-        logger.info(f"✅ MARL决策延迟测试完成 (N={N}): {avg_latency*1000:.3f}±{std_latency*1000:.3f}ms")
+        logger.info(f"✅ MARL decision latency test complete (N={N}): {avg_latency*1000:.3f}±{std_latency*1000:.3f}ms")
         return result
 
 class ScalabilityStressTestRunner:
-    """可扩展性压力测试运行器"""
+    """Scalability Stress Test Runner"""
     
     def __init__(self):
-        """初始化测试运行器"""
+        """Initialize test runner"""
         self.agent_counts = [10, 50, 100, 500, 1000, 5000]
         self.profile_generator = SyntheticAgentProfileGenerator()
         self.semantic_tester = SemanticMatchingLatencyTester()
         self.registrar_tester = RegistrarServiceThroughputTester()
         self.marl_tester = MARLDecisionLatencyTester()
         
-        # 创建结果目录
+        # Create results directory
         self.results_dir = Path('results/scalability_stress_test')
         self.results_dir.mkdir(parents=True, exist_ok=True)
         
-        # 加载测试查询
+        # Load test queries
         self.test_queries = self._load_test_queries()
         
     def _load_test_queries(self) -> List[str]:
-        """加载150个测试查询"""
+        """Load 150 test queries"""
         try:
-            # 尝试从现有数据集加载
+            # Try to load from existing dataset
             dataset_path = Path('data/standard_dataset.json')
             if dataset_path.exists():
                 with open(dataset_path, 'r', encoding='utf-8') as f:
@@ -529,13 +523,13 @@ class ScalabilityStressTestRunner:
                 
                 if 'test' in dataset:
                     queries = [query['query_text'] for query in dataset['test'][:150]]
-                    logger.info(f"✅ 从标准数据集加载了 {len(queries)} 个测试查询")
+                    logger.info(f"✅ Loaded {len(queries)} test queries from standard dataset")
                     return queries
         except Exception as e:
-            logger.warning(f"加载标准数据集失败: {e}")
+            logger.warning(f"Failed to load standard dataset: {e}")
         
-        # 生成合成测试查询
-        logger.info("📊 生成合成测试查询...")
+        # Generate synthetic test queries
+        logger.info("📊 Generating synthetic test queries...")
         cities = [
             'Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu',
             'Hangzhou', 'Nanjing', 'Wuhan', 'Chongqing', 'Tianjin',
@@ -555,15 +549,15 @@ class ScalabilityStressTestRunner:
             query_text = f"Find {priority} priority flights from {departure} to {destination} on 2024-12-15"
             queries.append(query_text)
         
-        logger.info(f"✅ 生成了 {len(queries)} 个合成测试查询")
+        logger.info(f"✅ Generated {len(queries)} synthetic test queries")
         return queries
     
     def run_complete_stress_test(self) -> Dict[str, Any]:
-        """运行完整的可扩展性压力测试"""
-        logger.info("🚀 开始MAMA框架可扩展性压力测试")
+        """Run complete scalability stress test"""
+        logger.info("🚀 Starting MAMA Framework Scalability Stress Test")
         logger.info("=" * 80)
         
-        # 初始化结果存储
+        # Initialize result storage
         all_results = {
             'metadata': {
                 'test_start_time': datetime.now().isoformat(),
@@ -576,27 +570,27 @@ class ScalabilityStressTestRunner:
             'marl_decision_results': []
         }
         
-        # Phase 1: 生成和存储代理配置文件
-        logger.info("\n📋 Phase 1: 生成合成代理配置文件")
+        # Phase 1: Generate and store agent profiles
+        logger.info("\n📋 Phase 1: Generating synthetic agent profiles")
         agent_profiles_cache = {}
         
         for N in self.agent_counts:
-            logger.info(f"生成 N={N} 的代理配置文件...")
+            logger.info(f"Generating agent profiles for N={N}...")
             profiles = self.profile_generator.generate_profiles(N)
             agent_profiles_cache[N] = profiles
             
-            # 保存配置文件
+            # Save profiles
             profile_file = self.results_dir / f'agent_profiles_N_{N}.json'
             with open(profile_file, 'w', encoding='utf-8') as f:
                 json.dump(profiles, f, indent=2, ensure_ascii=False)
         
-        logger.info("✅ 所有代理配置文件生成完成")
+        logger.info("✅ All agent profiles generated")
         
-        # Phase 2: 组件级压力测试
-        logger.info("\n🔍 Phase 2: 组件级压力测试")
+        # Phase 2: Component-level stress tests
+        logger.info("\n🔍 Phase 2: Component-level stress tests")
         
-        # Part A: 语义匹配延迟测试
-        logger.info("\n--- Part A: 语义匹配延迟测试 ---")
+        # Part A: Semantic matching latency test
+        logger.info("\n--- Part A: Semantic matching latency test ---")
         for N in self.agent_counts:
             try:
                 result = self.semantic_tester.test_semantic_matching_latency(
@@ -604,17 +598,17 @@ class ScalabilityStressTestRunner:
                 )
                 all_results['semantic_matching_results'].append(result)
                 
-                # 保存中间结果
+                # Save intermediate results
                 result_file = self.results_dir / f'semantic_matching_N_{N}.json'
                 with open(result_file, 'w', encoding='utf-8') as f:
                     json.dump(result, f, indent=2)
                     
             except Exception as e:
-                logger.error(f"语义匹配测试失败 (N={N}): {e}")
+                logger.error(f"Semantic matching test failed (N={N}): {e}")
                 continue
         
-        # Part B: 注册服务吞吐量测试
-        logger.info("\n--- Part B: 注册服务吞吐量测试 ---")
+        # Part B: Registration service throughput test
+        logger.info("\n--- Part B: Registration service throughput test ---")
         for N in self.agent_counts:
             try:
                 result = self.registrar_tester.test_registrar_throughput(
@@ -622,17 +616,17 @@ class ScalabilityStressTestRunner:
                 )
                 all_results['registrar_throughput_results'].append(result)
                 
-                # 保存中间结果
+                # Save intermediate results
                 result_file = self.results_dir / f'registrar_throughput_N_{N}.json'
                 with open(result_file, 'w', encoding='utf-8') as f:
                     json.dump(result, f, indent=2)
                     
             except Exception as e:
-                logger.error(f"注册服务测试失败 (N={N}): {e}")
+                logger.error(f"Registration service test failed (N={N}): {e}")
                 continue
         
-        # Part C: MARL决策延迟测试
-        logger.info("\n--- Part C: MARL决策延迟测试 ---")
+        # Part C: MARL decision latency test
+        logger.info("\n--- Part C: MARL decision latency test ---")
         for N in self.agent_counts:
             try:
                 result = self.marl_tester.test_marl_decision_latency(
@@ -640,37 +634,37 @@ class ScalabilityStressTestRunner:
                 )
                 all_results['marl_decision_results'].append(result)
                 
-                # 保存中间结果
+                # Save intermediate results
                 result_file = self.results_dir / f'marl_decision_N_{N}.json'
                 with open(result_file, 'w', encoding='utf-8') as f:
                     json.dump(result, f, indent=2)
                     
             except Exception as e:
-                logger.error(f"MARL决策测试失败 (N={N}): {e}")
+                logger.error(f"MARL decision test failed (N={N}): {e}")
                 continue
         
-        # 添加完成时间戳
+        # Add completion timestamp
         all_results['metadata']['test_end_time'] = datetime.now().isoformat()
         
-        # 保存完整结果
+        # Save complete results
         complete_results_file = self.results_dir / 'complete_scalability_results.json'
         with open(complete_results_file, 'w', encoding='utf-8') as f:
             json.dump(all_results, f, indent=2, ensure_ascii=False)
         
-        logger.info(f"✅ 完整的可扩展性压力测试完成，结果保存至: {complete_results_file}")
+        logger.info(f"✅ Complete scalability stress test completed, results saved to: {complete_results_file}")
         return all_results
     
     def generate_analysis_and_visualization(self, results: Dict[str, Any]):
-        """生成分析和可视化"""
-        logger.info("\n📊 Phase 3: 分析和可视化")
+        """Generate analysis and visualization"""
+        logger.info("\n📊 Phase 3: Analysis and Visualization")
         
-        # 设置绘图样式
+        # Set plot style
         plt.style.use('default')
         
         fig, axes = plt.subplots(2, 2, figsize=(16, 12))
         fig.suptitle('MAMA Framework Scalability Stress Test Results', fontsize=16, fontweight='bold')
         
-        # Plot 1: 语义匹配延迟 vs N
+        # Plot 1: Semantic matching latency vs N
         if results['semantic_matching_results']:
             ax1 = axes[0, 0]
             semantic_data = results['semantic_matching_results']
@@ -688,7 +682,7 @@ class ScalabilityStressTestRunner:
             ax1.set_title('Semantic Matching Latency vs. N', fontsize=14, fontweight='bold')
             ax1.grid(True, alpha=0.3)
             
-            # 添加趋势线
+            # Add trend line
             log_N = np.log10(N_values)
             log_latency = np.log10(avg_latencies)
             z = np.polyfit(log_N, log_latency, 1)
@@ -697,7 +691,7 @@ class ScalabilityStressTestRunner:
                     label=f'Trend: O(N^{z[0]:.2f})')
             ax1.legend()
         
-        # Plot 2: 注册服务吞吐量 vs N
+        # Plot 2: Registrar service throughput vs N
         if results['registrar_throughput_results']:
             ax2 = axes[0, 1]
             throughput_data = results['registrar_throughput_results']
@@ -712,7 +706,7 @@ class ScalabilityStressTestRunner:
             ax2.set_title('Registrar Service Throughput vs. N', fontsize=14, fontweight='bold')
             ax2.grid(True, alpha=0.3)
         
-        # Plot 3: MARL决策延迟 vs N
+        # Plot 3: MARL decision latency vs N
         if results['marl_decision_results']:
             ax3 = axes[1, 0]
             marl_data = results['marl_decision_results']
@@ -729,14 +723,14 @@ class ScalabilityStressTestRunner:
             ax3.set_title('MARL Decision Latency vs. N', fontsize=14, fontweight='bold')
             ax3.grid(True, alpha=0.3)
         
-        # Plot 4: 综合性能对比
+        # Plot 4: Comprehensive performance comparison
         ax4 = axes[1, 1]
         
         if (results['semantic_matching_results'] and 
             results['registrar_throughput_results'] and 
             results['marl_decision_results']):
             
-            # 归一化所有指标到[0,1]范围进行对比
+            # Normalize all metrics to [0,1] range for comparison
             semantic_N = [r['N'] for r in results['semantic_matching_results']]
             semantic_norm = np.array([r['avg_latency_ms'] for r in results['semantic_matching_results']])
             semantic_norm = (semantic_norm - semantic_norm.min()) / (semantic_norm.max() - semantic_norm.min())
@@ -762,39 +756,39 @@ class ScalabilityStressTestRunner:
         
         plt.tight_layout()
         
-        # 保存图表
+        # Save plots
         figure_file = self.results_dir / 'scalability_analysis_plots.png'
         plt.savefig(figure_file, dpi=300, bbox_inches='tight')
         
-        # 同时保存PDF版本
+        # Also save PDF version
         pdf_file = self.results_dir / 'scalability_analysis_plots.pdf'
         plt.savefig(pdf_file, bbox_inches='tight')
         
-        logger.info(f"✅ 可视化图表保存至: {figure_file}")
+        logger.info(f"✅ Visualization plots saved to: {figure_file}")
         
         plt.show()
         
-        # 生成汇总表
+        # Generate summary table
         self._generate_summary_table(results)
     
     def _generate_summary_table(self, results: Dict[str, Any]):
-        """生成汇总表"""
-        logger.info("\n📋 生成性能汇总表")
+        """Generate summary table"""
+        logger.info("\n📋 Generating performance summary table")
         
         summary_data = []
         
-        # 整合所有结果
+        # Consolidate all results
         for N in self.agent_counts:
             row = {'N': N}
             
-            # 语义匹配数据
+            # Semantic matching data
             semantic_result = next((r for r in results['semantic_matching_results'] if r['N'] == N), None)
             if semantic_result:
                 row['Semantic_Latency_ms'] = f"{semantic_result['avg_latency_ms']:.2f}±{semantic_result['std_latency_ms']:.2f}"
             else:
                 row['Semantic_Latency_ms'] = 'N/A'
             
-            # 注册服务数据
+            # Registration service data
             throughput_result = next((r for r in results['registrar_throughput_results'] if r['N'] == N), None)
             if throughput_result:
                 row['Registrar_Throughput_msg_s'] = f"{throughput_result['throughput_msg_per_s']:.1f}"
@@ -803,7 +797,7 @@ class ScalabilityStressTestRunner:
                 row['Registrar_Throughput_msg_s'] = 'N/A'
                 row['Success_Rate'] = 'N/A'
             
-            # MARL决策数据
+            # MARL decision data
             marl_result = next((r for r in results['marl_decision_results'] if r['N'] == N), None)
             if marl_result:
                 row['MARL_Latency_ms'] = f"{marl_result['avg_latency_ms']:.3f}±{marl_result['std_latency_ms']:.3f}"
@@ -812,7 +806,7 @@ class ScalabilityStressTestRunner:
             
             summary_data.append(row)
         
-        # 创建汇总表
+        # Create summary table
         summary_file = self.results_dir / 'scalability_summary_table.md'
         
         with open(summary_file, 'w', encoding='utf-8') as f:
@@ -821,17 +815,17 @@ class ScalabilityStressTestRunner:
             f.write(f"**Test Queries:** {len(self.test_queries)} queries\n\n")
             f.write("## Performance Summary\n\n")
             
-            # 表头
+            # Table header
             f.write("| N | Semantic Matching Latency (ms) | Registrar Throughput (msg/s) | Success Rate | MARL Decision Latency (ms) |\n")
             f.write("|---|---|---|---|---|\n")
             
-            # 数据行
+            # Data rows
             for row in summary_data:
                 f.write(f"| {row['N']} | {row['Semantic_Latency_ms']} | {row['Registrar_Throughput_msg_s']} | {row['Success_Rate']} | {row['MARL_Latency_ms']} |\n")
             
             f.write("\n## Key Findings\n\n")
             
-            # 分析关键发现
+            # Analyze key findings
             if results['semantic_matching_results']:
                 semantic_data = results['semantic_matching_results']
                 min_latency = min(r['avg_latency_ms'] for r in semantic_data)
@@ -857,33 +851,33 @@ class ScalabilityStressTestRunner:
             f.write("- MARL decision tested with pre-trained neural network\n")
             f.write("- Results include statistical confidence intervals (mean ± std)\n")
         
-        logger.info(f"✅ 汇总表保存至: {summary_file}")
+        logger.info(f"✅ Summary table saved to: {summary_file}")
 
 def main():
-    """主函数"""
-    print("🚀 MAMA框架可扩展性压力测试")
+    """Main function"""
+    print("🚀 MAMA Framework Scalability Stress Test")
     print("=" * 80)
-    print("目标：测量语义匹配、注册服务和MARL决策模块在代理数量扩展时的性能")
-    print("代理数量范围：10 → 5,000")
-    print("测试查询：150个标准查询")
+    print("Objective: Measure the performance of semantic matching, registration service, and MARL decision modules as agent numbers expand.")
+    print("Agent count range: 10 → 5,000")
+    print("Test queries: 150 standard queries")
     print("=" * 80)
     
     try:
-        # 创建测试运行器
+        # Create test runner
         runner = ScalabilityStressTestRunner()
         
-        # 运行完整的压力测试
+        # Run complete stress test
         results = runner.run_complete_stress_test()
         
-        # 生成分析和可视化
+        # Generate analysis and visualization
         runner.generate_analysis_and_visualization(results)
         
-        print("\n🎉 可扩展性压力测试成功完成！")
-        print(f"📊 结果保存在: {runner.results_dir}")
-        print("📈 包含详细的性能分析、可视化图表和汇总表")
+        print("\n🎉 Scalability stress test completed successfully!")
+        print(f"📊 Results saved to: {runner.results_dir}")
+        print("📈 Includes detailed performance analysis, visualizations, and a summary table")
         
     except Exception as e:
-        logger.error(f"❌ 测试运行失败: {e}")
+        logger.error(f"❌ Test run failed: {e}")
         import traceback
         traceback.print_exc()
         return 1

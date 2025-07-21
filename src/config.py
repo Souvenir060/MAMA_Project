@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-MAMA Flight Selection Assistant - Configuration Management
-Academic Implementation with Real API Integration
+Configuration Management
 """
 
 import os

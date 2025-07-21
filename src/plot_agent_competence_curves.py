@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """
 Script for drawing the growth curve of intelligent agent capability
-=========================
-
-Based on the capability evolution log file, draw the learning and growth curves of each intelligent agent.
-Demonstrate the effectiveness of the trust mechanism in the MAMA framework and the learning ability of the intelligent agent.
 """
 
 import pandas as pd

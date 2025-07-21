@@ -1,16 +1,6 @@
 #!/usr/bin/env python3
 """
 MAMA Flight Selection Assistant - Main Entry Point
-
-Multi-Agent Model AI framework for flight selection with trust-aware adaptive 
-interaction protocols and multi-dimensional trust ledger integration.
-
-Implementation Features:
-- Trust-aware Multi-Agent Reinforcement Learning (MARL) with Q-learning
-- Semantic Similarity using Sentence-BERT (SBERT) for agent-query matching
-- Learning to Rank (LTR) with Pointwise, Pairwise, and Listwise algorithms
-- Professional Multi-agent Learning (PML) for structured agent management
-- Multi-dimensional Trust Ledger with Byzantine fault tolerance
 """
 
 import asyncio
@@ -1752,10 +1742,10 @@ class MAMAFlightAssistant:
             # Step 2: Call the ledger's evaluation function with REAL data and task context.
             if hasattr(self, 'trust_ledger') and self.trust_ledger is not None:
                 try:
-                    # Construct task context with preference information for expertise matching
+                    # Construct task context, including preference information for expertise matching
                     task_context = {
                         'preferences': {
-                            'priority': 'safety'  # Default priority, should be extracted from query
+                            'priority': 'safety'  # Default priority, should be extracted from query in practice
                         },
                         'query_id': query_id
                     }
@@ -1768,8 +1758,6 @@ class MAMAFlightAssistant:
                             task_context['preferences']['priority'] = 'cost'
                         elif 'time' in query_text.lower() or 'fast' in query_text.lower() or 'quick' in query_text.lower():
                             task_context['preferences']['priority'] = 'time'
-                        elif 'comfort' in query_text.lower() or 'luxury' in query_text.lower():
-                            task_context['preferences']['priority'] = 'comfort'
                     
                     competence_score = self.trust_ledger.evaluate_competence(agent_id, performance_metrics, task_context)
                     self.logger.info(f"✅ Updated competence for {agent_id} with REAL accuracy: {real_accuracy:.4f}, priority: {task_context['preferences']['priority']}")
@@ -1784,7 +1772,7 @@ class MAMAFlightAssistant:
                     )
                 else:
                     await self.trust_manager.broadcast_trust_update(
-                        agent_id, -0.01, f"failed_execution_query_{query_id}"
+                        agent_id, -0.05, f"execution_failure_query_{query_id}"
                     )
 
     async def cleanup(self):

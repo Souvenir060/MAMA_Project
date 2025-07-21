@@ -149,7 +149,7 @@ class LTRRankingEngine:
     
     def _calculate_time_convenience(self, flight: Dict[str, Any]) -> float:
         """Calculate time convenience score"""
-        departure_time = flight.get('departure_time', flight.get('出发时间', ''))
+        departure_time = flight.get('departure_time', flight.get('departure_time', ''))
         
         if not departure_time:
             return 0.5
@@ -174,7 +174,7 @@ class LTRRankingEngine:
     
     def _calculate_service_quality(self, flight: Dict[str, Any]) -> float:
         """Calculate service quality score based on airline and flight details"""
-        airline = flight.get('airline', flight.get('航空公司', ''))
+        airline = flight.get('airline', flight.get('airline', ''))
         
         # Premium airlines mapping
         premium_airlines = {
@@ -196,7 +196,7 @@ class LTRRankingEngine:
             base_score = 0.75  # Default score
         
         # Adjust for flight characteristics
-        stops = flight.get('stops', flight.get('中转次数', 0))
+        stops = flight.get('stops', flight.get('stops', 0))
         if stops == 0:
             base_score += 0.05  # Bonus for direct flights
         elif stops > 1:
@@ -865,22 +865,23 @@ def create_integration_agent():
     # Create the agent instance
     agent = ConversableAgent(
         name="IntegrationAgent",
-        system_message="""你是 MAMA 航班助手的集成代理，具有高级学习排序（LTR）功能。
+        system_message="""You are the MAMA Flight Assistant's integration agent, with advanced Learning-to-Rank (LTR) capabilities.
 
-🔄 **核心职责：**
-1. 整合天气、安全、经济和航班信息代理的输出
-2. 基于代理可靠性分数应用信任加权特征提取
-3. 使用学习排序算法生成最优航班排名
-4. 检测和解决代理建议之间的跨域冲突
-5. 生成带有置信度指标和解释的最终建议
+🔄 **Core Responsibilities:**
+1. Integrate outputs from weather, safety, economic, and flight information agents
+2. Apply trust-weighted feature extraction based on agent reliability scores
+3. Generate optimal flight rankings using Learning-to-Rank algorithms
+4. Detect and resolve cross-domain conflicts between agent recommendations
+5. Generate final recommendations with confidence metrics and explanations
 
-🎯 **关键特点：**
-- 信任感知自适应集成协议
-- 多维特征权重的 LTR 排名
-- 跨域冲突解决
-- 决策透明度和详细解释
+�� **Key Features:**
+- Trust-aware adaptive integration protocol
+- LTR ranking with multi-dimensional feature weights
+- Cross-domain conflict resolution
+- Transparent and detailed decision-making
 
-始终使用 integrate_and_rank_flights_tool 处理完整的代理输出数据，以进行全面的航班排名和推荐。""",
+Always use integrate_and_rank_flights_tool to process the full agent output data for comprehensive flight ranking and recommendations.
+""",
         llm_config=LLM_CONFIG,
         human_input_mode="NEVER",
         max_consecutive_auto_reply=1

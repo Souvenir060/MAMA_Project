@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "experiment_name": "MAMA Real Model Evaluation - 150 Test Queries",
+    "timestamp": "2025-07-18_09-52",
+    "test_set_size": 150,
+    "models_tested": [
+      "MAMA_Full",
+      "MAMA_NoTrust",
+      "SingleAgent",
+      "Traditional"
+    ],
+    "evaluation_type": "REAL_MODELS",
+    "simulation_used": false,
+    "data_source": "Standard 1000-query dataset (700/150/150 split)"
+  },
+  "performance_statistics": [
+    {
+      "MRR_mean": 0.7837777777777778,
+      "MRR_std": 0.2871052630983372,
+      "NDCG@5_mean": 0.5449556936867471,
+      "NDCG@5_std": 0.24462846266725025,
+      "NDCG@10_mean": 0.8591079840481491,
+      "NDCG@10_std": 0.08509089758288832,
+      "Precision@5_mean": 0.5706666666666667,
+      "Precision@5_std": 0.20576577838784454,
+      "Recall@5_mean": 0.5706666666666667,
+      "Recall@5_std": 0.20576577838784454,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 0.0003192313512166341,
+      "Response_Time_std": 0.0007063641162711143,
+      "sample_size": 150,
+      "model": "MAMA_Full"
+    },
+    {
+      "MRR_mean": 0.7882222222222223,
+      "MRR_std": 0.28525197871009533,
+      "NDCG@5_mean": 0.5476195684319911,
+      "NDCG@5_std": 0.24487954976269175,
+      "NDCG@10_mean": 0.8603532852262877,
+      "NDCG@10_std": 0.0850165723768006,
+      "Precision@5_mean": 0.5706666666666667,
+      "Precision@5_std": 0.20576577838784454,
+      "Recall@5_mean": 0.5706666666666667,
+      "Recall@5_std": 0.20576577838784454,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 0.0001620181401570638,
+      "Response_Time_std": 7.247115671783767e-05,
+      "sample_size": 150,
+      "model": "MAMA_NoTrust"
+    },
+    {
+      "MRR_mean": 0.6633333333333333,
+      "MRR_std": 0.3100597314019301,
+      "NDCG@5_mean": 0.3964294152201159,
+      "NDCG@5_std": 0.17544071253321974,
+      "NDCG@10_mean": 0.799282079641741,
+      "NDCG@10_std": 0.0645994736695941,
+      "Precision@5_mean": 0.46399999999999997,
+      "Precision@5_std": 0.15546918236958304,
+      "Recall@5_mean": 0.46399999999999997,
+      "Recall@5_std": 0.15546918236958304,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 3.949969935417175,
+      "Response_Time_std": 0.012230056317291205,
+      "sample_size": 150,
+      "model": "SingleAgent"
+    },
+    {
+      "MRR_mean": 0.7904444444444444,
+      "MRR_std": 0.2862422353251711,
+      "NDCG@5_mean": 0.4242539247746919,
+      "NDCG@5_std": 0.18728600501357662,
+      "NDCG@10_mean": 0.8107497778569204,
+      "NDCG@10_std": 0.06403158209059064,
+      "Precision@5_mean": 0.47866666666666674,
+      "Precision@5_std": 0.15474136127386526,
+      "Recall@5_mean": 0.47866666666666674,
+      "Recall@5_std": 0.15474136127386526,
+      "Success_mean": 1.0,
+      "Success_std": 0.0,
+      "Response_Time_mean": 8.881886800130209e-05,
+      "Response_Time_std": 0.00016721150947502075,
+      "sample_size": 150,
+      "model": "Traditional"
+    }
+  ],
+  "statistical_tests": [
+    {
+      "comparison": "MAMA_Full vs MAMA_NoTrust",
+      "t_statistic": -0.1340467087156828,
+      "p_value": 0.8934561225384934,
+      "cohens_d": -0.015530234689042527,
+      "significant": 

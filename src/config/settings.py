@@ -1,241 +1,285 @@
-#!/usr/bin/env python3
 """
-MAMA Framework Configuration Settings
-System-wide configuration parameters for the MAMA multi-agent system
+MAMA Flight Assistant - Configuration Settings
+
+Central configuration management for the entire system.
 """
 
 import os
-import logging
-from typing import Dict, List, Optional, Any, Union
+from typing import Dict, Any, List
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
-import json
 from pathlib import Path
 
+# Base paths
+BASE_DIR = Path(__file__).parent.parent
+DATA_DIR = BASE_DIR / "data"
+LOGS_DIR = BASE_DIR / "logs"
+CACHE_DIR = BASE_DIR / "cache"
+
 @dataclass
-class SystemConfiguration:
-    """Core system configuration"""
+class APIConfiguration:
+    """API Configuration settings"""
+    # Flight data APIs
+    amadeus_api_key: str = field(default_factory=lambda: os.getenv('AMADEUS_API_KEY', ''))
+    amadeus_api_secret: str = field(default_factory=lambda: os.getenv('AMADEUS_API_SECRET', ''))
+    amadeus_base_url: str = "https://test.api.amadeus.com"
     
-    debug_mode: bool = False
-    log_level: str = "INFO"
-    max_workers: int = 4
-    request_timeout: float = 30.0
+    skyscanner_api_key: str = field(default_factory=lambda: os.getenv('SKYSCANNER_API_KEY', ''))
+    skyscanner_base_url: str = "https://rapidapi.com/skyscanner/api/skyscanner-flight-search"
     
-    data_directory: str = "data"
-    results_directory: str = "results"
-    figures_directory: str = "figures"
-    logs_directory: str = "logs"
+    # Rate limiting
+    requests_per_minute: int = 30
+    requests_per_hour: int = 1000
     
-    enable_caching: bool = True
-    cache_expiry_hours: int = 24
+    # Timeout settings
+    connection_timeout: int = 10
+    read_timeout: int = 30
+    
+    # Retry settings
+    max_retries: int = 3
+    retry_backoff_factor: float = 0.3
+
+@dataclass
+class CacheConfiguration:
+    """Cache Configuration settings"""
+    # Cache directories
+    cache_dir: Path = CACHE_DIR
+    
+    # Cache TTL (Time To Live) in seconds
+    flight_data_ttl: int = 3600  # 1 hour
+    api_response_ttl: int = 1800  # 30 minutes
+    processed_data_ttl: int = 7200  # 2 hours
+    
+    # Cache size limits
     max_cache_size_mb: int = 100
+    max_cached_items: int = 1000
     
-    random_seed: int = 42
-    
-    def __post_init__(self):
-        for directory in [self.data_directory, self.results_directory, 
-                         self.figures_directory, self.logs_directory]:
-            Path(directory).mkdir(exist_ok=True)
+    # Cache cleanup
+    cleanup_interval_hours: int = 24
+    auto_cleanup_enabled: bool = True
 
 @dataclass
-class ExperimentConfiguration:
-    """Experiment-specific configuration"""
+class LoggingConfiguration:
+    """Logging Configuration settings"""
+    # Log directories
+    log_dir: Path = LOGS_DIR
     
-    max_iterations: int = 150
-    batch_size: int = 32
-    learning_rate: float = 0.001
+    # Log levels
+    root_log_level: str = "INFO"
+    api_log_level: str = "DEBUG"
+    agent_log_level: str = "INFO"
     
-    trust_threshold: float = 0.5
-    similarity_threshold: float = 0.7
+    # Log file settings
+    max_file_size_mb: int = 10
+    backup_count: int = 5
     
-    enable_marl: bool = True
-    enable_trust_system: bool = True
-    enable_sbert: bool = True
-    enable_ltr: bool = True
+    # Log formats
+    log_format: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    date_format: str = "%Y-%m-%d %H:%M:%S"
     
-    save_intermediate_results: bool = True
-    generate_plots: bool = True
-    
-    performance_metrics: List[str] = field(default_factory=lambda: [
-        'mrr', 'ndcg_5', 'ndcg_10', 'precision_5', 'recall_5'
-    ])
-
-@dataclass
-class ModelConfiguration:
-    """Model-specific configuration"""
-    
-    sbert_model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
-    embedding_dimension: int = 384
-    
-    marl_state_size: int = 10
-    marl_action_size: int = 5
-    marl_epsilon: float = 0.1
-    marl_gamma: float = 0.95
-    
-    trust_dimensions: List[str] = field(default_factory=lambda: [
-        'reliability', 'competence', 'fairness', 'security', 'transparency'
-    ])
-    
-    trust_weights: Dict[str, float] = field(default_factory=lambda: {
-        'reliability': 0.25,
-        'competence': 0.25,
-        'fairness': 0.20,
-        'security': 0.15,
-        'transparency': 0.15
-    })
+    # Console logging
+    console_logging_enabled: bool = True
+    console_log_level: str = "INFO"
 
 @dataclass
 class AgentConfiguration:
     """Agent system configuration"""
-    
+    # Agent behavior
     max_response_length: int = 2000
     response_timeout_seconds: int = 30
     
+    # Conversation settings
     max_conversation_history: int = 50
     context_window_size: int = 10
     
+    # Flight search defaults
     default_search_limit: int = 20
     max_search_results: int = 100
     
+    # AI model settings
     temperature: float = 0.7
     max_tokens: int = 1500
     
-    supported_languages: List[str] = field(default_factory=lambda: ['en-US'])
-    default_language: str = 'en-US'
-
-@dataclass
-class APIConfiguration:
-    """External API configuration"""
-    
-    amadeus_api_key: Optional[str] = None
-    amadeus_api_secret: Optional[str] = None
-    amadeus_base_url: str = "https://api.amadeus.com"
-    
-    opensky_username: Optional[str] = None
-    opensky_password: Optional[str] = None
-    opensky_base_url: str = "https://opensky-network.org/api"
-    
-    weather_api_key: Optional[str] = None
-    weather_base_url: str = "https://api.openweathermap.org/data/2.5"
-    
-    safety_api_key: Optional[str] = None
-    safety_base_url: str = "https://api.aviation-safety.net"
-    
-    rate_limit_requests_per_minute: int = 60
-    rate_limit_requests_per_hour: int = 1000
-    
-    retry_attempts: int = 3
-    retry_delay_seconds: float = 1.0
-    
-    enable_ssl_verification: bool = True
-    request_timeout_seconds: float = 30.0
+    # Supported languages
+    supported_languages: List[str] = field(default_factory=lambda: ['zh-CN', 'en-US'])
+    default_language: str = 'zh-CN'
 
 @dataclass
 class SecurityConfiguration:
-    """Security and privacy configuration"""
+    """Security Configuration settings"""
+    # API key encryption
+    encrypt_api_keys: bool = True
+    encryption_key: str = field(default_factory=lambda: os.getenv('ENCRYPTION_KEY', ''))
     
-    enable_encryption: bool = True
-    encryption_key_length: int = 256
+    # Rate limiting
+    rate_limit_enabled: bool = True
+    max_requests_per_ip_per_hour: int = 100
     
-    enable_authentication: bool = False
-    jwt_secret_key: Optional[str] = None
-    jwt_expiry_hours: int = 24
+    # Input validation
+    max_input_length: int = 1000
+    allowed_characters_pattern: str = r'^[a-zA-Z0-9\s\-_.,!?()]+$'
     
-    enable_rate_limiting: bool = True
-    max_requests_per_minute: int = 100
-    
-    enable_logging: bool = True
+    # Data protection
+    mask_sensitive_data: bool = True
     log_sensitive_data: bool = False
-    
-    allowed_origins: List[str] = field(default_factory=lambda: ['*'])
-    
-    data_retention_days: int = 30
-    anonymize_user_data: bool = True
 
 @dataclass
 class DatabaseConfiguration:
-    """Database configuration"""
+    """Database Configuration settings (for future use)"""
+    # SQLite settings (for local storage)
+    sqlite_path: Path = DATA_DIR / "mama_assistant.db"
     
-    database_type: str = "sqlite"
-    database_path: str = "data/mama_system.db"
+    # Connection settings
+    connection_pool_size: int = 5
+    connection_timeout: int = 30
     
-    connection_pool_size: int = 10
-    connection_timeout_seconds: float = 30.0
-    
-    enable_migrations: bool = True
-    backup_enabled: bool = True
+    # Backup settings
+    auto_backup_enabled: bool = True
     backup_interval_hours: int = 24
-    
-    query_timeout_seconds: float = 30.0
-    max_query_results: int = 1000
+    max_backups: int = 7
 
 @dataclass
-class UIConfiguration:
-    """User interface configuration"""
+class SystemConfiguration:
+    """Main system configuration that combines all settings"""
+    api: APIConfiguration = field(default_factory=APIConfiguration)
+    cache: CacheConfiguration = field(default_factory=CacheConfiguration)
+    logging: LoggingConfiguration = field(default_factory=LoggingConfiguration)
+    agent: AgentConfiguration = field(default_factory=AgentConfiguration)
+    security: SecurityConfiguration = field(default_factory=SecurityConfiguration)
+    database: DatabaseConfiguration = field(default_factory=DatabaseConfiguration)
     
-    theme: str = "light"
-    language: str = "en"
+    # System settings
+    debug_mode: bool = field(default_factory=lambda: os.getenv('DEBUG', 'False').lower() == 'true')
+    environment: str = field(default_factory=lambda: os.getenv('ENVIRONMENT', 'development'))
+    version: str = "1.0.0"
     
-    enable_dark_mode: bool = False
-    enable_animations: bool = True
+    def __post_init__(self):
+        """Create necessary directories after initialization"""
+        self._create_directories()
     
-    results_per_page: int = 20
-    max_search_history: int = 100
+    def _create_directories(self):
+        """Create necessary directories if they don't exist"""
+        directories = [
+            self.cache.cache_dir,
+            self.logging.log_dir,
+            DATA_DIR,
+            self.database.sqlite_path.parent
+        ]
+        
+        for directory in directories:
+            directory.mkdir(parents=True, exist_ok=True)
     
-    enable_auto_complete: bool = True
-    enable_spell_check: bool = True
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert configuration to dictionary"""
+        return {
+            'api': {
+                'amadeus_base_url': self.api.amadeus_base_url,
+                'skyscanner_base_url': self.api.skyscanner_base_url,
+                'requests_per_minute': self.api.requests_per_minute,
+                'requests_per_hour': self.api.requests_per_hour,
+                'connection_timeout': self.api.connection_timeout,
+                'read_timeout': self.api.read_timeout,
+                'max_retries': self.api.max_retries,
+                'retry_backoff_factor': self.api.retry_backoff_factor
+            },
+            'cache': {
+                'cache_dir': str(self.cache.cache_dir),
+                'flight_data_ttl': self.cache.flight_data_ttl,
+                'api_response_ttl': self.cache.api_response_ttl,
+                'processed_data_ttl': self.cache.processed_data_ttl,
+                'max_cache_size_mb': self.cache.max_cache_size_mb,
+                'max_cached_items': self.cache.max_cached_items,
+                'cleanup_interval_hours': self.cache.cleanup_interval_hours,
+                'auto_cleanup_enabled': self.cache.auto_cleanup_enabled
+            },
+            'logging': {
+                'log_dir': str(self.logging.log_dir),
+                'root_log_level': self.logging.root_log_level,
+                'api_log_level': self.logging.api_log_level,
+                'agent_log_level': self.logging.agent_log_level,
+                'max_file_size_mb': self.logging.max_file_size_mb,
+                'backup_count': self.logging.backup_count,
+                'console_logging_enabled': self.logging.console_logging_enabled,
+                'console_log_level': self.logging.console_log_level
+            },
+            'agent': {
+                'max_response_length': self.agent.max_response_length,
+                'response_timeout_seconds': self.agent.response_timeout_seconds,
+                'max_conversation_history': self.agent.max_conversation_history,
+                'context_window_size': self.agent.context_window_size,
+                'default_search_limit': self.agent.default_search_limit,
+                'max_search_results': self.agent.max_search_results,
+                'temperature': self.agent.temperature,
+                'max_tokens': self.agent.max_tokens,
+                'supported_languages': self.agent.supported_languages,
+                'default_language': self.agent.default_language
+            },
+            'security': {
+                'encrypt_api_keys': self.security.encrypt_api_keys,
+                'rate_limit_enabled': self.security.rate_limit_enabled,
+                'max_requests_per_ip_per_hour': self.security.max_requests_per_ip_per_hour,
+                'max_input_length': self.security.max_input_length,
+                'mask_sensitive_data': self.security.mask_sensitive_data,
+                'log_sensitive_data': self.security.log_sensitive_data
+            },
+            'database': {
+                'sqlite_path': str(self.database.sqlite_path),
+                'connection_pool_size': self.database.connection_pool_size,
+                'connection_timeout': self.database.connection_timeout,
+                'auto_backup_enabled': self.database.auto_backup_enabled,
+                'backup_interval_hours': self.database.backup_interval_hours,
+                'max_backups': self.database.max_backups
+            },
+            'system': {
+                'debug_mode': self.debug_mode,
+                'environment': self.environment,
+                'version': self.version
+            }
+        }
     
-    map_provider: str = "openstreetmap"
-    default_map_zoom: int = 10
+    def validate(self) -> Dict[str, List[str]]:
+        """Validate configuration settings"""
+        errors = {}
+        
+        # Validate API configuration
+        if not self.api.amadeus_api_key and not self.api.skyscanner_api_key:
+            errors.setdefault('api', []).append("At least one API key must be configured")
+        
+        if self.api.requests_per_minute <= 0:
+            errors.setdefault('api', []).append("requests_per_minute must be positive")
+        
+        if self.api.requests_per_hour <= 0:
+            errors.setdefault('api', []).append("requests_per_hour must be positive")
+        
+        if self.api.connection_timeout <= 0:
+            errors.setdefault('api', []).append("connection_timeout must be positive")
+        
+        # Validate cache configuration
+        if self.cache.flight_data_ttl <= 0:
+            errors.setdefault('cache', []).append("flight_data_ttl must be positive")
+        
+        if self.cache.max_cache_size_mb <= 0:
+            errors.setdefault('cache', []).append("max_cache_size_mb must be positive")
+        
+        # Validate agent configuration
+        if self.agent.max_response_length <= 0:
+            errors.setdefault('agent', []).append("max_response_length must be positive")
+        
+        if self.agent.temperature < 0 or self.agent.temperature > 2:
+            errors.setdefault('agent', []).append("temperature must be between 0 and 2")
+        
+        if self.agent.default_language not in self.agent.supported_languages:
+            errors.setdefault('agent', []).append("default_language must be in supported_languages")
+        
+        # Validate security configuration
+        if self.security.max_input_length <= 0:
+            errors.setdefault('security', []).append("max_input_length must be positive")
+        
+        return errors
 
-@dataclass
-class PerformanceConfiguration:
-    """Performance optimization configuration"""
-    
-    enable_caching: bool = True
-    cache_size_mb: int = 100
-    cache_ttl_seconds: int = 3600
-    
-    enable_compression: bool = True
-    compression_level: int = 6
-    
-    enable_parallel_processing: bool = True
-    max_parallel_workers: int = 4
-    
-    enable_gpu_acceleration: bool = False
-    gpu_memory_limit_mb: int = 2048
-    
-    enable_profiling: bool = False
-    profiling_output_directory: str = "profiling"
-
-@dataclass
-class TestConfiguration:
-    """Testing configuration"""
-    
-    enable_unit_tests: bool = True
-    enable_integration_tests: bool = True
-    enable_performance_tests: bool = False
-    
-    test_data_directory: str = "tests/data"
-    test_results_directory: str = "tests/results"
-    
-    mock_external_apis: bool = True
-    test_timeout_seconds: float = 60.0
-    
-    generate_test_reports: bool = True
-    test_coverage_threshold: float = 0.8
-
+# Global configuration instance
 settings = SystemConfiguration()
-experiment_config = ExperimentConfiguration()
-model_config = ModelConfiguration()
-agent_config = AgentConfiguration()
-api_config = APIConfiguration()
-security_config = SecurityConfiguration()
-database_config = DatabaseConfiguration()
-ui_config = UIConfiguration()
-performance_config = PerformanceConfiguration()
-test_config = TestConfiguration()
 
+# Configuration constants
 FLIGHT_SEARCH_ENDPOINTS = {
     'amadeus': {
         'flight_offers': '/v2/shopping/flight-offers',
@@ -256,7 +300,7 @@ SUPPORTED_CITIES = {
     'Chengdu': {'code': 'CTU', 'iata': 'CTU', 'country': 'CN'},
     'Hangzhou': {'code': 'HGH', 'iata': 'HGH', 'country': 'CN'},
     'Nanjing': {'code': 'NKG', 'iata': 'NKG', 'country': 'CN'},
-    'Xian': {'code': 'XIY', 'iata': 'XIY', 'country': 'CN'},
+    'Xi\'an': {'code': 'XIY', 'iata': 'XIY', 'country': 'CN'},
     'Chongqing': {'code': 'CKG', 'iata': 'CKG', 'country': 'CN'},
     'Tianjin': {'code': 'TSN', 'iata': 'TSN', 'country': 'CN'},
     'New York': {'code': 'NYC', 'iata': 'JFK', 'country': 'US'},
@@ -297,97 +341,23 @@ AIRLINE_CODES = {
     'TG': 'Thai Airways'
 }
 
+# Error messages in English
 ERROR_MESSAGES = {
     'api_unavailable': 'API service temporarily unavailable, please try again later',
-    'invalid_city': 'Invalid city name, please check input',
+    'invalid_city': 'Invalid city name, please check your input',
     'invalid_date': 'Invalid date format, please use YYYY-MM-DD format',
     'no_flights_found': 'No flights found matching the criteria',
-    'rate_limit_exceeded': 'Too many requests, please try again later',
-    'internal_error': 'Internal system error, please contact technical support',
-    'timeout_error': 'Request timeout, please check network connection',
+    'rate_limit_exceeded': 'Request rate limit exceeded, please try again later',
+    'internal_error': 'System internal error, please contact technical support',
+    'timeout_error': 'Request timed out, please check your network connection',
     'validation_error': 'Input validation failed, please check parameters',
     'authentication_error': 'API authentication failed, please check configuration'
 }
 
+# Success messages in English
 SUCCESS_MESSAGES = {
     'flights_found': 'Successfully found flight information',
     'data_cached': 'Data has been cached',
     'request_processed': 'Request processed successfully',
     'service_healthy': 'Service is running normally'
-}
-
-def load_config_from_file(config_file: str) -> Dict[str, Any]:
-    """Load configuration from JSON file"""
-    try:
-        with open(config_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        logging.warning(f"Configuration file not found: {config_file}")
-        return {}
-    except json.JSONDecodeError as e:
-        logging.error(f"Invalid JSON in configuration file: {e}")
-        return {}
-
-def save_config_to_file(config: Dict[str, Any], config_file: str) -> bool:
-    """Save configuration to JSON file"""
-    try:
-        with open(config_file, 'w', encoding='utf-8') as f:
-            json.dump(config, f, indent=2, ensure_ascii=False)
-        return True
-    except Exception as e:
-        logging.error(f"Failed to save configuration: {e}")
-        return False
-
-def get_config_value(key: str, default: Any = None) -> Any:
-    """Get configuration value with fallback"""
-    try:
-        return getattr(settings, key, default)
-    except AttributeError:
-        return default
-
-def validate_configuration() -> List[str]:
-    """Validate system configuration"""
-    errors = []
-    
-    if not os.path.exists(settings.data_directory):
-        errors.append(f"Data directory does not exist: {settings.data_directory}")
-    
-    if not os.path.exists(settings.results_directory):
-        errors.append(f"Results directory does not exist: {settings.results_directory}")
-    
-    if experiment_config.learning_rate <= 0:
-        errors.append("Learning rate must be positive")
-    
-    if experiment_config.trust_threshold < 0 or experiment_config.trust_threshold > 1:
-        errors.append("Trust threshold must be between 0 and 1")
-    
-    return errors
-
-def setup_logging():
-    """Setup system logging"""
-    log_level = getattr(logging, settings.log_level.upper())
-    
-    logging.basicConfig(
-        level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(f"{settings.logs_directory}/mama_system.log"),
-            logging.StreamHandler()
-        ]
-    )
-    
-    if settings.debug_mode:
-        logging.getLogger().setLevel(logging.DEBUG)
-
-def initialize_system():
-    """Initialize the MAMA system"""
-    setup_logging()
-    
-    errors = validate_configuration()
-    if errors:
-        for error in errors:
-            logging.error(error)
-        raise ValueError(f"Configuration validation failed: {errors}")
-    
-    logging.info("MAMA system configuration loaded successfully")
-    return True 
+} 

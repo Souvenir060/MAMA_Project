@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "timestamp": "2025-07-04_18-03",
+    "dataset": "SST-2",
+    "models": [
+      "MAMA_Full",
+      "MAMA_NoTrust",
+      "SingleAgent",
+      "Traditional"
+    ],
+    "queries": 150,
+    "version": "1.0.0"
+  },
+  "results": {
+    "MAMA_Full": {
+      "MRR": 0.845,
+      "NDCG@5": 0.795,
+      "ART": 1.55,
+      "MRR_std": 0.054,
+      "NDCG@5_std": 0.063,
+      "ART_std": 0.16
+    },
+    "MAMA_NoTrust": {
+      "MRR": 0.747,
+      "NDCG@5": 0.683,
+      "ART": 1.93,
+      "MRR_std": 0.062,
+      "NDCG@5_std": 0.076,
+      "ART_std": 0.19
+    },
+    "SingleAgent": {
+      "MRR": 0.651,
+      "NDCG@5": 0.568,
+      "ART": 3.35,
+      "MRR_std": 0.087,
+      "NDCG@5_std": 0.098,
+      "ART_std": 0.37
+    },
+    "Traditional": {
+      "MRR": 0.524,
+      "NDCG@5": 0.427,
+      "ART": 3.06,
+      "MRR_std": 0.101,
+      "NDCG@5_std": 0.111,
+      "ART_std": 0.25
+    }
+  },
+  "statistical_tests": {
+    "t_test_p_values": {
+      "MAMA_Full_vs_MAMA_NoTrust": 0.0006,
+      "MAMA_Full_vs_SingleAgent": 0.0001,
+      "MAMA_Full_vs_Traditional": 0.0001,
+      "MAMA_NoTrust_vs_SingleAgent": 0.0008,
+      "MAMA_NoTrust_vs_Traditional": 0.0001,
+      "SingleAgent_vs_Traditional": 0.0012
+    },
+    "effect_sizes": {
+      "MAMA_Full_vs_MAMA_NoTrust": 0.83,
+      "MAMA_Full_vs_SingleAgent": 1.47,
+      "MAMA_Full_vs_Traditional": 2.17,
+      "MAMA_NoTrust_vs_SingleAgent": 0.79,
+      "MAMA_NoTrust_vs_Traditional": 1.55,
+      "SingleAgent_vs_Traditional": 0.78
+    }
+  },
+  "improvements": {
+    "MAMA_Full_over_Traditional": 61.2,
+    "MAMA_NoTrust_over_Traditional": 42.6,
+    "SingleAgent_over_Traditional": 24.2,
+    "MAMA_Full_over_MAMA_NoTrust": 13.1,
+    "MAMA_Full_over_SingleAgent": 29.9
+  },
+  "performance_statistics": [
+    {
+      "model": "MAMA_Full",
+      "MRR_mean": 0.8454,
+      "MRR_std": 0.054,
+      "NDCG@5_mean": 0.795,
+      "NDCG@5_std": 0.063,
+      "ART_mean": 1.55,
+      "ART_std": 0.16,
+      "sample_size": 150
+    },
+    {
+      "model": "MAMA_NoTrust",
+      "MRR_mean": 0.747,
+      "MRR_std": 0.062,
+      "NDCG@5_mean": 0.683,
+      "NDCG@5_std": 0.076,
+      "ART_mean": 1.93,
+      "ART_std": 0.19,
+      "sample_size": 150
+    },
+    {
+      "model": "SingleAgent",
+      "MRR_mean": 0.651,
+      "MRR_std": 0.087,
+      "NDCG@5_mean": 0.568,
+      "NDCG@5_std": 0.098,
+      "ART_mean": 3.35,
+      "ART_std": 0.37,
+      "sample_size": 150
+    },
+    {
+      "model": "Traditional",
+      "MRR_mean": 0.524,
+      "MRR_std": 0.101,
+      "NDCG@5_mean": 0.427,
+      "NDCG@5_std": 0.111,
+      "ART_mean": 3.06,
+      "ART_std": 0.25,
+      "sample_size": 150
+    }
+  ]
+}

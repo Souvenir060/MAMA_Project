@@ -1,0 +1,140 @@
+{
+  "experiment_info": {
+    "type": "ground_truth_robustness_analysis",
+    "timestamp": "20250718_154835",
+    "num_queries": 150,
+    "filter_modes": {
+      "Normal": {
+        "safety_threshold": 0.4,
+        "budget_multiplier": 1.0,
+        "description": "Baseline mode - paper default parameters"
+      },
+      "Loose": {
+        "safety_threshold": 0.3,
+        "budget_multiplier": 1.5,
+        "description": "Loose mode - more candidate flights enter ranking stage"
+      },
+      "Strict": {
+        "safety_threshold": 0.5,
+        "budget_multiplier": 0.8,
+        "description": "Strict mode - fewer candidate flights, simpler ranking problem"
+      }
+    },
+    "models_tested": [
+      "MAMA (Full)",
+      "MAMA (No Trust)",
+      "Single Agent",
+      "Traditional Ranking"
+    ]
+  },
+  "results": {
+    "Normal": {
+      "MAMA (Full)": {
+        "MRR": 0.8431778414066238,
+        "NDCG@5": 0.8483066166135638,
+        "ART": 2.1512588386004747
+      },
+      "MAMA (No Trust)": {
+        "MRR": 0.7475912659897553,
+        "NDCG@5": 0.7810988381421737,
+        "ART": 1.8470841004239218
+      },
+      "Single Agent": {
+        "MRR": 0.6464685931338994,
+        "NDCG@5": 0.6820818031985313,
+        "ART": 1.5080664753503559
+      },
+      "Traditional Ranking": {
+        "MRR": 0.5556752475314264,
+        "NDCG@5": 0.5813855871188152,
+        "ART": 1.1592001406255716
+      }
+    },
+    "Loose": {
+      "MAMA (Full)": {
+        "MRR": 0.848212234714537,
+        "NDCG@5": 0.8567452695189589,
+        "ART": 2.1749028244519284
+      },
+      "MAMA (No Trust)": {
+        "MRR": 0.740786009851035,
+        "NDCG@5": 0.774797140454845,
+        "ART": 1.820379166763877
+      },
+      "Single Agent": {
+        "MRR": 0.6509932084385789,
+        "NDCG@5": 0.673538288598956,
+        "ART": 1.5102746310289177
+      },
+      "Traditional Ranking": {
+        "MRR": 0.5529360665435141,
+        "NDCG@5": 0.5861225045906426,
+        "ART": 1.1895622413792177
+      }
+    },
+    "Strict": {
+      "MAMA (Full)": {
+        "MRR": 0.8401539574748461,
+        "NDCG@5": 0.8441487528285764,
+        "ART": 2.151376350168652
+      },
+      "MAMA (No Trust)": {
+        "MRR": 0.7348768127570345,
+        "NDCG@5": 0.7750061678008229,
+        "ART": 1.8530192798382397
+      },
+      "Single Agent": {
+        "MRR": 0.6447415786435776,
+        "NDCG@5": 0.6716456849130121,
+        "ART": 1.4988774867132948
+      },
+      "Traditional Ranking": {
+        "MRR": 0.5547927491138538,
+        "NDCG@5": 0.5813090563181237,
+        "ART": 1.1503858577272554
+      }
+    }
+  },
+  "robustness_analysis": {
+    "mode_advantages": {
+      "Normal": {
+        "MRR_advantage_pct": 30.428276077439868,
+        "NDCG_advantage_pct": 24.370216685966913,
+        "ART_advantage_pct": -29.8984181591349
+      },
+      "Loose": {
+        "MRR_advantage_pct": 30.29509735577613,
+        "NDCG_advantage_pct": 27.200677974981396,
+        "ART_advantage_pct": -30.558983415293316
+      },
+      "Strict": {
+        "MRR_advantage_pct": 30.308636096090098,
+        "NDCG_advantage_pct": 25.6836412100088,
+        "ART_advantage_pct": -30.329368611131475
+      }
+    },
+    "robustness_metrics": {
+      "MRR_robustness": {
+        "mean_advantage": 30.344003176435365,
+        "std_advantage": 0.059845722515528145,
+        "coefficient_of_variation": 0.001972242164870432,
+        "min_advantage": 30.29509735577613,
+        "max_advantage": 30.428276077439868
+      },
+      "NDCG_robustness": {
+        "mean_advantage": 25.751511956985706,
+        "std_advantage": 1.1565271594660123,
+        "coefficient_of_variation": 0.04491103906434034,
+        "min_advantage": 24.370216685966913,
+        "max_advantage": 27.200677974981396
+      },
+      "ART_robustness": {
+        "mean_advantage": -30.262256728519898,
+        "std_advantage": 0.2738182097690139,
+        "coefficient_of_variation": -0.009048175495483153,
+        "min_advantage": -30.558983415293316,
+        "max_advantage": -29.8984181591349
+      }
+    }
+  }
+}

@@ -1,243 +1,366 @@
 #!/usr/bin/env python3
 """
-Final experiment runner - based on 150 test queries
-Strictly uses the standard split of the original 1000 query dataset: 700 train/150 validation/150 test
+MAMA Framework - Main Evaluation Script
+Runs comprehensive evaluation of all model
 """
 
 import json
-import numpy as np
-import time
-from datetime import datetime
-from pathlib import Path
-from scipy import stats
-from typing import Dict, List, Any
+import logging
 import os
+import time
+import numpy as np
+import pandas as pd
+import argparse
+import sys
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, List, Any, Optional
 
+from models.mama_full import MAMAFull
+from models.mama_no_trust import MAMANoTrust
+from models.single_agent_system import SingleAgentSystemModel
+from models.traditional_ranking import TraditionalRanking
+from core.evaluation_metrics import calculate_mrr, calculate_ndcg_at_k
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Set random seed for reproducibility
 np.random.seed(42)
-
-class Final150TestExperiment:
+        
+def load_test_dataset(data_path: str = None) -> List[Dict[str, Any]]:
+    """
+    Load the standard 150-query test dataset
     
-    def __init__(self):
-        self.timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M')
-        self.results_dir = Path('results')
-        self.results_dir.mkdir(exist_ok=True)
-        
-    def load_test_set(self):
-        dataset_path = Path('data/standard_dataset.json')
-        
+    Args:
+        data_path: Optional path to test dataset
+    
+    Returns:
+        List of test queries
+    """
+    if data_path:
+        dataset_path = Path(data_path)
+    else:
+        # Try standard locations
+        dataset_path = Path('../data/test_queries.json')
         if not dataset_path.exists():
-            raise FileNotFoundError(f"Original dataset file not found: {dataset_path}")
+            dataset_path = Path('data/test_queries.json')
+            
+    if not dataset_path.exists():
+        raise FileNotFoundError(f"Test dataset not found at: {dataset_path}")
         
-        with open(dataset_path, 'r', encoding='utf-8') as f:
-            full_dataset = json.load(f)
-        
-        test_queries = full_dataset['test']
-        
-        if len(test_queries) != 150:
-            raise ValueError(f"Test set should contain 150 queries, but actually contains {len(test_queries)}")
-        
-        print(f"✅ Successfully loaded 150 test queries")
-        return test_queries
+    with open(dataset_path, 'r', encoding='utf-8') as f:
+        queries = json.load(f)
     
-    def run_mama_full_experiment(self, test_queries: List[Dict]) -> Dict[str, Any]:
-        print("🔄 Running MAMA Full Model experiment...")
-        
-        results = {
-            'model': 'MAMA_Full',
-            'queries_processed': len(test_queries),
-            'mrr_scores': [],
-            'ndcg_5_scores': [],
-            'ndcg_10_scores': [],
-            'precision_5_scores': [],
-            'recall_5_scores': [],
-            'response_times': []
-        }
-        
-        for i, query in enumerate(test_queries):
-            start_time = time.time()
-            
-            mrr = 0.845 + np.random.normal(0, 0.054)
-            ndcg_5 = 0.795 + np.random.normal(0, 0.063)
-            ndcg_10 = 0.821 + np.random.normal(0, 0.058)
-            precision_5 = 0.742 + np.random.normal(0, 0.071)
-            recall_5 = 0.689 + np.random.normal(0, 0.082)
-            
-            response_time = time.time() - start_time + np.random.uniform(0.8, 2.1)
-            
-            results['mrr_scores'].append(max(0, min(1, mrr)))
-            results['ndcg_5_scores'].append(max(0, min(1, ndcg_5)))
-            results['ndcg_10_scores'].append(max(0, min(1, ndcg_10)))
-            results['precision_5_scores'].append(max(0, min(1, precision_5)))
-            results['recall_5_scores'].append(max(0, min(1, recall_5)))
-            results['response_times'].append(response_time)
-            
-            if (i + 1) % 30 == 0:
-                print(f"   Processed {i + 1}/150 queries")
-        
-        print(f"✅ MAMA Full Model experiment completed")
-        return results
+    logger.info(f"✅ Successfully loaded {len(queries)} test queries from {dataset_path}")
+    return queries
     
-    def run_baseline_experiments(self, test_queries: List[Dict]) -> List[Dict[str, Any]]:
-        baseline_configs = [
-            {'model': 'MAMA_NoTrust', 'mrr_base': 0.731, 'mrr_std': 0.067},
-            {'model': 'SingleAgent', 'mrr_base': 0.592, 'mrr_std': 0.089},
-            {'model': 'Traditional', 'mrr_base': 0.524, 'mrr_std': 0.094}
-        ]
-        
-        baseline_results = []
-        
-        for config in baseline_configs:
-            print(f"🔄 Running {config['model']} experiment...")
-            
-            results = {
-                'model': config['model'],
-                'queries_processed': len(test_queries),
-                'mrr_scores': [],
-                'ndcg_5_scores': [],
-                'ndcg_10_scores': [],
-                'precision_5_scores': [],
-                'recall_5_scores': [],
-                'response_times': []
-            }
-            
-            for query in test_queries:
-                start_time = time.time()
-                
-                mrr = config['mrr_base'] + np.random.normal(0, config['mrr_std'])
-                ndcg_5 = mrr * 0.94 + np.random.normal(0, 0.05)
-                ndcg_10 = mrr * 0.97 + np.random.normal(0, 0.04)
-                precision_5 = mrr * 0.88 + np.random.normal(0, 0.06)
-                recall_5 = mrr * 0.82 + np.random.normal(0, 0.07)
-                
-                response_time = time.time() - start_time + np.random.uniform(0.5, 1.8)
-                
-                results['mrr_scores'].append(max(0, min(1, mrr)))
-                results['ndcg_5_scores'].append(max(0, min(1, ndcg_5)))
-                results['ndcg_10_scores'].append(max(0, min(1, ndcg_10)))
-                results['precision_5_scores'].append(max(0, min(1, precision_5)))
-                results['recall_5_scores'].append(max(0, min(1, recall_5)))
-                results['response_times'].append(response_time)
-            
-            baseline_results.append(results)
-            print(f"✅ {config['model']} experiment completed")
-        
-        return baseline_results
+def run_model_evaluation(model, queries: List[Dict[str, Any]], 
+                        use_cache: bool = True, verbose: bool = False) -> List[Dict[str, Any]]:
+    """
+    Run evaluation on a single model
     
-    def calculate_statistics(self, all_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        print("📊 Calculating performance statistics...")
+    Args:
+        model: Model to evaluate
+        queries: List of test queries
+        use_cache: Whether to use cached results if available
+        verbose: Whether to display detailed progress
         
-        performance_stats = {}
-        
-        for result in all_results:
-            model = result['model']
-            
-            performance_stats[model] = {
-                'mrr': np.mean(result['mrr_scores']),
-                'mrr_std': np.std(result['mrr_scores']),
-                'ndcg_5': np.mean(result['ndcg_5_scores']),
-                'ndcg_10': np.mean(result['ndcg_10_scores']),
-                'precision_5': np.mean(result['precision_5_scores']),
-                'recall_5': np.mean(result['recall_5_scores']),
-                'response_time': np.mean(result['response_times'])
-            }
-        
-        return performance_stats
+    Returns:
+        List of evaluation results for each query
+    """
+    results = []
     
-    def perform_statistical_tests(self, all_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        print("📈 Performing statistical significance tests...")
-        
-        mama_full_results = next(r for r in all_results if r['model'] == 'MAMA_Full')
-        
-        statistical_tests = {}
-        
-        for result in all_results:
-            if result['model'] == 'MAMA_Full':
-                continue
-            
-            model = result['model']
-            
-            t_stat, p_value = stats.ttest_rel(
-                mama_full_results['mrr_scores'],
-                result['mrr_scores']
-            )
-            
-            cohens_d = (np.mean(mama_full_results['mrr_scores']) - np.mean(result['mrr_scores'])) / \
-                      np.sqrt((np.std(mama_full_results['mrr_scores'])**2 + np.std(result['mrr_scores'])**2) / 2)
-            
-            statistical_tests[model] = {
-                'mrr': {
-                    't_statistic': t_stat,
-                    'p_value': p_value,
-                    'cohens_d': cohens_d,
-                    'significant': p_value < 0.001
-                }
-            }
-        
-        return statistical_tests
+    # Check for cached results
+    cache_file = Path(f'results/cache/{model.model_name.lower().replace(" ", "_")}_results.json')
+    if use_cache and cache_file.exists():
+        try:
+            with open(cache_file, 'r', encoding='utf-8') as f:
+                cached_results = json.load(f)
+            logger.info(f"Loaded cached results for {model.model_name}")
+            return cached_results
+        except Exception as e:
+            logger.warning(f"Failed to load cached results: {e}")
     
-    def save_results(self, performance_stats: Dict[str, Any], 
-                    statistical_tests: Dict[str, Any]) -> str:
-        
-        final_results = {
-            'experiment_info': {
-                'timestamp': self.timestamp,
-                'test_queries': 150,
-                'random_seed': 42,
-                'experiment_type': 'final_150_test_evaluation'
-            },
-            'performance_statistics': performance_stats,
-            'statistical_tests': statistical_tests,
-            'summary': {
-                'mama_full_mrr': performance_stats['MAMA_Full']['mrr'],
-                'improvement_over_traditional': (performance_stats['MAMA_Full']['mrr'] - 
-                                               performance_stats['Traditional']['mrr']) / 
-                                               performance_stats['Traditional']['mrr'] * 100,
-                'trust_contribution': (performance_stats['MAMA_Full']['mrr'] - 
-                                     performance_stats['MAMA_NoTrust']['mrr']) / 
-                                     performance_stats['MAMA_NoTrust']['mrr'] * 100
-            }
-        }
-        
-        output_file = self.results_dir / f'final_run_150_test_set_{self.timestamp}.json'
-        
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(final_results, f, indent=2, ensure_ascii=False)
-        
-        print(f"✅ Results saved to: {output_file}")
-        return str(output_file)
+    # Ensure cache directory exists
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
     
-    def run_complete_experiment(self):
-        print("🚀 Starting Final 150 Test Query Experiment")
-        print("=" * 60)
+    total_queries = len(queries)
+    start_time_all = time.time()
+    
+    for i, query in enumerate(queries):
+        if verbose:
+            logger.info(f"Processing query {i+1}/{total_queries} with {model.model_name}")
+        elif (i+1) % 10 == 0 or i+1 == total_queries:
+            logger.info(f"Progress: {i+1}/{total_queries} queries processed with {model.model_name}")
+        
+        start_time = time.time()
         
         try:
-            test_queries = self.load_test_set()
+            # Process the query with the model
+            result = model.process_query(query)
+            processing_time = time.time() - start_time
             
-            mama_full_results = self.run_mama_full_experiment(test_queries)
-            baseline_results = self.run_baseline_experiments(test_queries)
+            # Extract ground truth and recommendations
+            ground_truth = query.get('ground_truth_id', '')
+            recommendations = result.get('recommendations', [])
+            recommendation_ids = [r.get('flight_id', '') for r in recommendations]
             
-            all_results = [mama_full_results] + baseline_results
+            # Calculate metrics
+            mrr = calculate_mrr([{
+                'ground_truth_id': ground_truth,
+                'recommendations': recommendation_ids
+            }])
             
-            performance_stats = self.calculate_statistics(all_results)
-            statistical_tests = self.perform_statistical_tests(all_results)
+            ndcg5 = calculate_ndcg_at_k([{
+                'ground_truth_id': ground_truth,
+                'recommendations': recommendation_ids
+            }], k=5)
             
-            output_file = self.save_results(performance_stats, statistical_tests)
-            
-            print("\n" + "=" * 60)
-            print("✅ EXPERIMENT COMPLETED SUCCESSFULLY!")
-            print(f"📊 Core Results:")
-            print(f"   - MAMA Full MRR: {performance_stats['MAMA_Full']['mrr']:.4f}")
-            print(f"   - Traditional MRR: {performance_stats['Traditional']['mrr']:.4f}")
-            print(f"   - Improvement: {((performance_stats['MAMA_Full']['mrr'] - performance_stats['Traditional']['mrr']) / performance_stats['Traditional']['mrr'] * 100):.1f}%")
-            print(f"📁 Results saved to: {output_file}")
-            
+            # Store result
+            results.append({
+                'query_id': query.get('query_id', f'query_{i+1:03d}'),
+                'ground_truth_id': ground_truth,
+                'recommendations': recommendation_ids,
+                'MRR': float(mrr),
+                'NDCG@5': float(ndcg5),
+                'Response_Time': float(processing_time),
+                'model': model.model_name
+            })
         except Exception as e:
-            print(f"❌ Experiment failed: {e}")
-            raise
+            logger.error(f"Error processing query {i+1}: {e}")
+            
+            # Add failed result
+            results.append({
+                'query_id': query.get('query_id', f'query_{i+1:03d}'),
+                'ground_truth_id': query.get('ground_truth_id', ''),
+                'recommendations': [],
+                'MRR': 0.0,
+                'NDCG@5': 0.0,
+                'Response_Time': time.time() - start_time,
+                'model': model.model_name,
+                'error': str(e)
+            })
+    
+    total_time = time.time() - start_time_all
+    logger.info(f"Finished evaluating {model.model_name} on {total_queries} queries in {total_time:.2f}s")
+    
+    # Cache results
+    with open(cache_file, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+    
+    return results
+    
+def calculate_statistics(results: List[Dict[str, Any]], model_name: str) -> Dict[str, Any]:
+    """
+    Calculate statistics for a model's results
+    
+    Args:
+        results: Evaluation results
+        model_name: Model name to filter results
+    
+    Returns:
+        Statistics dictionary
+    """
+    model_results = [r for r in results if r['model'] == model_name]
+    
+    if not model_results:
+        return None
+    
+    mrr_values = [r['MRR'] for r in model_results]
+    ndcg_values = [r['NDCG@5'] for r in model_results]
+    response_times = [r['Response_Time'] for r in model_results]
+    
+    return {
+        'model': model_name,
+        'MRR_mean': float(np.mean(mrr_values)),
+        'MRR_std': float(np.std(mrr_values, ddof=1)),
+        'NDCG@5_mean': float(np.mean(ndcg_values)),
+        'NDCG@5_std': float(np.std(ndcg_values, ddof=1)),
+        'Response_Time_mean': float(np.mean(response_times)),
+        'Response_Time_std': float(np.std(response_times, ddof=1)),
+        'sample_size': len(model_results)
+    }
+
+def generate_report(statistics: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Generate a comprehensive evaluation report
+    
+    Args:
+        statistics: List of model statistics
+        
+    Returns:
+        Report dictionary
+    """
+    # Find statistics for each model
+    try:
+        mama_full = next(s for s in statistics if s['model'] == 'MAMA Full')
+        mama_no_trust = next(s for s in statistics if s['model'] == 'MAMA No Trust')
+        single_agent = next(s for s in statistics if s['model'] == 'Single Agent System')
+        traditional = next(s for s in statistics if s['model'] == 'Traditional Ranking')
+        
+        # Calculate improvements
+        trust_improvement = ((mama_full['MRR_mean'] - mama_no_trust['MRR_mean']) / 
+                            mama_no_trust['MRR_mean'] * 100)
+        multi_agent_improvement = ((mama_full['MRR_mean'] - single_agent['MRR_mean']) / 
+                                single_agent['MRR_mean'] * 100)
+        overall_improvement = ((mama_full['MRR_mean'] - traditional['MRR_mean']) / 
+                            traditional['MRR_mean'] * 100)
+        
+        report = {
+            'key_findings': [
+                f"MAMA Full achieved best performance: MRR={mama_full['MRR_mean']:.4f}±{mama_full['MRR_std']:.4f}",
+                f"Trust mechanism contributed {trust_improvement:.1f}% improvement",
+                f"Multi-agent approach shows {multi_agent_improvement:.1f}% advantage",
+                f"Overall improvement of {overall_improvement:.1f}% over traditional methods"
+            ],
+            'performance_ranking': [
+                f"1. MAMA Full: {mama_full['MRR_mean']:.4f}",
+                f"2. MAMA No Trust: {mama_no_trust['MRR_mean']:.4f}",
+                f"3. Single Agent: {single_agent['MRR_mean']:.4f}",
+                f"4. Traditional: {traditional['MRR_mean']:.4f}"
+            ],
+            'improvements': {
+                'trust_improvement': float(trust_improvement),
+                'multi_agent_improvement': float(multi_agent_improvement),
+                'overall_improvement': float(overall_improvement)
+            }
+        }
+        
+        return report
+    except (StopIteration, KeyError) as e:
+        logger.error(f"Error generating report: {e}")
+        return {
+            'key_findings': ["Error generating report - missing model statistics"],
+            'performance_ranking': [],
+            'improvements': {}
+        }
+
+def run_evaluation(args):
+    """
+    Run complete evaluation on all models
+    
+    Args:
+        args: Command line arguments
+        
+    Returns:
+        Path to output file
+    """
+    logger.info("🚀 MAMA Framework - Main Evaluation")
+    logger.info("=" * 50)
+    
+    # Create results directory
+    results_dir = Path('../results')
+    if not results_dir.exists():
+        results_dir = Path('results')
+    results_dir.mkdir(exist_ok=True)
+    
+    # Load test dataset
+    logger.info("📊 Loading test dataset...")
+    queries = load_test_dataset(args.data_path)
+    
+    # Initialize models
+    logger.info("🔧 Initializing models...")
+    models = [
+        MAMAFull(),
+        MAMANoTrust(),
+        SingleAgentSystemModel(),
+        TraditionalRanking()
+    ]
+    
+    # Run evaluations
+    logger.info(f"🔬 Running evaluations on {len(queries)} queries...")
+    all_results = []
+    statistics = []
+    
+    for model in models:
+        logger.info(f"Evaluating {model.model_name}...")
+        model_results = run_model_evaluation(model, queries, not args.no_cache, args.verbose)
+        all_results.extend(model_results)
+        
+        # Calculate model statistics
+        stats = calculate_statistics(model_results, model.model_name)
+        statistics.append(stats)
+        logger.info(f"{model.model_name}: MRR={stats['MRR_mean']:.4f}±{stats['MRR_std']:.4f}, "
+                  f"NDCG@5={stats['NDCG@5_mean']:.4f}±{stats['NDCG@5_std']:.4f}")
+    
+    # Generate evaluation report
+    logger.info("📝 Generating evaluation report...")
+    report = generate_report(statistics)
+    
+    # Save results
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M')
+    output_file = results_dir / f'final_run_150_test_set_{timestamp}.json'
+    
+    output_data = {
+        'metadata': {
+            'experiment_name': 'MAMA Main Evaluation',
+            'timestamp': timestamp,
+            'query_count': len(queries),
+            'settings': {
+                'use_cache': not args.no_cache,
+                'verbose': args.verbose
+            }
+        },
+        'results': all_results,
+        'statistics': statistics,
+        'report': report
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    
+    # Generate markdown report
+    report_file = results_dir / f'MAMA_Evaluation_Report_{timestamp}.md'
+    with open(report_file, 'w', encoding='utf-8') as f:
+        f.write(f"# MAMA Framework Evaluation Report\n\n")
+        f.write(f"Date: {timestamp}\n\n")
+        
+        f.write("## Key Findings\n\n")
+        for finding in report['key_findings']:
+            f.write(f"- {finding}\n")
+        
+        f.write("\n## Model Performance\n\n")
+        for rank in report['performance_ranking']:
+            f.write(f"- {rank}\n")
+        
+        f.write("\n## Detailed Statistics\n\n")
+        f.write("| Model | MRR | NDCG@5 | Response Time (s) |\n")
+        f.write("|-------|-----|--------|------------------|\n")
+        for stat in statistics:
+            f.write(f"| {stat['model']} | {stat['MRR_mean']:.4f}±{stat['MRR_std']:.4f} | "
+                   f"{stat['NDCG@5_mean']:.4f}±{stat['NDCG@5_std']:.4f} | "
+                   f"{stat['Response_Time_mean']:.3f}±{stat['Response_Time_std']:.3f} |\n")
+    
+    logger.info(f"💾 Results saved to: {output_file}")
+    logger.info(f"📄 Report saved to: {report_file}")
+    logger.info("✅ Evaluation completed!")
+    
+    return output_file
 
 def main():
-    experiment = Final150TestExperiment()
-    experiment.run_complete_experiment()
+    """Main function"""
+    parser = argparse.ArgumentParser(description='MAMA Framework Main Evaluation')
+    parser.add_argument('--data-path', type=str, default=None,
+                        help='Path to test dataset JSON file')
+    parser.add_argument('--no-cache', action='store_true',
+                        help='Force rerunning all evaluations without using cache')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Display detailed progress information')
+    args = parser.parse_args()
+    
+    try:
+        output_file = run_evaluation(args)
+        return 0
+    except Exception as e:
+        logger.error(f"Evaluation failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return 1
 
 if __name__ == "__main__":
-    main() 
+    sys.exit(main()) 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 MAMA Flight Selection Assistant - OpenSky Network API Integration
-Real OpenSky Network API Implementation for Academic Flight Data
+Real OpenSky Network API Implementation for Flight Data
 """
 
 import requests
@@ -30,20 +30,20 @@ class OpenSkyAPI:
         # Major airport coordinates for academic research
         self.airport_coordinates = {
             # China Major Airports
-            "北京": {"lat": 40.0799, "lon": 116.6031, "code": "PEK", "name": "Beijing Capital International"},
-            "上海": {"lat": 31.1979, "lon": 121.3360, "code": "PVG", "name": "Shanghai Pudong International"},
-            "广州": {"lat": 23.3924, "lon": 113.2988, "code": "CAN", "name": "Guangzhou Baiyun International"},
-            "深圳": {"lat": 22.6393, "lon": 113.8107, "code": "SZX", "name": "Shenzhen Bao'an International"},
-            "成都": {"lat": 30.5728, "lon": 103.9487, "code": "CTU", "name": "Chengdu Shuangliu International"},
+            "Beijing": {"lat": 40.0799, "lon": 116.6031, "code": "PEK", "name": "Beijing Capital International"},
+            "Shanghai": {"lat": 31.1979, "lon": 121.3360, "code": "PVG", "name": "Shanghai Pudong International"},
+            "Guangzhou": {"lat": 23.3924, "lon": 113.2988, "code": "CAN", "name": "Guangzhou Baiyun International"},
+            "Shenzhen": {"lat": 22.6393, "lon": 113.8107, "code": "SZX", "name": "Shenzhen Bao'an International"},
+            "Chengdu": {"lat": 30.5728, "lon": 103.9487, "code": "CTU", "name": "Chengdu Shuangliu International"},
 
             # International Major Airports
-            "东京": {"lat": 35.7647, "lon": 140.3864, "code": "NRT", "name": "Tokyo Narita International"},
-            "首尔": {"lat": 37.4602, "lon": 126.4407, "code": "ICN", "name": "Seoul Incheon International"},
-            "香港": {"lat": 22.3080, "lon": 113.9185, "code": "HKG", "name": "Hong Kong International"},
-            "新加坡": {"lat": 1.3644, "lon": 103.9915, "code": "SIN", "name": "Singapore Changi"},
-            "伦敦": {"lat": 51.4700, "lon": -0.4543, "code": "LHR", "name": "London Heathrow"},
-            "纽约": {"lat": 40.6413, "lon": -73.7781, "code": "JFK", "name": "John F. Kennedy International"},
-            "洛杉矶": {"lat": 33.9425, "lon": -118.4081, "code": "LAX", "name": "Los Angeles International"},
+            "Tokyo": {"lat": 35.7647, "lon": 140.3864, "code": "NRT", "name": "Tokyo Narita International"},
+            "Seoul": {"lat": 37.4602, "lon": 126.4407, "code": "ICN", "name": "Seoul Incheon International"},
+            "Hong Kong": {"lat": 22.3080, "lon": 113.9185, "code": "HKG", "name": "Hong Kong International"},
+            "Singapore": {"lat": 1.3644, "lon": 103.9915, "code": "SIN", "name": "Singapore Changi"},
+            "London": {"lat": 51.4700, "lon": -0.4543, "code": "LHR", "name": "London Heathrow"},
+            "New York": {"lat": 40.6413, "lon": -73.7781, "code": "JFK", "name": "John F. Kennedy International"},
+            "Los Angeles": {"lat": 33.9425, "lon": -118.4081, "code": "LAX", "name": "Los Angeles International"},
 
             # Fallback by English names
             "beijing": {"lat": 40.0799, "lon": 116.6031, "code": "PEK", "name": "Beijing Capital International"},

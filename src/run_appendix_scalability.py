@@ -126,7 +126,7 @@ class ScalabilityBenchmarkSuite:
         self.results_dir.mkdir(exist_ok=True)
         
         # Initialize SBERT model
-        self.sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.sbert_model = SentenceTransformer('models--sentence-transformers--all-MiniLM-L6-v2/snapshots/c9745ed1d9f207416be6d2e6f8de32d1f16199bf')
         
         # Test configurations
         self.test_scales = [10, 50, 100, 500, 1000, 2000, 5000]

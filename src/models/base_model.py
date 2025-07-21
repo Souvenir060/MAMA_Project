@@ -1,285 +1,334 @@
 #!/usr/bin/env python3
 """
 MAMA System Base Model Class
-Provides unified interface for all models (including complete MAMA and baseline models)
+Provides unified interface for all models (including full MAMA and baseline models)
 """
 
-import abc
+import os
 import json
-import time
 import logging
+import random
 import numpy as np
-from typing import Dict, List, Any, Optional, Tuple
-from datetime import datetime
+from abc import ABC, abstractmethod
+from typing import Dict, List, Any, Optional, Tuple, Set
 from dataclasses import dataclass
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Import MAMA system core components
+from ..core.sbert_similarity import SBERTSimilarity
+from ..agents.manager import AgentManager
 
 logger = logging.getLogger(__name__)
 
 @dataclass
 class ModelConfig:
-    alpha: float = 0.7
-    beta: float = 0.2
-    gamma: float = 0.1
+    """Model Configuration"""
+    # Selection score weights
+    alpha: float = 0.7  # SBERT similarity weight
+    beta: float = 0.2   # Trust score weight
+    gamma: float = 0.1  # Historical performance weight
     
-    trust_weights: Dict[str, float] = None
+    # Trust score thresholds
+    trust_threshold: float = 0.5  # Minimum trust score for selection
     
-    max_agents: int = 3
-    trust_threshold: float = 0.5
-    response_timeout: float = 30.0
+    # System parameters
+    max_agents: int = 3  # Maximum number of agents to select
+    max_interactions: int = 50  # Maximum number of interactions to track
+    confidence_threshold: float = 0.7  # Minimum confidence for valid response
     
-    random_seed: int = 42
-    
-    def __post_init__(self):
-        if self.trust_weights is None:
-            self.trust_weights = {
-                'reliability': 0.25,
-                'accuracy': 0.25,
-                'consistency': 0.20,
-                'transparency': 0.15,
-                'robustness': 0.15
-            }
+    # Random seed
+    random_seed: int = 42  # Fixed seed for reproducible experiments
 
-class BaseModel(abc.ABC):
+class BaseModel(ABC):
+    """Base Model Abstract Class"""
     
     def __init__(self, config: Optional[ModelConfig] = None):
-        self.config = config or ModelConfig()
+        """
+        Initialize base model
+        
+        Args:
+            config: Model configuration
+        """
+        # Set random seed
+        self.config = config if config is not None else ModelConfig()
+        random.seed(self.config.random_seed)
+        np.random.seed(self.config.random_seed)
+        
+        # Model information
         self.model_name = self.__class__.__name__
         self.model_description = "Base Model"
+        
+        # Initialize SBERT similarity engine
+        self.sbert = SBERTSimilarity()
+        self.sbert_enabled = False
+        
+        # Agent management
+        self.agent_manager = AgentManager()
+        self.agents = self.agent_manager.get_all_agents()
+        
+        # Performance tracking
         self.performance_history = []
-        self.initialization_time = time.time()
         
-        self.agents = self._initialize_agents()
+        # Initialize model-specific components
         self._initialize_model()
-        
-        logger.info(f"✅ {self.model_name} initialized successfully")
+        logger.info(f"✅ {self.model_name} initialized")
     
-    def _initialize_agents(self) -> Dict[str, Dict[str, Any]]:
-        agents = {
-            'safety_assessment_agent': {
-                'name': 'Safety Assessment Agent',
-                'expertise_keywords': ['safety', 'risk', 'incident', 'accident', 'security'],
-                'trust_history': [0.8, 0.82, 0.85, 0.83, 0.87],
-                'performance_history': [0.75, 0.78, 0.82, 0.80, 0.85],
-                'response_time_history': [2.1, 1.9, 2.3, 2.0, 1.8],
-                'specialization': 'aviation_safety'
-            },
-            'economic_agent': {
-                'name': 'Economic Agent',
-                'expertise_keywords': ['cost', 'price', 'budget', 'economic', 'financial'],
-                'trust_history': [0.75, 0.78, 0.80, 0.82, 0.84],
-                'performance_history': [0.72, 0.75, 0.78, 0.80, 0.82],
-                'response_time_history': [1.8, 1.7, 1.9, 1.6, 1.5],
-                'specialization': 'cost_analysis'
-            },
-            'weather_agent': {
-                'name': 'Weather Agent',
-                'expertise_keywords': ['weather', 'climate', 'meteorology', 'forecast', 'conditions'],
-                'trust_history': [0.85, 0.87, 0.84, 0.89, 0.91],
-                'performance_history': [0.82, 0.85, 0.83, 0.87, 0.89],
-                'response_time_history': [1.5, 1.4, 1.6, 1.3, 1.2],
-                'specialization': 'weather_analysis'
-            },
-            'flight_info_agent': {
-                'name': 'Flight Information Agent',
-                'expertise_keywords': ['flight', 'schedule', 'route', 'airline', 'aircraft'],
-                'trust_history': [0.78, 0.80, 0.82, 0.84, 0.86],
-                'performance_history': [0.76, 0.79, 0.81, 0.83, 0.85],
-                'response_time_history': [2.0, 1.9, 2.1, 1.8, 1.7],
-                'specialization': 'flight_information'
-            },
-            'integration_agent': {
-                'name': 'Integration Agent',
-                'expertise_keywords': ['integration', 'synthesis', 'ranking', 'decision', 'recommendation'],
-                'trust_history': [0.82, 0.84, 0.86, 0.88, 0.90],
-                'performance_history': [0.80, 0.82, 0.84, 0.86, 0.88],
-                'response_time_history': [1.2, 1.1, 1.3, 1.0, 0.9],
-                'specialization': 'result_integration'
-            }
-        }
-        
-        return agents
-    
-    @abc.abstractmethod
+    @abstractmethod
     def _initialize_model(self):
+        """Initialize model specific components"""
         pass
     
     def _calculate_semantic_similarity(self, query: str, agent_id: str) -> float:
-        query_words = set(query.lower().split())
-        agent_keywords = set(self.agents[agent_id]['expertise_keywords'])
+        """
+        Calculate semantic similarity between query and agent expertise
         
-        if not query_words or not agent_keywords:
-            return 0.5
+        Args:
+            query: User query text
+            agent_id: Agent identifier
+            
+        Returns:
+            Similarity score [0.0-1.0]
+        """
+        if not self.sbert_enabled:
+            # Return random similarity if SBERT is disabled
+            return random.uniform(0.5, 1.0)
         
-        intersection = query_words.intersection(agent_keywords)
-        union = query_words.union(agent_keywords)
+        # Get agent expertise description
+        agent = self.agents.get(agent_id)
+        if not agent:
+            return 0.0
+            
+        expertise_desc = agent.get('expertise', '')
         
-        jaccard_similarity = len(intersection) / len(union) if union else 0
-        base_similarity = 0.3 + 0.7 * jaccard_similarity
+        # Calculate similarity using SBERT
+        similarity = self.sbert.calculate_similarity(query, expertise_desc)
         
-        noise = np.random.normal(0, 0.05)
-        return np.clip(base_similarity + noise, 0.0, 1.0)
+        return similarity
     
     def _calculate_trust_score(self, agent_id: str) -> float:
-        trust_history = self.agents[agent_id]['trust_history']
-        if not trust_history:
-            return 0.5
+        """
+        Calculate agent trust score
         
-        recent_scores = trust_history[-5:]
-        base_trust = np.mean(recent_scores)
-        
-        trend = (recent_scores[-1] - recent_scores[0]) / len(recent_scores) if len(recent_scores) > 1 else 0
-        
-        trust_score = base_trust + 0.1 * trend
-        return np.clip(trust_score, 0.0, 1.0)
+        Args:
+            agent_id: Agent identifier
+            
+        Returns:
+            Trust score [0.0-1.0]
+        """
+        # For base model, return default trust
+        return 0.75
     
     def _calculate_historical_performance(self, agent_id: str) -> float:
-        performance_history = self.agents[agent_id]['performance_history']
-        if not performance_history:
-            return 0.5
+        """
+        Calculate agent historical performance
         
-        recent_performance = performance_history[-3:]
-        return np.mean(recent_performance)
+        Args:
+            agent_id: Agent identifier
+            
+        Returns:
+            Performance score [0.0-1.0]
+        """
+        # For base model, return default performance
+        return 0.7
     
     def _simulate_agent_execution(self, agent_id: str, query_data: Dict[str, Any]) -> Dict[str, Any]:
-        agent_info = self.agents[agent_id]
+        """
+        Simulate agent execution
         
-        execution_time = np.random.uniform(1.0, 3.0)
-        time.sleep(0.1)
+        Args:
+            agent_id: Agent identifier
+            query_data: Query data
+            
+        Returns:
+            Agent execution results
+        """
+        # Get agent
+        agent = self.agents.get(agent_id)
+        if not agent:
+            return {
+                'success': False,
+                'error': f"Agent {agent_id} not found"
+            }
         
-        success_probability = np.mean(agent_info['trust_history'])
-        success = np.random.random() < success_probability
+        # Simulate success probability based on agent quality
+        success_prob = agent.get('quality', 0.9)
+        success = random.random() < success_prob
         
         if success:
-            num_recommendations = np.random.randint(3, 8)
-            recommendations = []
+            # Generate simulated recommendations
+            recommendations = self._generate_recommendations(agent_id, query_data)
             
-            for i in range(num_recommendations):
-                recommendations.append({
-                    'flight_id': f"FL{np.random.randint(1000, 9999)}",
-                    'score': np.random.uniform(0.6, 0.95),
-                    'agent_confidence': np.random.uniform(0.7, 0.9),
-                    'reasoning': f"Recommendation from {agent_info['name']}"
-                })
-            
-            recommendations.sort(key=lambda x: x['score'], reverse=True)
+            return {
+                'success': True,
+                'agent_id': agent_id,
+                'agent_type': agent.get('type', 'unknown'),
+                'recommendations': recommendations,
+                'agent_confidence': random.uniform(0.7, 0.95)
+            }
         else:
-            recommendations = []
-        
-        return {
-            'agent_id': agent_id,
-            'agent_name': agent_info['name'],
-            'success': success,
-            'execution_time': execution_time,
-            'recommendations': recommendations,
-            'agent_confidence': np.random.uniform(0.6, 0.9) if success else 0.0,
-            'error_message': None if success else "Agent execution failed"
+            return {
+            'success': False,
+                'agent_id': agent_id,
+                'error': "Simulated execution failure"
         }
     
+    def _generate_recommendations(self, agent_id: str, query_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        Generate simulated recommendations from an agent
+        
+        Args:
+            agent_id: Agent identifier
+            query_data: Query data
+            
+        Returns:
+            List of recommendations
+        """
+        recs = []
+        flight_options = query_data.get('flight_options', [])
+        
+        if not flight_options:
+            # Generate dummy flight IDs
+            flight_options = [f"flight_{i:04d}" for i in range(10)]
+        
+        for flight_id in flight_options:
+            score = random.uniform(0.5, 1.0)
+            rec = {
+                'flight_id': flight_id,
+                'score': score,
+                'agent_confidence': random.uniform(0.7, 0.95),
+                'reasoning': f"Agent {agent_id} recommendation"
+            }
+            recs.append(rec)
+        
+        # Sort by score
+        recs.sort(key=lambda x: x['score'], reverse=True)
+        
+        return recs
+    
     def _create_final_ranking(self, agent_results: Dict[str, Any]) -> List[str]:
+        """
+        Create final flight ranking from agent results
+        
+        Args:
+            agent_results: Agent execution results
+            
+        Returns:
+            Ordered list of flight IDs
+        """
+        # Collect all flight scores
         flight_scores = {}
         
         for agent_id, result in agent_results.items():
             if not result.get('success', False):
                 continue
+                
+            recommendations = result.get('recommendations', [])
             
-            trust_weight = self._calculate_trust_score(agent_id)
-            
-            for rec in result.get('recommendations', []):
-                flight_id = rec['flight_id']
-                weighted_score = rec['score'] * trust_weight
+            for rec in recommendations:
+                flight_id = rec.get('flight_id')
+                score = rec.get('score', 0.5)
                 
                 if flight_id not in flight_scores:
                     flight_scores[flight_id] = []
-                flight_scores[flight_id].append(weighted_score)
+                    
+                flight_scores[flight_id].append(score)
         
+        # Calculate average score for each flight
         final_scores = {}
         for flight_id, scores in flight_scores.items():
-            final_scores[flight_id] = np.mean(scores)
-        
-        ranked_flights = sorted(final_scores.items(), key=lambda x: x[1], reverse=True)
-        return [flight_id for flight_id, _ in ranked_flights]
+            final_scores[flight_id] = sum(scores) / len(scores)
+            
+        # Sort flights by score
+        ranked_flights = sorted(final_scores.keys(), 
+                               key=lambda fid: final_scores[fid],
+                               reverse=True)
+                               
+        return ranked_flights
     
     def process_query(self, query_data: Dict[str, Any]) -> Dict[str, Any]:
-        start_time = time.time()
+        """
+        Process a query using the model
+        
+        Args:
+            query_data: Query data including text and parameters
+            
+        Returns:
+            Processing results including rankings and recommendations
+        """
+        # Track the start of processing time
+        start_time = 0
         
         try:
+            # 1. Select agents based on model-specific strategy
             selected_agents = self._select_agents(query_data)
+            
+            # 2. Process query with selected agents
             agent_results = self._process_with_agents(query_data, selected_agents)
-            final_result = self._integrate_results(agent_results, query_data)
             
-            final_result['processing_time'] = time.time() - start_time
+            # 3. Integrate results
+            integrated_results = self._integrate_results(agent_results, query_data)
             
-            self.performance_history.append({
-                'timestamp': datetime.now().isoformat(),
-                'query_id': query_data.get('query_id', 'unknown'),
-                'success': final_result.get('success', False),
-                'processing_time': final_result['processing_time'],
-                'system_confidence': final_result.get('system_confidence', 0.0)
-            })
-            
-            return final_result
+            return integrated_results
             
         except Exception as e:
-            logger.error(f"Query processing failed: {e}")
+            logger.error(f"Error processing query: {e}")
             return {
-                'query_id': query_data.get('query_id', 'unknown'),
                 'success': False,
                 'error': str(e),
-                'processing_time': time.time() - start_time,
                 'model_name': self.model_name
             }
     
-    @abc.abstractmethod
+    @abstractmethod
     def _select_agents(self, query_data: Dict[str, Any]) -> List[Tuple[str, float]]:
-        pass
-    
-    @abc.abstractmethod
-    def _process_with_agents(self, query_data: Dict[str, Any], selected_agents: List[Tuple[str, float]]) -> Dict[str, Any]:
-        pass
-    
-    @abc.abstractmethod
-    def _integrate_results(self, agent_results: Dict[str, Any], query_data: Dict[str, Any]) -> Dict[str, Any]:
-        pass
-    
-    def get_performance_summary(self) -> Dict[str, Any]:
-        if not self.performance_history:
-            return {
-                'total_queries': 0,
-                'success_rate': 0.0,
-                'avg_processing_time': 0.0,
-                'avg_confidence': 0.0
-            }
+        """
+        Select appropriate agents based on query
         
-        successful_queries = [q for q in self.performance_history if q['success']]
+        Args:
+            query_data: Query data
+            
+        Returns:
+            List of selected agent IDs with selection scores
+        """
+        pass
+    
+    @abstractmethod
+    def _process_with_agents(self, query_data: Dict[str, Any], 
+                           selected_agents: List[Tuple[str, float]]) -> Dict[str, Any]:
+        """
+        Process query with selected agents
         
+        Args:
+            query_data: Query data
+            selected_agents: Selected agents
+            
+        Returns:
+            Agent processing results
+        """
+        pass
+    
+    @abstractmethod
+    def _integrate_results(self, agent_results: Dict[str, Any], 
+                         query_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Integrate results from multiple agents
+        
+        Args:
+            agent_results: Results from each agent
+            query_data: Original query data
+            
+        Returns:
+            Integrated results
+        """
+        pass
+    
+    def get_model_info(self) -> Dict[str, Any]:
+        """Get model information"""
         return {
-            'total_queries': len(self.performance_history),
-            'success_rate': len(successful_queries) / len(self.performance_history),
-            'avg_processing_time': np.mean([q['processing_time'] for q in self.performance_history]),
-            'avg_confidence': np.mean([q.get('system_confidence', 0.0) for q in successful_queries]) if successful_queries else 0.0,
             'model_name': self.model_name,
-            'uptime': time.time() - self.initialization_time
-        }
-    
-    def reset_performance_history(self):
-        self.performance_history = []
-        logger.info(f"Performance history reset for {self.model_name}")
-    
-    def get_agent_info(self) -> Dict[str, Any]:
-        return {
-            'agents': {
-                agent_id: {
-                    'name': info['name'],
-                    'specialization': info['specialization'],
-                    'avg_trust': np.mean(info['trust_history']),
-                    'avg_performance': np.mean(info['performance_history']),
-                    'avg_response_time': np.mean(info['response_time_history'])
-                }
-                for agent_id, info in self.agents.items()
-            },
-            'total_agents': len(self.agents)
+            'description': self.model_description,
+            'configuration': {
+                'alpha': self.config.alpha,
+                'beta': self.config.beta, 
+                'gamma': self.config.gamma,
+                'max_agents': self.config.max_agents
+            }
         } 

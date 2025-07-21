@@ -19,7 +19,7 @@ from enum import Enum
 import numpy as np
 
 def sigmoid(x):
-    """标准的Sigmoid激活函数"""
+    """Standard Sigmoid activation function"""
     return 1 / (1 + np.exp(-x))
 
 # Handle milestone_connector import gracefully
@@ -186,33 +186,33 @@ class MultiDimensionalTrustLedger:
     def evaluate_competence(self, agent_id: str, system_reward: float, 
                           task_context: Optional[Dict[str, Any]] = None) -> float:
         """
-        (最终修复版) 实现基于系统奖励、贡献度评估和平滑学习的综合能力评估。
+        (Final fix) Implement a comprehensive competence evaluation based on system reward, contribution, and smooth learning.
         
         Args:
-            agent_id (str): 被评估的智能体ID。
-            system_reward (float): 本次交互后，整个MAMA系统获得的总奖励r。
-            task_context (Optional[Dict[str, Any]]): 任务上下文，用于专长匹配。
+            agent_id (str): The ID of the agent being evaluated.
+            system_reward (float): The total reward r obtained by the entire MAMA system after this interaction.
+            task_context (Optional[Dict[str, Any]]): Task context, used for specialty matching.
             
         Returns:
-            float: 更新后的能力分数。
+            float: The updated competence score.
         """
-        LEARNING_RATE = 0.1  # 学习率
-        REWARD_SCALING_FACTOR = 0.05  # 奖励缩放系数k，用于调整sigmoid函数的敏感度
+        LEARNING_RATE = 0.1  # Learning rate
+        REWARD_SCALING_FACTOR = 0.05  # Reward scaling factor k, used to adjust the sensitivity of the sigmoid function
 
         try:
-            # 1. 将系统奖励r归一化到[0, 1]区间，作为本次任务的全局表现分
-            # 一个正奖励会得到 > 0.5的分数，负奖励则 < 0.5
+            # 1. Normalize the system reward r to the [0, 1] interval, as the global performance score for this task
+            # A positive reward will result in a score > 0.5, a negative reward will result in a score < 0.5
             task_performance_score = sigmoid(REWARD_SCALING_FACTOR * system_reward)
             
-            # 2. 获取该智能体当前的能力分数 (旧能力)
+            # 2. Get the current competence score of this agent (old competence)
             try:
                 old_competence = self.get_dimension_metrics(agent_id, TrustDimension.COMPETENCE).current_score
                 if old_competence is None or old_competence == 0.0:
-                    old_competence = 0.5  # 如果没有历史分数，则从0.5开始
+                    old_competence = 0.5  # If no historical score, start from 0.5
             except Exception:
                 old_competence = 0.5
 
-            # 3. "贡献度评估"
+            # 3. "Contribution assessment"
             agent_specialty = self._get_agent_specialty(agent_id)
             task_priority = None
             if task_context and 'preferences' in task_context:
@@ -220,17 +220,17 @@ class MultiDimensionalTrustLedger:
             
             effective_performance = task_performance_score
             if task_priority and task_priority != agent_specialty:
-                # 如果专长不匹配，我们不使用本次表现来更新它的能力，而是让它维持原水平
+                # If specialty does not match, we do not use this performance to update its competence, but let it maintain its original level
                 effective_performance = old_competence
-                logger.debug(f"Agent '{agent_id}' 专长不符 (任务: {task_priority}), 其能力评估将维持原分数。")
+                logger.debug(f"Agent '{agent_id}' specialty mismatch (task: {task_priority}), its competence evaluation will maintain the original score.")
 
-            # 4. "平滑学习"
+            # 4. "Smooth learning"
             new_competence = (1 - LEARNING_RATE) * old_competence + LEARNING_RATE * effective_performance
 
-            # 确保分数在有效范围内
+            # Ensure the score is within a valid range
             new_competence = max(0.0, min(1.0, new_competence))
             
-            # 5. 持久化新的能力分数
+            # 5. Persist the new competence score
             evidence = {
                 "system_reward": system_reward,
                 "task_performance_score": task_performance_score,
@@ -251,8 +251,8 @@ class MultiDimensionalTrustLedger:
                 evidence=evidence
             )
             
-            logger.info(f"🎯 奖励驱动能力更新 - Agent '{agent_id}': {old_competence:.4f} → {new_competence:.4f} "
-                       f"(系统奖励: {system_reward:.4f}, 表现分: {task_performance_score:.4f})")
+            logger.info(f"🎯 Reward-driven competence update - Agent '{agent_id}': {old_competence:.4f} → {new_competence:.4f} "
+                       f"(System reward: {system_reward:.4f}, Performance score: {task_performance_score:.4f})")
             
             return new_competence
             
@@ -261,13 +261,13 @@ class MultiDimensionalTrustLedger:
             return 0.5
     
     def _get_agent_specialty(self, agent_id: str) -> str:
-        """获取智能体的专长领域"""
+        """Get the specialty domain of the agent"""
         specialty_mapping = {
             'safety_assessment_agent': 'safety',
             'economic_agent': 'cost', 
-            'weather_agent': 'safety',  # 天气也与安全相关
-            'flight_info_agent': 'time',  # 航班信息与时间相关
-            'integration_agent': 'comfort'  # 集成智能体处理舒适度和综合评估
+            'weather_agent': 'safety',  # Weather is also related to safety
+            'flight_info_agent': 'time',  # Flight information is related to time
+            'integration_agent': 'comfort'  # Integrated agent handles comfort and comprehensive evaluation
         }
         return specialty_mapping.get(agent_id, 'general')
     

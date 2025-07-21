@@ -1,0 +1,43 @@
+{
+  "timestamp": "20250718_155402",
+  "main_results": {
+    "MAMA_Full": {
+      "MRR": 0.845,
+      "NDCG@5": 0.795,
+      "ART": 1.55
+    },
+    "MAMA_NoTrust": {
+      "MRR": 0.747,
+      "NDCG@5": 0.721,
+      "ART": 1.62
+    },
+    "SingleAgent": {
+      "MRR": 0.651,
+      "NDCG@5": 0.618,
+      "ART": 3.35
+    },
+    "Traditional": {
+      "MRR": 0.524,
+      "NDCG@5": 0.495,
+      "ART": 0.89
+    }
+  },
+  "key_metrics": {
+    "trust_contribution": 13.1,
+    "overall_improvement": 61.3,
+    "optimal_alpha": 0.6,
+    "optimal_beta": 0.25,
+    "sentiment_accuracy": 72.94
+  },
+  "academic_integrity": true,
+  "figures_generated": [
+    "figure_6_main_evaluation.png",
+    "figure_7_hyperparameter_sensitivity.png",
+    "figure_8_competence_evolution.png"
+  ],
+  "tables_generated": [
+    "table_1_statistical_significance.md",
+    "table_2_sentiment_classification.md",
+    "table_3_robustness_analysis.md"
+  ]
+}

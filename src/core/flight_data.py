@@ -1,6 +1,5 @@
 """
 MAMA Flight Selection Assistant - Flight Data Management
-Professional flight data aggregation with multiple fallback mechanisms
 """
 
 import json
@@ -97,10 +96,10 @@ class FlightDataAggregator:
         search_successful = False
         api_errors = {}
         
-        # 首先尝试从真实API获取数据
+        # First try to get data from real APIs
         logger.info("🌐 Attempting to fetch real flight data from APIs...")
         
-        # 尝试 AviationStack API
+        # Try AviationStack API
         try:
             if 'aviationstack' in self.data_sources:
                 aviation_api = self.data_sources['aviationstack']

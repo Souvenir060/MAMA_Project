@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Academic Figure Generator for Appendix D
+Figure Generator for Appendix D
 Generates IEEE-standard academic figures based on real reward-driven learning experiment data
 """
 
