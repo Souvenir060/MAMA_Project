@@ -1,4 +1,4 @@
-# MAMA Framework: Multi-Agent Multi-API for Dynamic Knowledge Acquisition
+# MAMA Framework: Multi-Agent Model AI for Dynamic Knowledge Acquisition
 
 A sophisticated framework for dynamic, trust-aware agent collaboration in complex multi-domain applications, supporting academic-grade experiments and real-world use cases.
 
