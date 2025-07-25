@@ -17,7 +17,7 @@ def get_safety_incidents(airline_code: str, aircraft_type: str = None) -> List[D
     Uses public aviation safety data
     """
     try:
-        # Generate realistic incident data based on airline and aircraft type
+        # Generate incident data based on airline and aircraft type
         incidents = []
         current_year = datetime.now().year
         

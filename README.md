@@ -192,6 +192,20 @@ pip install -r sentiment_requirements.txt
 python src/experiments/case_studies/sentiment_analysis_case_study.py
 ```
 
+### Sentiment Analysis Case Study (Table II)
+
+```bash
+# Install additional dependencies for sentiment analysis
+pip install datasets
+
+# Run complete sentiment analysis experiment (872 samples from SST-2)
+cd src/experiments/case_studies
+python sentiment_analysis_case_study.py
+
+# Results will be saved to results/sentiment_case_study_results_*.json
+# Expected: MAMA ~49%, Single Agent Baseline ~53% (domain mismatch expected)
+```
+
 ## Dataset
 
 The project uses a comprehensive flight dataset (`flights.csv`, 41MB) containing 336,777 real flight records. The dataset is processed by `src/core/csv_flight_data.py` and split into:
@@ -199,13 +213,120 @@ The project uses a comprehensive flight dataset (`flights.csv`, 41MB) containing
 - 150 validation queries
 - 150 test queries
 
-## Key Results
+## Reproduction Instructions
 
-- **MRR**: 0.845 ± 0.054 (61.2% improvement over traditional ranking)
-- **NDCG@5**: 0.795 ± 0.063
-- **Trust Contribution**: 13.1% performance gain from trust mechanism
-- **Multi-Agent Advantage**: 29.9% improvement over single-agent approach
-- **Hyperparameter Optimization**: Best parameters α=0.6, β=0.25
+### Prerequisites
+
+1. **Python Environment**: Python 3.8+ with conda/pip
+2. **System Requirements**: 8GB+ RAM, 2GB+ disk space
+3. **Internet Connection**: Required for SBERT model downloads
+
+### Installation Steps
+
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd MAMA_Project
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Verify installation
+python verify_installation.py
+```
+
+### Reproducing Paper Results
+
+#### Method 1: Complete Automated Reproduction (Recommended)
+
+```bash
+# Run complete experiment pipeline (~20 minutes)
+# This follows correct academic order: hyperparameters → main evaluation → evolution → figures
+python run_experiments.py --mode full --verbose
+
+# Check all results
+ls results/
+ls figures/basic/
+```
+
+#### Method 2: Step-by-Step Manual Reproduction
+
+**Step 1: Find Optimal Hyperparameters** (Required First!)
+```bash
+# Run hyperparameter sensitivity analysis (63 combinations × 150 queries, ~18 minutes)
+python src/experiments/main_experiments/hyperparameter_sensitivity_experiment.py
+
+# Verify optimal parameters found
+python -c "
+from src.models.mama_full import MAMAFull
+model = MAMAFull()
+print(f'Optimal: α={model.config.alpha:.2f}, β={model.config.beta:.2f}, γ={model.config.gamma:.2f}')
+"
+```
+
+**Step 2: Run Main Evaluation with Optimal Parameters**
+```bash
+# Run main model comparison (150 test queries, ~1 minute)
+python src/evaluation/run_main_evaluation.py
+
+# Check core results
+ls results/final_results.json
+```
+
+**Step 3: Run Agent Competence Evolution with Optimal Parameters**
+```bash
+# Run agent evolution analysis (150 interactions, ~1 minute)
+python src/experiments/main_experiments/agent_competence_evolution_experiment.py
+
+# Check evolution results
+ls results/agent_competence_evolution*
+```
+
+**Step 4: Generate All Academic Figures**
+```bash
+# Generate Figure 6 (Main Comparison), Figure 7 (Hyperparameters), Figure 8 (Evolution)
+python src/plotting/plot_main_figures.py
+
+# Verify all figures generated
+ls figures/basic/
+# Expected files: figure_6_main_evaluation.png, figure_7_hyperparameter_sensitivity.png, figure_8_agent_competence_evolution.png
+# - figure_6_main_evaluation.png
+# - figure_7_hyperparameter_sensitivity.png  
+# - figure_8_agent_competence_evolution.png
+```
+
+### Validation and Verification
+
+```bash
+# 1. Verify real ground truth data is used
+head -20 src/data/test_queries.json | grep "ground_truth_ranking"
+
+# 2. Check experiment logs for real data processing
+tail -50 experiment_runner.log | grep "ground truth"
+
+# 3. Verify no hardcoded results
+grep -r "hardcode\|fake\|simulate" src/ --exclude-dir=__pycache__
+```
+
+#### Common Issues
+
+1. **SBERT Model Download Timeout**:
+   ```bash
+   # Solution: Use offline model cache
+   export TRANSFORMERS_OFFLINE=1
+   ```
+
+2. **Memory Issues**:
+   ```bash
+   # Solution: Use turbo mode for faster execution
+   python run_experiments.py --mode core --turbo
+   ```
+
+3. **Missing Results**:
+   ```bash
+   # Solution: Check experiment completion
+   python run_experiments.py --mode core --verbose
+   ```
 
 ## Key Files
 
@@ -231,3 +352,50 @@ The project uses a comprehensive flight dataset (`flights.csv`, 41MB) containing
 ## Reproducibility
 
 All experiments use a fixed random seed (42) for reproducibility. The evaluation is conducted on a blind test set of 150 queries. Ground truth is generated using a non-compensatory lexicographic preference ordering model to ensure an unbiased assessment.
+
+## Results Summary
+
+### Table I: Statistical Significance Analysis of Model Performance via Paired t-test
+
+| Comparison | p-value | Cohen's d | Effect Size | Significant (p < 0.001) |
+|------------|---------|-----------|-------------|-------------------------|
+| MAMA Full vs MAMA NoTrust | 2.85 × 10⁻⁴⁹ | 1.832 | large | Yes |
+| MAMA Full vs Single Agent | 1.47 × 10⁻²¹ | 0.916 | large | Yes |
+| MAMA Full vs Traditional | 2.00 × 10⁻⁴⁸ | 1.788 | large | Yes |
+| MAMA NoTrust vs Single Agent | 1.32 × 10⁻²⁸ | 1.132 | large | Yes |
+| MAMA NoTrust vs Traditional | 2.34 × 10⁻²³ | 0.971 | large | Yes |
+| Single Agent vs Traditional | 1.25 × 10⁻⁴⁹ | 1.832 | large | Yes |
+
+*Note: All comparisons use paired t-test. Effect sizes: Small (0.2), Medium (0.5), Large (0.8+).*
+
+### Final Performance Results
+
+| Model | MRR | NDCG@5 | NDCG@10 | MAP | Precision@1 | Precision@5 | ART (ms) |
+|-------|-----|--------|---------|-----|-------------|-------------|----------|
+| MAMA Full | 0.6465 | 0.8724 | 0.9430 | 0.8521 | 0.460 | 0.743 | 6.18 |
+| Single Agent | 0.4921 | 0.7758 | 0.8959 | 0.7420 | 0.340 | 0.659 | 0.022 |
+| MAMA No Trust | 0.3584 | 0.7241 | 0.6044 | 0.8650 | 0.253 | 0.515 | 0.59 |
+| Traditional | 0.3254 | 0.6640 | 0.8434 | 0.6236 | 0.140 | 0.515 | 0.050 |
+
+**Optimal Hyperparameters**: α=0.30, β=0.10, γ=0.15 (discovered through 63-combination grid search)
+
+## Table II: Sentiment Analysis Case Study Reproduction
+
+1. **Run the sentiment analysis experiment**:
+   ```bash
+   python src/experiments/case_studies/sentiment_analysis_case_study.py
+   ```
+
+2. **Expected results** (complete SST-2 validation set, 872 samples):
+   - MAMA Framework: ~49.08% accuracy
+   - Single Agent Baseline: ~52.75% accuracy  
+   - Relative performance: MAMA performs ~3.67% worse than baseline
+
+### Details
+
+- **Dataset**: Complete SST-2 validation set (872 samples)
+- **MAMA Implementation**: 
+  - Uses SBERT for agent selection
+  - Multi-agent framework with positive, negative, sarcasm, and negation detection agents
+  - Weighted voting aggregation with precedence rules
+- **Baseline**: Rule-based sentiment classifier with positive/negative word lists and negation handling

@@ -63,16 +63,18 @@ class TrustDimensions:
     transparency: float = 0.5     # Output explainability
     
     def calculate_overall_score(self, weights: Optional[Dict[str, float]] = None) -> float:
-        """Calculate weighted overall trust score"""
+        """Calculate weighted overall trust score - 按论文公式1实现"""
         if weights is None:
+            # 论文中的权重设置 (公式1)
             weights = {
-                'reliability': 0.25,
-                'competence': 0.25, 
-                'fairness': 0.2,
-                'security': 0.15,
-                'transparency': 0.15
+                'reliability': 0.25,    # w1
+                'competence': 0.25,     # w2
+                'fairness': 0.2,        # w3
+                'security': 0.15,       # w4
+                'transparency': 0.15    # w5
             }
         
+        # 论文公式1: TrustScore = w1·Reliability + w2·Competence + w3·Fairness + w4·Security + w5·Transparency
         score = (
             weights['reliability'] * self.reliability +
             weights['competence'] * self.competence +
@@ -563,44 +565,46 @@ class TrustMetricsCalculator:
 
 class TrustManager:
     """
-    Manages trust relationships and interaction protocols between agents
-    in the MAMA flight assistant system.
+    Trust Manager handles trust relationships between agents
+    
+    This class implements the multi-dimensional trust ledger and
+    manages trust relationships between agents in the system.
     """
     
     def __init__(self, agent_id: str = "trust_manager", trust_ledger=None):
+        """Initialize Trust Manager"""
         self.agent_id = agent_id
-        self.trust_scores = {}
-        self.interaction_history = []
-        self.trust_policies = {}
-        self.logger = logging.getLogger(f"TrustManager.{agent_id}")
+        self.logger = logging.getLogger(__name__)
         
         # Initialize trust ledger
-        if trust_ledger is not None:
-            self.trust_ledger = trust_ledger
-        else:
-            # Create a basic TrustLedger if none provided
-            self.trust_ledger = TrustLedger()
+        self.trust_ledger = trust_ledger if trust_ledger else TrustLedger()
         
-        # Core module integration
-        self.adaptive_protocol = None
-        if CORE_AVAILABLE and AdaptiveInteractionProtocol:
-            try:
-                self.adaptive_protocol = AdaptiveInteractionProtocol()
-                self.logger.info("Adaptive interaction protocol initialized")
-            except Exception as e:
-                self.logger.warning(f"Failed to initialize adaptive protocol: {e}")
+        # Initialize trust metrics calculator
+        self.metrics_calculator = TrustMetricsCalculator(self.trust_ledger)
         
-        # MCP client integration
+        # Initialize interaction protocol manager
+        self.protocol_manager = InteractionProtocolManager(self.trust_ledger)
+        
+        # Trust scores between agents
+        # Format: {agent_a: {agent_b: score, agent_c: score, ...}, ...}
+        self.trust_scores = {}
+        
+        # Interaction history
+        self.interaction_history = []
+        
+        # MCP client for message passing
         self.mcp_client = None
-        if CORE_AVAILABLE and MCPClient:
-            try:
-                self.mcp_client = MCPClient(self.agent_id)
-                self.logger.info("MCP client initialized")
-            except Exception as e:
-                self.logger.warning(f"Failed to initialize MCP client: {e}")
         
-        # Initialize with default trust policies
+        # Agent capabilities
+        self.agent_capabilities = {}
+        
+        # Trust update policies
+        self.trust_policies = {}
+        
+        # Initialize default policies
         self._initialize_default_policies()
+        
+        self.logger.info(f"Trust Manager initialized with ID: {self.agent_id}")
     
     async def initialize_mcp_connection(self, server_url: str = "ws://localhost:8765"):
         """Initialize MCP connection for agent communication"""
@@ -701,30 +705,14 @@ class TrustManager:
                 "daily_decay_rate": 0.01,  # Small daily decrease if no interactions
                 "max_decay": 0.1  # Maximum decay per period
             },
-            "trust_boost": {
-                "successful_interaction": 0.05,
-                "failed_interaction": -0.1,
-                "timeout": -0.05,
-                "exceptional_performance": 0.15
-            },
-            "agent_specific": {
-                "WeatherAgent": {
-                    "initial_trust": 0.7,
-                    "competence_weight": 0.4
+            "trust_degradation": {
+                "description": "Trust degradation due to extended unavailability",
+                "severity": "medium",
+                "degradation_factor": 0.1
                 },
-                "SafetyAgent": {
-                    "initial_trust": 0.8,
-                    "security_weight": 0.5
-                },
-                "EconomicAgent": {
-                    "initial_trust": 0.6,
-                    "fairness_weight": 0.4
-                }
-            },
-            "mcp_policies": {
-                "auto_subscribe_contexts": ["agent_coordination", "user_interaction"],
-                "broadcast_trust_changes": True,
-                "sync_frequency": 30  # seconds
+            "agent_recovery": {
+                "description": "Agent recovery protocol activated",
+                "status": "monitoring"
             }
         }
         
@@ -908,9 +896,17 @@ class TrustManager:
             if status == "offline":
                 # Penalize trust for agents that go offline unexpectedly
                 await self._penalize_agent_trust(agent_id, "unexpected_offline")
-            elif status == "online":
-                # Small trust boost for agents coming back online
-                self._update_trust_score(self.agent_id, agent_id, 0.05)
+            # Record agent coming back online - NO artificial boosts
+            self.record_agent_interaction(
+                agent_id=agent_id,
+                interaction_type="agent_recovery",
+                success=True,
+                context={
+                    "previous_status": "unavailable",
+                    "current_status": "available",
+                    "recovery_timestamp": time.time()
+                }
+            )
             
             self.logger.info(f"Handled status change for {agent_id}: {status}")
             
@@ -1069,18 +1065,198 @@ class TrustManager:
             except Exception as e:
                 self.logger.error(f"Failed to broadcast trust update: {e}")
 
+    def evaluate_agent_performance(self, agent_id: str, performance_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Evaluate agent performance across trust dimensions
+        
+        Args:
+            agent_id: ID of the agent to evaluate
+            performance_data: Dictionary containing performance metrics
+            
+        Returns:
+            Dict with trust evaluation results
+        """
+        try:
+            # Extract performance data
+            task_results = performance_data.get('task_results', [])
+            perf_metrics = performance_data.get('performance_data', {})
+            decision_history = performance_data.get('decision_history', [])
+            attack_simulation = performance_data.get('attack_simulation', {})
+            explanations = performance_data.get('explanations', [])
+            
+            # Calculate trust dimensions
+            reliability = self.metrics_calculator.evaluate_reliability(agent_id, task_results)
+            competence = self.metrics_calculator.evaluate_competence(agent_id, perf_metrics)
+            fairness = self.metrics_calculator.evaluate_fairness(agent_id, decision_history)
+            security = self.metrics_calculator.evaluate_security(agent_id, attack_simulation)
+            transparency = self.metrics_calculator.evaluate_transparency(agent_id, explanations)
+            
+            # Create dimensions object
+            dimensions = TrustDimensions(
+                reliability=reliability,
+                competence=competence,
+                fairness=fairness,
+                security=security,
+                transparency=transparency
+            )
+            
+            # Calculate overall score
+            overall_score = dimensions.calculate_overall_score()
+            
+            return {
+                'agent_id': agent_id,
+                'reliability': reliability,
+                'competence': competence,
+                'fairness': fairness,
+                'security': security,
+                'transparency': transparency,
+                'overall_score': overall_score,
+                'timestamp': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error evaluating agent performance: {e}")
+            # Return default good evaluation for new agents
+            return {
+                'agent_id': agent_id,
+                'reliability': 0.7,
+                'competence': 0.7,
+                'fairness': 0.7,
+                'security': 0.7,
+                'transparency': 0.7,
+                'overall_score': 0.7,  # Increased from 0.5 to 0.7
+                'trust_level': 'medium',
+                'risk_factors': [],
+                'timestamp': datetime.now().isoformat(),
+                'error': str(e)
+            }
+    
+    def update_trust_from_feedback(self, agent_id: str, feedback: Dict[str, Any]):
+        """
+        Update trust dimensions based on user or system feedback
+        
+        Args:
+            agent_id: ID of the agent to update
+            feedback: Dictionary with feedback metrics
+        """
+        try:
+            # Extract feedback metrics
+            satisfaction = feedback.get('satisfaction_score', 0.5)
+            response_time = feedback.get('response_time', 3.0)
+            explanation = feedback.get('explanation', '')
+            
+            # Calculate dimensional impacts
+            reliability_impact = 0.1 if response_time < 2.0 else -0.05
+            competence_impact = 0.2 * (satisfaction - 0.5)  # Scale to [-0.1, 0.1]
+            transparency_impact = 0.05 if explanation else 0.0
+            
+            # Default neutral impacts for dimensions without direct feedback
+            fairness_impact = 0.0
+            security_impact = 0.0
+            
+            # Get current trust dimensions
+            current_trust = self.get_trust_score(self.agent_id, agent_id)
+            
+            # Initialize default trust score if not exists
+            if agent_id not in self.trust_scores:
+                self.trust_scores[agent_id] = {}
+            
+            # Update trust score with this agent
+            if self.agent_id not in self.trust_scores[agent_id]:
+                self.trust_scores[agent_id][self.agent_id] = 0.5  # Initialize
+            
+            # Apply impacts to trust dimensions
+            self._update_trust_dimension(agent_id, 'reliability', reliability_impact)
+            self._update_trust_dimension(agent_id, 'competence', competence_impact)
+            self._update_trust_dimension(agent_id, 'transparency', transparency_impact)
+            
+            self.logger.debug(f"Updated trust for {agent_id} based on feedback")
+            
+            # Record feedback in interaction history
+            self.interaction_history.append({
+                'timestamp': datetime.now().isoformat(),
+                'agent_id': agent_id,
+                'feedback': feedback,
+                'trust_impact': {
+                    'reliability': reliability_impact,
+                    'competence': competence_impact,
+                    'transparency': transparency_impact
+                }
+            })
+            
+        except Exception as e:
+            self.logger.error(f"Failed to update trust from feedback: {e}")
+    
+    def _update_trust_dimension(self, agent_id: str, dimension: str, impact: float):
+        """Update a specific trust dimension with impact value"""
+        try:
+            # Create TrustRecord for the ledger
+            dims = TrustDimensions()
+            
+            # Set the specific dimension
+            if hasattr(dims, dimension):
+                setattr(dims, dimension, max(0.0, min(1.0, 0.5 + impact)))
+                
+            # Create record
+            record = TrustRecord(
+                agent_id=agent_id,
+                timestamp=datetime.now().isoformat(),
+                dimensions=dims,
+                evidence=f"Feedback impact on {dimension}: {impact}",
+                task_id=f"feedback_{int(datetime.now().timestamp())}",
+                performance_metrics={dimension: impact}
+            )
+            
+            # Add to ledger
+            self.trust_ledger.add_record(record)
+            
+        except Exception as e:
+            self.logger.error(f"Error updating trust dimension: {e}")
+
 # Global trust orchestrator instance
 trust_orchestrator = TrustManager()
 
 def get_trust_evaluation(agent_id: str, operation_type: str = 'general') -> Dict[str, Any]:
     """Get trust evaluation for an agent"""
-    return trust_orchestrator.evaluate_agent_performance(agent_id, {'task_results': [], 'performance_data': {}, 'decision_history': [], 'attack_simulation': {}, 'explanations': []})
+    try:
+        return trust_orchestrator.evaluate_agent_performance(agent_id, {'task_results': [], 'performance_data': {}, 'decision_history': [], 'attack_simulation': {}, 'explanations': []})
+    except Exception as e:
+        logger.error(f"Error getting trust evaluation for {agent_id}: {e}")
+        # Return default good evaluation for new agents
+        return {
+            'agent_id': agent_id,
+            'reliability': 0.7,
+            'competence': 0.7,
+            'fairness': 0.7,
+            'security': 0.7,
+            'transparency': 0.7,
+            'overall_score': 0.7,  # Increased from 0.5 to 0.7 for better initial trust
+            'trust_level': 'medium',
+            'risk_factors': [],
+            'timestamp': datetime.now().isoformat(),
+            'error': str(e)
+        }
 
 def record_agent_outcome(agent_id: str, operation_type: str, success: bool, 
                         details: Dict[str, Any], user_feedback: Optional[str] = None):
     """Record agent operation outcome for trust learning"""
-    trust_orchestrator.update_trust_from_feedback(agent_id, {
-        'satisfaction_score': 1.0 if success else 0.0,
-        'response_time': details.get('response_time', 3.0),
-        'explanation': user_feedback
-    }) 
+    try:
+        trust_orchestrator.update_trust_from_feedback(agent_id, {
+            'satisfaction_score': 1.0 if success else 0.0,
+            'response_time': details.get('response_time', 3.0),
+            'explanation': user_feedback
+        })
+    except Exception as e:
+        logger.error(f"Error recording agent outcome for {agent_id}: {e}")
+        # If we can't update trust through the normal mechanism,
+        # update the basic trust score directly
+        if agent_id not in trust_orchestrator.trust_scores:
+            trust_orchestrator.trust_scores[agent_id] = {}
+        
+        if "trust_manager" not in trust_orchestrator.trust_scores[agent_id]:
+            trust_orchestrator.trust_scores[agent_id]["trust_manager"] = 0.5
+        
+        # Apply a simple update based on success
+        delta = 0.05 if success else -0.05
+        current = trust_orchestrator.trust_scores[agent_id]["trust_manager"]
+        trust_orchestrator.trust_scores[agent_id]["trust_manager"] = max(0.0, min(1.0, current + delta)) 

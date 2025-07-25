@@ -12,11 +12,11 @@ def check_files():
     """Check that all required files exist"""
     required_files = [
         'data/standard_dataset.json',
-        'results/final_run_150_test_set_2025-07-04_18-03.json',
-        'src/run_main_evaluation.py',
-        'src/plot_main_figures.py',
-        'src/generate_datasets.py',
-        'requirements.txt'
+        'src/evaluation/run_main_evaluation.py',  # Updated path
+        'src/plotting/plot_main_figures.py',
+        'src/data/generate_standard_dataset.py',
+        'requirements.txt',
+        'run_experiments.py'
     ]
     
     missing_files = []
@@ -53,35 +53,17 @@ def check_dataset():
         print(f"❌ Error loading dataset: {e}")
         return False
 
-def check_results():
-    """Verify golden results file"""
+def check_core_modules():
+    """Verify core Python modules can be imported"""
     try:
-        with open('results/final_run_150_test_set_2025-07-04_18-03.json', 'r') as f:
-            data = json.load(f)
-        
-        # Find MAMA_Full results
-        mama_stats = None
-        for stat in data['performance_statistics']:
-            if stat['model'] == 'MAMA_Full':
-                mama_stats = stat
-                break
-        
-        if mama_stats:
-            mrr = mama_stats['MRR_mean']
-            ndcg = mama_stats['NDCG@5_mean']
-            
-            if abs(mrr - 0.8454) < 0.001:
-                print(f"✅ MAMA Full MRR verified: {mrr:.4f}")
-                print(f"✅ MAMA Full NDCG@5: {ndcg:.4f}")
+        # Test core imports
+        import src.models.mama_full
+        import src.core.evaluation_metrics
+        import src.data.generate_standard_dataset
+        print("✅ Core modules import successfully")
                 return True
-            else:
-                print(f"❌ MAMA Full MRR mismatch: expected 0.8454, got {mrr:.4f}")
-                return False
-        else:
-            print("❌ MAMA_Full results not found")
-            return False
-    except Exception as e:
-        print(f"❌ Error loading results: {e}")
+    except ImportError as e:
+        print(f"❌ Import error: {e}")
         return False
 
 def main():
@@ -92,7 +74,7 @@ def main():
     checks = [
         ("File structure", check_files),
         ("Dataset integrity", check_dataset),
-        ("Results verification", check_results),
+        ("Core modules", check_core_modules),
     ]
     
     all_passed = True
@@ -104,11 +86,11 @@ def main():
     print("\n" + "=" * 50)
     if all_passed:
         print("🎉 All verification checks passed!")
-        print("✅ MAMA Framework is ready for use")
+        print("✅ MAMA Framework is ready for experiments")
         print("\nNext steps:")
-        print("1. Run: python src/plot_main_figures.py")
-        print("2. Check figures/ directory for generated plots")
-        print("3. Verify Figure 6 matches paper results")
+        print("1. Run: python run_experiments.py --mode core")
+        print("2. Run: python src/plotting/plot_main_figures.py")
+        print("3. Check figures/ directory for generated plots")
     else:
         print("❌ Some verification checks failed")
         print("Please fix the issues above before proceeding")

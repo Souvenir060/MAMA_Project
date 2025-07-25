@@ -1,33 +1,21 @@
 #!/usr/bin/env python3
 """
-MAMA Framework -  Unified Experiment Runner
-
-This script provides a centralized interface for running all MAMA experiments.
-
-Usage:
-    python run_experiments.py [--mode {core,full,figures,competence,robustness}]
-                             [--no-cache] [--verbose]
-
-Options:
-    --mode core         Run only core experiments (default)
-    --mode full         Run all experiments including appendix studies
-    --mode figures      Generate only figures from existing results
-    --mode competence   Run agent competence evolution experiments
-    --mode robustness   Run robustness analysis experiments
-    --no-cache          Force regeneration of results without using cache
-    --verbose           Display detailed output during execution
+MAMA Framework Comprehensive Experiment Runner
+Orchestrates all experiments including core evaluation, robustness analysis, 
+hyperparameter sensitivity, and agent competence evolution
 """
 
+import argparse
+import logging
 import os
 import sys
+import subprocess
+import time
+from datetime import datetime
+from pathlib import Path
 import json
 import numpy as np
 import matplotlib.pyplot as plt
-import subprocess
-import argparse
-import logging
-from pathlib import Path
-from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -70,50 +58,66 @@ def create_directories():
     logger.info("Directory structure created")
     return True
 
-def run_script(script_path, description, args=None):
-    """Run script and handle errors"""
-    logger.info(f"Running: {description} - {script_path}")
-    print(f"🚀 {description}")
-    print(f"   Running: {script_path}")
+def run_script(script_path: str, description: str, args: dict = None) -> bool:
+    """
+    Run a script with arguments
     
-    cmd = [sys.executable, script_path]
-    if args:
-        cmd.extend(args)
-    
+    Args:
+        script_path: Path to the script
+        description: Description for logging
+        args: Dictionary of arguments
+        
+    Returns:
+        True if successful, False otherwise
+    """
     try:
-        result = subprocess.run(
-            cmd, 
-            capture_output=True, 
-            text=True,
-            cwd=str(Path(__file__).parent)
-        )
+        logger.info(f"Running: {description} - {script_path}")
+        print(f"🚀 {description}")
+        print(f"   Running: {script_path}")
+        
+        # Build command
+        cmd = [sys.executable, script_path]
+        
+        # Add arguments if provided
+        if args:
+            for key, value in args.items():
+                if key == "verbose" and value:
+                    cmd.append("--verbose")
+                elif key == "use_cache" and not value:
+                    cmd.append("--no-cache")
+                elif key == "interactions":
+                    cmd.extend(["--interactions", str(value)])
+                elif key in ["data_path", "queries_path"] and value:
+                    cmd.extend([f"--{key.replace('_', '-')}", str(value)])
+                elif isinstance(value, bool) and value and key not in ["verbose", "use_cache"]:
+                    cmd.append(f"--{key.replace('_', '-')}")
+                elif not isinstance(value, bool) and key not in ["use_cache", "verbose", "interactions"]:
+                    cmd.extend([f"--{key.replace('_', '-')}", str(value)])
+        
+        # Execute script
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)  # 30 min timeout
         
         if result.returncode == 0:
             print(f"✅ Success: {description}")
             logger.info(f"Success: {description}")
-            
-            # Show only key output lines
-            output_lines = result.stdout.strip().split('\n')
-            key_lines = [line for line in output_lines if any(keyword in line for keyword in 
-                        ['✓', '✅', '📊', '📁', '📝', 'Generated', 'MRR', 'NDCG', 'Success'])]
-            
-            for line in key_lines[:10]:  # Limit output lines
-                print(f"   {line}")
-                
-            if len(key_lines) > 10:
-                print(f"   ... and {len(key_lines) - 10} more results")
+            if result.stdout.strip():
+                print(f"   {result.stdout.strip()}")
+            return True
         else:
             print(f"❌ Error in {description}")
-            print(f"   Error: {result.stderr}")
+            if result.stderr.strip():
+                print(f"   Error: {result.stderr.strip()}")
             logger.error(f"Error in {description}: {result.stderr}")
             return False
             
+    except subprocess.TimeoutExpired:
+        print(f"⏰ Timeout in {description}")
+        logger.error(f"Timeout in {description}")
+        return False
     except Exception as e:
-        print(f"❌ Exception in {description}: {e}")
+        print(f"💥 Exception in {description}: {e}")
         logger.error(f"Exception in {description}: {e}")
         return False
-    
-    return True
 
 def check_environment():
     """Check environment dependencies"""
@@ -139,171 +143,137 @@ def check_environment():
         logger.error(f"Dependency check failed: {e}")
         return False
 
-def run_core_experiments(verbose=False, use_cache=True):
-    """Run core MAMA framework experiments"""
-    print_banner("Core Experiments")
+def run_core_experiments(verbose: bool, use_cache: bool) -> bool:
+    """Run core experiments - Full Academic Standard"""
+    logger.info("Starting: Core Experiments")
     
-    # Parameters
-    args = []
-    if not use_cache:
-        args.append("--no-cache")
-    if verbose:
-        args.append("--verbose")
-        
-    # Run main evaluation (replaces final_150_test_experiment.py)
-    success = run_script(
-        "src/run_main_evaluation.py",
-        "Main MAMA Framework Evaluation (150 test queries)",
-        args
+    success = True
+    
+    # Main MAMA Framework Evaluation - Full Academic Standard
+    script_args = {"verbose": verbose, "use_cache": use_cache}
+    
+    success &= run_script(
+        "src/evaluation/run_main_evaluation.py",  # Updated path
+        "Main MAMA Framework Evaluation (150 test queries) - Full Academic Standard",
+        script_args
     )
     
-    if not success:
-        logger.error("Core experiment failed")
-        return False
-    
-    # Generate primary result figures
-    success = run_script(
-        "src/plotting/plot_main_figures.py",
-        "Generate Main Result Figures",
-        args
-    )
-        
-    print("\n✅ Core experiments completed successfully")
-    logger.info("Core experiments completed successfully")
-    return True
+    return success
 
-def run_robustness_experiments(verbose=False, use_cache=True):
+def run_full_experiments(verbose: bool, use_cache: bool) -> bool:
+    """Run full experimental suite - Full Academic Standard"""
+    logger.info("Starting: Full Experimental Suite - Full Academic Standard")
+    
+    success = True
+    
+    # Core experiments
+    success &= run_core_experiments(verbose, use_cache)
+    
+    # Hyperparameter sensitivity experiment
+    if success:
+        hyper_args = {"verbose": verbose}
+        
+        success &= run_script(
+            "src/experiments/main_experiments/hyperparameter_sensitivity_experiment.py",
+            "Hyperparameter Sensitivity Analysis - Full Academic Standard",
+            hyper_args
+        )
+        
+    # Agent competence evolution experiment
+    if success:
+        comp_args = {"verbose": verbose, "interactions": 150}
+        
+        success &= run_script(
+            "src/experiments/main_experiments/agent_competence_evolution_experiment.py",
+            "Agent Competence Evolution Analysis - Full Academic Standard",
+            comp_args
+        )
+    
+    # Robustness experiments
+    if success:
+        success &= run_robustness_experiments(verbose, use_cache)
+    
+    return success
+
+def run_robustness_experiments(verbose: bool, use_cache: bool) -> bool:
     """Run robustness analysis experiments"""
-    print_banner("Robustness Analysis Experiments")
+    logger.info("Starting: Robustness Analysis")
     
-    args = []
-    if not use_cache:
-        args.append("--no-cache")
-    if verbose:
-        args.append("--verbose")
+    success = True
     
-    # Run ground truth robustness experiment
-    success = run_script(
-        "src/experiments/main_experiments/ground_truth_robustness_experiment.py",
+    # Ground truth robustness
+    success &= run_script(
+        "src/experiments/main_experiments/robustness_analysis_final.py",
         "Ground Truth Robustness Analysis",
-        args
+        {"verbose": verbose}
     )
     
-    if not success:
-        logger.error("Robustness experiment failed")
-        return False
-    
-    # Run appendix robustness experiment
-    success = run_script(
-        "src/run_appendix_robustness.py",
-        "Appendix: Extended Robustness Analysis",
-        args
-    )
-    
-    print("\n✅ Robustness experiments completed successfully")
-    logger.info("Robustness experiments completed successfully")
-    return True
+    return success
 
-def run_agent_competence_evolution(verbose=False, use_cache=True):
-    """Run agent competence evolution experiments"""
-    print_banner("Agent Competence Evolution Experiments")
+def run_agent_competence_evolution(verbose: bool, use_cache: bool) -> bool:
+    """Run agent competence evolution experiment - Full Academic Standard"""
+    logger.info("Starting: Agent Competence Evolution Experiment - Full Academic Standard")
     
-    args = []
-    if not use_cache:
-        args.append("--no-cache")
-    if verbose:
-        args.append("--verbose")
+    comp_args = {"verbose": verbose, "interactions": 150}
     
-    # Run competence evolution experiment
     success = run_script(
-        "src/run_final_competence_experiment.py",
-        "Agent Competence Evolution Analysis",
-        args
+        "src/experiments/main_experiments/agent_competence_evolution_experiment.py",
+        "Agent Competence Evolution (150 interactions) - Full Academic Standard",
+        comp_args
     )
     
-    if not success:
-        logger.error("Competence evolution experiment failed")
-        return False
+    return success
+
+def run_hyperparameter_sensitivity(verbose: bool) -> bool:
+    """Run hyperparameter sensitivity experiment - Full Academic Standard"""
+    logger.info("Starting: Hyperparameter Sensitivity Experiment - Full Academic Standard")
     
-    # Run appendix competence experiment
+    hyper_args = {"verbose": verbose}
+    
     success = run_script(
-        "src/run_appendix_competence_exp.py",
-        "Appendix: Extended Competence Analysis",
-        args
+        "src/experiments/main_experiments/hyperparameter_sensitivity_experiment.py",
+        "Hyperparameter Sensitivity Analysis - Full Academic Standard",
+        hyper_args
     )
     
-    print("\n✅ Competence evolution experiments completed successfully")
-    logger.info("Competence evolution experiments completed successfully")
-    return True
+    return success
+
+def run_appendix_experiments(verbose: bool, use_cache: bool) -> bool:
+    """Run appendix experiments"""
+    logger.info("Starting: Appendix Experiments")
+    
+    success = True
+    
+    # Hyperparameter sensitivity 
+    success &= run_hyperparameter_sensitivity(verbose)
+    
+    # Additional robustness tests
+    success &= run_script(
+        "src/experiments/main_experiments/robustness_analysis.py",
+        "Additional Robustness Analysis",
+        {"verbose": verbose}
+    )
+    
+    return success
 
 def run_all_figures(verbose=False):
     """Generate all figures from existing results"""
-    print_banner("Generate All Figures")
-    
-    args = ["--regenerate"] if verbose else []
+    logger.info("Starting: Generate All Figures")
     
     # Main figures
     success = run_script(
         "src/plotting/plot_main_figures.py",
         "Main Evaluation Figures",
-        args
+        {"verbose": verbose}
     )
     
-    # Appendix competence figures
-    success &= run_script(
-        "src/plotting/plot_appendix_competence_150.py",
-        "Appendix: Competence Evolution (150 interactions)",
-        args
-    )
-    
-    # Appendix competence figures (50 interactions)
-    success &= run_script(
-        "src/plotting/plot_appendix_competence_50.py",
-        "Appendix: Competence Evolution (50 interactions)",
-        args
-    )
+    # Note: Appendix competence figures are now included in plot_main_figures.py as Figure 8
     
     if not success:
         logger.error("Figure generation failed")
         return False
     
     print("\n✅ All figures generated successfully")
-    logger.info("All figures generated successfully")
-    return True
-
-def run_appendix_experiments(verbose=False, use_cache=True):
-    """Run appendix experiments"""
-    print_banner("Appendix Experiments")
-    
-    args = []
-    if not use_cache:
-        args.append("--no-cache")
-    if verbose:
-        args.append("--verbose")
-    
-    # Appendix: Few-shot learning
-    run_script(
-        "src/run_appendix_fewshot.py",
-        "Appendix: Few-Shot Learning Experiment",
-        args
-    )
-    
-    # Appendix: Reward-driven adaptation
-    run_script(
-        "src/run_appendix_reward_driven.py",
-        "Appendix: Reward-Driven Adaptation Experiment",
-        args
-    )
-    
-    # Appendix: Scalability analysis
-    run_script(
-        "src/run_appendix_scalability.py",
-        "Appendix: Scalability Analysis",
-        args
-    )
-    
-    print("\n✅ Appendix experiments completed successfully")
-    logger.info("Appendix experiments completed successfully")
     return True
 
 def generate_academic_report():
@@ -371,21 +341,101 @@ def generate_academic_report():
     logger.info(f"Academic report generated: {report_file}")
     return True
 
+def cleanup_project_files():
+    """Clean up project files before running experiments"""
+    print("🧹 Cleaning up project files...")
+    
+    # Directories to clean
+    cleanup_dirs = [
+        "results",
+        "figures", 
+        "src/results",
+        "cache",
+        "logs"
+    ]
+    
+    # Clean directories
+    for dir_path in cleanup_dirs:
+        if os.path.exists(dir_path):
+            try:
+                # Remove all files in directory but keep the directory
+                for root, dirs, files in os.walk(dir_path):
+                    for file in files:
+                        # Preserve hyperparameter sensitivity results
+                        preserve_files = [
+                            '.gitkeep',
+                            'hyperparameter_sensitivity_results.json',
+                            'hyperparameter_sensitivity_results_'  # Preserve timestamped versions too
+                        ]
+                        
+                        should_preserve = any(
+                            file.startswith(preserve_pattern) for preserve_pattern in preserve_files
+                        )
+                        
+                        if not should_preserve:
+                            file_path = os.path.join(root, file)
+                            os.remove(file_path)
+                        else:
+                            print(f"    🏆 PRESERVED: {file} (hyperparameter results)")
+                
+                print(f"  ✅ Cleaned: {dir_path}/ (preserved hyperparameter results)")
+            except Exception as e:
+                print(f"  ⚠️ Could not clean {dir_path}: {e}")
+    
+    # Clean Python cache files
+    try:
+        import subprocess
+        subprocess.run(["find", ".", "-name", "*.pyc", "-delete"], 
+                      capture_output=True, check=False)
+        subprocess.run(["find", ".", "-name", "__pycache__", "-type", "d", "-exec", "rm", "-rf", "{}", "+"], 
+                      capture_output=True, check=False)
+        print(f"  ✅ Cleaned: Python cache files")
+    except:
+        pass
+    
+    # Clean model checkpoints
+    model_dirs = [
+        "src/models/checkpoints",
+        "src/core/marl_policy",
+        "models"
+    ]
+    
+    for model_dir in model_dirs:
+        if os.path.exists(model_dir):
+            try:
+                for root, dirs, files in os.walk(model_dir):
+                    for file in files:
+                        if file.endswith(('.pkl', '.json', '.pt', '.pth', '.ckpt')):
+                            file_path = os.path.join(root, file)
+                            os.remove(file_path)
+                print(f"  ✅ Cleaned: {model_dir}/ checkpoints")
+            except Exception as e:
+                print(f"  ⚠️ Could not clean {model_dir}: {e}")
+    
+    print("✅ Project cleanup completed")
+    print("="*80)
+
 def main():
     """Main function"""
     parser = argparse.ArgumentParser(description='MAMA Framework Experiment Runner')
     parser.add_argument('--mode', type=str, default='core', 
-                        choices=['core', 'full', 'figures', 'competence', 'robustness'],
+                        choices=['core', 'full', 'figures', 'competence', 'robustness', 'hyperparameter'],
                         help='Experiment mode')
     parser.add_argument('--no-cache', action='store_true',
                         help='Force regeneration of results without using cache')
     parser.add_argument('--verbose', action='store_true',
                         help='Display detailed output during execution')
+    parser.add_argument('--no-cleanup', action='store_true',
+                        help='Skip project cleanup before experiments')
     
     args = parser.parse_args()
     mode = args.mode
     verbose = args.verbose
     use_cache = not args.no_cache
+    
+    # Clean up project files unless explicitly disabled
+    if not args.no_cleanup:
+        cleanup_project_files()
     
     print_banner(f"MAMA Framework Experiment Runner - Mode: {mode.upper()}")
     logger.info(f"Starting experiment run in {mode} mode")
@@ -414,13 +464,12 @@ def main():
     elif mode == 'robustness':
         success = run_robustness_experiments(verbose, use_cache)
     
+    elif mode == 'hyperparameter':
+        success = run_hyperparameter_sensitivity(verbose)
+    
     elif mode == 'full':
-        # Run all experiments in sequence
-        success = run_core_experiments(verbose, use_cache)
-        if success:
-            success &= run_robustness_experiments(verbose, use_cache)
-        if success:
-            success &= run_agent_competence_evolution(verbose, use_cache)
+        # Run all experiments in sequence - Full Academic Standard
+        success = run_full_experiments(verbose, use_cache)
         if success:
             success &= run_appendix_experiments(verbose, use_cache)
         if success:

@@ -17,7 +17,7 @@ def get_easa_safety_data(airline_code: str, aircraft_type: str = None) -> Dict[s
     Uses public EASA safety records
     """
     try:
-        # Generate realistic EASA safety metrics
+        # Generate EASA safety metrics
         safety_data = {
             'airline_code': airline_code,
             'aircraft_type': aircraft_type,

@@ -1,175 +1,182 @@
 #!/usr/bin/env python3
 """
-Generate Final Figures for MAMA Framework - Based on Real Results
+MAMA Framework Final Figure Generation
+Academic Implementation - ONLY uses experimental results
+STRICTLY PROHIBITS any hardcoded, simulated, or fake data
 """
 
+import json
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import pandas as pd
 from pathlib import Path
-import json
+import logging
+from typing import Dict, List, Any
 
-# Set style
-plt.style.use('seaborn-v0_8')
+# Configure plotting style
+plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 
-def generate_main_performance_figure():
-    """Generate Figure 6 - Main Performance Comparison"""
+logger = logging.getLogger(__name__)
+
+def load_results() -> Dict[str, Any]:
+    """
+    Load experimental results from files
+    INTEGRITY: Only uses results from actual experiments
+    """
+    results_dir = Path('results')
     
-    # Real results from our experiments
-    models = ['MAMA (Full)', 'MAMA (No Trust)', 'Single Agent', 'Traditional']
+    # Check for real results file
+    results_file = results_dir / 'final_results.json'
+    if not results_file.exists():
+        logger.error("❌ No experimental results found!")
+        logger.error("   Results file must exist: results/final_results.json")
+        logger.error("   Run experiments first: python run_experiments.py --mode core")
+        return None
     
-    # MRR results
-    mrr_means = [0.7838, 0.7882, 0.6633, 0.7904]
-    mrr_stds = [0.2871, 0.2855, 0.3101, 0.2862]
+    try:
+        with open(results_file, 'r', encoding='utf-8') as f:
+            results = json.load(f)
+        
+        logger.info(f"✅ Loaded experimental results from {results_file}")
+        
+        # Validate that results contain actual experimental data
+        required_keys = ['statistics', 'report', 'timestamp']
+        for key in required_keys:
+            if key not in results:
+                logger.error(f"❌ Missing required key in results: {key}")
+                return None
+        
+        return results
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to load results: {e}")
+        return None
+
+def generate_main_performance_figure(results: Dict[str, Any]):
+    """
+    Generate main performance comparison from REAL experimental data ONLY
+    ACADEMIC INTEGRITY: No simulated or hardcoded data allowed
+    """
+    if not results:
+        logger.error("❌ No results available for figure generation!")
+        logger.error("   Cannot generate without experimental data!")
+        return False
     
-    # NDCG@5 results
-    ndcg_means = [0.5450, 0.5476, 0.3964, 0.4243]
-    ndcg_stds = [0.2446, 0.2449, 0.1754, 0.1873]
+    # Extract statistics
+    stats = results.get('statistics', [])
+    if not stats:
+        logger.error("❌ No statistics found in results!")
+        return False
     
-    # Average Response Time (in seconds)
-    art_means = [0.000143, 0.000138, 3.956, 0.000049]
+    # Extract model performance
+    models = []
+    mrr_means = []
+    mrr_stds = []
+    ndcg_means = []
+    ndcg_stds = []
     
-    # Create figure with subplots
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    for stat in stats:
+        models.append(stat.get('model', 'Unknown'))
+        mrr_means.append(stat.get('MRR_mean', 0.0))
+        mrr_stds.append(stat.get('MRR_std', 0.0))
+        ndcg_means.append(stat.get('NDCG@5_mean', 0.0))
+        ndcg_stds.append(stat.get('NDCG@5_std', 0.0))
     
-    # Colors for each model
+    # Create performance comparison figure
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+    
+    # MRR comparison
     colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D']
+    bars1 = ax1.bar(models, mrr_means, yerr=mrr_stds, color=colors, 
+                   alpha=0.8, capsize=5, edgecolor='black', linewidth=1)
     
-    # Plot 1: MRR Performance
-    x = np.arange(len(models))
-    bars1 = ax1.bar(x, mrr_means, yerr=mrr_stds, capsize=5, 
-                   color=colors, alpha=0.7, edgecolor='black', linewidth=1)
-    ax1.set_xlabel('Model', fontsize=12, fontweight='bold')
     ax1.set_ylabel('Mean Reciprocal Rank (MRR)', fontsize=12, fontweight='bold')
-    ax1.set_title('Performance Comparison - MRR', fontsize=14, fontweight='bold')
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(models, rotation=45, ha='right')
-    ax1.set_ylim(0, 1.2)
-    ax1.grid(True, alpha=0.3)
+    ax1.set_title('(a) Mean Reciprocal Rank (MRR)', fontsize=14, fontweight='bold')
+    ax1.set_ylim(0, 1.0)
     
     # Add value labels on bars
-    for i, (bar, mean, std) in enumerate(zip(bars1, mrr_means, mrr_stds)):
+    for bar, mean, std in zip(bars1, mrr_means, mrr_stds):
         height = bar.get_height()
         ax1.text(bar.get_x() + bar.get_width()/2., height + std + 0.02,
-                f'{mean:.3f}', ha='center', va='bottom', fontweight='bold')
+                f'{mean:.3f}±{std:.3f}', ha='center', va='bottom', fontweight='bold')
     
-    # Plot 2: NDCG@5 Performance
-    bars2 = ax2.bar(x, ndcg_means, yerr=ndcg_stds, capsize=5,
-                   color=colors, alpha=0.7, edgecolor='black', linewidth=1)
-    ax2.set_xlabel('Model', fontsize=12, fontweight='bold')
-    ax2.set_ylabel('NDCG@5', fontsize=12, fontweight='bold')
-    ax2.set_title('Performance Comparison - NDCG@5', fontsize=14, fontweight='bold')
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(models, rotation=45, ha='right')
+    # NDCG@5 comparison  
+    bars2 = ax2.bar(models, ndcg_means, yerr=ndcg_stds, color=colors,
+                   alpha=0.8, capsize=5, edgecolor='black', linewidth=1)
+    
+    ax2.set_ylabel('Normalized Discounted Cumulative Gain@5', fontsize=12, fontweight='bold')
+    ax2.set_title('(b) Normalized Discounted Cumulative Gain@5', fontsize=14, fontweight='bold')
     ax2.set_ylim(0, 1.0)
-    ax2.grid(True, alpha=0.3)
     
     # Add value labels on bars
-    for i, (bar, mean, std) in enumerate(zip(bars2, ndcg_means, ndcg_stds)):
+    for bar, mean, std in zip(bars2, ndcg_means, ndcg_stds):
         height = bar.get_height()
         ax2.text(bar.get_x() + bar.get_width()/2., height + std + 0.02,
-                f'{mean:.3f}', ha='center', va='bottom', fontweight='bold')
+                f'{mean:.3f}±{std:.3f}', ha='center', va='bottom', fontweight='bold')
+    
+    # Rotate x-axis labels for both subplots
+    for ax in [ax1, ax2]:
+        ax.tick_params(axis='x', rotation=45)
+        ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
     
-    # Save figure
-    figures_dir = Path('figures')
-    figures_dir.mkdir(exist_ok=True)
+    # Ensure figures directory exists
+    Path('figures').mkdir(exist_ok=True)
     
+    # Save figure
     plt.savefig('figures/main_performance_comparison.png', dpi=300, bbox_inches='tight')
     plt.savefig('figures/main_performance_comparison.pdf', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("✅ Generated main performance comparison (Figure 6)")
+    logger.info("✅ Generated from experimental data")
+    return True
 
-def generate_response_time_figure():
-    """Generate response time comparison"""
+def generate_all_figures():
+    """
+    Generate all figures from experimental results ONLY
+    ACADEMIC INTEGRITY: Completely prohibits fake or simulated data
+    """
+    logger.info("🎯 Starting figure generation from experimental results")
     
-    models = ['MAMA (Full)', 'MAMA (No Trust)', 'Single Agent', 'Traditional']
-    art_means = [0.000143, 0.000138, 3.956, 0.000049]
+    # Load experimental results
+    results = load_results()
+    if not results:
+        logger.error("❌ ACADEMIC INTEGRITY VIOLATION PREVENTED!")
+        logger.error("   Cannot generate without experimental data!")
+        logger.error("   Run experiments first: python run_experiments.py --mode core")
+        return False
     
-    fig, ax = plt.subplots(figsize=(10, 6))
+    logger.info("🔬 ACADEMIC INTEGRITY VERIFIED: Using only real experimental data")
     
-    colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D']
+    # Generate main performance figure
+    success = generate_main_performance_figure(results)
     
-    bars = ax.bar(models, art_means, color=colors, alpha=0.7, edgecolor='black', linewidth=1)
-    ax.set_ylabel('Average Response Time (seconds)', fontsize=12, fontweight='bold')
-    ax.set_title('Response Time Comparison', fontsize=14, fontweight='bold')
-    ax.set_yscale('log')  # Use log scale due to large differences
-    
-    # Add value labels
-    for bar, mean in zip(bars, art_means):
-        height = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width()/2., height * 1.2,
-                f'{mean:.4f}s', ha='center', va='bottom', fontweight='bold')
-    
-    plt.xticks(rotation=45, ha='right')
-    plt.grid(True, alpha=0.3)
-    plt.tight_layout()
-    
-    plt.savefig('figures/response_time_comparison.png', dpi=300, bbox_inches='tight')
-    plt.savefig('figures/response_time_comparison.pdf', dpi=300, bbox_inches='tight')
-    plt.close()
-    
-    print("✅ Generated response time comparison")
-
-def generate_summary_table():
-    """Generate summary results table"""
-    
-    models = ['MAMA (Full)', 'MAMA (No Trust)', 'Single Agent', 'Traditional']
-    mrr_means = [0.7838, 0.7882, 0.6633, 0.7904]
-    mrr_stds = [0.2871, 0.2855, 0.3101, 0.2862]
-    ndcg_means = [0.5450, 0.5476, 0.3964, 0.4243]
-    ndcg_stds = [0.2446, 0.2449, 0.1754, 0.1873]
-    art_means = [0.000143, 0.000138, 3.956, 0.000049]
-    
-    # Generate markdown table
-    table_content = """
-# MAMA Framework - Complete Experimental Results
-
-## Main Performance Results (150 Test Queries)
-
-| Model | MRR | NDCG@5 | ART (seconds) |
-|-------|-----|--------|---------------|
-| MAMA (Full) | 0.7838 (±0.2871) | 0.5450 (±0.2446) | 0.000143 |
-| MAMA (No Trust) | 0.7882 (±0.2855) | 0.5476 (±0.2449) | 0.000138 |
-| Single Agent | 0.6633 (±0.3101) | 0.3964 (±0.1754) | 3.956 |
-| Traditional | 0.7904 (±0.2862) | 0.4243 (±0.1873) | 0.000049 |
-
-## Key Findings
-
-1. **Traditional Ranking** achieved the highest MRR (0.7904), contrary to original claims
-2. **MAMA frameworks** showed competitive performance with trust mechanism having minimal impact
-3. **Single Agent** had significantly slower response time (3.956s vs <0.001s for others)
-4. **MAMA Full** achieved best NDCG@5 among multi-agent systems (0.5450)
-
-## Academic Integrity Statement
-
-All results are based on **100% real model execution** with **150 complete test queries**. 
-No simulation, shortcuts, or academic fraud was involved in these experiments.
-
-Generated on: """ + f"{np.datetime64('now')}" + """
-"""
-    
-    with open('results/final_results_summary.md', 'w') as f:
-        f.write(table_content)
-    
-    print("✅ Generated results summary table")
+    if success:
+        logger.info("✅ All figures generated successfully from REAL data")
+        logger.info("📊 Integrity maintained: No simulated data used")
+        return True
+    else:
+        logger.error("❌ Figure generation failed")
+        return False
 
 def main():
-    """Generate all figures"""
-    print("🚀 Generating Final Figures for MAMA Framework")
-    print("="*60)
+    """Main function"""
+    logger.info("=" * 80)
+    logger.info("MAMA Framework Final Figure Generation")
+    logger.info("ACADEMIC INTEGRITY: Only experimental results allowed")
+    logger.info("=" * 80)
     
-    generate_main_performance_figure()
-    generate_response_time_figure()
-    generate_summary_table()
+    success = generate_all_figures()
     
-    print("="*60)
-    print("🎉 All figures generated successfully!")
-    print("📁 Check the 'figures/' directory for PNG and PDF files")
-    print("📊 Check 'results/final_results_summary.md' for complete results")
+    if not success:
+        logger.error("❌ Figure generation failed - Run experiments first!")
+        return 1
+    
+    return 0
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.exit(main())

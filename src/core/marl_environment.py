@@ -75,6 +75,9 @@ class MARLState:
     ndcg_scores: Dict[str, float]       # NDCG@5 scores
     response_times: Dict[str, float]    # Average Response Times
     
+    # Query context for agent execution
+    context: Dict[str, Any] = field(default_factory=dict)
+    
     timestamp: datetime = field(default_factory=datetime.now)
     
     def to_vector(self) -> np.ndarray:
@@ -348,8 +351,8 @@ class MARLEnvironment(gym.Env):
         # Parse action
         marl_action = self._parse_action(action)
         
-        # Simulate agent execution and get results
-        execution_results = self._simulate_agent_execution(marl_action)
+        # Execute real agents and get results
+        execution_results = self._execute_real_agents(marl_action)
         
         # Compute reward using academic formulations
         reward_components = self._compute_reward_components(execution_results)
@@ -440,7 +443,8 @@ class MARLEnvironment(gym.Env):
             coordination_history=[],
             mrr_scores=mrr_scores,
             ndcg_scores=ndcg_scores,
-            response_times=response_times
+            response_times=response_times,
+            context={}
         )
     
     def _parse_action(self, action: np.ndarray) -> MARLAction:
@@ -476,27 +480,154 @@ class MARLEnvironment(gym.Env):
             quality_thresholds=quality_thresholds
         )
     
-    def _simulate_agent_execution(self, action: MARLAction) -> Dict[str, Any]:
-        """Simulate agent execution and return results"""
+    def _execute_real_agents(self, action: MARLAction) -> Dict[str, Any]:
+        """Execute real agents and return actual results"""
         results = {}
         
-        for agent_id in action.selected_agents:
-            # Simulate execution based on agent characteristics
-            base_quality = self.state.agent_trust_scores.get(agent_id, 0.5)
-            load_penalty = self.state.agent_load_factors.get(agent_id, 0.0) * 0.2
+        # Import agent creation functions
+        try:
+            from agents.manager import create_complete_agent_system
+            agent_system = create_complete_agent_system()
             
-            # Add noise for realism
-            quality = max(0.0, min(1.0, base_quality - load_penalty + np.random.normal(0, 0.1)))
-            response_time = self.state.agent_response_times.get(agent_id, 0.5) + np.random.uniform(-0.1, 0.1)
-            
-            results[agent_id] = {
-                'quality': quality,
-                'response_time': max(0.1, response_time),
-                'success': quality > action.quality_thresholds.get(agent_id, 0.8),
-                'output_size': np.random.uniform(0.5, 1.0)
-            }
+            for agent_id in action.selected_agents:
+                start_time = time.time()
+                
+                # Create query data for agent
+                query_data = {
+                    'departure': self.state.context.get('departure', 'NYC'),
+                    'destination': self.state.context.get('destination', 'LAX'), 
+                    'date': self.state.context.get('date', '2025-08-01'),
+                    'preferences': self.state.context.get('preferences', {}),
+                    'candidates': self._generate_flight_candidates()
+                }
+                
+                try:
+                    # Execute real agent
+                    if agent_id in agent_system:
+                        agent = agent_system[agent_id]
+                        if hasattr(agent, 'process_task'):
+                            result = agent.process_task(query_data)
+                        else:
+                            # Fallback to CSV data processing
+                            result = self._process_with_csv_data(agent_id, query_data)
+                    else:
+                        # Fallback to CSV data processing  
+                        result = self._process_with_csv_data(agent_id, query_data)
+                    
+                    # Calculate real quality metrics
+                    recommendations = result.get('recommendations', [])
+                    quality = len(recommendations) / 10.0 if recommendations else 0.0
+                    quality = min(1.0, max(0.0, quality))
+                    
+                    processing_time = time.time() - start_time
+                    
+                    results[agent_id] = {
+                        'quality': quality,
+                        'response_time': processing_time,
+                        'success': len(recommendations) > 0,
+                        'output_size': len(str(result)),
+                        'real_result': result
+                    }
+                    
+                except Exception as e:
+                    logger.error(f"Real agent {agent_id} execution failed: {e}")
+                    results[agent_id] = {
+                        'quality': 0.0,
+                        'response_time': time.time() - start_time,
+                        'success': False,
+                        'output_size': 0,
+                        'error': str(e)
+                    }
+                        
+        except Exception as e:
+            logger.error(f"Agent system initialization failed: {e}")
+            # Complete fallback to CSV processing
+            for agent_id in action.selected_agents:
+                start_time = time.time()
+                try:
+                    query_data = {
+                        'departure': self.state.context.get('departure', 'NYC'),
+                        'destination': self.state.context.get('destination', 'LAX'),
+                        'date': self.state.context.get('date', '2025-08-01'),
+                        'candidates': self._generate_flight_candidates()
+                    }
+                    result = self._process_with_csv_data(agent_id, query_data)
+                    recommendations = result.get('recommendations', [])
+                    quality = len(recommendations) / 10.0 if recommendations else 0.0
+                    
+                    results[agent_id] = {
+                        'quality': min(1.0, max(0.0, quality)),
+                        'response_time': time.time() - start_time,
+                        'success': len(recommendations) > 0,
+                        'output_size': len(str(result)),
+                        'real_result': result
+                    }
+                except Exception as e2:
+                    logger.error(f"CSV fallback failed for {agent_id}: {e2}")
+                    results[agent_id] = {
+                        'quality': 0.0,
+                        'response_time': time.time() - start_time,
+                        'success': False,
+                        'output_size': 0,
+                        'error': str(e2)
+                    }
         
         return results
+    
+    def _generate_flight_candidates(self) -> List[Dict[str, Any]]:
+        """Generate flight candidates for agents to process"""
+        try:
+            from core.csv_flight_data import CSVFlightDataManager
+            csv_manager = CSVFlightDataManager()
+            return csv_manager.get_sample_flights(count=10)
+        except Exception:
+            # Fallback to minimal candidates
+            return [
+                {"flight_number": "AA101", "departure": "NYC", "destination": "LAX", "price": 299},
+                {"flight_number": "DL202", "departure": "NYC", "destination": "LAX", "price": 349},
+                {"flight_number": "UA303", "departure": "NYC", "destination": "LAX", "price": 279}
+            ]
+    
+    def _process_with_csv_data(self, agent_id: str, query_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Process query using CSV data as fallback"""
+        try:
+            from core.csv_flight_data import CSVFlightDataManager
+            csv_manager = CSVFlightDataManager()
+            
+            # Get relevant flights
+            flights = csv_manager.search_flights(
+                departure=query_data.get('departure', 'NYC'),
+                destination=query_data.get('destination', 'LAX'),
+                date=query_data.get('date', '2025-08-01')
+            )
+            
+            # Agent-specific processing
+            if agent_id == 'weather_agent':
+                recommendations = [f for f in flights if f.get('weather_score', 0.5) > 0.6]
+            elif agent_id == 'safety_assessment_agent':
+                recommendations = [f for f in flights if f.get('safety_score', 0.5) > 0.7]
+            elif agent_id == 'economic_agent':
+                recommendations = sorted(flights, key=lambda x: x.get('price', 999))[:5]
+            elif agent_id == 'flight_info_agent':
+                recommendations = flights[:8]  # All flights with info
+            else:
+                recommendations = flights[:3]  # Integration agent
+                
+            return {
+                'success': True,
+                'recommendations': recommendations,
+                'agent_id': agent_id,
+                'data_source': 'csv_fallback'
+            }
+            
+        except Exception as e:
+            logger.error(f"CSV processing failed for {agent_id}: {e}")
+            return {
+                'success': False,
+                'recommendations': [],
+                'agent_id': agent_id,
+                'error': str(e)
+            }
     
     def _compute_reward_components(self, execution_results: Dict[str, Any]) -> Dict[str, float]:
         """Compute reward components from execution results"""

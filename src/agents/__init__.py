@@ -15,7 +15,7 @@ Agent Architecture:
 - IntegrationAgent: Multi-agent coordination and result synthesis
 - CrossDomainSolver: Cross-domain optimization and constraint satisfaction
 
-Academic Features:
+ Features:
 - Trust-aware multi-agent coordination protocols
 - Byzantine fault tolerance mechanisms
 - Real-time learning and adaptation algorithms
@@ -42,14 +42,10 @@ from .base_agent import (
 
 # Import specialized agents
 from .flight_info_agent import (
-    FlightInformationAgent,
-    FlightDataAggregator,
-    FlightDetails,
-    FlightRoute,
-    FlightStatus,
-    DataSource,
+    FlightInfoAgent,
+    FlightInfoAnalysis,
     create_flight_info_agent,
-    get_flight_information_tool
+    get_flight_info_tool
 )
 
 from .safety_assessment_agent import (
@@ -68,8 +64,7 @@ from .safety_assessment_agent import (
 from .economic_agent import (
     EconomicAgent,
     create_economic_agent,
-    calculate_total_cost_tool,
-    get_city_accommodation_cost
+    get_economic_analysis_tool
 )
 
 from .weather_agent import (
@@ -79,6 +74,13 @@ from .weather_agent import (
     calculate_weather_safety_score,
     generate_weather_recommendation,
     create_weather_agent
+)
+
+from .integration_agent import (
+    IntegrationAgent,
+    IntegrationResult,
+    create_integration_agent,
+    get_integration_tool
 )
 
 # Import trust and coordination systems
@@ -95,9 +97,8 @@ from .trust_manager import (
     record_agent_outcome
 )
 
-from .integration_agent import (
-    LTRRankingEngine
-)
+# Import LTRRankingEngine from core module
+from core.ltr_ranker import LTRRankingEngine
 
 from .cross_domain_solver import (
     CrossDomainSolver,
@@ -141,28 +142,20 @@ def create_complete_agent_system() -> Dict[str, BaseAgent]:
     try:
         # Create specialized agents
         agents = {
-            "flight_info": create_flight_info_agent(),
-            "safety_assessment": create_safety_assessment_agent(),
-            "economic": create_economic_agent(),
-            "weather": create_weather_agent(),
-            "integration": create_integration_agent(),
-            "cross_domain": create_cross_domain_solver(),
-            "manager": create_agent_manager()
+            "flight_info_agent": create_flight_info_agent(),
+            "safety_assessment_agent": create_safety_assessment_agent(), 
+            "economic_agent": create_economic_agent(),
+            "weather_agent": create_weather_agent(),
+            "integration_agent": create_integration_agent()
         }
-        
-        # Initialize trust manager with all agents
-        trust_manager = create_trust_manager()
-        for agent_name, agent in agents.items():
-            trust_manager.register_agent(agent_name, agent)
-        
-        agents["trust_manager"] = trust_manager
         
         logger.info(f"Successfully initialized {len(agents)} agents")
         return agents
         
     except Exception as e:
         logger.error(f"Failed to initialize agent system: {e}")
-        raise
+        # Return an empty dict instead of raising, so system can fallback
+        return {}
 
 
 def validate_agent_system(agents: Dict[str, BaseAgent]) -> Dict[str, Any]:
@@ -304,20 +297,17 @@ __all__ = [
     "AgentMetrics",
     
     # Specialized agents
-    "FlightInformationAgent",
+    "FlightInfoAgent",
     "SafetyAssessmentAgent", 
     "EconomicAgent",
     "WeatherAgent",
     "TrustManager",
     "IntegrationAgent",
     "CrossDomainSolver",
-    "AgentManager",
     
     # Data structures
-    "FlightDetails",
-    "FlightRoute",
-    "FlightStatus",
-    "DataSource",
+    "FlightInfoAnalysis",
+    "IntegrationResult",
     "SafetyAssessment",
     "SafetyMetrics", 
     "SafetyIncident",
@@ -328,27 +318,24 @@ __all__ = [
     "TrustLevel",
     
     # Aggregators and processors
-    "FlightDataAggregator",
     "SafetyDataAggregator",
-    "TrustSimulation",
+    "LTRRankingEngine",
     
     # Factory functions
     "create_flight_info_agent",
     "create_safety_assessment_agent",
     "create_economic_agent", 
     "create_weather_agent",
-    "create_trust_manager",
     "create_integration_agent",
     "create_cross_domain_solver",
-    "create_agent_manager",
     "create_complete_agent_system",
     
     # Tool functions
-    "get_flight_information_tool",
+    "get_flight_info_tool",
     "get_safety_assessment_tool",
-    "calculate_total_cost_tool",
+    "get_economic_analysis_tool",
     "get_weather_safety_tool",
-    "get_city_accommodation_cost",
+    "get_integration_tool",
     
     # System functions
     "validate_agent_system",

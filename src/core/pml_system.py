@@ -247,9 +247,9 @@ class PMLRepository:
             
             jaccard_score = intersection / union
             
-            # Boost score if agent specialty directly matches
+            # Apply specialty bonus if agent specialty directly matches
             if agent.specialty in task.required_expertise:
-                jaccard_score = min(1.0, jaccard_score * 1.5)
+                jaccard_score = min(1.0, jaccard_score + 0.1)
             
             return jaccard_score
             
@@ -362,7 +362,7 @@ class PMLRepository:
             
             # Output compatibility
             if agent.output_type == task.expected_output_type:
-                reasons.append("Perfect output type match")
+                reasons.append("Exact output type match")
             
             # Performance history
             if agent.performance_history:

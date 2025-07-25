@@ -234,16 +234,23 @@ class TrustAwareMARLEngine:
             raise
     
     def select_agents(self, state: MARLState, num_agents: int = 3,
-                     selection_strategy: str = "trust_weighted") -> List[Tuple[str, float]]:
+                     selection_strategy: str = "trust_weighted",
+                     alpha: float = None, beta: float = None, gamma: float = None) -> List[Tuple[str, float]]:
         """
-        Select optimal agents using trust-aware MARL
+        Select optimal agents using trust-aware MARL with DYNAMIC weights
         
-        Implementation of: P(a_i) = exp(Q_trust(s,a_i)/τ) / Σ exp(Q_trust(s,a_j)/τ)
+        Implementation of paper's SelectionScore formula:
+        SelectionScore = α·SBERT_similarity + β·TrustScore + γ·HistoricalPerformance
+        
+        CRITICAL FIX: Support dynamic hyperparameter optimization weights
         
         Args:
             state: Current MARL state
             num_agents: Number of agents to select
             selection_strategy: Selection strategy
+            alpha: Dynamic SBERT similarity weight (for hyperparameter optimization)
+            beta: Dynamic trust weight (for hyperparameter optimization)
+            gamma: Dynamic historical performance weight (for hyperparameter optimization)
             
         Returns:
             List of (agent_id, selection_probability) tuples
@@ -253,11 +260,11 @@ class TrustAwareMARLEngine:
             if not available_agents:
                 return []
             
-            # Compute trust-weighted Q-values for each agent
+            # Compute SelectionScore for each agent using paper's formula with DYNAMIC weights
             agent_scores = {}
             for agent_id in available_agents:
-                q_trust = self._compute_trust_weighted_q_value(state, agent_id)
-                agent_scores[agent_id] = q_trust
+                selection_score = self._compute_selection_score(state, agent_id, alpha, beta, gamma)
+                agent_scores[agent_id] = selection_score
             
             # Apply selection strategy
             if selection_strategy == "trust_weighted":
@@ -278,24 +285,14 @@ class TrustAwareMARLEngine:
                     agent_scores, num_agents, self.temperature
                 )
             
-            # Create selection actions
-            for agent_id, prob in selected_agents:
-                action = MARLAction(
-                    action_id=f"action_{uuid.uuid4().hex[:12]}",
-                    action_type=ActionType.SELECT_AGENT,
-                    agent_id=agent_id,
-                    parameters={'selection_probability': prob, 'q_value': agent_scores[agent_id]},
-                    expected_reward=agent_scores[agent_id],
-                    confidence=prob,
-                    timestamp=datetime.now()
-                )
-                self.action_history.append(action)
+            # Log selection details
+            logger.info(f"🎯 Agent selection (α={alpha}, β={beta}, γ={gamma}): "
+                       f"{[(aid, f'{score:.3f}') for aid, score in selected_agents]}")
             
-            logger.info(f"Selected {len(selected_agents)} agents using {selection_strategy}")
             return selected_agents
             
         except Exception as e:
-            logger.error(f"Failed to select agents: {e}")
+            logger.error(f"Agent selection failed: {e}")
             return []
     
     def coordinate_agents(self, selected_agents: List[str], 
@@ -351,6 +348,92 @@ class TrustAwareMARLEngine:
             logger.error(f"Failed to coordinate agents: {e}")
             return {}
     
+    def calculate_system_reward(self, mrr: float, ndcg5: float, art: float) -> float:
+        """
+        🎯 PAPER EQUATION 12: r = λ1⋅MRR + λ2⋅NDCG@5 - λ3⋅ART
+        
+        Calculate system reward using the exact paper formula
+        
+        Args:
+            mrr: Mean Reciprocal Rank
+            ndcg5: NDCG@5 score
+            art: Average Response Time
+            
+        Returns:
+            System reward value
+        """
+        try:
+            # 🎯 PAPER PARAMETERS: 论文中的λ权重设置
+            lambda1 = 0.6   # MRR importance (主要指标)
+            lambda2 = 0.3   # NDCG@5 importance (质量指标)
+            lambda3 = 0.1   # ART penalty (效率指标，负号因为要最小化响应时间)
+            
+            # 论文标准化：ART normalization to [0,1] 
+            # 假设最大合理响应时间为5秒 (基于论文实验环境)
+            normalized_art = min(art / 5.0, 1.0)
+            
+            # 🎯 PAPER EQUATION 12的严格实现
+            reward = lambda1 * mrr + lambda2 * ndcg5 - lambda3 * normalized_art
+            
+            logger.debug(f"📊 Paper Equation 12: r = λ1⋅MRR + λ2⋅NDCG@5 - λ3⋅ART")
+            logger.debug(f"    = {lambda1}×{mrr:.3f} + {lambda2}×{ndcg5:.3f} - {lambda3}×{normalized_art:.3f}")
+            logger.debug(f"    = {reward:.3f}")
+            
+            return reward
+            
+        except Exception as e:
+            logger.error(f"Failed to calculate system reward: {e}")
+            return 0.0
+
+    def update_agent_competence(self, agent_id: str, system_reward: float, 
+                               task_context: Optional[Dict[str, Any]] = None) -> float:
+        """
+        Update agent competence using paper's formula
+        
+        Implementation of competence update: C_t = (1-α)C_{t-1} + α·p_s
+        where p_s is performance score derived from system reward using sigmoid
+        
+        Args:
+            agent_id: Agent ID
+            system_reward: System reward from calculate_system_reward
+            task_context: Optional task context for specialty matching
+            
+        Returns:
+            Updated competence score
+        """
+        try:
+            # Paper's learning rate
+            alpha = 0.1  # Learning rate as mentioned in paper
+            
+            # Get current competence
+            current_competence = self.agent_performance.get(agent_id, {}).get('competence', 0.5)
+            
+            # Convert system reward to performance score using sigmoid
+            # Equation: p_s = sigmoid(k × r) where k is scaling factor
+            k = 0.05  # Scaling factor for reward sensitivity
+            performance_score = 1.0 / (1.0 + np.exp(-k * system_reward))
+            
+            # Update competence using paper's formula: C_t = (1-α)C_{t-1} + α·p_s
+            new_competence = (1 - alpha) * current_competence + alpha * performance_score
+            
+            # Ensure competence is in [0, 1] range
+            new_competence = max(0.0, min(1.0, new_competence))
+            
+            # Update agent performance data
+            if agent_id not in self.agent_performance:
+                self.agent_performance[agent_id] = {}
+            self.agent_performance[agent_id]['competence'] = new_competence
+            
+            logger.debug(f"Competence update for {agent_id}: "
+                        f"{current_competence:.3f} → {new_competence:.3f} "
+                        f"(reward: {system_reward:.3f}, p_s: {performance_score:.3f})")
+            
+            return new_competence
+            
+        except Exception as e:
+            logger.error(f"Failed to update agent competence for {agent_id}: {e}")
+            return 0.5
+
     def update_q_values(self, experience: MARLExperience) -> None:
         """
         Update Q-values using trust-aware Q-learning
@@ -474,9 +557,130 @@ class TrustAwareMARLEngine:
         except Exception as e:
             logger.error(f"Failed to replay experience: {e}")
     
+    def _compute_selection_score(self, state: MARLState, agent_id: str, 
+                                alpha: float = None, beta: float = None, gamma: float = None) -> float:
+        """
+        Compute SelectionScore using paper's formula with DYNAMIC weights
+        
+        Implementation of: SelectionScore = α·SBERT_similarity + β·TrustScore + γ·HistoricalPerformance
+        
+        CRITICAL FIX: Use dynamic weights from hyperparameter optimization instead of hardcoded values
+        
+        Args:
+            state: Current state
+            agent_id: Agent ID
+            alpha: SBERT similarity weight (dynamic from hyperparameter optimization)
+            beta: Trust score weight (dynamic from hyperparameter optimization)
+            gamma: Historical performance weight (dynamic from hyperparameter optimization)
+            
+        Returns:
+            SelectionScore value
+        """
+        try:
+            # Use dynamic weights if provided, otherwise fallback to default values
+            alpha = alpha if alpha is not None else 0.6   # SBERT similarity weight
+            beta = beta if beta is not None else 0.25     # Trust score weight  
+            gamma = gamma if gamma is not None else 0.15  # Historical performance weight
+            
+            # 1. SBERT similarity component
+            sbert_similarity = self._compute_sbert_similarity(state, agent_id)
+            
+            # 2. Trust score component
+            trust_score = self.agent_trust_scores.get(agent_id, 0.5)
+            
+            # 3. Historical performance component
+            historical_performance = self._compute_historical_performance(agent_id)
+            
+            # Calculate SelectionScore using paper's formula with DYNAMIC weights
+            selection_score = (
+                alpha * sbert_similarity + 
+                beta * trust_score + 
+                gamma * historical_performance
+            )
+            
+            logger.debug(f"SelectionScore for {agent_id}: "
+                        f"α×SBERT={alpha}×{sbert_similarity:.3f} + "
+                        f"β×Trust={beta}×{trust_score:.3f} + "
+                        f"γ×History={gamma}×{historical_performance:.3f} = {selection_score:.3f}")
+            
+            return max(0.0, min(1.0, selection_score))
+            
+        except Exception as e:
+            logger.error(f"Failed to compute SelectionScore for {agent_id}: {e}")
+            return 0.5
+
+    def _compute_sbert_similarity(self, state: MARLState, agent_id: str) -> float:
+        """
+        Compute SBERT similarity between query and agent expertise
+        
+        Args:
+            state: Current MARL state
+            agent_id: Agent ID
+            
+        Returns:
+            SBERT similarity score (0.0-1.0)
+        """
+        try:
+            # Extract query features from state
+            query_features = state.query_features
+            agent_features = state.agent_features.get(agent_id, np.zeros_like(query_features))
+            
+            # Compute cosine similarity between query and agent features
+            if len(query_features) > 0 and len(agent_features) > 0:
+                # Normalize vectors
+                query_norm = np.linalg.norm(query_features)
+                agent_norm = np.linalg.norm(agent_features)
+                
+                if query_norm > 0 and agent_norm > 0:
+                    # Cosine similarity: cos(θ) = (q·e) / (||q|| * ||e||)
+                    similarity = np.dot(query_features, agent_features) / (query_norm * agent_norm)
+                    # Convert from [-1, 1] to [0, 1] range
+                    similarity = (similarity + 1.0) / 2.0
+                else:
+                    similarity = 0.5  # Default neutral similarity
+            else:
+                similarity = 0.5
+                
+            return max(0.0, min(1.0, similarity))
+            
+        except Exception as e:
+            logger.error(f"SBERT similarity computation failed for {agent_id}: {e}")
+            return 0.5
+
+    def _compute_historical_performance(self, agent_id: str) -> float:
+        """
+        Compute historical performance for an agent
+        
+        Args:
+            agent_id: Agent ID
+            
+        Returns:
+            Historical performance score (0.0-1.0)
+        """
+        try:
+            performance_data = self.agent_performance.get(agent_id, {})
+            
+            # Extract performance metrics
+            success_rate = performance_data.get('success_rate', 0.5)
+            avg_reward = performance_data.get('avg_reward', 0.5)
+            collaboration_score = performance_data.get('collaboration_score', 0.5)
+            
+            # Weight different performance aspects
+            historical_performance = (
+                0.4 * success_rate +           # Task completion success
+                0.4 * avg_reward +             # Reward performance
+                0.2 * collaboration_score      # Collaboration effectiveness
+            )
+            
+            return max(0.0, min(1.0, historical_performance))
+            
+        except Exception as e:
+            logger.error(f"Historical performance computation failed for {agent_id}: {e}")
+            return 0.5
+
     def _compute_trust_weighted_q_value(self, state: MARLState, agent_id: str) -> float:
         """
-        Compute trust-weighted Q-value for agent selection
+        Legacy method - kept for compatibility but replaced by _compute_selection_score
         
         Implementation of: Q_trust(s,a) = Σ w_i * Q_i(s,a)
         
@@ -506,12 +710,8 @@ class TrustAwareMARLEngine:
             # Trust weight
             trust_score = self.agent_trust_scores.get(agent_id, 0.5)
             
-            # Agent-specific features
-            agent_features = state.agent_features.get(agent_id, np.zeros(10))
-            feature_score = np.mean(agent_features) if len(agent_features) > 0 else 0.0
-            
-            # Trust-weighted Q-value
-            q_trust = base_q + self.trust_weight * trust_score + 0.1 * feature_score
+            # Trust-aware Q-learning: Q(s,a) = Q_base(s,a) + β × TrustScore
+            q_trust = base_q + self.trust_weight * trust_score
             
             return q_trust
             

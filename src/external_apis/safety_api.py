@@ -134,7 +134,7 @@ class AviationSafetyAPI:
         base_incidents = []
         current_year = datetime.now().year
         
-        # Generate realistic incident distribution
+        # Generate incident distribution
         for year in range(current_year - 20, current_year + 1):
             # More incidents in earlier years
             incident_chance = 0.15 * (1 - (current_year - year) / 20)

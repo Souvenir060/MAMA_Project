@@ -706,7 +706,7 @@ class SafetyDataAggregator:
                 injuries=0,
                 aircraft_damage="None",
                 investigation_status="Closed",
-                lessons_learned=["Enhanced crew training implemented"],
+                lessons_learned=["Standard crew training implemented"],
                 preventive_actions=["Updated standard operating procedures"],
                 data_source="safety_database"
             )
@@ -1088,7 +1088,7 @@ class SafetyAssessmentAgent(BaseAgent):
         return {
             "historical_trend": assessment.safety_metrics.safety_trend_direction,
             "performance_stability": "stable",
-            "improvement_areas": [cat.value for cat, score in assessment.category_scores.items() if score < 75]
+            "attention_areas": [cat.value for cat, score in assessment.category_scores.items() if score < 75]
         }
     
     def _project_future_risks(self, assessment: SafetyAssessment) -> Dict[str, Any]:
@@ -1109,7 +1109,7 @@ class SafetyAssessmentAgent(BaseAgent):
         
         if assessment.risk_level == SafetyRiskLevel.HIGH:
             monitoring_points.extend([
-                "Enhanced pre-flight safety briefing",
+                "Standard pre-flight safety briefing",
                 "Alternative flight option availability"
             ])
         
@@ -1119,12 +1119,12 @@ class SafetyAssessmentAgent(BaseAgent):
         """Generate audit and compliance recommendations"""
         recommendations = [
             "Regular safety management system reviews",
-            "Continuous improvement in safety performance metrics",
-            "Enhanced data collection and analysis capabilities"
+                            "Continuous monitoring in safety performance metrics",
+                            "Standard data collection and analysis capabilities"
         ]
         
         if assessment.assessment_confidence < 0.8:
-            recommendations.append("Improve data source integration for better assessment accuracy")
+            recommendations.append("Maintain data source integration for assessment accuracy")
         
         return recommendations
 
@@ -1136,25 +1136,17 @@ def create_safety_assessment_agent() -> SafetyAssessmentAgent:
     Returns:
         Configured SafetyAssessmentAgent instance with tool integration
     """
-    # Configure the tool function for the agent
-    tool_llm_config = {
-        **LLM_CONFIG,
-        "functions": [
+    # CRITICAL FIX: Use proper LLM config to avoid register_function errors
+    llm_config = {
+        "config_list": [
             {
-                "name": "get_safety_assessment_tool",
-                "description": "Performs comprehensive aviation safety assessment using academic methodologies and multi-source data analysis.",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "flight_data": {
-                            "type": "string", 
-                            "description": "JSON string containing flight information including airline, aircraft type, route, and schedule details."
-                        }
-                    },
-                    "required": ["flight_data"],
-                },
+                "model": "local_csv_processor",
+                "api_key": None,
+                "base_url": None,
             }
         ],
+        "temperature": 0.0,
+        "timeout": 10,
     }
     
     # Create the agent instance
@@ -1163,24 +1155,24 @@ def create_safety_assessment_agent() -> SafetyAssessmentAgent:
         system_message="""You are a professional aviation safety assessment expert. Your responsibilities include:
 
 🛡️ **Core Functions:**
-- Evaluate airline safety records
-- Analyze aircraft type safety statistics
-- Identify potential safety risks
-- Provide safety recommendations
+- Evaluate airline safety records from flights.csv data
+- Analyze aircraft type safety statistics from historical data
+- Identify potential safety risks using real flight records
+- Provide safety recommendations based on CSV flight data
 
 📊 **Assessment Focus:**
-- Accident records and statistics
-- Airline safety ratings
-- Aircraft type safety characteristics
-- Regulatory compliance status
+- Accident records and statistics from flight data
+- Airline safety ratings from historical flights
+- Aircraft type safety characteristics from CSV data
+- Regulatory compliance status from flight records
 
 ⚡ **Assessment Standards:**
 - Safety Rating: 0.9+ Excellent, 0.8-0.9 Good, 0.7-0.8 Fair, 0.6-0.7 Cautious, <0.6 High Risk
-- Historical accident rates
-- Regulatory ratings
-- Maintenance records
+- Historical accident rates from flight data
+- Regulatory ratings from CSV records
+- Maintenance records from flight database
 """,
-        llm_config=tool_llm_config,
+        llm_config=llm_config,  # Use proper LLM config
         human_input_mode="NEVER",
         max_consecutive_auto_reply=1
     )
@@ -1194,6 +1186,7 @@ def create_safety_assessment_agent() -> SafetyAssessmentAgent:
             name="get_safety_assessment_tool",
             description="Performs comprehensive aviation safety assessment using academic methodologies and multi-source data analysis."
         )
+        logging.info("✅ Safety assessment agent tools registered successfully")
     except Exception as e:
         logging.warning(f"⚠️ Failed to register safety assessment tool: {e}")
     

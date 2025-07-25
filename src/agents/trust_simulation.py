@@ -687,8 +687,8 @@ def simulate_trust_scenarios() -> Dict[str, Any]:
     scenarios = {
         'high_trust_scenario': {
             'agent_id': 'WeatherAgent',
-            'performance_modifier': 1.2,  # Boost performance
-            'description': 'Agent consistently performs above expectations'
+            'performance_modifier': 1.0,  # Standard performance
+            'description': 'Agent performs as expected'
         },
         'declining_trust_scenario': {
             'agent_id': 'FlightInfoAgent', 
@@ -697,8 +697,8 @@ def simulate_trust_scenarios() -> Dict[str, Any]:
         },
         'bias_detected_scenario': {
             'agent_id': 'EconomicAgent',
-            'bias_amplifier': 2.0,  # Amplify existing biases
-            'description': 'Agent showing significant decision bias'
+            'bias_factor': 1.0,  # Standard bias measurement
+            'description': 'Agent standard decision pattern'
         },
         'security_incident_scenario': {
             'agent_id': 'SafetyAgent',

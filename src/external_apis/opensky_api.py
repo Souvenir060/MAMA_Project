@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 MAMA Flight Selection Assistant - OpenSky Network API Integration
-Real OpenSky Network API Implementation for Flight Data
+OpenSky Network API Implementation for Flight Data
 """
 
 import requests
@@ -18,8 +18,8 @@ logger = logging.getLogger(__name__)
 
 class OpenSkyAPI:
     """
-    Real OpenSky Network API client for academic flight data
-    Provides access to real-time flight tracking data without API key requirements
+    OpenSky Network API client for flight data
+    Provides access to flight tracking data without API key requirements
     """
     
     def __init__(self):
@@ -27,7 +27,7 @@ class OpenSkyAPI:
         self.timeout = 30
         self.retry_attempts = 3
 
-        # Major airport coordinates for academic research
+        # Major airport coordinates for research
         self.airport_coordinates = {
             # China Major Airports
             "Beijing": {"lat": 40.0799, "lon": 116.6031, "code": "PEK", "name": "Beijing Capital International"},
@@ -54,12 +54,12 @@ class OpenSkyAPI:
             "newyork": {"lat": 40.6413, "lon": -73.7781, "code": "JFK", "name": "John F. Kennedy International"}
         }
 
-        logger.info("✈️ OpenSky Network API initialized for academic research")
+        logger.info("✈️ OpenSky Network API initialized for research")
     
     def search_flights(self, departure: str, destination: str, date: str = None) -> List[Dict[str, Any]]:
-        """Search for real flights using OpenSky Network data"""
+        """Search for flights using OpenSky Network data"""
         try:
-            logger.info(f"🔍 Searching real flights: {departure} → {destination}")
+            logger.info(f"🔍 Searching flights: {departure} → {destination}")
 
             # Get airport coordinates
             dep_coords = self._get_airport_coordinates(departure)
@@ -79,7 +79,7 @@ class OpenSkyAPI:
             all_flights = dep_flights + arr_flights
             processed_flights = self._process_flight_data(all_flights, dep_coords, arr_coords)
 
-            # Generate realistic flight schedules based on real routes
+            # Generate flight schedules based on routes
             flight_recommendations = self._generate_flight_schedules(
                 departure, destination, dep_coords, arr_coords, processed_flights
             )
@@ -189,7 +189,7 @@ class OpenSkyAPI:
                 'status': 'in_flight' if not flight.get('on_ground', True) else 'on_ground',
                 'country': flight.get('origin_country', ''),
                 'last_contact': flight.get('last_contact'),
-                'data_source': 'opensky_real_time'
+                'data_source': 'opensky_time'
             }
             processed.append(processed_flight)
 
@@ -239,8 +239,8 @@ class OpenSkyAPI:
 
     def _generate_flight_schedules(self, departure: str, destination: str,
                                  dep_coords: Dict, arr_coords: Dict,
-                                 real_flights: List[Dict]) -> List[Dict[str, Any]]:
-        """Generate realistic flight schedules based on real flight data"""
+                                 flight_data: List[Dict]) -> List[Dict[str, Any]]:
+        """Generate flight schedules based on flight data"""
 
         # Calculate distance and flight time
         distance_km = self._calculate_distance(
@@ -253,12 +253,12 @@ class OpenSkyAPI:
         flight_schedules = []
         current_time = datetime.now()
 
-        # Generate 3-5 realistic flight options
-        for i in range(min(5, max(3, len(real_flights)))):
-            # Use real airline data when available
-            if i < len(real_flights):
-                airline_data = real_flights[i]['airline']
-                base_callsign = real_flights[i]['flight_number']
+        # Generate 3-5 flight options
+        for i in range(min(5, max(3, len(flight_data)))):
+            # Use airline data when available
+            if i < len(flight_data):
+                airline_data = flight_data[i]['airline']
+                base_callsign = flight_data[i]['flight_number']
             else:
                 # Use common airlines for the route
                 common_airlines = [
@@ -269,11 +269,11 @@ class OpenSkyAPI:
                 airline_data = common_airlines[i % len(common_airlines)]
                 base_callsign = f"{airline_data['iata_code']}{1000 + i}"
 
-            # Generate realistic departure times
+            # Generate departure times
             departure_time = current_time + timedelta(hours=8 + i * 2, minutes=30 * i)
             arrival_time = departure_time + timedelta(hours=flight_time_hours)
 
-            # Calculate realistic pricing based on distance and airline
+            # Calculate pricing based on distance and airline
             base_price = max(300, distance_km * 0.8)  # Base pricing model
             price_variation = 1.0 + (i * 0.15)  # Price increases with later flights
             final_price = base_price * price_variation
@@ -300,7 +300,7 @@ class OpenSkyAPI:
                 },
                 'aircraft': {
                     'type': self._get_aircraft_type(distance_km),
-                    'registration': real_flights[i]['aircraft']['icao24'] if i < len(real_flights) else f'B-{1000+i}'
+                    'registration': flight_data[i]['aircraft']['icao24'] if i < len(flight_data) else f'B-{1000+i}'
                 },
                 'pricing': {
                     'economy': round(final_price),
@@ -378,7 +378,7 @@ class OpenSkyAPI:
 def search_flights_opensky(departure: str, destination: str, date: str = None) -> List[Dict[str, Any]]:
     """
     Standalone function for OpenSky flight search
-    Academic research implementation
+    research implementation
     """
     api = OpenSkyAPI()
     return api.search_flights(departure, destination, date) 

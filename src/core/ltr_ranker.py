@@ -2,7 +2,7 @@
 """
 LTR (Learning to Rank) System
 
-Academic implementation of Learning-to-Rank algorithms for flight/option ranking
+Implementation of Learning-to-Rank algorithms for flight/option ranking
 in the MAMA system. Implements multiple ranking approaches with rigorous mathematical
 foundations.
 
@@ -228,7 +228,7 @@ class ListwiseRanker(nn.Module):
         # Normalize to get NDCG
         ndcg = dcg / (ideal_dcg + 1e-8)
         
-        # Return negative NDCG as loss (we want to maximize NDCG)
+        # Return negative NDCG as loss (for gradient descent)
         return -ndcg
 
 class LTRRankingEngine:

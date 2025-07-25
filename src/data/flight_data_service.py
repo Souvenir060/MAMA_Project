@@ -56,13 +56,13 @@ class FlightDataService:
                 if filters:
                     flights = self._apply_filters(flights, filters)
                 
-                # Enhance flight data with additional processing
-                enhanced_flights = self._enhance_flight_data(flights, departure, destination, date)
+                # Process flight data with additional computed fields
+                processed_flights = self._process_flight_data(flights, departure, destination, date)
                 
                 return {
                     'status': 'success',
-                    'flights': enhanced_flights,
-                    'total_count': len(enhanced_flights),
+                    'flights': processed_flights,
+                    'total_count': len(processed_flights),
                     'search_params': {
                         'departure': departure,
                         'destination': destination,
@@ -163,50 +163,50 @@ class FlightDataService:
             logger.error(f"Error applying filters: {e}")
             return flights
     
-    def _enhance_flight_data(self, flights: List[Dict[str, Any]], departure: str, 
+    def _process_flight_data(self, flights: List[Dict[str, Any]], departure: str, 
                            destination: str, date: str) -> List[Dict[str, Any]]:
-        """Enhance flight data with additional computed fields"""
-        enhanced_flights = []
+        """Process flight data with additional computed fields"""
+        processed_flights = []
         
         for flight in flights:
             try:
-                enhanced_flight = flight.copy()
+                processed_flight = flight.copy()
                 
                 # Add computed fields
-                enhanced_flight['route'] = f"{departure} -> {destination}"
-                enhanced_flight['search_date'] = date
+                processed_flight['route'] = f"{departure} -> {destination}"
+                processed_flight['search_date'] = date
                 
                 # Calculate stops (default to direct flight if not specified)
-                if 'stops' not in enhanced_flight:
-                    enhanced_flight['stops'] = 0
+                if 'stops' not in processed_flight:
+                    processed_flight['stops'] = 0
                 
                 # Add flight type classification
-                enhanced_flight['flight_type'] = self._classify_flight_type(enhanced_flight)
+                processed_flight['flight_type'] = self._classify_flight_type(processed_flight)
                 
                 # Add time-based classification
-                enhanced_flight['time_category'] = self._classify_time_category(enhanced_flight.get('departure_time', ''))
+                processed_flight['time_category'] = self._classify_time_category(processed_flight.get('departure_time', ''))
                 
                 # Add price category
-                enhanced_flight['price_category'] = self._classify_price_category(enhanced_flight.get('price', 0))
+                processed_flight['price_category'] = self._classify_price_category(processed_flight.get('price', 0))
                 
                 # Add reliability score based on airline and flight status
-                enhanced_flight['reliability_score'] = self._calculate_reliability_score(enhanced_flight)
+                processed_flight['reliability_score'] = self._calculate_reliability_score(processed_flight)
                 
                 # Add convenience score
-                enhanced_flight['convenience_score'] = self._calculate_convenience_score(enhanced_flight)
+                processed_flight['convenience_score'] = self._calculate_convenience_score(processed_flight)
                 
                 # Store in cache for quick retrieval
-                flight_id = enhanced_flight.get('flight_id')
+                flight_id = processed_flight.get('flight_id')
                 if flight_id:
-                    self.processed_flights_cache[flight_id] = enhanced_flight
+                    self.processed_flights_cache[flight_id] = processed_flight
                 
-                enhanced_flights.append(enhanced_flight)
+                processed_flights.append(processed_flight)
                 
             except Exception as e:
-                logger.error(f"Error enhancing flight data: {e}")
-                enhanced_flights.append(flight)  # Add original if enhancement fails
+                logger.error(f"Error processing flight data: {e}")
+                processed_flights.append(flight)  # Add original if processing fails
         
-        return enhanced_flights
+        return processed_flights
     
     def _compare_time(self, flight_time: str, comparison_time: str, operator: str) -> bool:
         """Compare flight times"""

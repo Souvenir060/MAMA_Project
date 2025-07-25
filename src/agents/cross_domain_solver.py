@@ -5,7 +5,7 @@ This module implements intelligent cross-domain problem solving with:
 1. Multi-agent output integration
 2. Conflict detection and resolution
 3. Trust-weighted decision making
-4. OpenAI API integration for enhanced reasoning
+4. Standard conflict resolution analysis
 """
 
 import json
@@ -458,7 +458,7 @@ class ConflictResolver:
             'primary_agent': primary_agent,
             'confidence': SolutionConfidence.MEDIUM.value,
             'timing_alternatives': timing_alternatives,
-            'reasoning': f"Optimized timing based on trust and preference strength",
+                            'reasoning': f"Standard timing based on trust and preference strength",
             'flexibility_window': '±2 hours recommended for optimal alternatives'
         }
     
@@ -595,10 +595,10 @@ class ConflictResolver:
             key_recommendations = self._extract_key_recommendations(resolutions)
             unified_solution['key_recommendations'] = key_recommendations
         
-        # Add AI-enhanced reasoning if available
-        ai_reasoning = self._get_ai_enhanced_reasoning(resolutions, recommendations)
-        if ai_reasoning:
-            unified_solution['ai_reasoning'] = ai_reasoning
+        # Add standard reasoning analysis
+        reasoning_summary = self._analyze_reasoning_summary(resolutions, recommendations)
+        if reasoning_summary:
+            unified_solution['reasoning_analysis'] = reasoning_summary
         
         return unified_solution
     
@@ -728,64 +728,32 @@ class ConflictResolver:
         
         return key_recs
     
-    def _get_ai_enhanced_reasoning(self, resolutions: List[Dict[str, Any]], 
+    def _analyze_reasoning_summary(self, resolutions: List[Dict[str, Any]], 
                                   recommendations: List[AgentRecommendation]) -> Optional[Dict[str, Any]]:
-        """Get AI-enhanced reasoning using OpenAI API"""
+        """Analyze reasoning summary using standard methods"""
         try:
-            # Prepare context for AI reasoning
-            context = {
-                'resolutions': resolutions,
-                'recommendations_summary': [
-                    {
-                        'agent': rec.agent_id,
-                        'confidence': rec.confidence,
-                        'trust_score': rec.trust_score,
-                        'key_points': rec.supporting_evidence[:3]  # Top 3 evidence points
-                    }
-                    for rec in recommendations
-                ]
+            # Basic statistical analysis only
+            if not recommendations:
+                return None
+                
+            # Calculate basic statistics
+            confidence_scores = [rec.confidence for rec in recommendations]
+            trust_scores = [rec.trust_score for rec in recommendations]
+            
+            analysis_summary = {
+                'avg_confidence': sum(confidence_scores) / len(confidence_scores),
+                'max_confidence': max(confidence_scores),
+                'min_confidence': min(confidence_scores),
+                'avg_trust': sum(trust_scores) / len(trust_scores),
+                'num_resolutions': len(resolutions),
+                'num_recommendations': len(recommendations),
+                'source': 'statistical_analysis'
             }
             
-            prompt = f"""
-            Analyze the following flight recommendation conflict resolution scenario and provide enhanced reasoning:
-            
-            Context: {json.dumps(context, indent=2)}
-            
-            Please provide:
-            1. A concise analysis of the decision-making process
-            2. Risk assessment and mitigation strategies
-            3. Confidence level justification
-            4. Alternative considerations
-            
-            Respond in JSON format with keys: analysis, risk_assessment, confidence_justification, alternatives
-            """
-            
-            response = openai.ChatCompletion.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": "You are an expert flight recommendation analyst providing decision support."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=500,
-                temperature=0.3
-            )
-            
-            ai_content = response.choices[0].message.content.strip()
-            
-            # Try to parse as JSON
-            try:
-                ai_reasoning = json.loads(ai_content)
-                return ai_reasoning
-            except json.JSONDecodeError:
-                # If not valid JSON, return as text analysis
-                return {
-                    'analysis': ai_content,
-                    'source': 'openai_gpt4',
-                    'timestamp': datetime.now().isoformat()
-                }
+            return analysis_summary
                 
         except Exception as e:
-            logger.warning(f"Failed to get AI-enhanced reasoning: {e}")
+            logger.warning(f"Failed to analyze reasoning: {e}")
             return None
     
     def _calculate_resolution_confidence(self, recommendations: List[AgentRecommendation]) -> str:
@@ -921,7 +889,7 @@ class CrossDomainSolver:
         if preference_weights['safety_importance'] > 0.5:
             # High safety preference - increase safety confidence
             if 'safety_recommendation' in resolution:
-                resolution['safety_priority'] = 'enhanced'
+                resolution['safety_priority'] = 'standard'
         
         if preference_weights['cost_importance'] > 0.4:
             # High cost sensitivity - add cost optimization note
@@ -967,7 +935,7 @@ class CrossDomainSolver:
                 metrics['conflict_resolution_score'] = 0.8  # Good resolution of lower severity
                 metrics['processing_complexity'] = 'medium'
         else:
-            metrics['conflict_resolution_score'] = 1.0  # Perfect - no conflicts
+            metrics['conflict_resolution_score'] = 1.0  # No conflicts detected
             metrics['processing_complexity'] = 'low'
         
         return metrics

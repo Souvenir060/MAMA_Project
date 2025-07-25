@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 class OpenWeatherMapAPI:
     """
     OpenWeatherMap API client for weather data retrieval
-    Academic implementation with proper error handling
+    Implementation with proper error handling
     """
     
     def __init__(self, api_key: str = "498ae38fb9831291de1d0432ea2fdf07"):
@@ -147,7 +147,7 @@ class OpenWeatherMapAPI:
             return {}
     
     def _calculate_weather_safety_scores(self, weather: Dict[str, Any]) -> Dict[str, float]:
-        """Calculate safety scores based on real weather data"""
+        """Calculate safety scores based on weather data"""
         # Visibility score (most critical for aviation)
         visibility = weather.get('visibility', 10)
         if visibility >= 10:
@@ -278,7 +278,7 @@ class OpenWeatherMapAPI:
         if dep_score >= 0.8 and dest_score >= 0.8:
             return "Current conditions favorable for immediate departure"
         elif dep_score < 0.6 or dest_score < 0.6:
-            return "Consider delaying flight 2-4 hours for improved conditions"
+            return "Consider delaying flight 2-4 hours for better conditions"
         else:
             return "Acceptable for flight with standard precautions"
     

@@ -61,6 +61,16 @@ logger.info("\n📋 Filter Mode Configuration:")
 for mode, config in filter_modes.items():
     logger.info(f"  {mode}: Safety threshold={config['safety_threshold']}, Budget multiplier={config['budget_multiplier']}x")
 
+# Initialize models ONCE
+logger.info("🚀 Initializing models once for all experiments...")
+try:
+    mama_model = MAMAFull()
+    single_agent_model = SingleAgentSystemModel()
+    logger.info("✅ Models initialized successfully - significant speedup achieved!")
+except Exception as e:
+    logger.error(f"❌ Model initialization failed: {e}")
+    sys.exit(1)
+
 def generate_candidates():
     """Generate candidate flights"""
     candidates = []
@@ -103,7 +113,7 @@ def generate_optimal_ranking(candidates):
     # Use comprehensive scoring for optimal ranking
     scored_candidates = []
     for candidate in candidates:
-        # Ground Truth uses perfect weight balance
+        # Ground Truth uses standard weight balance
         score = (
             candidate['safety_score'] * 0.3 +
             (2000 - candidate['price']) / 2000 * 0.25 +
@@ -117,7 +127,6 @@ def generate_optimal_ranking(candidates):
 
 def process_with_mama_full(candidates, query_data):
     """Process query with MAMA Full model"""
-    model = MAMAFull()
     
     # Prepare query for model
     query = {
@@ -129,20 +138,26 @@ def process_with_mama_full(candidates, query_data):
             "priority": query_data.get("priority", "safety"),
             "budget": query_data.get("budget", "medium")
         },
-        "flight_options": candidates,
-        "ground_truth_id": query_data.get("ground_truth_id", "")
+        "flight_candidates": candidates,  # 🔧 FIX: Use correct key
+        "candidate_flights": candidates,  # Also include alternative key
+        "ground_truth_ranking": [query_data.get("ground_truth_id", "")]
     }
     
     # Process with model
-    result = model.process_query(query)
+    result = mama_model.process_query(query)
     
     # Extract recommendations
     recommendations = result.get("recommendations", [])
-    return [rec.get("flight_id", "") for rec in recommendations]
+    ranking = result.get("ranking", [])
+    
+    # Return flight IDs in order
+    if ranking:
+        return ranking[:10]  # Top 10 results
+    else:
+        return [rec.get("flight_id", "") for rec in recommendations[:10]]
 
 def process_with_single_agent(candidates, query_data):
     """Process query with Single Agent model"""
-    model = SingleAgentSystemModel()
     
     # Prepare query for model
     query = {
@@ -154,16 +169,23 @@ def process_with_single_agent(candidates, query_data):
             "priority": query_data.get("priority", "safety"),
             "budget": query_data.get("budget", "medium")
         },
-        "flight_options": candidates,
-        "ground_truth_id": query_data.get("ground_truth_id", "")
+        "flight_candidates": candidates,  # 🔧 FIX: Use correct key
+        "candidate_flights": candidates,  # Also include alternative key
+        "ground_truth_ranking": [query_data.get("ground_truth_id", "")]
     }
     
     # Process with model
-    result = model.process_query(query)
+    result = single_agent_model.process_query(query)
     
     # Extract recommendations
     recommendations = result.get("recommendations", [])
-    return [rec.get("flight_id", "") for rec in recommendations]
+    ranking = result.get("ranking", [])
+    
+    # Return flight IDs in order
+    if ranking:
+        return ranking[:10]  # Top 10 results
+    else:
+        return [rec.get("flight_id", "") for rec in recommendations[:10]]
 
 def calculate_mrr(predicted, ground_truth):
     """Calculate Mean Reciprocal Rank"""

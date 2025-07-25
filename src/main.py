@@ -35,7 +35,7 @@ from core.adaptive_interaction import (
 from core.mcp_integration import MCPClient, get_mcp_manager, start_mcp_server
 from agents.trust_manager import TrustManager
 
-# Import core academic modules
+# Import core modules
 from core.pml_system import PMLRepository, PMLTask, PMLAgent, PMLAssignment
 from core.sbert_similarity import SBERTSimilarityEngine, get_global_sbert_engine, find_similar_agents
 from core.marl_system import TrustAwareMARLEngine, MARLState, MARLAction, AgentQTable
@@ -84,7 +84,7 @@ AGENT_CAPABILITIES = {
         "accuracy_requirements": 0.98
     },
     "flight_info_agent": {
-        "specialty": "real-time aviation data retrieval and flight information processing",
+        "specialty": "aviation data retrieval and flight information processing",
         "expertise_areas": ["flight_data", "schedule_optimization", "route_analysis", "availability_tracking"],
         "input_types": ["departure", "destination", "date_range", "passenger_count"],
         "output_types": ["flight_list", "availability_status", "schedule_optimization"],
@@ -136,11 +136,11 @@ class MAMAFlightAssistant:
     """
     MAMA Flight Selection Assistant
     
-    Complete academic implementation of multi-agent system for intelligent flight 
+    Complete implementation of multi-agent system for intelligent flight 
     recommendation based on trust-aware reinforcement learning, semantic similarity 
     matching, and learning-to-rank optimization.
     
-    Academic Components:
+    Components:
     1. PML System: Structured agent profile management with capability matrices
     2. SBERT Engine: Semantic similarity computation using transformer models
     3. MARL Engine: Trust-aware Q-learning with multi-agent coordination
@@ -150,7 +150,7 @@ class MAMAFlightAssistant:
     
     def __init__(self, config: Optional[QueryProcessingConfig] = None, use_mcp: bool = True):
         """
-        Initialize MAMA Flight Assistant with complete academic-level architecture
+        Initialize MAMA Flight Assistant with complete architecture
         
         Args:
             config: Query processing configuration
@@ -160,7 +160,7 @@ class MAMAFlightAssistant:
         self.use_mcp = use_mcp
         self.logger = self._setup_logging()
         
-        # Core academic modules
+        # Core modules
         self.pml_repository: Optional[PMLRepository] = None
         self.sbert_engine: Optional[SBERTSimilarityEngine] = None
         self.marl_engine: Optional[TrustAwareMARLEngine] = None
@@ -170,7 +170,7 @@ class MAMAFlightAssistant:
         self.trust_ledger: Optional[MultiDimensionalTrustLedger] = None
         self.trust_adaptive_system: Optional[TrustAdaptiveInteractionManager] = None
         
-        # Academic evaluation systems
+        # Evaluation systems
         self.evaluator: Optional[Any] = None
         self.ground_truth_data: Optional[Dict[str, Any]] = None
         
@@ -204,7 +204,7 @@ class MAMAFlightAssistant:
         os.makedirs("models", exist_ok=True)
         os.makedirs("logs", exist_ok=True)
         
-        self.logger.info("MAMA Flight Assistant initialized with complete academic architecture")
+        self.logger.info("MAMA Flight Assistant initialized with complete architecture")
     
     def _setup_logging(self) -> logging.Logger:
         """Setup comprehensive logging configuration"""
@@ -228,7 +228,7 @@ class MAMAFlightAssistant:
     
     async def initialize_system(self):
         """
-        Initialize complete MAMA system with full academic-level components
+        Initialize complete MAMA system
         
         Initializes:
         1. PML Repository with agent capability matrices
@@ -236,7 +236,7 @@ class MAMAFlightAssistant:
         3. MARL Engine with trust-aware Q-learning
         4. LTR Engine with multi-algorithm ranking
         5. Trust ledger with Byzantine fault tolerance
-        6. Agent instances with real implementations
+        6. Agent instances with implementations
         7. MCP connections and adaptive protocols
         """
         with self.initialization_lock:
@@ -447,7 +447,7 @@ class MAMAFlightAssistant:
             raise RuntimeError(f"Trust systems initialization failed: {e}")
     
     async def _initialize_agent_instances(self):
-        """Initialize all agent instances with academic configuration"""
+        """Initialize all agent instances with configuration"""
         try:
             # Clear existing instances
             self.agent_instances.clear()
@@ -455,19 +455,19 @@ class MAMAFlightAssistant:
             # Initialize agents with roles and model
             self.agent_instances['weather_agent'] = WeatherAgent(
                 role="weather_analysis", 
-                model="real_api"
+                model="api"
             )
             self.agent_instances['safety_assessment_agent'] = SafetyAssessmentAgent(
                 role="safety_assessment", 
-                model="real_api"
+                model="api"
             )
             self.agent_instances['flight_info_agent'] = FlightInformationAgent(
                 role="flight_information", 
-                model="real_api"
+                model="api"
             )
             self.agent_instances['economic_agent'] = EconomicAgent(
                 role="economic_analysis", 
-                model="real_api"
+                model="api"
             )
             
             # Set all agents to active state and assign agent_id
@@ -545,7 +545,7 @@ class MAMAFlightAssistant:
         self.logger.info("Performance monitoring systems initialized")
     
     async def _initialize_evaluator_system(self):
-        """Initialize evaluator and ground truth data for academic evaluation"""
+        """Initialize evaluator and ground truth data for evaluation"""
         try:
             # Import evaluator
             from evaluation.standard_evaluator import StandardEvaluator
@@ -580,7 +580,7 @@ class MAMAFlightAssistant:
                 self.ground_truth_data = {}
                 self.logger.warning(f"Ground truth file not found: {ground_truth_file}")
                 
-                # Generate a simple test dataset
+                # Generate a test dataset
                 from data.generate_standard_dataset import StandardDatasetGenerator
                 generator = StandardDatasetGenerator()
                 dataset = generator.generate_comprehensive_dataset(num_queries=150)
@@ -618,9 +618,9 @@ class MAMAFlightAssistant:
         preferences: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """
-        Process flight query using complete academic MAMA system
+        Process flight query using complete MAMA system
         
-        Academic workflow implementation:
+        Workflow implementation:
         1. Semantic Query Encoding: φ(q) using SBERT transformer models
         2. Trust-aware Agent Selection: argmax_A[Q(s,a) + τ(a) + sim(q,a)]
         3. Multi-agent Coordination: Γ(A) using MARL trust-weighted policies
@@ -634,7 +634,7 @@ class MAMAFlightAssistant:
             preferences: User preferences dictionary
 
         Returns:
-            Comprehensive flight recommendations with academic metrics
+            Comprehensive flight recommendations with metrics
         """
         start_time = time.time()
         query_id = f"query_{uuid.uuid4().hex}"
@@ -695,7 +695,7 @@ class MAMAFlightAssistant:
                 'ndcg_score': integration_result.get('ndcg_score', 0.0)
             }
             
-            # Phase 4: Generate Academic Recommendations
+            # Phase 4: Generate Recommendations
             phase4_start = time.time()
             recommendations = await self._generate_complete_recommendations(
                 integration_result['consensus_decision'],
@@ -796,7 +796,7 @@ class MAMAFlightAssistant:
         """
         Perform semantic agent selection using SBERT + MARL coordination
         
-        Academic implementation:
+        Implementation:
         1. Query encoding: q_vec = SBERT(query_text)
         2. Semantic similarity: sim(q,a) = cosine(q_vec, agent_vec)
         3. Trust-weighted selection: score = α·sim + β·trust + γ·Q_value
@@ -818,13 +818,13 @@ class MAMAFlightAssistant:
         marl_state = await self._create_marl_state(query_text, departure, destination, date, preferences)
         marl_selections = await self._perform_marl_selection(marl_state, similarity_results)
         
-        # Phase 3: Constraint satisfaction and optimization
-        optimized_selection = await self._optimize_agent_selection(
+        # Phase 3: Constraint satisfaction and agent selection
+        selected_agents = await self._select_agents_with_constraints(
             similarity_results, marl_selections, preferences
         )
         
-        self.logger.info(f"Selected {len(optimized_selection)} agents using SBERT+MARL: {[a[0] for a in optimized_selection]}")
-        return optimized_selection
+        self.logger.info(f"Selected {len(selected_agents)} agents using SBERT+MARL: {[a[0] for a in selected_agents]}")
+        return selected_agents
 
     def _construct_query_representation(
         self, departure: str, destination: str, date: str, preferences: Optional[Dict[str, Any]]
@@ -897,44 +897,48 @@ class MAMAFlightAssistant:
             raise RuntimeError("MARL engine not initialized")
         
         # Incorporate semantic similarity into MARL selection
-        enhanced_state = state
-        enhanced_state.context['semantic_similarities'] = similarity_results
+        marl_state = state
+        marl_state.context['semantic_similarities'] = similarity_results
         
         # Perform trust-weighted selection using MARL
         selected_agents = self.marl_engine.select_agents(
-            state=enhanced_state,
+            state=marl_state,
             num_agents=min(self.config.max_concurrent_agents, len(AGENT_CAPABILITIES)),
             selection_strategy="trust_weighted_semantic"
         )
         
         return selected_agents
 
-    async def _optimize_agent_selection(
+    async def _select_agents_with_constraints(
         self, similarity_results: Dict[str, float], marl_selections: List[Tuple[str, float]],
         preferences: Optional[Dict[str, Any]]
     ) -> List[Tuple[str, float, float]]:
-        """Optimize agent selection using constraint satisfaction"""
-        optimized_selection = []
+        """Select agents using paper Formula 10: SelectionScore = α·SBERT + β·Trust + γ·Historical"""
+        selected_agents = []
         
-        for agent_id, marl_score in marl_selections:
+        for agent_id, historical_performance in marl_selections:
             similarity_score = similarity_results.get(agent_id, 0.0)
             trust_score = await self._get_current_trust_score(agent_id)
             
-            # Multi-criteria optimization: semantic + trust + MARL
-            combined_score = (
-                0.4 * similarity_score +
-                0.3 * trust_score +
-                0.3 * marl_score
+            # Paper Formula 10: SelectionScore = α·SBERT + β·Trust + γ·Historical
+            selection_score = (
+                self.config.alpha * similarity_score +
+                self.config.beta * trust_score +
+                self.config.gamma * historical_performance
             )
             
-            # Apply constraint filters
-            if combined_score >= self.config.trust_threshold:
-                optimized_selection.append((agent_id, similarity_score, trust_score))
+            # Apply trust threshold filter
+            if trust_score >= self.config.trust_threshold:
+                selected_agents.append((agent_id, similarity_score, trust_score))
         
-        # Sort by combined score
-        optimized_selection.sort(key=lambda x: 0.4*x[1] + 0.3*x[2] + 0.3*marl_score, reverse=True)
+        # Sort by selection score per Formula 10
+        selected_agents.sort(key=lambda x: (
+            self.config.alpha * x[1] + 
+            self.config.beta * x[2] + 
+            self.config.gamma * 0.5  # Default historical score
+        ), reverse=True)
         
-        return optimized_selection[:self.config.max_concurrent_agents]
+        return selected_agents[:self.config.max_concurrent_agents]
 
     async def _get_current_trust_score(self, agent_id: str) -> float:
         """Get current trust score for an agent"""
@@ -1144,7 +1148,7 @@ class MAMAFlightAssistant:
             if len(successful_outputs) < 2:
                 return 1.0 if successful_outputs else 0.0
             
-            # Simple consensus: based on confidence scores
+            # Consensus: based on confidence scores
             confidences = [output.get('confidence', 0.0) for output in successful_outputs]
             return np.std(confidences) < 0.2  # Low variance = high consensus
             
@@ -1254,7 +1258,7 @@ class MAMAFlightAssistant:
                 # Create feedback based on decision quality
                 feedback_labels = []
                 for decision in ranked_decisions:
-                    # Simple feedback: higher confidence + trust = better label
+                    # Feedback: higher confidence + trust = better label
                     label = decision['confidence'] * decision['trust_score']
                     feedback_labels.append(label)
                 
@@ -1299,7 +1303,7 @@ class MAMAFlightAssistant:
             trust_score = coordination_metrics.get('trust_scores', {}).get(agent_id, 0.5)
             confidence = output.get('confidence', 0.5)
             
-            # Simple ranking score: weighted combination of trust and confidence
+            # Ranking score: weighted combination of trust and confidence
             rank_score = 0.6 * trust_score + 0.4 * confidence
             
             ranked_decisions.append({
@@ -1418,7 +1422,7 @@ class MAMAFlightAssistant:
         """
         Generate complete flight recommendations based on academic consensus and ranking
         
-        Uses academic principles:
+        Uses principles:
         1. Trust-weighted aggregation: w_i = trust_i / Σ trust_scores
         2. Confidence propagation: conf_final = Σ w_i * conf_i  
         3. Multi-criteria decision making: score = α*trust + β*conf + γ*rank
@@ -1438,7 +1442,7 @@ class MAMAFlightAssistant:
                 self.logger.warning("No ranked decisions available for recommendation generation")
                 return []
             
-            # Calculate recommendation weights using academic formulas
+            # Calculate recommendation weights using formulas
             total_trust = sum(decision['trust_score'] for decision in ranked_decisions)
             total_rank = sum(decision['rank_score'] for decision in ranked_decisions)
             
@@ -1491,11 +1495,11 @@ class MAMAFlightAssistant:
             # Sort by final score
             recommendations.sort(key=lambda x: x['final_score'], reverse=True)
             
-            self.logger.info(f"Generated {len(recommendations)} academic-level recommendations")
+            self.logger.info(f"Generated {len(recommendations)} recommendations")
             return recommendations
             
         except Exception as e:
-            self.logger.error(f"Failed to generate academic recommendations: {e}")
+            self.logger.error(f"Failed to Generate Recommendations: {e}")
             return []
 
     def _categorize_agent_type(self, agent_id: str) -> str:
@@ -1561,7 +1565,7 @@ class MAMAFlightAssistant:
         # Check budget alignment
         if 'budget' in preferences and isinstance(content, dict):
             total_preferences += 1
-            # Simple budget check (this would be more sophisticated in practice)
+            # Budget check (this would be more sophisticated in practice)
             if 'price_range' in content:
                 alignment_score += 0.8  # Assume good alignment for now
             else:
@@ -1700,8 +1704,8 @@ class MAMAFlightAssistant:
         query_text: str = ""
     ):
         """
-        Update trust ledger based on REAL agent performance, evaluated against ground truth.
-        This is the academically rigorous method.
+        Update trust ledger based on agent performance, evaluated against ground truth.
+        This is the rigorous method.
         """
         
         if not hasattr(self, 'evaluator') or self.evaluator is None:
@@ -1719,27 +1723,27 @@ class MAMAFlightAssistant:
             return
 
         for agent_id, output in agent_outputs.items():
-            # Step 1: 🎯 Use the StandardEvaluator to calculate a REAL accuracy score.
+            # Step 1: 🎯 Use the StandardEvaluator to calculate a accuracy score.
             # We assume a method like `evaluate_single_agent_output` exists in your evaluator.
             # This method should compare the agent's 'output' with the 'ground_truth'.
             # This completely removes the need for proxies like 'confidence' or random 'jitter'.
             try:
-                real_accuracy = self.evaluator.evaluate_single_agent_output(
+                accuracy = self.evaluator.evaluate_single_agent_output(
                     agent_output=output, 
                     ground_truth=ground_truth,
                     agent_type=agent_id # Pass agent_id to select the right evaluation logic
                 )
             except Exception as e:
                 self.logger.error(f"Error during single agent evaluation for {agent_id}: {e}")
-                real_accuracy = 0.0 # Assume failure if evaluation fails
+                accuracy = 0.0 # Assume failure if evaluation fails
 
             performance_metrics = {
-                'accuracy': real_accuracy,
+                'accuracy': accuracy,
                 'response_time': output.get('execution_time', 1.0),
                 'data_quality': 1.0 if output.get('success', True) else 0.0
             }
             
-            # Step 2: Call the ledger's evaluation function with REAL data and task context.
+            # Step 2: Call the ledger with data and task context.
             if hasattr(self, 'trust_ledger') and self.trust_ledger is not None:
                 try:
                     # Construct task context, including preference information for expertise matching
@@ -1750,7 +1754,7 @@ class MAMAFlightAssistant:
                         'query_id': query_id
                     }
                     
-                    # Try to extract real priority from query text
+                    # Try to extract priority from query text
                     if query_text:
                         if 'safety' in query_text.lower() or 'secure' in query_text.lower():
                             task_context['preferences']['priority'] = 'safety'
@@ -1760,7 +1764,7 @@ class MAMAFlightAssistant:
                             task_context['preferences']['priority'] = 'time'
                     
                     competence_score = self.trust_ledger.evaluate_competence(agent_id, performance_metrics, task_context)
-                    self.logger.info(f"✅ Updated competence for {agent_id} with REAL accuracy: {real_accuracy:.4f}, priority: {task_context['preferences']['priority']}")
+                    self.logger.info(f"✅ Updated competence for {agent_id} with accuracy: {accuracy:.4f}, priority: {task_context['preferences']['priority']}")
                 except Exception as e:
                     self.logger.error(f"❌ Failed to evaluate competence for {agent_id}: {e}")
 
@@ -1793,7 +1797,7 @@ class MAMAFlightAssistant:
         """Calculate comprehensive system performance metrics"""
         return {
             'total_processing_time': total_processing_time,
-            'academic_components_used': ['PML', 'SBERT', 'MARL', 'LTR'],
+            'components_used': ['PML', 'SBERT', 'MARL', 'LTR'],
             'overall_success': len(recommendations) > 0,
             'system_efficiency': 1.0 / max(total_processing_time, 0.1),
             'recommendation_confidence': np.mean([r['confidence'] for r in recommendations]) if recommendations else 0.0,
@@ -1946,7 +1950,7 @@ class MAMAFlightAssistant:
                 'trust_score': 0.0
             }
         
-        # Academic consensus formula: weighted by trust and confidence
+        # Consensus formula: weighted by trust and confidence
         weights = []
         total_trust = sum(decision['trust_score'] for decision in ranked_decisions)
         total_confidence = sum(decision['confidence'] for decision in ranked_decisions)
@@ -1967,7 +1971,7 @@ class MAMAFlightAssistant:
             'confidence': 0.0,
             'trust_score': 0.0,
             'contributing_agents': [],
-            'method': 'academic_trust_weighting'
+            'method': 'trust_weighting'
         }
         
         aggregated_confidence = 0.0
@@ -2002,7 +2006,7 @@ class MAMAFlightAssistant:
         return consensus_decision
 
     def _create_decision_summary(self, recommendations: List[Dict[str, Any]]) -> str:
-        """Create comprehensive decision summary with academic insights"""
+        """Create comprehensive decision summary with insights"""
         if not recommendations:
             return "No recommendations generated due to insufficient agent consensus"
         
@@ -2032,7 +2036,7 @@ class MAMAFlightAssistant:
                 methods_used.add(r['method'])
         
         if methods_used:
-            insights.append(f"academic methods: {', '.join(methods_used)}")
+            insights.append(f"methods: {', '.join(methods_used)}")
         
         # Consensus strength
         consensus_scores = [r.get('consensus_score', 0.5) for r in recommendations]
@@ -2042,12 +2046,12 @@ class MAMAFlightAssistant:
         else:
             insights.append(f"moderate consensus (avg: {avg_consensus:.2f})")
         
-        return " | ".join(insights) if insights else "Academic flight recommendations with multi-agent consensus"
+        return " | ".join(insights) if insights else "Flight recommendations with multi-agent consensus"
 
     def _generate_detailed_explanation(
         self, recommendation: Dict[str, Any], query_context: Dict[str, Any]
     ) -> str:
-        """Generate detailed explanation using academic reasoning"""
+        """Generate detailed explanation using reasoning"""
         explanation_parts = []
         
         # Trust and confidence reasoning
@@ -2061,7 +2065,7 @@ class MAMAFlightAssistant:
         else:
             explanation_parts.append(f"Conservative recommendation with trust score {trust_score:.2f}")
         
-        # Academic method explanation
+        # Method explanation
         if 'method' in recommendation:
             method = recommendation['method']
             if 'SBERT' in method:
@@ -2080,7 +2084,7 @@ class MAMAFlightAssistant:
         
         # Route-specific insights
         route = f"{query_context.get('departure', 'origin')} to {query_context.get('destination', 'destination')}"
-        explanation_parts.append(f"optimized for {route} route characteristics")
+        explanation_parts.append(f"designed for {route} route characteristics")
         
         # Preference alignment
         preferences = query_context.get('preferences', {})
@@ -2158,7 +2162,7 @@ class MAMAFlightAssistant:
         
         export_data = {
             'system_status': await self.get_system_status(),
-            'academic_components': {
+            'components': {
                 'pml_agents': len(AGENT_CAPABILITIES) if self.pml_repository else 0,
                 'sbert_model': 'all-MiniLM-L6-v2' if self.sbert_engine else None,
                 'marl_algorithm': 'trust_aware_q_learning' if self.marl_engine else None,
@@ -2213,17 +2217,17 @@ class MAMAFlightAssistant:
             
             try:
                 # 🎯 THE ONE, FINAL, ABSOLUTE FIX: Add the missing 'agent_type=agent_id' argument.
-                real_accuracy = self.evaluator.evaluate_single_agent_output(
+                accuracy = self.evaluator.evaluate_single_agent_output(
                     agent_output=output, 
                     ground_truth=agent_ground_truth,
                     agent_type=agent_id  # This was the missing piece.
                 )
             except Exception as e:
                 self.logger.error(f"Error during offline evaluation for {agent_id}: {e}")
-                real_accuracy = 0.0
+                accuracy = 0.0
 
             performance_metrics = {
-                'accuracy': real_accuracy,
+                'accuracy': accuracy,
                 'response_time': 1.0,
                 'data_quality': 1.0 if output.get('success', True) else 0.0
             }
@@ -2242,7 +2246,7 @@ class MAMAFlightAssistant:
                     task_context['preferences']['priority'] = priority
                 
                 self.trust_ledger.evaluate_competence(agent_id, performance_metrics, task_context)
-                self.logger.info(f"OFFLINE_UPDATE: Competence for {agent_id} evaluated with real_accuracy: {real_accuracy:.4f}, priority: {task_context['preferences']['priority']}")
+                self.logger.info(f"OFFLINE_UPDATE: Competence for {agent_id} evaluated with accuracy: {accuracy:.4f}, priority: {task_context['preferences']['priority']}")
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -2314,14 +2318,14 @@ async def main():
     """
     Main entry point for MAMA Flight Assistant
     
-    Complete academic implementation with comprehensive component integration:
+    Complete implementation with comprehensive component integration:
     - PML (Professional Multi-agent Learning) for agent management
     - SBERT (Sentence-BERT) for semantic similarity computation
     - MARL (Multi-Agent Reinforcement Learning) for trust-aware coordination
     - LTR (Learning to Rank) for decision optimization
     - Multi-dimensional Trust Ledger for Byzantine fault tolerance
     """
-    parser = argparse.ArgumentParser(description="MAMA Flight Selection Assistant - Academic Implementation")
+    parser = argparse.ArgumentParser(description="MAMA Flight Selection Assistant - Implementation")
     parser.add_argument("--departure", required=True, help="Departure location")
     parser.add_argument("--destination", required=True, help="Destination location")
     parser.add_argument("--date", required=True, help="Flight date (YYYY-MM-DD)")
@@ -2367,7 +2371,7 @@ async def main():
     signal.signal(signal.SIGTERM, lambda s, f: asyncio.create_task(signal_handler(assistant)))
     
     try:
-        print("Initializing MAMA Flight Assistant with complete academic implementation...")
+        print("Initializing MAMA Flight Assistant with Complete implementation...")
         print("Components: PML + SBERT + MARL + LTR + Trust Ledger")
         
         await assistant.initialize_system()
@@ -2386,7 +2390,7 @@ async def main():
         if preferences:
             print(f"  Preferences: {preferences}")
         
-        # Process flight query using complete academic implementation
+        # Process flight query using Complete implementation
         result = await assistant.process_flight_query(
             departure=args.departure,
             destination=args.destination,
@@ -2409,9 +2413,9 @@ async def main():
                 print(f"   Method: {rec.get('method', 'unknown')}")
                 print(f"   Explanation: {rec.get('explanation', 'No explanation')}")
             
-            # Display academic metrics
+            # Display metrics
             academic_metrics = result.get('academic_metrics', {})
-            print(f"\n🎓 Academic Performance Metrics:")
+            print(f"\n🎓 Performance Metrics:")
             
             for phase, metrics in academic_metrics.items():
                 print(f"\n{phase.replace('_', ' ').title()}:")

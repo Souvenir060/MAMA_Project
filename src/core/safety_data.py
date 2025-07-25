@@ -2,7 +2,7 @@
 MAMA Flight Selection Assistant - Safety Data Aggregation
 
 This module implements a comprehensive safety data aggregation system that
-integrates multiple safety data sources and provides advanced analysis
+integrates multiple safety data sources and provides comprehensive analysis
 capabilities.
 
 Features:
@@ -22,12 +22,12 @@ logger = logging.getLogger(__name__)
 
 class SafetyDataAggregator:
     """
-    Academic-level safety data aggregation system.
+    Safety data aggregation system.
     
     Features:
     - Multi-source data integration
     - Real-time incident monitoring
-    - Advanced risk assessment
+    - Comprehensive risk assessment
     - Historical analysis
     - Compliance verification
     """
@@ -53,7 +53,7 @@ class SafetyDataAggregator:
     
     def _initialize_data_sources(self) -> Dict[str, bool]:
         """Initialize available safety data sources"""
-            return {
+        return {
                 "asn": True,
                 "faa": True,
                 "easa": True,
@@ -195,7 +195,7 @@ class SafetyDataAggregator:
             except Exception:
                 return default
         
-        try:
+        
         return {
                 "route_risk_score": get_property_value(milestone_metrics, "routeRiskScore", 0.0),
                 "aircraft_safety_rating": get_property_value(milestone_metrics, "aircraftSafetyRating", 0.0),
@@ -206,9 +206,7 @@ class SafetyDataAggregator:
                 "regulatory_compliance_score": get_property_value(milestone_metrics, "regulatoryComplianceScore", 0.0),
                 "confidence": get_property_value(milestone_metrics, "confidence", 1.0)
             }
-        except Exception as e:
-            logger.error(f"Error converting Milestone safety metrics: {e}")
-            return {}
+            
     
     def _convert_milestone_to_incidents(self, milestone_incidents: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Convert Milestone data to incidents format"""

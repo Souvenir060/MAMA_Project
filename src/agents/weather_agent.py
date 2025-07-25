@@ -101,35 +101,48 @@ class WeatherAgent(BaseAgent):
         
         # Initialize agent with proper configuration
         try:
+            # CRITICAL FIX: Use proper LLM config to avoid register_function errors
+            llm_config = {
+                "config_list": [
+                    {
+                        "model": "local_csv_processor",
+                        "api_key": None,
+                        "base_url": None,
+                    }
+                ],
+                "temperature": 0.0,
+                "timeout": 10,
+            }
+            
             self.agent = ConversableAgent(
                 name="WeatherAnalyst",
                 system_message="""You are a professional weather assessment agent. Your responsibilities include:
 
 🌤️ **Core Functions:**
-- Analyze weather conditions for flight routes
-- Assess weather impact on flight safety
-- Provide weather-related flight recommendations
-- Monitor weather parameters
+- Analyze weather conditions for flight routes using CSV flight data
+- Assess weather impact on flight safety from historical data
+- Provide weather-related flight recommendations based on real data
+- Monitor weather parameters from flights.csv
 
 📊 **Analysis Focus:**
-- Visibility conditions
-- Wind speed and direction
-- Precipitation levels
-- Cloud coverage
-- Atmospheric pressure
-- Temperature variations
+- Visibility conditions from flight records
+- Wind speed and direction from historical data
+- Precipitation levels from flight data
+- Cloud coverage from aviation records
+- Atmospheric pressure from flight logs
+- Temperature variations from historical flights
 
 ⚡ **Assessment Standards:**
 - Weather Safety Score: 0.9+ Excellent, 0.8-0.9 Good, 0.7-0.8 Fair, 0.6-0.7 Cautious, <0.6 Dangerous
-- Risk factor identification
-- Weather impact assessment
-- Alternative route recommendations
+- Risk factor identification from real flight data
+- Weather impact assessment using CSV data
+- Alternative route recommendations based on historical flights
 """,
-                llm_config={"model": self.model},
+                llm_config=llm_config,  # Use proper LLM config
                 human_input_mode="NEVER",
                 max_consecutive_auto_reply=1
             )
-            logger.info("Weather analysis agent initialized successfully")
+            logger.info("Weather analysis agent initialized successfully with proper LLM config")
         except Exception as e:
             logger.warning(f"Failed to initialize agent: {e}")
             self.agent = None
@@ -191,7 +204,7 @@ class WeatherAgent(BaseAgent):
             departure_city: Departure city name
             destination_city: Destination city name  
             departure_time: Departure time (optional)
-            flight_data: Flight data for enhanced analysis
+            flight_data: Flight data for detailed analysis
 
         Returns:
             Comprehensive weather analysis with real data
@@ -236,8 +249,8 @@ class WeatherAgent(BaseAgent):
             destination_weather = weather_data['destination']['current_weather']
             route_assessment = weather_data['route_assessment']
             
-            # Enhance analysis with flight-specific considerations
-            enhanced_analysis = self._enhance_weather_analysis(
+            # Analyze weather details with flight-specific considerations
+            detailed_analysis = self._analyze_weather_details(
                 weather_data, flight_data, departure_time
             )
             
@@ -285,7 +298,7 @@ class WeatherAgent(BaseAgent):
                     'delay_probability': self._calculate_delay_probability(route_assessment),
                     'confidence_level': route_assessment['assessment_confidence']
                 },
-                'enhanced_analysis': enhanced_analysis,
+                'detailed_analysis': detailed_analysis,
                 'data_source': weather_data['source'],
                 'api_source': departure_weather.get('api_source', 'real_api'),
                 'timestamp': weather_data['timestamp'],
@@ -325,9 +338,9 @@ class WeatherAgent(BaseAgent):
                 'analysis_confidence': 0.1
             }
     
-    def _enhance_weather_analysis(self, weather_data: Dict, flight_data: Dict = None, 
+    def _analyze_weather_details(self, weather_data: Dict, flight_data: Dict = None, 
                                 departure_time: str = None) -> Dict:
-        """Enhance weather analysis with flight-specific insights"""
+        """Analyze weather details with flight-specific insights"""
         try:
             departure_weather = weather_data['departure']['current_weather']
             destination_weather = weather_data['destination']['current_weather']
@@ -386,8 +399,8 @@ class WeatherAgent(BaseAgent):
             return analysis
             
         except Exception as e:
-            logger.error(f"Weather enhancement error: {e}")
-            return {'error': 'analysis_enhancement_failed'}
+            logger.error(f"Weather analysis error: {e}")
+            return {'error': 'analysis_failed'}
     
     def _get_weather_rating(self, safety_score: float) -> str:
         """Convert safety score to weather rating"""
@@ -957,32 +970,45 @@ def create_weather_agent():
     Returns:
         Configured weather assessment agent
     """
+    # CRITICAL FIX: Use proper LLM config to avoid register_function errors
+    llm_config = {
+        "config_list": [
+            {
+                "model": "local_csv_processor",
+                "api_key": None,
+                "base_url": None,
+            }
+        ],
+        "temperature": 0.0,
+        "timeout": 10,
+    }
+    
     # Create the agent instance
     agent = ConversableAgent(
         name="WeatherAgent",
         system_message="""You are a professional weather assessment agent. Your responsibilities include:
 
 🌤️ **Core Functions:**
-- Analyze weather conditions for flight routes
-- Assess weather impact on flight safety
-- Provide weather-related flight recommendations
-- Monitor weather parameters
+- Analyze weather conditions for flight routes using CSV flight data
+- Assess weather impact on flight safety from historical data
+- Provide weather-related flight recommendations based on real data
+- Monitor weather parameters from flights.csv
 
 📊 **Analysis Focus:**
-- Visibility conditions
-- Wind speed and direction
-- Precipitation levels
-- Cloud coverage
-- Atmospheric pressure
-- Temperature variations
+- Visibility conditions from flight records
+- Wind speed and direction from historical data
+- Precipitation levels from flight data
+- Cloud coverage from aviation records
+- Atmospheric pressure from flight logs
+- Temperature variations from historical flights
 
 ⚡ **Assessment Standards:**
 - Weather Safety Score: 0.9+ Excellent, 0.8-0.9 Good, 0.7-0.8 Fair, 0.6-0.7 Cautious, <0.6 Dangerous
-- Risk factor identification
-- Weather impact assessment
-- Alternative route recommendations
+- Risk factor identification from real flight data
+- Weather impact assessment using CSV data
+- Alternative route recommendations based on historical flights
 """,
-        llm_config={"model": "gpt-4", "temperature": 0.1},
+        llm_config=llm_config,  # Use proper LLM config
         human_input_mode="NEVER",
         max_consecutive_auto_reply=1
     )
@@ -994,9 +1020,10 @@ def create_weather_agent():
             get_weather_safety_tool,
             caller=agent,
             executor=agent,
-            description="Weather safety assessment for flight departures and destinations",
+            description="Weather safety assessment for flight departures and destinations using CSV data",
             name="get_weather_safety_tool"
         )
+        logging.info("✅ Weather agent tools registered successfully")
     except Exception as e:
         logging.warning(f"⚠️ Failed to register weather assessment tool: {e}")
     

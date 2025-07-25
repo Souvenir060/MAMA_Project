@@ -235,21 +235,18 @@ class SystemConfiguration:
 # Global configuration instance
 CONFIG = SystemConfiguration()
 
-# LLM Configuration for backward compatibility
+# LLM Configuration for Academic MAMA System - CSV Data Mode
+# Configure for pure CSV-based experiments without LLM API calls
 LLM_CONFIG = {
-    "openai": {
-        "api_key": API_CONFIG.OPENAI_API_KEY,
-        "model": API_CONFIG.OPENAI_MODEL,
-        "temperature": 0.7,
-        "max_tokens": 2000
-    },
-    "deepseek": {
-        "api_key": API_CONFIG.DEEPSEEK_API_KEY,
-        "base_url": API_CONFIG.DEEPSEEK_BASE_URL,
-        "model": "deepseek-chat",
-        "temperature": 0.7,
-        "max_tokens": 2000
-    }
+    "config_list": [
+        {
+            "model": "local",  # Local processing mode
+            "api_key": None,  # No API key needed for local processing
+            "base_url": None,  # No base URL needed for local processing
+        }
+    ],
+    "temperature": 0.0,  # Deterministic processing for reproducible results
+    "timeout": 10,  # Short timeout for local processing
 }
 
 # Milestone Configuration - Real Data Space Connection

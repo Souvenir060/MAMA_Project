@@ -51,6 +51,8 @@ figures/extended/*.png
 figures/extended/*.pdf
 figures/basic/*.png
 figures/basic/*.pdf
+figures/*.png
+figures/*.pdf
 
 # Logs
 *.log
@@ -59,13 +61,43 @@ logs/
 # Cache
 .cache/
 .pytest_cache/
+cache/
+src/cache/
 
 # Model files (too large)
 *.pt
 *.pth
 *.safetensors
+models/
 src/models/models--sentence-transformers--all-MiniLM-L6-v2/
+src/evaluation/models/
+models--sentence-transformers--*/
+
+# Results and Analysis Files
+results/*.json
+results/*.md
+results/*/
+figures/table_*.md
+figures/figure_*.png
+figures/figure_*.pdf
+
+# API Keys and Sensitive Data
+*api_key*
+*API_KEY*
+*.key
+config/api_keys.py
+config/secrets.py
+
+# Experiment Data
+data/standard_dataset*.json
+data/test_queries*.json
+data/train_queries*.json
+data/validation_queries*.json
+src/data/data/
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+# Checkpoints
+checkpoints/ 

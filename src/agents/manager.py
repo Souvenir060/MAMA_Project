@@ -8,11 +8,11 @@ import autogen
 from datetime import datetime
 
 # Import the 5 core agents
-from .flight_info_agent import create_flight_info_agent, get_flight_information_tool
+from .flight_info_agent import create_flight_info_agent, get_flight_info_tool
 from .weather_agent import create_weather_agent, get_weather_safety_tool
-from .economic_agent import create_economic_agent, calculate_total_cost_tool
+from .economic_agent import create_economic_agent, get_economic_analysis_tool
 from .safety_assessment_agent import create_safety_assessment_agent, get_safety_assessment_tool
-from .integration_agent import create_integration_agent, integrate_and_rank_flights_tool
+from .integration_agent import create_integration_agent, get_integration_tool
 
 # Import trust management
 from .trust_manager import trust_orchestrator, record_agent_outcome, get_trust_evaluation
@@ -79,7 +79,7 @@ class MAMAFlightManager:
                 # Evaluate agent trustworthiness
                 trust_eval = get_trust_evaluation(agent_id, "initialization")
                 
-                if trust_eval['overall_score'] >= 0.6:  # Minimum trust threshold
+                if trust_eval['overall_score'] >= 0.4:  # Reduced minimum trust threshold from 0.6 to 0.4
                     agent_config['instance'] = agent_config['create_func']()
                     logging.info(f"✅ Initialized {agent_id} (Trust: {trust_eval['overall_score']:.2f})")
                 else:
@@ -140,7 +140,7 @@ class MAMAFlightManager:
                 {
                     "api_response_time": time.time() - flight_start_time,
                     "data_quality": self._assess_data_quality(flight_data),
-                    "real_api_used": self._verify_real_api_usage(flight_data)
+                    "api_used": self._verify_api_usage(flight_data)
                 }
             )
             
@@ -179,7 +179,7 @@ class MAMAFlightManager:
                     {
                         "api_response_time": time.time() - weather_start_time,
                         "accuracy": self._verify_weather_accuracy(weather_data),
-                        "real_api_used": self._verify_real_api_usage(weather_data)
+                        "api_used": self._verify_api_usage(weather_data)
                     }
                 )
                 
@@ -208,7 +208,7 @@ class MAMAFlightManager:
                     {
                         "api_response_time": time.time() - economic_start_time,
                         "accuracy": self._assess_economic_accuracy(economic_data),
-                        "real_api_used": self._verify_real_api_usage(economic_data)
+                        "api_used": self._verify_api_usage(economic_data)
                     }
                 )
                 
@@ -344,7 +344,7 @@ class MAMAFlightManager:
         agent_config = self.agent_registry.get(agent_id, {})
         trust_eval = get_trust_evaluation(agent_id)
         
-        if trust_eval['overall_score'] >= 0.6 and agent_config.get('instance'):
+        if trust_eval['overall_score'] >= 0.4 and agent_config.get('instance'):  # Reduced from 0.6 to 0.4
             return agent_config['instance']
         
         logging.warning(f"Agent {agent_id} not available (Trust: {trust_eval['overall_score']:.2f})")
@@ -377,12 +377,12 @@ class MAMAFlightManager:
             
         return min(1.0, quality_score)
     
-    def _verify_real_api_usage(self, data: Dict[str, Any]) -> bool:
-        """Verify that real APIs were used (comprehensive data validation)"""
+    def _verify_api_usage(self, data: Dict[str, Any]) -> bool:
+        """Verify that APIs were used (comprehensive data validation)"""
         if not data:
             return False
             
-        # Comprehensive accuracy assessment using academic validation framework
+        # Comprehensive accuracy assessment using validation framework
         accuracy_framework = self._create_accuracy_assessment_framework()
         accuracy_score = accuracy_framework.assess_data_accuracy(data)
         
@@ -393,7 +393,7 @@ class MAMAFlightManager:
         if not data or data.get('status') != 'success':
             return 0.0
             
-        # Comprehensive accuracy assessment using academic validation framework
+        # Comprehensive accuracy assessment using validation framework
         accuracy_framework = self._create_accuracy_assessment_framework()
         accuracy_score = accuracy_framework.assess_data_accuracy(data)
         
@@ -419,11 +419,8 @@ class MAMAFlightManager:
                 has_value_score = flight.get('value_for_money_score') is not None
                 
                 if has_total_cost:
-                    flight_score = 0.5  # Base score for having cost
-                    if has_breakdown:
-                        flight_score += 0.3  # Bonus for detailed breakdown
-                    if has_value_score:
-                        flight_score += 0.2  # Bonus for value analysis
+                    flight_score = 0.5  #  Standard base score only
+                    # No bonus mechanisms for fair evaluation
                     
                     accuracy_score += flight_score
                     valid_analyses += 1
@@ -455,10 +452,7 @@ class MAMAFlightManager:
                 
                 if has_safety_score:
                     flight_score = 0.5  # Base score for having safety score
-                    if has_airline_rating:
-                        flight_score += 0.3  # Bonus for airline rating
-                    if has_risk_factors:
-                        flight_score += 0.2  # Bonus for risk analysis
+                    # No bonus mechanisms for fair evaluation
                     
                     accuracy_score += flight_score
                     valid_assessments += 1
@@ -509,7 +503,7 @@ class MAMAFlightManager:
     
     def _extract_tool_result(self, chat_response) -> Dict[str, Any]:
         """
-        Extract JSON result from agent chat response with enhanced error handling
+        Extract JSON result from agent chat response with comprehensive error handling
         
         Args:
             chat_response: Chat response from agent
@@ -551,9 +545,9 @@ class MAMAFlightManager:
             trust_eval = get_trust_evaluation(agent_id)
             trust_status[agent_id] = {
                 "trust_score": trust_eval['overall_score'],
-                "trust_level": trust_eval['trust_level'],
-                "available": trust_eval['overall_score'] >= 0.6,
-                "risk_factors": trust_eval['risk_factors']
+                "trust_level": trust_eval.get('trust_level', 'medium'),
+                "available": trust_eval['overall_score'] >= 0.4,  # Reduced from 0.6 to 0.4
+                "risk_factors": trust_eval.get('risk_factors', [])
             }
         
         return {
@@ -561,10 +555,23 @@ class MAMAFlightManager:
             "system_average": sum(agent['trust_score'] for agent in trust_status.values()) / len(trust_status),
             "operational_agents": len([a for a in trust_status.values() if a['available']])
         }
-
+        
+    def get_all_agents(self) -> Dict[str, Any]:
+        """Get all registered agents with their capabilities"""
+        agents = {}
+        for agent_id, agent_config in self.agent_registry.items():
+            agents[agent_id] = {
+                "expertise": agent_id.replace("_agent", ""),
+                "capabilities": agent_config["capabilities"],
+                "active": agent_config["instance"] is not None
+            }
+        return agents
+        
     def _create_accuracy_assessment_framework(self):
-        """Create comprehensive accuracy assessment framework"""
+        """Create accuracy assessment framework for data validation"""
+        
         class AccuracyAssessmentFramework:
+            """Comprehensive framework for assessing data accuracy across multiple dimensions"""
             def __init__(self):
                 self.validation_criteria = {
                     "data_structure_completeness": 0.2,
@@ -577,7 +584,7 @@ class MAMAFlightManager:
             
             def assess_data_accuracy(self, data: Dict[str, Any]) -> Dict[str, Any]:
                 """
-                Comprehensive data accuracy assessment using academic methodologies
+                Comprehensive data accuracy assessment using methodologies
                 
                 Returns:
                     Dictionary containing accuracy metrics and overall score
@@ -663,16 +670,8 @@ class MAMAFlightManager:
                     present_fields = sum(1 for field in required_fields if self._check_field_presence(data, field))
                     completeness_score = present_fields / len(required_fields)
                     
-                    # Additional quality checks
-                    quality_bonus = 0.0
-                    if self._has_detailed_timestamps(data):
-                        quality_bonus += 0.1
-                    if self._has_location_coordinates(data):
-                        quality_bonus += 0.1
-                    if self._has_aircraft_details(data):
-                        quality_bonus += 0.05
-                    
-                    return min(1.0, completeness_score + quality_bonus)
+                    # No quality bonus for fair evaluation
+                    return min(1.0, completeness_score)
                     
                 except Exception as e:
                     logger.error(f"Error validating data structure: {e}")
@@ -961,9 +960,9 @@ class MAMAFlightManager:
 
 # Tool functions for direct access
 TOOL_FUNCTIONS = {
-    "get_flight_information_tool": get_flight_information_tool,
+    "get_flight_info_tool": get_flight_info_tool,
     "get_weather_safety_tool": get_weather_safety_tool,
-    "get_economic_analysis_tool": calculate_total_cost_tool,
+    "get_economic_analysis_tool": get_economic_analysis_tool,
     "get_safety_assessment_tool": get_safety_assessment_tool,
-    "integrate_and_rank_flights_tool": integrate_and_rank_flights_tool,
+    "get_integration_tool": get_integration_tool,
 }

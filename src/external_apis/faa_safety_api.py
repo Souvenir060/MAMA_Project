@@ -17,7 +17,7 @@ def get_faa_safety_data(airline_code: str, aircraft_type: str = None) -> Dict[st
     Uses public FAA safety records
     """
     try:
-        # Generate realistic FAA safety metrics
+        # Generate FAA safety metrics
         safety_data = {
             'airline_code': airline_code,
             'aircraft_type': aircraft_type,

@@ -4,12 +4,6 @@ MAMA Flight Selection Assistant - JWT Token Generator
 
 This module provides comprehensive JWT token generation and verification
 for Milestone authentication within the MAMA multi-agent system.
-
-Academic Features:
-- Cryptographic token generation with configurable algorithms
-- Multi-layer security with custom claims and permissions
-- Token lifecycle management with refresh capabilities
-- Integration with MAMA trust-aware authentication protocols
 """
 
 import jwt
@@ -59,7 +53,7 @@ class TokenClaims:
 
 class MilestoneTokenGenerator:
     """
-    Advanced JWT Token Generator for Milestone API Authentication
+    JWT Token Generator for Milestone API Authentication
     
     Provides cryptographically secure token generation with academic-level
     security features for multi-agent system authentication and authorization.

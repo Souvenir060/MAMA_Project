@@ -78,10 +78,10 @@ class FlightDataAggregator:
     
     def search_flights(self, departure: str, destination: str, date: str) -> List[Dict[str, Any]]:
         """
-        Enhanced flight search with guaranteed results
+        Flight search
         Uses multiple data sources and intelligent fallbacks
         """
-        logger.info(f"🔍 Starting enhanced flight search: {departure} → {destination} on {date}")
+        logger.info(f"🔍 Starting flight search: {departure} → {destination} on {date}")
         
         # Check if departure and destination are the same
         if departure.strip().lower() == destination.strip().lower():
@@ -195,24 +195,24 @@ class FlightDataAggregator:
         # Sort flights by relevance score
         all_flights.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
         
-        # Enhance each flight with additional computed fields
-        enhanced_flights = []
+        # Process each flight with additional computed fields
+        processed_flights = []
         for i, flight in enumerate(all_flights):
             # Check if flight is a dictionary type
             if not isinstance(flight, dict):
                 logger.warning(f"⚠️ Skipping invalid flight data (not a dict) at index {i}: {type(flight)} - {str(flight)[:100]}")
                 continue
                 
-            enhanced_flight = self._enhance_flight_data(flight)
-            enhanced_flights.append(enhanced_flight)
+            processed_flight = self._process_flight_data(flight)
+            processed_flights.append(processed_flight)
         
-        logger.info(f"🔍 About to deduplicate {len(enhanced_flights)} enhanced flights")
+        logger.info(f"🔍 About to deduplicate {len(processed_flights)} processed flights")
         # Debug: Check types before deduplication
-        for i, flight in enumerate(enhanced_flights[:5]):  # Only check first 5
-            logger.info(f"Enhanced flight {i+1} type: {type(flight)}")
+        for i, flight in enumerate(processed_flights[:5]):  # Only check first 5
+            logger.info(f"Processed flight {i+1} type: {type(flight)}")
         
         # Remove duplicates
-        unique_flights = self._deduplicate_flights(enhanced_flights)
+        unique_flights = self._deduplicate_flights(processed_flights)
         
         # Log warning if limited results but do not add synthetic data
         if len(unique_flights) < 3:
@@ -334,21 +334,21 @@ class FlightDataAggregator:
         
         return base_amenities
     
-    def _enhance_flight_data(self, flight: Dict[str, Any]) -> Dict[str, Any]:
+    def _process_flight_data(self, flight: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Enhance flight data with additional metadata and confidence scoring
+        Process flight data with additional metadata and confidence scoring
         """
-        enhanced = flight.copy()
+        processed = flight.copy()
         
         # Ensure required fields exist
-        if 'confidence' not in enhanced:
-            enhanced['confidence'] = 0.80
+        if 'confidence' not in processed:
+            processed['confidence'] = 0.80
         
-        if 'data_source' not in enhanced:
-            enhanced['data_source'] = 'api_enhanced'
+        if 'data_source' not in processed:
+            processed['data_source'] = 'api_processed'
         
         # Add search context
-        enhanced['search_context'] = {
+        processed['search_context'] = {
             'departure_requested': flight.get('departure') if isinstance(flight.get('departure'), str) else flight.get('departure', {}).get('airport', ''),
             'destination_requested': flight.get('destination') if isinstance(flight.get('destination'), str) else flight.get('destination', {}).get('airport', ''),
             'date_requested': flight.get('departure', {}).get('time', '') if isinstance(flight.get('departure'), dict) else '',
@@ -358,18 +358,18 @@ class FlightDataAggregator:
         # Calculate relevance score
         relevance_score = 0.8
         
-        # Boost score for direct flights
-        if enhanced.get('stops', 1) == 0:
+        # Score advantage for direct flights
+        if processed.get('stops', 1) == 0:
             relevance_score += 0.1
         
-        # Boost score for reasonable prices
-        price = enhanced.get('pricing', {}).get('economy', 500)
+        # Score advantage for reasonable prices
+        price = processed.get('pricing', {}).get('economy', 500)
         if 150 <= price <= 600:
             relevance_score += 0.1
         
-        enhanced['relevance_score'] = min(1.0, relevance_score)
+        processed['relevance_score'] = min(1.0, relevance_score)
         
-        return enhanced
+        return processed
     
     def _deduplicate_flights(self, flights: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
