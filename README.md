@@ -353,44 +353,6 @@ grep -r "hardcode\|fake\|simulate" src/ --exclude-dir=__pycache__
 
 All experiments use a fixed random seed (42) for reproducibility. The evaluation is conducted on a blind test set of 150 queries. Ground truth is generated using a non-compensatory lexicographic preference ordering model to ensure an unbiased assessment.
 
-## Results Summary
-
-### Table I: Statistical Significance Analysis of Model Performance via Paired t-test
-
-| Comparison | p-value | Cohen's d | Effect Size | Significant (p < 0.001) |
-|------------|---------|-----------|-------------|-------------------------|
-| MAMA Full vs MAMA NoTrust | 2.85 × 10⁻⁴⁹ | 1.832 | large | Yes |
-| MAMA Full vs Single Agent | 1.47 × 10⁻²¹ | 0.916 | large | Yes |
-| MAMA Full vs Traditional | 2.00 × 10⁻⁴⁸ | 1.788 | large | Yes |
-| MAMA NoTrust vs Single Agent | 1.32 × 10⁻²⁸ | 1.132 | large | Yes |
-| MAMA NoTrust vs Traditional | 2.34 × 10⁻²³ | 0.971 | large | Yes |
-| Single Agent vs Traditional | 1.25 × 10⁻⁴⁹ | 1.832 | large | Yes |
-
-*Note: All comparisons use paired t-test. Effect sizes: Small (0.2), Medium (0.5), Large (0.8+).*
-
-### Final Performance Results
-
-| Model | MRR | NDCG@5 | NDCG@10 | MAP | Precision@1 | Precision@5 | ART (ms) |
-|-------|-----|--------|---------|-----|-------------|-------------|----------|
-| MAMA Full | 0.6465 | 0.8724 | 0.9430 | 0.8521 | 0.460 | 0.743 | 6.18 |
-| Single Agent | 0.4921 | 0.7758 | 0.8959 | 0.7420 | 0.340 | 0.659 | 0.022 |
-| MAMA No Trust | 0.3584 | 0.7241 | 0.6044 | 0.8650 | 0.253 | 0.515 | 0.59 |
-| Traditional | 0.3254 | 0.6640 | 0.8434 | 0.6236 | 0.140 | 0.515 | 0.050 |
-
-**Optimal Hyperparameters**: α=0.30, β=0.10, γ=0.15 (discovered through 63-combination grid search)
-
-## Table II: Sentiment Analysis Case Study Reproduction
-
-1. **Run the sentiment analysis experiment**:
-   ```bash
-   python src/experiments/case_studies/sentiment_analysis_case_study.py
-   ```
-
-2. **Expected results** (complete SST-2 validation set, 872 samples):
-   - MAMA Framework: ~49.08% accuracy
-   - Single Agent Baseline: ~52.75% accuracy  
-   - Relative performance: MAMA performs ~3.67% worse than baseline
-
 ### Details
 
 - **Dataset**: Complete SST-2 validation set (872 samples)
