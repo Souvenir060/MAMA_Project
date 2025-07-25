@@ -147,28 +147,23 @@ The unified runner automatically:
    - Runs main model comparison on 150 test queries
    - Evaluates MAMA Full, MAMA No Trust, Single Agent, and Traditional
    - Generates key performance metrics (MRR, NDCG@5)
-   - Produces main result figures
 
 2. **Full Mode (`--mode full`)**:
    - Runs everything in Core mode
    - Adds all appendix experiments
    - Includes robustness analysis and competence evolution
-   - Generates all figures and a comprehensive academic report
 
 3. **Figures Mode (`--mode figures`)**:
    - Generates all figures from existing results without running experiments
    - Includes main comparison charts and competence evolution plots
-   - Useful for regenerating visuals after experiments are complete
 
 4. **Competence Mode (`--mode competence`)**:
    - Runs only agent competence evolution experiments
    - Tracks how agent trust scores evolve over 50 and 150 interactions
-   - Generates competence evolution figures
 
 5. **Robustness Mode (`--mode robustness`)**:
    - Runs ground truth sensitivity analysis
    - Tests system with different parameter settings
-   - Validates that MAMA's performance advantage is consistent
 
 ### Specialized Scripts
 
@@ -203,7 +198,6 @@ cd src/experiments/case_studies
 python sentiment_analysis_case_study.py
 
 # Results will be saved to results/sentiment_case_study_results_*.json
-# Expected: MAMA ~49%, Single Agent Baseline ~53% (domain mismatch expected)
 ```
 
 ## Dataset
@@ -275,24 +269,11 @@ ls results/final_results.json
 
 **Step 3: Run Agent Competence Evolution with Optimal Parameters**
 ```bash
-# Run agent evolution analysis (150 interactions, ~1 minute)
+# Run agent evolution analysis (150 interactions)
 python src/experiments/main_experiments/agent_competence_evolution_experiment.py
 
 # Check evolution results
 ls results/agent_competence_evolution*
-```
-
-**Step 4: Generate All Academic Figures**
-```bash
-# Generate Figure 6 (Main Comparison), Figure 7 (Hyperparameters), Figure 8 (Evolution)
-python src/plotting/plot_main_figures.py
-
-# Verify all figures generated
-ls figures/basic/
-# Expected files: figure_6_main_evaluation.png, figure_7_hyperparameter_sensitivity.png, figure_8_agent_competence_evolution.png
-# - figure_6_main_evaluation.png
-# - figure_7_hyperparameter_sensitivity.png  
-# - figure_8_agent_competence_evolution.png
 ```
 
 ### Validation and Verification
@@ -352,12 +333,3 @@ grep -r "hardcode\|fake\|simulate" src/ --exclude-dir=__pycache__
 ## Reproducibility
 
 All experiments use a fixed random seed (42) for reproducibility. The evaluation is conducted on a blind test set of 150 queries. Ground truth is generated using a non-compensatory lexicographic preference ordering model to ensure an unbiased assessment.
-
-### Details
-
-- **Dataset**: Complete SST-2 validation set (872 samples)
-- **MAMA Implementation**: 
-  - Uses SBERT for agent selection
-  - Multi-agent framework with positive, negative, sarcasm, and negation detection agents
-  - Weighted voting aggregation with precedence rules
-- **Baseline**: Rule-based sentiment classifier with positive/negative word lists and negation handling
