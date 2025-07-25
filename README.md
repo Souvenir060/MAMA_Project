@@ -219,7 +219,7 @@ The project uses a comprehensive flight dataset (`flights.csv`, 41MB) containing
 
 ```bash
 # 1. Clone the repository
-git clone <repository-url>
+git clone https://github.com/Souvenir060/MAMA_Project.git
 cd MAMA_Project
 
 # 2. Install dependencies
@@ -237,10 +237,6 @@ python verify_installation.py
 # Run complete experiment pipeline (~20 minutes)
 # This follows correct academic order: hyperparameters → main evaluation → evolution → figures
 python run_experiments.py --mode full --verbose
-
-# Check all results
-ls results/
-ls figures/basic/
 ```
 
 #### Method 2: Step-by-Step Manual Reproduction
@@ -262,18 +258,12 @@ print(f'Optimal: α={model.config.alpha:.2f}, β={model.config.beta:.2f}, γ={mo
 ```bash
 # Run main model comparison (150 test queries, ~1 minute)
 python src/evaluation/run_main_evaluation.py
-
-# Check core results
-ls results/final_results.json
 ```
 
 **Step 3: Run Agent Competence Evolution with Optimal Parameters**
 ```bash
 # Run agent evolution analysis (150 interactions)
 python src/experiments/main_experiments/agent_competence_evolution_experiment.py
-
-# Check evolution results
-ls results/agent_competence_evolution*
 ```
 
 ### Validation and Verification
